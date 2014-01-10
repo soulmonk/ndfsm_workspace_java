@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:helpers="/WEB-INF/helpers"
+     xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+
+    <!-- jQuery and jQuery UI -->
+<!--    <spring:url value="/resources/scripts/jquery-1.7.1.js" var="jquery_url" />
+    <spring:url value="/resources/scripts/jquery-ui-1.8.16.custom.min.js" var="jquery_ui_url" />
+    <script src="${jquery_url}" type="text/javascript"><jsp:text/></script>
+    <script src="${jquery_ui_url}" type="text/javascript"><jsp:text/></script>-->
+
+    <!-- Standart -->
+<!--    <spring:url value="/resources/scripts/standard.js" var="standard_url" />
+    <script type="text/javascript" src="${standard_url}"><jsp:text/></script>-->
+
+    <!-- Bootstrap -->
+<!--    <spring:url value="/resources/scripts/bootstrap.js" var="bootstrap_url" />
+    <script type="text/javascript" src="${bootstrap_url}"><jsp:text/></script>-->
+    <!--
+        <script type="text/javascript">
+            //<![CDATA[
+            less = {
+                env: "development", // or "production"
+                async: false,       // load imports async
+                fileAsync: false   // load imports async when in a page under
+                // a file protocol
+                //poll: 1000,         // when in watch mode, time in ms between polls
+                //functions: {},      // user functions, keyed by name
+                //dumpLineNumbers: "comments", // or "mediaQuery" or "all"
+                //relativeUrls: false,// whether to adjust url's to be relative
+                // if false, url's are already relative to the
+                // entry less file
+                //rootpath: ":/a.com/"// a path to add on to the start of every url
+                //resource
+            };
+            //]]>
+        </script>
+        <spring:url value="/resources/scripts/less.js" var="less_url" />
+        <script type="text/javascript" src="${less_url}"><jsp:text/></script>-->
+
+    <!-- CKEditor -->
+<!--    <spring:url value="/resources/ckeditor/ckeditor.js" var="ckeditor_url" />
+    <spring:url value="/resources/ckeditor/adapters/jquery.js" var="ckeditor_jquery_url" />
+    <script type="text/javascript" src="${ckeditor_url}"><jsp:text/></script>
+    <script type="text/javascript" src="${ckeditor_jquery_url}"><jsp:text/></script>-->
+
+    <!-- jqGrid -->
+    <!--<spring:url value="/resources/jqgrid/js/i18n/grid.locale-en.js" var="jqgrid_locale_url" />
+    <spring:url value="/resources/jqgrid/js/jquery.jqGrid.min.js" var="jqgrid_url" />
+    <script type="text/javascript" src="${jqgrid_locale_url}"><jsp:text/></script>
+    <script type="text/javascript" src="${jqgrid_url}"><jsp:text/></script>-->
+
+    <spring:message code="home_text" var="homeText"/>
+    <spring:message code="label_en_US" var="labelEnUs"/>
+    <spring:message code="label_ru_RU" var="labelRuRu"/>
+    <spring:url value="/" var="homeUrl"/>
+
+    <div class="container">
+        <div class="navigation">
+            <a href="${homeUrl}">${homeText}</a> |
+            <a href="?lang=en_US">${labelEnUs}</a> |
+            <a href="?lang=ru_RU">${labelRuRu}</a>
+        </div>
+        <div>
+            <p class="text-center">The time on the server is <helpers:current_time/></p>
+        </div>
+    </div>
+
+</div>
