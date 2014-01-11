@@ -30,7 +30,7 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
-        <property name="packagesToScan" value="com.soulmonk.ndfsm.domain"/>
+        <property name="packagesToScan" value="${entitymanager.packages.to.scan}"/>
 
         <property name="jpaProperties">
             <props>

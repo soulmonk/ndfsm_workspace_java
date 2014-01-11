@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.springapp</groupId>
     <artifactId>ndfsm</artifactId>
@@ -8,14 +9,34 @@
     <name>ndfsm</name>
 
     <properties>
-        <org.springframework-version>3.2.3.RELEASE</org.springframework-version>
+        <org.springframework-version>3.2.4.RELEASE</org.springframework-version>
         <org.springsecurity-version>3.1.4.RELEASE</org.springsecurity-version>
         <hibernate.version>4.3.0.CR1</hibernate.version>
+        <hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
         <org.slf4j-version>1.7.5</org.slf4j-version>
         <org.aspectj-version>1.7.4</org.aspectj-version>
     </properties>
 
     <dependencies>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework-version}</version>
+            <exclusions>
+                <!-- Exclude Commons Logging in favor of SLF4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -36,16 +57,24 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${org.springframework-version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- /END -->
+
+        <!-- Validators -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+        <!-- /END -->
 
         <!-- Logging -->
         <dependency>
@@ -216,7 +245,7 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>1.0.1.RELEASE</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
@@ -236,6 +265,14 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Additional -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>14.0.1</version>
+        </dependency>
+        <!-- /END -->
     </dependencies>
 
     <build>
@@ -246,6 +283,9 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
             <plugin>

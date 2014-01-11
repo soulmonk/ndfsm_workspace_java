@@ -9,4 +9,6 @@
     <jsp:output omit-xml-declaration="yes"/>
 
     <h1>Site Home</h1>
+    <!--@elvariable id="user" type="string"-->
+    <div>${user}</div>
 </div>
