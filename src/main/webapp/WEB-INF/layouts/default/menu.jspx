@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div class="bs-sidebar affix" role="complementary" xmlns:jsp="http://java.sun.com/JSP/Page"
+<nav class="navbar-default navbar-static-side" role="navigation"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:spring="http://www.springframework.org/tags" version="2.0"
      xmlns:sec="http://www.springframework.org/security/tags">
-    <jsp:directive.page contentType="text/html;charset=UTF-8" />
-    <jsp:output omit-xml-declaration="yes" />
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
 
     <spring:message code="menu_header_text" var="menuHeaderText"/>
 
     <spring:message code="label_login" var="labelLogin"/>
-    <spring:url var="loginUrl" value="/j_spring_security_check" />
+    <spring:url var="loginUrl" value="/j_spring_security_check"/>
 
     <spring:message code="menu_admin" var="menuAdmin"/>
     <spring:url var="adminUrl" value="/admin"/>
+    <spring:url var="root" value="/"/>
 
-    <h3>${menuHeaderText}</h3>
-    <ul class="nav nav-pills nav-stacked">
-        <li><a href="${adminUrl}">${menuAdmin}</a></li>
-    </ul>
-    <sec:authorize access="hasRole('ROLE_USER')">
-        <a href="${adminUrl}">${menuAdmin}</a>
-    </sec:authorize>
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <!--<li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search">
+                                        <jsp:text/>
+                                    </i>
+                                </button>
+                            </span>
+                </div>
+                &lt;!&ndash; /input-group &ndash;&gt;
+            </li>-->
+            <li>
+                <a href="${root}"><i class="fa fa-dashboard fa-fw">
+                    <jsp:text/>
+                </i> Dashboard</a>
+            </li>
 
-    <sec:authorize access="isAnonymous()">
-        <div id="login">
-            <form name="loginForm" action="${loginUrl}" method="post">
-                <table>
-                    <caption align="left">Login:</caption>
-                    <tr>
-                        <td>User Name:</td>
-                        <td><input type="text" name="j_username"/></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type="password" name="j_password"/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center"><input name="submit" type="submit" value="Login"/></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </sec:authorize>
-</div>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li>
+                    <a href="${adminUrl}"><i class="fa fa-dashboard fa-fw">
+                        <jsp:text/>
+                    </i> ${menuAdmin}</a>
+                </li>
+            </sec:authorize>
+
+        </ul>
+        <!-- /#side-menu -->
+    </div>
+</nav>

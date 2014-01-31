@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div class="footer_my" xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+
+    <!-- Core Scripts - Include with every page -->
+    <spring:url value="/resources/scripts/jquery-1.10.2.js" var="jquery" />
+    <script type="text/javascript" src="${jquery}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/bootstrap.min.js" var="bootstrap" />
+    <script type="text/javascript" src="${bootstrap}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/plugins/metisMenu/jquery.metisMenu.js" var="jquery_metisMenu" />
+    <script type="text/javascript" src="${jquery_metisMenu}"><jsp:text/></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <spring:url value="/resources/scripts/sb-admin.js" var="sb_admin" />
+    <script type="text/javascript" src="${sb_admin}"><jsp:text/></script>
+</div>

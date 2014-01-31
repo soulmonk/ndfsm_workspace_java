@@ -15,24 +15,9 @@
         <put-attribute name="header" value="/WEB-INF/layouts/default/header.jspx" />
         <put-attribute name="footer" value="/WEB-INF/layouts/default/footer.jspx" />
     </definition>
-    <!--
 
-        <definition name="test" template="/WEB-INF/layouts/test.jspx">
-            <put-attribute name="header" value="/WEB-INF/layouts/default/header.jspx" />
-            <put-attribute name="menu" value="/WEB-INF/layouts/default/menu.jspx" />
-            <put-attribute name="footer" value="/WEB-INF/layouts/footer.jspx" />
-        </definition>
-
-        <definition name="public" template="/WEB-INF/layouts/default/default.jspx">
-            <put-attribute name="header" value="/WEB-INF/layouts/default/header.jspx" />
-            <put-attribute name="footer" value="/WEB-INF/layouts/footer.jspx" />
-        </definition>
-
-        <definition name="admin" template="/WEB-INF/layouts/admin/admin.jspx">
-            <put-attribute name="header" value="/WEB-INF/layouts/admin/header.jspx" />
-            <put-attribute name="menu" value="/WEB-INF/layouts/admin/menu.jspx" />
-            <put-attribute name="footer" value="/WEB-INF/layouts/footer.jspx" />
-        </definition>-->
-
+    <definition name="empty" template="/WEB-INF/layouts/empty/empty.jspx">
+        <put-attribute name="footer" value="/WEB-INF/layouts/empty/footer.jspx" />
+    </definition>
 
 </tiles-definitions>

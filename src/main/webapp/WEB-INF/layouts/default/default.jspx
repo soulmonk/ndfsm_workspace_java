@@ -5,64 +5,54 @@
       xmlns:spring="http://www.springframework.org/tags">
 
 <jsp:output doctype-root-element="HTML"
-            doctype-system="about:legacy-compat" />
+            doctype-system="about:legacy-compat"/>
 
-<jsp:directive.page contentType="text/html;charset=UTF-8" />
-<jsp:directive.page pageEncoding="UTF-8" />
+<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<jsp:directive.page pageEncoding="UTF-8"/>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
 
-    <spring:theme code="styleSheet" var="app_css" />
-    <spring:url value="/${app_css}" var="app_css_url" />
+    <!-- Core CSS - Include with every page -->
+    <spring:url value="/resources/stylesheets/bootstrap.min.css" var="bootstrap_css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${bootstrap_css}"/>
+    <spring:url value="/resources/font-awesome/css/font-awesome.css" var="font_awesome"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${font_awesome}"/>
+
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <spring:url value="/resources/stylesheets/plugins/morris/morris-0.4.3.min.css" var="morris"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${morris}"/>
+    <spring:url value="/resources/stylesheets/plugins/timeline/timeline.css" var="timeline"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${timeline}"/>
+
+    <!-- SB Admin CSS - Include with every page -->
+    <spring:url value="/resources/stylesheets/sb-admin.css" var="sb_admin"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${sb_admin}"/>
+
+    <!-- Theme stylesheets -->
+    <spring:theme code="styleSheet" var="app_css"/>
+    <spring:url value="/${app_css}" var="app_css_url"/>
     <link rel="stylesheet" type="text/css" media="screen"
-          href="${app_css_url}" />
-
-    <!-- Bootstrap -->
-    <!--<spring:url value="/resources/styles/bootstrap.css" var="bootstrap_css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${bootstrap_css}" />-->
-
-    <!-- jQuery and jQuery UI -->
-   <!-- <spring:url
-            value="/resources/styles/custom-theme/jquery-ui-1.8.16.custom.css"
-            var="jquery_ui_theme_css" />
-    <link rel="stylesheet" type="text/css" media="screen"
-          href="${jquery_ui_theme_css}" />-->
-
-    <!-- jqGrid -->
-    <!--<spring:url value="/resources/jqgrid/css/ui.jqgrid.css" var="jqgrid_css" />
-    <link rel="stylesheet" type="text/css" media="screen"
-          href="${jqgrid_css}" />-->
+          href="${app_css_url}"/>
 
     <!-- Get the user locale from the page context (it was set by Spring MVC's locale resolver) -->
     <c:set var="userLocale">
         <c:set var="plocale">${pageContext.response.locale}</c:set>
-        <c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
+        <c:out value="${fn:replace(plocale, '_', '-')}" default="en"/>
     </c:set>
 
     <spring:message code="application_name" var="app_name"
-                    htmlEscape="false" />
-    <title><spring:message code="welcome_h3" arguments="${app_name}" /></title>
-
+                    htmlEscape="false"/>
+    <title><spring:message code="welcome_h3" arguments="${app_name}"/></title>
 </head>
 
 <body>
-<header class="navbar navbar-inverse navbar-fixed-top">
-    <tiles:insertAttribute name="header" ignore="true" />
-</header>
-<div class="container mainWraer">
-    <div class="row">
-        <div class="col-md-3">
-            <tiles:insertAttribute name="menu" ignore="true" />
-        </div>
-        <main class="col-md-9" role="main">
-            <tiles:insertAttribute name="body" />
-        </main>
-    </div>
+<div id="wrapper">
+    <tiles:insertAttribute name="header" ignore="true"/>
+    <tiles:insertAttribute name="menu" ignore="true"/>
+    <tiles:insertAttribute name="body"/>
+    <tiles:insertAttribute name="footer" ignore="true"/>
 </div>
-<footer class="bs-footer" role="contentinfo">
-    <tiles:insertAttribute name="footer" ignore="true" />
-</footer>
 </body>
 </html>
