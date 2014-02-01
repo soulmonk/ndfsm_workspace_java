@@ -2,8 +2,9 @@ package com.soulmonk.ndfsm.service.jpa;
 
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.User;
-import com.soulmonk.ndfsm.domain.UserDetailsAdapter;
+import com.soulmonk.ndfsm.domain.UserRole;
 import com.soulmonk.ndfsm.repository.UsersRepository;
+import com.soulmonk.ndfsm.service.RolesService;
 import com.soulmonk.ndfsm.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.Objects;
 
 @Service("usersService")
 @Repository
@@ -22,6 +22,9 @@ public class UsersImpl implements UsersService {
 
   @Autowired
   private UsersRepository usersRepository;
+
+  @Autowired
+  private RolesService rolesService;
 
   @Inject
   private PasswordEncoder passwordEncoder;
@@ -42,6 +45,12 @@ public class UsersImpl implements UsersService {
   @Transactional(readOnly = true)
   public User save(User user) {
     if (user.getId() == null) {
+      if (user.getUserRoles().isEmpty()) {
+        UserRole userRole = new UserRole();
+        userRole.setRole(rolesService.findById((long) 2));
+        userRole.setUser(user);
+        user.getUserRoles().add(userRole);
+      }
       user.setPassword(passwordEncoder.encode(user.getPassword()));
     }
     return usersRepository.saveAndFlush(user);

@@ -1,7 +1,6 @@
 package com.soulmonk.ndfsm.web.app.controllers;
 
 import com.soulmonk.ndfsm.domain.User;
-import com.soulmonk.ndfsm.domain.UserRole;
 import com.soulmonk.ndfsm.service.RolesService;
 import com.soulmonk.ndfsm.service.UsersService;
 import org.slf4j.Logger;
@@ -41,12 +40,6 @@ public class SiteController {
     user.setEnabled(true);
     user.setFirstName("test first name");
     user.setLastName("test last name");
-
-    UserRole userRole = new UserRole();
-    userRole.setRole(rolesService.findById((long)2));
-    userRole.setUser(user);
-
-    user.getUserRoles().add(userRole);
 
     usersService.save(user);
 
