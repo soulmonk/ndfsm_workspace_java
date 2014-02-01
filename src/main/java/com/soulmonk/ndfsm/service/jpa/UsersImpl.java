@@ -37,4 +37,9 @@ public class UsersImpl implements UsersService {
 		return usersRepository.saveAndFlush(user);
 	}
 
+  @Override
+  public User findByLogin(String login) {
+    return usersRepository.findByLogin(login);
+  }
+
 }

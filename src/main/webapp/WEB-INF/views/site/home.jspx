@@ -18,6 +18,14 @@
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <i class="fa fa-clock-o fa-fw"><jsp:text/></i>Tests
+                </div>
+                <div class="panel-body">
+                    ${user}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     <i class="fa fa-clock-o fa-fw"><jsp:text/></i> Timeline
                 </div>
                 <!-- /.panel-heading -->
