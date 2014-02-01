@@ -28,21 +28,4 @@ public class SiteController {
     logger.info("Site home ");
     return "site/home";
   }
-
-  @RequestMapping(value = "/newUser", method = RequestMethod.GET)
-  public String tempNewUser(ModelMap model) {
-    logger.info("New user home ");
-
-    User user = new User();
-    user.setLogin("test");
-    user.setPassword("admin");
-    user.setEmail("test@example.com");
-    user.setEnabled(true);
-    user.setFirstName("test first name");
-    user.setLastName("test last name");
-
-    usersService.save(user);
-
-    return "site/home";
-  }
 }
