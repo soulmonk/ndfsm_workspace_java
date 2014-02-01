@@ -15,26 +15,30 @@ import java.util.List;
 @Repository
 @Transactional
 public class UsersImpl implements UsersService {
-	
-	@Autowired
-	private UsersRepository usersRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<User> findAll() {
-		return Lists.newArrayList(usersRepository.findAll());
-	}
+  @Autowired
+  private UsersRepository usersRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public User findById(Long id) {
-		return usersRepository.findOne(id);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public List<User> findAll() {
+    return Lists.newArrayList(usersRepository.findAll());
+  }
 
-	@Override
-	@Transactional(readOnly = true)
-	public User save(User user) {
-		return usersRepository.saveAndFlush(user);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public User findById(Long id) {
+    return usersRepository.findOne(id);
+  }
 
+  @Override
+  @Transactional(readOnly = true)
+  public User save(User user) {
+    return usersRepository.saveAndFlush(user);
+  }
+
+  @Override
+  public User findByLogin(String login) {
+    return usersRepository.findByLogin(login);
+  }
 }

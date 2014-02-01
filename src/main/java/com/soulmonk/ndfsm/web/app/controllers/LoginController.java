@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Time: 15:27
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/")
+public class LoginController {
 
   @RequestMapping(value = "/login", method = RequestMethod.GET)
-  public String login(ModelMap model) {
-    return "user/login";
+  public String login() {
+    return "login/login_form";
   }
 }
