@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="empty" name="user/login">
+    <definition extends="empty" name="login/login_form">
         <put-attribute name="body"
-                       value="/WEB-INF/views/user/login.jspx" />
+                       value="/WEB-INF/views/login/login_form.jspx" />
     </definition>
 </tiles-definitions>

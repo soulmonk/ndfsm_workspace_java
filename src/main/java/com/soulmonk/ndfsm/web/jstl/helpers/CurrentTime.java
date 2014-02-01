@@ -24,8 +24,8 @@ public class CurrentTime extends TagSupport {
         DateFormat.LONG, locale);
     String formattedDate = dateFormat.format(date);
     try {
-      pageContext.getOut().print( formattedDate );
-    } catch(IOException ioException) {
+      pageContext.getOut().print(formattedDate);
+    } catch (IOException ioException) {
       throw new JspException("Error: " + ioException.getMessage());
     }
     return SKIP_BODY;

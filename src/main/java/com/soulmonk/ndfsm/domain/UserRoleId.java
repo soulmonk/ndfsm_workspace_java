@@ -1,7 +1,6 @@
 package com.soulmonk.ndfsm.domain;
 
 import javax.persistence.Embeddable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 

@@ -1,13 +1,8 @@
 package com.soulmonk.ndfsm.domain;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -57,7 +52,7 @@ public class Role implements Serializable {
     this.authority = authority;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "pk.user")
+  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "pk.role")
   public Set<UserRole> getUserRoles() {
     return userRoles;
   }

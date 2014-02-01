@@ -1,6 +1,8 @@
 package com.soulmonk.ndfsm.web.app.controllers;
 
 import com.soulmonk.ndfsm.domain.User;
+import com.soulmonk.ndfsm.domain.UserRole;
+import com.soulmonk.ndfsm.service.RolesService;
 import com.soulmonk.ndfsm.service.UsersService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,14 +21,35 @@ public class SiteController {
   @Autowired
   private UsersService usersService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
-    User user = usersService.findById((long)1);
-    logger.info(user.toString());
+  @Autowired
+  private RolesService rolesService;
 
-    user = usersService.findByLogin("admin");
-    logger.info(user.toString());
-    model.addAttribute("user", user.toString());
-		return "site/home";
-	}
+  @RequestMapping(method = RequestMethod.GET)
+  public String home(ModelMap model) {
+    logger.info("Site home ");
+    return "site/home";
+  }
+
+  @RequestMapping(value = "/newUser", method = RequestMethod.GET)
+  public String tempNewUser(ModelMap model) {
+    logger.info("New user home ");
+
+    User user = new User();
+    user.setLogin("test");
+    user.setPassword("admin");
+    user.setEmail("test@example.com");
+    user.setEnabled(true);
+    user.setFirstName("test first name");
+    user.setLastName("test last name");
+
+    UserRole userRole = new UserRole();
+    userRole.setRole(rolesService.findById((long)2));
+    userRole.setUser(user);
+
+    user.getUserRoles().add(userRole);
+
+    usersService.save(user);
+
+    return "site/home";
+  }
 }

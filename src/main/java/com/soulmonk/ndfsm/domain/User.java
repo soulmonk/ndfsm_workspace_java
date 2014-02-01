@@ -46,7 +46,7 @@ public class User {
   public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
-  
+
   @Column(name = "last_name", nullable = false, insertable = true, updatable = true, length = 127, precision = 0)
   @Basic
   public String getLastName() {
@@ -55,6 +55,11 @@ public class User {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  @Transient
+  public String getFullName() {
+    return firstName + " " + lastName;
   }
 
   @Column(name = "login", nullable = false, insertable = true, updatable = true, length = 127, precision = 0)
@@ -117,7 +122,7 @@ public class User {
     this.dateModified = dateModified;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.role", cascade=CascadeType.ALL)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.user", cascade = CascadeType.ALL)
   public Set<UserRole> getUserRoles() {
     return userRoles;
   }
@@ -157,6 +162,6 @@ public class User {
 
   @Override
   public String toString() {
-    return "id = " + id + "<br/>full name: " + firstName + ' ' + lastName;
+    return "id = " + id + "<br/>full name: " + getFullName();
   }
 }

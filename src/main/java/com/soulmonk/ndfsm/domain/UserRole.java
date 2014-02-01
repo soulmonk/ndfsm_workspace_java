@@ -15,8 +15,8 @@ import java.io.Serializable;
     @AssociationOverride(name = "pk.user",
         joinColumns = @JoinColumn(name = "user_id")),
     @AssociationOverride(name = "pk.role",
-        joinColumns = @JoinColumn(name = "role_id")) })
-public class UserRole implements Serializable{
+        joinColumns = @JoinColumn(name = "role_id"))})
+public class UserRole implements Serializable {
 
   private UserRoleId pk = new UserRoleId();
 
@@ -46,6 +46,7 @@ public class UserRole implements Serializable{
   public void setRole(Role role) {
     getPk().setRole(role);
   }
+
   public boolean equals(Object o) {
     if (this == o)
       return true;
