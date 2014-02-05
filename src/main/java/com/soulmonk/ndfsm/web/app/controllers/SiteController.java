@@ -17,15 +17,8 @@ public class SiteController {
 
   final Logger logger = LoggerFactory.getLogger(SiteController.class);
 
-  @Autowired
-  private UsersService usersService;
-
-  @Autowired
-  private RolesService rolesService;
-
   @RequestMapping(method = RequestMethod.GET)
   public String home(ModelMap model) {
-    logger.info("Site home ");
     return "site/home";
   }
 }

@@ -30,7 +30,9 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
-        <property name="packagesToScan" value="${entitymanager.packages.to.scan}"/>
+        <property name="packagesToScan" value="${entityManager.packages.to.scan}"/>
+
+        <property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider"/>
 
         <property name="jpaProperties">
             <props>
