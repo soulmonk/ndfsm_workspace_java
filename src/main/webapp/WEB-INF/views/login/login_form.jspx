@@ -29,7 +29,7 @@
                                     <input class="form-control" placeholder="Password" name="j_password" type="password" value=""/>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input name="remember" type="checkbox" value="Remember Me"/>Remember Me</label>
+                                    <label><input name="remember_me_parameter" type="checkbox" checked="checked"/>Remember Me</label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input name="submit"  class="btn btn-lg btn-success btn-block" type="submit" value="Login"/>

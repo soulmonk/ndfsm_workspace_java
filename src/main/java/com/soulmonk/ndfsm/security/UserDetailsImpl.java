@@ -1,7 +1,6 @@
-package com.soulmonk.ndfsm.service.jpa;
+package com.soulmonk.ndfsm.security;
 
 import com.soulmonk.ndfsm.domain.User;
-import com.soulmonk.ndfsm.domain.UserDetailsAdapter;
 import com.soulmonk.ndfsm.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

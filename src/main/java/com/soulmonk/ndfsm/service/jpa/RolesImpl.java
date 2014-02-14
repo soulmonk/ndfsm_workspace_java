@@ -32,6 +32,11 @@ public class RolesImpl implements RolesService {
   }
 
   @Override
+  public Role findByAuthority(String authority) {
+    return rolesRepository.findByAuthority(authority);
+  }
+
+  @Override
   @Transactional(readOnly = true)
   public Role save(Role role) {
     return rolesRepository.saveAndFlush(role);

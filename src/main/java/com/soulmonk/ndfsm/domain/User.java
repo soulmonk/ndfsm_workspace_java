@@ -1,6 +1,7 @@
 package com.soulmonk.ndfsm.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +14,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable{
   private Long id;
   private String firstName;
   private String lastName;

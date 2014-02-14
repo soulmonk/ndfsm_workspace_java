@@ -47,7 +47,7 @@ public class UsersImpl implements UsersService {
     if (user.getId() == null) {
       if (user.getUserRoles().isEmpty()) {
         UserRole userRole = new UserRole();
-        userRole.setRole(rolesService.findById((long) 2));
+        userRole.setRole(rolesService.findByAuthority("ROLE_USER"));
         userRole.setUser(user);
         user.getUserRoles().add(userRole);
       }
