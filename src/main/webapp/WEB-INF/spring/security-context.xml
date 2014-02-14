@@ -9,7 +9,7 @@
         <intercept-url pattern='/*' access='permitAll'/>
         <form-login login-page="/login" authentication-failure-url="/login?failure=true"
                     default-target-url="/"/>
-        <logout logout-success-url="/"/>
+        <logout logout-success-url="/" delete-cookies='JSESSIONID'/>
     </http>
 
     <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>

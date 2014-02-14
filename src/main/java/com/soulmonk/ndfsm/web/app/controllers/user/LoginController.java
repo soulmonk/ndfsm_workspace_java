@@ -1,4 +1,4 @@
-package com.soulmonk.ndfsm.web.app.controllers;
+package com.soulmonk.ndfsm.web.app.controllers.user;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
