@@ -15,27 +15,27 @@ import java.util.List;
 @Repository
 @Transactional
 public class CommentStatusesImpl implements CommentStatusesService {
-	
-	@Autowired
-	private CommentStatusesRepository commentStatusRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<CommentStatuses> findAll() { 
-		return Lists.newArrayList(commentStatusRepository.findAll());
-	}
+  @Autowired
+  private CommentStatusesRepository commentStatusRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public CommentStatuses findById(Long id) {
-		return commentStatusRepository.findOne(id);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public List<CommentStatuses> findAll() {
+    return Lists.newArrayList(commentStatusRepository.findAll());
+  }
 
-	@Override
-	@Transactional(readOnly = true)
-	public CommentStatuses save(CommentStatuses commentStatus) {
-		return commentStatusRepository.saveAndFlush(commentStatus);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public CommentStatuses findById(Long id) {
+    return commentStatusRepository.findOne(id);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public CommentStatuses save(CommentStatuses commentStatus) {
+    return commentStatusRepository.saveAndFlush(commentStatus);
+  }
 
   @Override
   public void delete(Long id) {

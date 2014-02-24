@@ -15,27 +15,27 @@ import java.util.List;
 @Repository
 @Transactional
 public class TasksImpl implements TasksService {
-	
-	@Autowired
-	private TasksRepository tasksRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Tasks> findAll() {
-		return Lists.newArrayList(tasksRepository.findAll());
-	}
+  @Autowired
+  private TasksRepository tasksRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public Tasks findById(Long id) {
-		return tasksRepository.findOne(id);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public List<Tasks> findAll() {
+    return Lists.newArrayList(tasksRepository.findAll());
+  }
 
-	@Override
-	@Transactional(readOnly = true)
-	public Tasks save(Tasks task) {
-		return tasksRepository.saveAndFlush(task);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public Tasks findById(Long id) {
+    return tasksRepository.findOne(id);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Tasks save(Tasks task) {
+    return tasksRepository.saveAndFlush(task);
+  }
 
   @Override
   public void delete(Long id) {

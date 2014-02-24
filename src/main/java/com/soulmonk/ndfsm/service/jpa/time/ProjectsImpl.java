@@ -16,26 +16,26 @@ import java.util.List;
 @Repository
 @Transactional
 public class ProjectsImpl implements ProjectsService {
-	
-	@Autowired
-	private ProjectsRepository projectsRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Projects> findAll() {
-		return Lists.newArrayList(projectsRepository.findAll());
-	}
+  @Autowired
+  private ProjectsRepository projectsRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public Projects findById(Long id) {
-		return projectsRepository.findOne(id);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public List<Projects> findAll() {
+    return Lists.newArrayList(projectsRepository.findAll());
+  }
 
-	@Override
-	@Transactional(readOnly = true)
-	public Projects save(Projects project) {
-		return projectsRepository.saveAndFlush(project);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public Projects findById(Long id) {
+    return projectsRepository.findOne(id);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Projects save(Projects project) {
+    return projectsRepository.saveAndFlush(project);
+  }
 
 }

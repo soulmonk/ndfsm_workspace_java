@@ -15,26 +15,26 @@ import java.util.List;
 @Repository
 @Transactional
 public class CommentsImpl implements CommentsService {
-	
-	@Autowired
-	private CommentsRepository commentsRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Comments> findAll() {
-		return Lists.newArrayList(commentsRepository.findAll());
-	}
+  @Autowired
+  private CommentsRepository commentsRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public Comments findById(Long id) {
-		return commentsRepository.findOne(id);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public List<Comments> findAll() {
+    return Lists.newArrayList(commentsRepository.findAll());
+  }
 
-	@Override
-	@Transactional(readOnly = true)
-	public Comments save(Comments comment) {
-		return commentsRepository.saveAndFlush(comment);
-	}
+  @Override
+  @Transactional(readOnly = true)
+  public Comments findById(Long id) {
+    return commentsRepository.findOne(id);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Comments save(Comments comment) {
+    return commentsRepository.saveAndFlush(comment);
+  }
 
 }

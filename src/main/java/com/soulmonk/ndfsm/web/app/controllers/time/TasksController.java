@@ -1,0 +1,124 @@
+package com.soulmonk.ndfsm.web.app.controllers.time;
+
+import com.soulmonk.ndfsm.domain.time.Projects;
+import com.soulmonk.ndfsm.domain.time.Tasks;
+import com.soulmonk.ndfsm.service.time.ProjectsService;
+import com.soulmonk.ndfsm.service.time.TasksService;
+import com.soulmonk.ndfsm.web.form.Message;
+import com.soulmonk.ndfsm.web.util.UrlUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Locale;
+
+/**
+ * Company: Valpio
+ * User: soulmonk
+ * Date: 16.08.13
+ * Time: 14:23
+ */
+@Controller
+@RequestMapping(value = "/time/tasks")
+public class TasksController {
+
+  final Logger logger = LoggerFactory.getLogger(TasksController.class);
+
+  @Autowired
+  private TasksService tasksService;
+
+  @Autowired
+  private ProjectsService projectsService;
+
+  @Autowired
+  private MessageSource messageSource;
+
+  @RequestMapping(method = RequestMethod.GET)
+  public String list(Model uiModel) {
+    logger.info("Listing tasks");
+
+    List<Tasks> tasks = tasksService.findAll();
+    uiModel.addAttribute("tasks", tasks);
+
+    logger.info("No. of tasks: " + tasks.size());
+
+    return "time/tasks/list";
+  }
+
+  @RequestMapping(params = "form", method = RequestMethod.GET)
+  public String createForm(Model uiModel) {
+    logger.info("Create form");
+    Tasks task = new Tasks();
+    task.setProjects(new Projects());
+    uiModel.addAttribute("task", task);
+    uiModel.addAttribute("projects", projectsService.findAll());
+    return "time/tasks/create";
+  }
+
+  @RequestMapping(params = "form", method = RequestMethod.POST)
+  public String create(@Valid Tasks task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+    logger.info("Create task");
+
+    if (bindingResult.hasErrors()) {
+      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("task_save_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("task", task);
+      return "time/tasks/create";
+    }
+    uiModel.asMap().clear();
+    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_save_success", new Object[]{}, locale)));
+
+    tasksService.save(task);
+    logger.info("Tasks id: " + task.getId());
+    return "redirect:/time/tasks/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
+  }
+
+  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+  public String update(@Valid Tasks task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+    logger.info("Update task");
+    if (bindingResult.hasErrors()) {
+      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("task", task);
+      return "time/tasks/update";
+    }
+    uiModel.asMap().clear();
+    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_update_success", new Object[]{}, locale)));
+
+    tasksService.save(task);
+
+    logger.info("Update Tasks id: " + task.getId());
+
+    return "redirect:/time/tasks/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
+  }
+
+  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+  public String show(@PathVariable("id") Long id, Model uiModel) {
+    Tasks task = tasksService.findById(id);
+    uiModel.addAttribute("task", task);
+    return "time/tasks/show";
+  }
+
+  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+  public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+    Tasks task = tasksService.findById(id);
+    uiModel.addAttribute("task", task);
+    uiModel.addAttribute("projects", projectsService.findAll());
+    return "time/tasks/update";
+  }
+
+  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+  public String delete(@PathVariable("id") Long id, Model uiModel) {
+    tasksService.delete(id);
+    return "redirect:/time/tasks/list";
+  }
+}

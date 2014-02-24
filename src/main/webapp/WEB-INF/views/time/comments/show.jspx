@@ -1,0 +1,58 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_comment_info" var="labelCommentInfo"/>
+    <spring:message code="label_comment_update" var="labelCommentUpdate"/>
+    <spring:message code="label_comment_value" var="labelCommentValue"/>
+    <spring:message code="label_comment_task" var="labelCommentTask"/>
+    <spring:message code="label_comment_status" var="labelCommentStatus"/>
+    <spring:message code="label_comment_from" var="labelCommentFrom"/>
+    <spring:message code="label_comment_to" var="labelCommentTo"/>
+
+    <spring:url value="/comments" var="editCommentUrl"/>
+
+    <!--@elvariable id="comment" type="com.valpio.soulmonk.domain.Comments"-->
+
+    <h1>${labelCommentInfo}</h1>
+
+    <div id="commentInfo">
+        <c:if test="${not empty message}">
+            <div id="message" class="alert alert-${message.type}">${message.message}</div>
+        </c:if>
+
+        <table class="table table-hover">
+            <tr>
+                <td><strong>${labelCommentValue}</strong></td>
+                <td>${comment.value}</td>
+            </tr>
+            <tr>
+                <td><strong>${labelCommentFrom}</strong></td>
+                <td>${comment.from}</td>
+            </tr>
+            <tr>
+                <td><strong>${labelCommentTo}</strong></td>
+                <td>${comment.to}</td>
+            </tr>
+            <tr>
+                <td><strong>${labelCommentTask}</strong></td>
+                <td>${comment.tasksByTaskId.name}</td>
+            </tr>
+            <tr style="background-color:${comment.commentStatusesByStatusId.colorHtml}">
+                <td><strong>${labelCommentStatus}</strong></td>
+                <td>${comment.commentStatusesByStatusId.name}</td>
+            </tr>
+        </table>
+
+        <a href="${editCommentUrl}/${comment.id}?form">${labelCommentUpdate}</a>
+    </div>
+</div>

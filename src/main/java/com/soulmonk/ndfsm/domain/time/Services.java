@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "time_services")
-public class Services implements Serializable{
+public class Services implements Serializable {
   private Long id;
   private String name;
   private String url;

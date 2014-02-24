@@ -3,6 +3,6 @@
 <tiles-definitions>
     <definition extends="default" name="time/index">
         <put-attribute name="body"
-                       value="/WEB-INF/views/time/index.jspx" />
+                       value="/WEB-INF/views/time/base/index.jspx" />
     </definition>
 </tiles-definitions>

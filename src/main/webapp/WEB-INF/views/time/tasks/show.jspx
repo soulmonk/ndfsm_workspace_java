@@ -1,0 +1,54 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_task_info" var="labelTasksInfo"/>
+    <spring:message code="label_task_update" var="labelTaskUpdate"/>
+    <spring:message code="label_task_name" var="labelTaskName"/>
+    <spring:message code="label_task_project" var="labelTaskProject"/>
+    <spring:message code="label_task_external_id" var="labelTaskExternalId"/>
+    <spring:message code="label_task_summary" var="labelTaskSummary"/>
+
+
+    <spring:message code="label_not_set" var="labelNotSet"/>
+
+    <spring:url value="/tasks" var="editTaskUrl"/>
+
+    <h1>${labelTasksInfo}</h1>
+
+    <div id="taskInfo">
+        <c:if test="${not empty message}">
+            <div id="message" class="alert alert-${message.type}">${message.message}</div>
+        </c:if>
+
+        <table class="table table-hover">
+            <tr>
+                <td><strong>${labelTaskName}</strong></td>
+                <td>${task.name}</td>
+            </tr>
+            <tr>
+                <td><strong>${labelTaskProject}</strong></td>
+                <td>${task.projectsByProjectId.name}</td>
+            </tr>
+            <tr>
+                <td><strong>${labelTaskExternalId}</strong></td>
+                <td>${task.extId}</td>
+            </tr>
+            <tr>
+                <td><strong>${labelTaskSummary}</strong></td>
+                <td>${task.sum}</td>
+            </tr>
+        </table>
+
+        <a href="${editTaskUrl}/${task.id}?form">${labelTaskUpdate}</a>
+    </div>
+</div>

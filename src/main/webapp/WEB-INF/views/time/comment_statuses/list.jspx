@@ -1,0 +1,55 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_comment_statuses_list" var="labelCommentStatusesList"/>
+    <spring:message code="label_comment_status_name" var="labelCommentStatusName"/>
+    <spring:message code="label_comment_status_color" var="labelCommentStatusColor"/>
+
+    <spring:url value="/comment_statuses" var="showCommentStatusUrl"/>
+    <spring:url value="/comment_statuses/delete" var="removeCommentStatusUrl"/>
+
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <c:if test="${not empty message}">
+        <div id="message" class="alert alert-${message.type}">${message.message}</div>
+    </c:if>
+
+    <h2>${labelCommentStatusesList}</h2>
+
+    <!--@elvariable id="comment_statuses" type="com.soulmonk.ndfsm.domain.time.CommentStatuses"-->
+    <c:if test="${not empty comment_statuses}">
+        <div>
+            <table id="list" class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>${labelCommentStatusName}</th>
+                    <th>${labelCommentStatusColor}</th>
+                    <th><jsp:text/></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${comment_statuses}" var="comment_status">
+                    <tr >
+                        <td><a href="${showCommentStatusUrl}/${comment_status.id}">${comment_status.id}</a></td>
+                        <td>${comment_status.name}</td>
+                        <td style="background-color:${comment_status.colorHtml}">${comment_status.color}</td>
+                        <td><a href="#" class="btn btn-default" onclick="confirmDelete('${removeCommentStatusUrl}/${comment_status.id}'); return false;">Delete</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <div id="pager"></div>
+    </c:if>
+
+
+</div>

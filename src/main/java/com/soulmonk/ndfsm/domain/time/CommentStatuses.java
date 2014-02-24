@@ -13,7 +13,7 @@ import java.util.List;
  */
 @javax.persistence.Table(name = "time_comment_statuses")
 @Entity
-public class CommentStatuses implements Serializable{
+public class CommentStatuses implements Serializable {
   private Long id;
   private String name;
   private String description;

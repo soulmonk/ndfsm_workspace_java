@@ -1,0 +1,60 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_services_list" var="labelServicesList"/>
+    <spring:message code="label_service_name" var="labelServiceName"/>
+    <spring:message code="label_service_url" var="labelServiceUrl"/>
+
+    <spring:url value="/services" var="showServicesUrl"/>
+    <spring:url value="/projects" var="showProjectsUrl"/>
+
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <c:if test="${not empty message}">
+        <div id="message" class="alert alert-${message.type}">${message.message}</div>
+    </c:if>
+
+    <h2>${labelServicesList}</h2>
+
+    <c:if test="${not empty services}">
+        <div>
+            <table id="list" class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>${labelServiceName}</th>
+                    <th>${labelServiceUrl}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${services}" var="service">
+                    <tr>
+                        <td><a href="${showServicesUrl}/${service.id}">${service.id}</a></td>
+                        <td>${service.name}</td>
+                        <td>${service.url}</td>
+                    </tr>
+                        <c:if test="${not empty service.projectsesById}">
+                            <tr>
+                                <td colspan="3">
+                                    <c:forEach items="${service.projectsesById}" var="project">
+                                        <a href="${showProjectsUrl}/${project.id}">${project.name}</a><jsp:text/>
+                                    </c:forEach>
+                                </td>
+                            </tr>
+                        </c:if>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <div id="pager"></div>
+    </c:if>
+
+</div>

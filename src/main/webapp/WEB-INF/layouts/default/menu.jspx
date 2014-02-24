@@ -45,6 +45,92 @@
                 </li>
             </sec:authorize>
 
+            <!-- ## Module ?Time ##-->
+
+            <spring:message code="menu_base_time" var="menuBaseTime"/>
+
+            <spring:message code="menu_services" var="menuServices"/>
+            <spring:message code="menu_services_list" var="menuServicesList"/>
+            <spring:message code="menu_services_add" var="menuServicesAdd"/>
+
+            <spring:message code="menu_projects" var="menuProjects"/>
+            <spring:message code="menu_projects_list" var="menuProjectsList"/>
+            <spring:message code="menu_projects_add" var="menuProjectsAdd"/>
+
+            <spring:message code="menu_comment_statuses" var="menuCommentStatus"/>
+            <spring:message code="menu_comment_statuses_list" var="menuCommentStatusList"/>
+            <spring:message code="menu_comment_statuses_add" var="menuCommentStatusAdd"/>
+
+            <spring:message code="menu_tasks" var="menuTask"/>
+            <spring:message code="menu_tasks_list" var="menuTaskList"/>
+            <spring:message code="menu_tasks_add" var="menuTaskAdd"/>
+
+            <spring:message code="menu_comments" var="menuComments"/>
+            <spring:message code="menu_comments_list" var="menuCommentsList"/>
+            <spring:message code="menu_comments_add" var="menuCommentsAdd"/>
+
+            <spring:url var="servicesListUrl" value="/time/services" />
+            <spring:url var="servicesAddUrl" value="/time/services?form" />
+
+            <spring:url var="projectsListUrl" value="/time/projects" />
+            <spring:url var="projectsAddUrl" value="/time/projects?form" />
+
+            <spring:url var="commentStatusesListUrl" value="/time/comment_statuses" />
+            <spring:url var="commentStatusesAddUrl" value="/time/comment_statuses?form" />
+
+            <spring:url var="tasksListUrl" value="/time/tasks" />
+            <spring:url var="tasksAddUrl" value="/time/tasks?form" />
+
+            <spring:url var="commentsListUrl" value="/time/comments" />
+            <spring:url var="commentsAddUrl" value="/time/comments?form" />
+
+            <li>
+                <a href="#"><i class="fa fa-sitemap fa-fw"><jsp:text/></i>${menuBaseTime}<span class="fa arrow"><jsp:text/></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">${menuServices}<span class="fa arrow"><jsp:text/></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="${servicesListUrl}">${menuServicesList}</a></li>
+                            <li><a href="${servicesAddUrl}">${menuServicesAdd}</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">${menuProjects}<span class="fa arrow"><jsp:text/></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="${projectsListUrl}">${menuProjectsList}</a></li>
+                            <li><a href="${projectsAddUrl}">${menuProjectsAdd}</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">${menuTask}<span class="fa arrow"><jsp:text/></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="${tasksListUrl}">${menuTaskList}</a></li>
+                            <li><a href="${tasksAddUrl}">${menuTaskAdd}</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">${menuComments}<span class="fa arrow"><jsp:text/></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="${commentsListUrl}">${menuCommentsList}</a></li>
+                            <li><a href="${commentsAddUrl}">${menuCommentsAdd}</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">${menuCommentStatus}<span class="fa arrow"><jsp:text/></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="${commentStatusesListUrl}">${menuCommentStatusList}</a></li>
+                            <li><a href="${commentStatusesAddUrl}">${menuCommentStatusAdd}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <!-- /END SECTION ## Module ?Time ##-->
+
         </ul>
         <!-- /#side-menu -->
     </div>
