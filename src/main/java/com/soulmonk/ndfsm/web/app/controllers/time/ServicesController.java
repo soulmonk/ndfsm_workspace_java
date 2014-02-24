@@ -67,9 +67,8 @@ public class ServicesController {
     }
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("service_save_success", new Object[]{}, locale)));
-    logger.info("Services id: " + service.getId());
-
     servicesService.save(service);
+    logger.info("Services id: " + service.getId());
     return "redirect:/time/services/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
   }
 
