@@ -1,6 +1,6 @@
-package com.soulmonk.ndfsm.repository;
+package com.soulmonk.ndfsm.repository.user;
 
-import com.soulmonk.ndfsm.domain.User;
+import com.soulmonk.ndfsm.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsersRepository extends JpaRepository<User, Long> {

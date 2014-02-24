@@ -1,11 +1,11 @@
-package com.soulmonk.ndfsm.service.jpa;
+package com.soulmonk.ndfsm.service.jpa.user;
 
 import com.google.common.collect.Lists;
-import com.soulmonk.ndfsm.domain.User;
-import com.soulmonk.ndfsm.domain.UserRole;
-import com.soulmonk.ndfsm.repository.UsersRepository;
-import com.soulmonk.ndfsm.service.RolesService;
-import com.soulmonk.ndfsm.service.UsersService;
+import com.soulmonk.ndfsm.domain.user.User;
+import com.soulmonk.ndfsm.domain.user.UserRole;
+import com.soulmonk.ndfsm.repository.user.UsersRepository;
+import com.soulmonk.ndfsm.service.user.RolesService;
+import com.soulmonk.ndfsm.service.user.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;

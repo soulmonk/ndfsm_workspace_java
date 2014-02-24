@@ -1,4 +1,4 @@
-package com.soulmonk.ndfsm.domain;
+package com.soulmonk.ndfsm.domain.user;
 
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;

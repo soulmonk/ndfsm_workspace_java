@@ -1,4 +1,4 @@
-package com.soulmonk.ndfsm.domain;
+package com.soulmonk.ndfsm.domain.user;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,10 +12,10 @@ import java.io.Serializable;
 @Entity
 @Table(name = "user_role")
 @AssociationOverrides({
-    @AssociationOverride(name = "pk.user",
-        joinColumns = @JoinColumn(name = "user_id")),
-    @AssociationOverride(name = "pk.role",
-        joinColumns = @JoinColumn(name = "role_id"))})
+  @AssociationOverride(name = "pk.user",
+    joinColumns = @JoinColumn(name = "user_id")),
+  @AssociationOverride(name = "pk.role",
+    joinColumns = @JoinColumn(name = "role_id"))})
 public class UserRole implements Serializable {
 
   private UserRoleId pk = new UserRoleId();
@@ -56,7 +56,7 @@ public class UserRole implements Serializable {
     UserRole that = (UserRole) o;
 
     if (getPk() != null ? !getPk().equals(that.getPk())
-        : that.getPk() != null)
+      : that.getPk() != null)
       return false;
 
     return true;

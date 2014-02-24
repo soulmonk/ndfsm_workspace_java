@@ -1,6 +1,6 @@
-package com.soulmonk.ndfsm.service;
+package com.soulmonk.ndfsm.service.user;
 
-import com.soulmonk.ndfsm.domain.User;
+import com.soulmonk.ndfsm.domain.user.User;
 
 import java.util.List;
 

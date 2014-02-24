@@ -21,7 +21,7 @@ public class CurrentTime extends TagSupport {
     Date date = new Date();
     Locale locale = Locale.ENGLISH;
     DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-        DateFormat.LONG, locale);
+      DateFormat.LONG, locale);
     String formattedDate = dateFormat.format(date);
     try {
       pageContext.getOut().print(formattedDate);

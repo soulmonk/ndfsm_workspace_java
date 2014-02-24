@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.security;
 
-import com.soulmonk.ndfsm.domain.User;
-import com.soulmonk.ndfsm.domain.UserRole;
+import com.soulmonk.ndfsm.domain.user.User;
+import com.soulmonk.ndfsm.domain.user.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

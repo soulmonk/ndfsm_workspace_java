@@ -1,9 +1,9 @@
-package com.soulmonk.ndfsm.service.jpa;
+package com.soulmonk.ndfsm.service.jpa.user;
 
 import com.google.common.collect.Lists;
-import com.soulmonk.ndfsm.domain.Role;
-import com.soulmonk.ndfsm.repository.RolesRepository;
-import com.soulmonk.ndfsm.service.RolesService;
+import com.soulmonk.ndfsm.domain.user.Role;
+import com.soulmonk.ndfsm.repository.user.RolesRepository;
+import com.soulmonk.ndfsm.service.user.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
