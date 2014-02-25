@@ -71,12 +71,12 @@ public class ProjectController {
     logger.info("Create project");
 
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("project_save_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("project", project);
       return "time/project/create";
     }
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("project_save_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("project_save_success", new Object[]{}, locale)));
 
     projectService.save(project);
     logger.info("Project id: " + project.getId());
@@ -87,12 +87,12 @@ public class ProjectController {
   public String update(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update project");
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("project_update_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("project", project);
       return "time/project/update";
     }
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("project_update_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("project_update_success", new Object[]{}, locale)));
 
     projectService.save(project);
 

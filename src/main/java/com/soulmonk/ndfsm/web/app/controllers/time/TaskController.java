@@ -71,12 +71,12 @@ public class TaskController {
     logger.info("Create task");
 
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("task_save_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("task", task);
       return "time/task/create";
     }
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_save_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("task_save_success", new Object[]{}, locale)));
 
     taskService.save(task);
     logger.info("Task id: " + task.getId());
@@ -87,12 +87,12 @@ public class TaskController {
   public String update(@Valid Task task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update task");
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("task", task);
       return "time/task/update";
     }
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_update_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("task_update_success", new Object[]{}, locale)));
 
     taskService.save(task);
 

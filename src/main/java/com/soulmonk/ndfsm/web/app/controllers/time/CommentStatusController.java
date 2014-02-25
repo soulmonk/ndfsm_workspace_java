@@ -64,12 +64,12 @@ public class CommentStatusController {
     logger.info("Create Comment Status");
 
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_status_save_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_status_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment_status", commentsStatus);
       return "time/comment_status/create";
     }
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("comment_status_save_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("comment_status_save_success", new Object[]{}, locale)));
 
     commentStatusService.save(commentsStatus);
     logger.info("Comment Status id: " + commentsStatus.getId());
@@ -82,13 +82,13 @@ public class CommentStatusController {
     logger.info("Update Comment Status");
 
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_status_update_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_status_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment_status", commentsStatus);
       return "time/comment_status/update";
     }
 
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("comment_status_update_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("comment_status_update_success", new Object[]{}, locale)));
 
     commentStatusService.save(commentsStatus);
 

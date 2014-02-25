@@ -80,13 +80,13 @@ public class CommentController {
     if (bindingResult.hasErrors()) {
       logger.error("bindingResult hasErrors");
       logger.error("bindingResult hasErrors message: " + bindingResult.toString());
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_save_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
       return "time/comment/create";
     }
     logger.info("no bindingResult hasErrors");
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("comment_save_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("comment_save_success", new Object[]{}, locale)));
 
     commentService.save(comment);
     logger.info("Comment id: " + comment.getId());
@@ -99,13 +99,13 @@ public class CommentController {
     logger.info("Update Comment");
 
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_update_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
       return "time/comment/update";
     }
 
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("comment_update_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("comment_update_success", new Object[]{}, locale)));
 
     commentService.save(comment);
 

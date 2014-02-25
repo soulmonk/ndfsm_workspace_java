@@ -61,12 +61,12 @@ public class ServiceController {
     logger.info("Create service");
 
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("service_save_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("service_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("service", service);
       return "time/service/create";
     }
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("service_save_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("service_save_success", new Object[]{}, locale)));
     serviceService.save(service);
     logger.info("Service id: " + service.getId());
     return "redirect:/time/service/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
@@ -76,12 +76,12 @@ public class ServiceController {
   public String update(@Valid Service service, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update service");
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("service_update_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("service_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("service", service);
       return "time/service/update";
     }
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("service_update_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("service_update_success", new Object[]{}, locale)));
 
     serviceService.save(service);
 

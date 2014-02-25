@@ -2,6 +2,9 @@ package com.soulmonk.ndfsm.web.form;
 
 public class Message {
 
+  public static final String DANGER_TYPE = "danger";
+  public static final String SUCCESS_TYPE = "success";
+
   private String type;
 
   private String message;
