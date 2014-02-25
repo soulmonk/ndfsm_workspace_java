@@ -25,9 +25,8 @@
 
     <sbAdmin:pageHeader text="${formTitle}"/>
     <sbAdmin:blockRow12WithDefPanel>
-
         <div id="projectUpdate">
-            <form:form modelAttribute="project" id="projectUpdateForm" method="post" cssClass="form-horizontal">
+            <form:form modelAttribute="project" id="projectUpdateForm" method="post" rol="form">
                 <div>
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                     <html:message message="${message}"/>
@@ -72,6 +71,5 @@
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>
-
     </sbAdmin:blockRow12WithDefPanel>
 </div>

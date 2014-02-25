@@ -20,7 +20,7 @@
 
     <spring:message code="label_not_set" var="labelNotSet"/>
 
-    <spring:url value="/project" var="editProjectUrl"/>
+    <spring:url value="/time/project" var="editProjectUrl"/>
 
     <sbAdmin:pageHeader text="${labelProjectsInfo}"/>
     <sbAdmin:blockRow12WithDefPanel>

@@ -45,7 +45,8 @@
                             <td>${service.name}</td>
                             <td>${service.url}</td>
                             <td><a href="#" class="btn btn-default"
-                                   onclick="confirmDelete('${removeServiceUrl}/${service.id}'); return false;">Delete</a></td>
+                                   onclick="confirmDelete('${removeServiceUrl}/${service.id}'); return false;">Delete</a>
+                            </td>
                         </tr>
                         <c:if test="${not empty service.projects}">
                             <tr>

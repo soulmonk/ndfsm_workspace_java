@@ -28,7 +28,7 @@
     <sbAdmin:pageHeader text="${formTitle}"/>
     <sbAdmin:blockRow12WithDefPanel>
         <div id="commentUpdate">
-            <form:form modelAttribute="comment" id="commentUpdateForm" method="post" cssClass="form-horizontal">
+            <form:form modelAttribute="comment" id="commentUpdateForm" method="post" rol="form">
                 <div>
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                     <html:message message="${message}"/>

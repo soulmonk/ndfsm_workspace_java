@@ -25,34 +25,35 @@
 
     <sbAdmin:pageHeader text="${labelTasksList}" tag="h2"/>
     <sbAdmin:blockRow12WithDefPanel>
-    <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
-    <c:if test="${not empty tasks}">
-        <div>
-            <table id="list" class="table table-hover table-bordered">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>${labelTaskName}</th>
-                    <th>${labelTaskProject}</th>
-                    <th>${labelActions}</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <c:forEach items="${tasks}" var="task">
+        <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
+        <c:if test="${not empty tasks}">
+            <div>
+                <table id="list" class="table table-hover table-bordered">
+                    <thead>
                     <tr>
-                        <td><a href="${showTasksUrl}/${task.id}">${task.id}</a></td>
-                        <td>${task.name}</td>
-                        <td>${task.project.name}</td>
-                        <td><a href="#" class="btn btn-default"
-                               onclick="confirmDelete('${removeServiceUrl}/${service.id}'); return false;">Delete</a></td>
+                        <th>#</th>
+                        <th>${labelTaskName}</th>
+                        <th>${labelTaskProject}</th>
+                        <th>${labelActions}</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-        <div id="pager"></div>
-    </c:if>
+                    </thead>
+                    <tbody>
+
+                    <c:forEach items="${tasks}" var="task">
+                        <tr>
+                            <td><a href="${showTasksUrl}/${task.id}">${task.id}</a></td>
+                            <td>${task.name}</td>
+                            <td>${task.project.name}</td>
+                            <td><a href="#" class="btn btn-default"
+                                   onclick="confirmDelete('${removeServiceUrl}/${service.id}'); return false;">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <div id="pager"></div>
+        </c:if>
     </sbAdmin:blockRow12WithDefPanel>
 
 </div>

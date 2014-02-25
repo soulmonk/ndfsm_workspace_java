@@ -25,31 +25,31 @@
 
     <sbAdmin:pageHeader text="${labelTasksInfo}"/>
     <sbAdmin:blockRow12WithDefPanel>
-    <div id="taskInfo">
-        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-        <html:message message="${message}"/>
+        <div id="taskInfo">
+            <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+            <html:message message="${message}"/>
 
-        <!--@elvariable id="task" type="com.soulmonk.ndfsm.domain.time.Task"-->
-        <table class="table table-hover">
-            <tr>
-                <td><strong>${labelTaskName}</strong></td>
-                <td>${task.name}</td>
-            </tr>
-            <tr>
-                <td><strong>${labelTaskProject}</strong></td>
-                <td>${task.project.name}</td>
-            </tr>
-            <tr>
-                <td><strong>${labelTaskExternalId}</strong></td>
-                <td>${task.extId}</td>
-            </tr>
-            <tr>
-                <td><strong>${labelTaskSummary}</strong></td>
-                <td>${task.sum}</td>
-            </tr>
-        </table>
+            <!--@elvariable id="task" type="com.soulmonk.ndfsm.domain.time.Task"-->
+            <table class="table table-hover">
+                <tr>
+                    <td><strong>${labelTaskName}</strong></td>
+                    <td>${task.name}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelTaskProject}</strong></td>
+                    <td>${task.project.name}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelTaskExternalId}</strong></td>
+                    <td>${task.extId}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelTaskSummary}</strong></td>
+                    <td>${task.sum}</td>
+                </tr>
+            </table>
 
-        <a href="${editTaskUrl}/${task.id}?form">${labelTaskUpdate}</a>
-    </div>
+            <a href="${editTaskUrl}/${task.id}?form">${labelTaskUpdate}</a>
+        </div>
     </sbAdmin:blockRow12WithDefPanel>
 </div>

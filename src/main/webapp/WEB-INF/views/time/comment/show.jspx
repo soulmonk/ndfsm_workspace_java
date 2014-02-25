@@ -20,7 +20,7 @@
     <spring:message code="label_comment_from" var="labelCommentFrom"/>
     <spring:message code="label_comment_to" var="labelCommentTo"/>
 
-    <spring:url value="/comment" var="editCommentUrl"/>
+    <spring:url value="/time/comment" var="editCommentUrl"/>
 
     <!--@elvariable id="comment" type="com.soulmonk.ndfsm.domain.time.Comment"-->
     <sbAdmin:pageHeader text="${labelCommentInfo}"/>
