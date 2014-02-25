@@ -6,12 +6,18 @@ public class Message {
 
   private String message;
 
+  private static Message last;
+
   public Message() {
   }
 
   public Message(String type, String message) {
     this.type = type;
     this.message = message;
+  }
+
+  public static Message getLast() {
+    return last;
   }
 
   public String getType() {

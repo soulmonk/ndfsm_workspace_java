@@ -30,10 +30,10 @@ import java.util.Locale;
  * Time: 14:23
  */
 @Controller
-@RequestMapping(value = "/time/tasks")
-public class TasksController {
+@RequestMapping(value = "/time/task")
+public class TaskController {
 
-  final Logger logger = LoggerFactory.getLogger(TasksController.class);
+  final Logger logger = LoggerFactory.getLogger(TaskController.class);
 
   @Autowired
   private TaskService taskService;
@@ -53,7 +53,7 @@ public class TasksController {
 
     logger.info("No. of tasks: " + tasks.size());
 
-    return "time/tasks/list";
+    return "time/task/list";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.GET)
@@ -63,7 +63,7 @@ public class TasksController {
     task.setProject(new Project());
     uiModel.addAttribute("task", task);
     uiModel.addAttribute("projects", projectService.findAll());
-    return "time/tasks/create";
+    return "time/task/create";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
@@ -73,14 +73,14 @@ public class TasksController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("task_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("task", task);
-      return "time/tasks/create";
+      return "time/task/create";
     }
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_save_success", new Object[]{}, locale)));
 
     taskService.save(task);
     logger.info("Task id: " + task.getId());
-    return "redirect:/time/tasks/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
+    return "redirect:/time/task/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
@@ -89,7 +89,7 @@ public class TasksController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("task", task);
-      return "time/tasks/update";
+      return "time/task/update";
     }
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_update_success", new Object[]{}, locale)));
@@ -98,14 +98,14 @@ public class TasksController {
 
     logger.info("Update Task id: " + task.getId());
 
-    return "redirect:/time/tasks/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
+    return "redirect:/time/task/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
     Task task = taskService.findById(id);
     uiModel.addAttribute("task", task);
-    return "time/tasks/show";
+    return "time/task/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
@@ -113,12 +113,12 @@ public class TasksController {
     Task task = taskService.findById(id);
     uiModel.addAttribute("task", task);
     uiModel.addAttribute("projects", projectService.findAll());
-    return "time/tasks/update";
+    return "time/task/update";
   }
 
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     taskService.delete(id);
-    return "redirect:/time/tasks/list";
+    return "redirect:/time/task/list";
   }
 }

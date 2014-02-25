@@ -2,16 +2,16 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="time/services/list">
-        <put-attribute name="body" value="/WEB-INF/views/time/services/list.jspx"/>
+    <definition extends="default" name="time/service/list">
+        <put-attribute name="body" value="/WEB-INF/views/time/service/list.jspx"/>
     </definition>
-    <definition extends="default" name="time/services/create">
-        <put-attribute name="body" value="/WEB-INF/views/time/services/edit.jspx"/>
+    <definition extends="default" name="time/service/create">
+        <put-attribute name="body" value="/WEB-INF/views/time/service/edit.jspx"/>
     </definition>
-    <definition extends="default" name="time/services/show">
-        <put-attribute name="body" value="/WEB-INF/views/time/services/show.jspx"/>
+    <definition extends="default" name="time/service/show">
+        <put-attribute name="body" value="/WEB-INF/views/time/service/show.jspx"/>
     </definition>
-    <definition extends="default" name="time/services/update">
-        <put-attribute name="body" value="/WEB-INF/views/time/services/edit.jspx"/>
+    <definition extends="default" name="time/service/update">
+        <put-attribute name="body" value="/WEB-INF/views/time/service/edit.jspx"/>
     </definition>
 </tiles-definitions>

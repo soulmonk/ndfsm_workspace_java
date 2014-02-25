@@ -19,7 +19,7 @@ import java.util.List;
 public class Project implements Serializable {
   private Long id;
   private String name;
-  private Services service;
+  private Service service;
   private List<Task> tasks = new ArrayList<Task>();
 
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -65,11 +65,11 @@ public class Project implements Serializable {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "service_id", insertable = true, updatable = true, referencedColumnName = "id")
-  public Services getService() {
+  public Service getService() {
     return service;
   }
 
-  public void setService(Services service) {
+  public void setService(Service service) {
     this.service = service;
   }
 

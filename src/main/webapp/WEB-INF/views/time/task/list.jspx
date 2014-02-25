@@ -17,9 +17,9 @@
 
     <spring:url value="/task" var="showTasksUrl"/>
 
-    <c:if test="${not empty message}">
-        <div id="message" class="alert alert-${message.type}">${message.message}</div>
-    </c:if>
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <html:message message="${message}"/>
+
     <html:pageHeader text="${labelTasksList}" tag="h2"/>
 
     <!--@elvariable id="task" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->

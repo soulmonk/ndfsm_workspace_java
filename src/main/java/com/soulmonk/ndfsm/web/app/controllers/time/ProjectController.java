@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
 import com.soulmonk.ndfsm.domain.time.Project;
-import com.soulmonk.ndfsm.domain.time.Services;
+import com.soulmonk.ndfsm.domain.time.Service;
 import com.soulmonk.ndfsm.service.time.ProjectService;
 import com.soulmonk.ndfsm.service.time.ServiceService;
 import com.soulmonk.ndfsm.web.form.Message;
@@ -31,9 +31,9 @@ import java.util.Locale;
  */
 @Controller
 @RequestMapping(value = "/time/project")
-public class ProjectsController {
+public class ProjectController {
 
-  private final Logger logger = LoggerFactory.getLogger(ProjectsController.class);
+  private final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
   @Autowired
   private ProjectService projectService;
@@ -60,7 +60,7 @@ public class ProjectsController {
   public String createForm(Model uiModel) {
     logger.info("Create form");
     Project project = new Project();
-    project.setService(new Services());
+    project.setService(new Service());
     uiModel.addAttribute("project", project);
     uiModel.addAttribute("services", serviceService.findAll());
     return "time/project/create";

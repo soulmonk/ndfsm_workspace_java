@@ -1,17 +1,17 @@
 package com.soulmonk.ndfsm.service.time;
 
-import com.soulmonk.ndfsm.domain.time.Services;
+import com.soulmonk.ndfsm.domain.time.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ServiceService {
-  public List<Services> findAll();
+  public List<Service> findAll();
 
-  public Services findById(Long id);
+  public Service findById(Long id);
 
-  public Services save(Services service);
+  public Service save(Service service);
 
-  public Page<Services> findAllByPage(Pageable pageable);
+  public Page<Service> findAllByPage(Pageable pageable);
 }

@@ -32,9 +32,8 @@
     <div id="commentUpdate">
         <form:form modelAttribute="comment" id="commentUpdateForm" method="post" cssClass="form-horizontal">
             <div>
-                <c:if test="${not empty message}">
-                    <div id="message" class="alert alert-${message.type}">${message.message}</div>
-                </c:if>
+                <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+                <html:message message="${message}"/>
             </div>
 
             <div class="form-group">
@@ -48,15 +47,15 @@
             </div>
 
             <div class="form-group">
-                <form:label path="tasksByTaskId.id" cssClass="control-label" cssErrorClass="error">
+                <form:label path="task.id" cssClass="control-label" cssErrorClass="error">
                     ${labelCommentTask}
                 </form:label>
-                <form:select path="tasksByTaskId.id" cssClass="form-control" cssErrorClass="error">
+                <form:select path="task.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""><jsp:text/></option>
                     <!--@elvariable id="task" type="com.valpio.soulmonk.domain.Tasks"-->
                     <c:forEach items="${task}" var="task">
                         <c:choose>
-                            <c:when test="${task.id == comment.tasksByTaskId.id}">
+                            <c:when test="${task.id == comment.task.id}">
                                 <option value="${task.id}" selected="true">${task.name}</option>
                             </c:when>
                             <c:otherwise>
@@ -66,20 +65,20 @@
                     </c:forEach>
                 </form:select>
                 <div>
-                    <form:errors path="tasksByTaskId.id" cssClass="error" />
+                    <form:errors path="task.id" cssClass="error" />
                 </div>
             </div>
 
             <div class="form-group">
-                <form:label path="commentStatusesByStatusId.id" cssClass="control-label" cssErrorClass="error">
+                <form:label path="commentStatus.id" cssClass="control-label" cssErrorClass="error">
                     ${labelCommentStatus}
                 </form:label>
-                <form:select path="commentStatusesByStatusId.id" cssClass="form-control" cssErrorClass="error">
+                <form:select path="commentStatus.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""><jsp:text/></option>
                     <!--@elvariable id="commentStatus" type="com.valpio.soulmonk.domain.CommentStatuses"-->
                     <c:forEach items="${commentStatus}" var="commentStatus">
                         <c:choose>
-                            <c:when test="${commentStatus.id == comment.commentStatusesByStatusId.id}">
+                            <c:when test="${commentStatus.id == comment.commentStatus.id}">
                                 <option value="${commentStatus.id}" selected="true">${commentStatus.name}</option>
                             </c:when>
                             <c:otherwise>
@@ -89,7 +88,7 @@
                     </c:forEach>
                 </form:select>
                 <div>
-                    <form:errors path="commentStatusesByStatusId.id" cssClass="error" />
+                    <form:errors path="commentStatus.id" cssClass="error" />
                 </div>
             </div>
 

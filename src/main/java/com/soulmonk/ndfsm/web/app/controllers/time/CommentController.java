@@ -32,9 +32,9 @@ import java.util.Locale;
  * Time: 8:02
  */
 @Controller
-@RequestMapping(value = "/time/comments")
-public class CommentsController {
-  final Logger logger = LoggerFactory.getLogger(CommentsController.class);
+@RequestMapping(value = "/time/comment")
+public class CommentController {
+  final Logger logger = LoggerFactory.getLogger(CommentController.class);
 
   @Autowired
   private CommentService commentService;
@@ -57,7 +57,7 @@ public class CommentsController {
 
     logger.info("No. of comments: " + comments.size());
 
-    return "time/comments/list";
+    return "time/comment/list";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.GET)
@@ -70,7 +70,7 @@ public class CommentsController {
     uiModel.addAttribute("comment", comment);
     uiModel.addAttribute("tasks", taskService.findAll());
     uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-    return "time/comments/create";
+    return "time/comment/create";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
@@ -82,7 +82,7 @@ public class CommentsController {
       logger.error("bindingResult hasErrors message: " + bindingResult.toString());
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
-      return "time/comments/create";
+      return "time/comment/create";
     }
     logger.info("no bindingResult hasErrors");
     uiModel.asMap().clear();
@@ -91,7 +91,7 @@ public class CommentsController {
     commentService.save(comment);
     logger.info("Comment id: " + comment.getId());
 
-    return "redirect:/time/comments/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
+    return "redirect:/time/comment/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
@@ -101,7 +101,7 @@ public class CommentsController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
-      return "time/comments/update";
+      return "time/comment/update";
     }
 
     uiModel.asMap().clear();
@@ -111,14 +111,14 @@ public class CommentsController {
 
     logger.info("Update Comment id: " + comment.getId());
 
-    return "redirect:/time/comments/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
+    return "redirect:/time/comment/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
     Comment comment = commentService.findById(id);
     uiModel.addAttribute("comment", comment);
-    return "time/comments/show";
+    return "time/comment/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
@@ -126,6 +126,6 @@ public class CommentsController {
     uiModel.addAttribute("comment", commentService.findById(id));
     uiModel.addAttribute("tasks", taskService.findAll());
     uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-    return "time/comments/update";
+    return "time/comment/update";
   }
 }

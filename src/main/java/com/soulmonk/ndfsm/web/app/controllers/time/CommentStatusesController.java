@@ -28,7 +28,7 @@ import java.util.Locale;
  * Time: 14:23
  */
 @Controller
-@RequestMapping(value = "/time/comment_statuses")
+@RequestMapping(value = "/time/comment_status")
 public class CommentStatusesController {
 
   final Logger logger = LoggerFactory.getLogger(CommentStatusesController.class);
@@ -48,7 +48,7 @@ public class CommentStatusesController {
 
     logger.info("No. of commentStatuses: " + commentStatuses.size());
 
-    return "time/comment_statuses/list";
+    return "time/comment_status/list";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class CommentStatusesController {
     logger.info("Create form");
     CommentStatus commentsStatus = new CommentStatus();
     uiModel.addAttribute("comment_status", commentsStatus);
-    return "time/comment_statuses/create";
+    return "time/comment_status/create";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
@@ -66,7 +66,7 @@ public class CommentStatusesController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_status_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment_status", commentsStatus);
-      return "time/comment_statuses/create";
+      return "time/comment_status/create";
     }
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("comment_status_save_success", new Object[]{}, locale)));
@@ -74,7 +74,7 @@ public class CommentStatusesController {
     commentStatusService.save(commentsStatus);
     logger.info("Comment Status id: " + commentsStatus.getId());
 
-    return "redirect:/time/comment_statuses/" + UrlUtil.encodeUrlPathSegment(commentsStatus.getId().toString(), httpServletRequest);
+    return "redirect:/time/comment_status/" + UrlUtil.encodeUrlPathSegment(commentsStatus.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
@@ -84,7 +84,7 @@ public class CommentStatusesController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("comment_status_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment_status", commentsStatus);
-      return "time/comment_statuses/update";
+      return "time/comment_status/update";
     }
 
     uiModel.asMap().clear();
@@ -94,25 +94,25 @@ public class CommentStatusesController {
 
     logger.info("Update Comment Status id: " + commentsStatus.getId());
 
-    return "redirect:/time/comment_statuses/" + UrlUtil.encodeUrlPathSegment(commentsStatus.getId().toString(), httpServletRequest);
+    return "redirect:/time/comment_status/" + UrlUtil.encodeUrlPathSegment(commentsStatus.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
     CommentStatus commentsStatus = commentStatusService.findById(id);
     uiModel.addAttribute("comment_status", commentsStatus);
-    return "time/comment_statuses/show";
+    return "time/comment_status/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
     uiModel.addAttribute("comment_status", commentStatusService.findById(id));
-    return "time/comment_statuses/update";
+    return "time/comment_status/update";
   }
 
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     commentStatusService.delete(id);
-    return "redirect:/time/comment_statuses/list";
+    return "redirect:/time/comment_status/list";
   }
 }

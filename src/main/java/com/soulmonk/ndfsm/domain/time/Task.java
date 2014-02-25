@@ -90,7 +90,7 @@ public class Task implements Serializable {
   }
 
   @Fetch(value = FetchMode.SUBSELECT)
-  @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "tasks")
+  @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "task")
   public List<Comment> getComments() {
     return comments;
   }

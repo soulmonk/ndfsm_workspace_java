@@ -69,8 +69,8 @@
             <spring:message code="menu_comments_list" var="menuCommentsList"/>
             <spring:message code="menu_comments_add" var="menuCommentsAdd"/>
 
-            <spring:url var="servicesListUrl" value="/time/services" />
-            <spring:url var="servicesAddUrl" value="/time/services?form" />
+            <spring:url var="servicesListUrl" value="/time/service" />
+            <spring:url var="servicesAddUrl" value="/time/service?form" />
 
             <spring:url var="projectsListUrl" value="/time/project" />
             <spring:url var="projectsAddUrl" value="/time/project?form" />

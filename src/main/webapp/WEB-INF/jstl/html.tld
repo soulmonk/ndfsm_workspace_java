@@ -28,7 +28,7 @@
             </description>
             <name>tag</name>
             <required>false</required>
-            <rtexprvalue>false</rtexprvalue>
+            <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
             <description>
@@ -36,7 +36,26 @@
             </description>
             <name>text</name>
             <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>Page Header Boot strap</description>
+        <name>message</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.html.Message</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+                Message class
+            </description>
+            <name>message</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Object</type>
+            <deferred-value>
+                <type>java.lang.Object</type>
+            </deferred-value>
         </attribute>
     </tag>
 </taglib>

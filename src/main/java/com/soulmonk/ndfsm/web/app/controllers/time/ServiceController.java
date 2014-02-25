@@ -1,6 +1,6 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
-import com.soulmonk.ndfsm.domain.time.Services;
+import com.soulmonk.ndfsm.domain.time.Service;
 import com.soulmonk.ndfsm.service.time.ServiceService;
 import com.soulmonk.ndfsm.web.form.Message;
 import com.soulmonk.ndfsm.web.util.UrlUtil;
@@ -26,10 +26,10 @@ import java.util.Locale;
  * Time: 9:27
  */
 @Controller
-@RequestMapping(value = "/time/services")
-public class ServicesController {
+@RequestMapping(value = "/time/service")
+public class ServiceController {
 
-  final Logger logger = LoggerFactory.getLogger(ServicesController.class);
+  final Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
   @Autowired
   private ServiceService serviceService;
@@ -41,63 +41,63 @@ public class ServicesController {
   public String list(Model uiModel) {
     logger.info("Listing services");
 
-    List<Services> services = serviceService.findAll();
+    List<Service> services = serviceService.findAll();
     uiModel.addAttribute("services", services);
 
     logger.info("No. of services: " + services.size());
 
-    return "time/services/list";
+    return "time/service/list";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.GET)
   public String createForm(Model uiModel) {
-    Services service = new Services();
+    Service service = new Service();
     uiModel.addAttribute("service", service);
-    return "time/services/create";
+    return "time/service/create";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Services service, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String create(@Valid Service service, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Create service");
 
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("service_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("service", service);
-      return "time/services/create";
+      return "time/service/create";
     }
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("service_save_success", new Object[]{}, locale)));
     serviceService.save(service);
-    logger.info("Services id: " + service.getId());
-    return "redirect:/time/services/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
+    logger.info("Service id: " + service.getId());
+    return "redirect:/time/service/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Services service, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String update(@Valid Service service, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update service");
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("service_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("service", service);
-      return "time/services/update";
+      return "time/service/update";
     }
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("service_update_success", new Object[]{}, locale)));
 
     serviceService.save(service);
 
-    return "redirect:/time/services/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
+    return "redirect:/time/service/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Services service = serviceService.findById(id);
+    Service service = serviceService.findById(id);
     uiModel.addAttribute("service", service);
-    return "time/services/show";
+    return "time/service/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
     uiModel.addAttribute("service", serviceService.findById(id));
-    return "time/services/update";
+    return "time/service/update";
   }
 }

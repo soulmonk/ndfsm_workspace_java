@@ -20,18 +20,16 @@
 
     <spring:message code="label_not_set" var="labelNotSet"/>
 
-    <spring:url value="/time/services" var="editServicetUrl"/>
+    <spring:url value="/time/service" var="editServicetUrl"/>
 
-    <!--@elvariable id="service" type="com.soulmonk.ndfsm.domain.time.Services"-->
+    <!--@elvariable id="service" type="com.soulmonk.ndfsm.domain.time.Service"-->
     <spring:eval expression="service.url == '' ? labelNotSet:service.url" var="serviceUrlValue"/>
 
     <h1>${labelServicesInfo}</h1>
 
     <div id="serviceInfo">
         <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-        <c:if test="${not empty message}">
-            <div id="message" class="alert alert-${message.type}">${message.message}</div>
-        </c:if>
+        <html:message message="${message}"/>
 
         <table class="table table-hover">
             <tr>

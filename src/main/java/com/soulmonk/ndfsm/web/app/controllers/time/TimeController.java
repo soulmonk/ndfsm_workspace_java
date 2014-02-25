@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by Owner on 24.02.14.
+ * Company: Valpio
+ * User: SoulMonk
+ * Date: 24.02.14
+ * Time: 16:29
  */
 @Controller
 @RequestMapping("/time")

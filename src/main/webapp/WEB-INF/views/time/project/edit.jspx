@@ -49,7 +49,7 @@
                 </form:label>
                 <form:select path="service.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""><jsp:text/></option>
-                    <!--@elvariable id="services" type="java.util.List<com.soulmonk.ndfsm.domain.time.Services>"-->
+                    <!--@elvariable id="services" type="java.util.List<com.soulmonk.ndfsm.domain.time.Service>"-->
                     <c:forEach items="${services}" var="service">
                         <c:choose>
                             <c:when test="${service.id == project.service.id}">

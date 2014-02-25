@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "time_services")
-public class Services implements Serializable {
+public class Service implements Serializable {
   private Long id;
   private String name;
   private String url;
@@ -56,11 +56,11 @@ public class Services implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    Services services = (Services) o;
+    Service service = (Service) o;
 
-    if (id != null ? !id.equals(services.id) : services.id != null) return false;
-    if (name != null ? !name.equals(services.name) : services.name != null) return false;
-    if (url != null ? !url.equals(services.url) : services.url != null) return false;
+    if (id != null ? !id.equals(service.id) : service.id != null) return false;
+    if (name != null ? !name.equals(service.name) : service.name != null) return false;
+    if (url != null ? !url.equals(service.url) : service.url != null) return false;
 
     return true;
   }

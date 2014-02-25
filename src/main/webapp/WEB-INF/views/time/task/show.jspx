@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <td><strong>${labelTaskProject}</strong></td>
-                <td>${task.projectsByProjectId.name}</td>
+                <td>${task.project.name}</td>
             </tr>
             <tr>
                 <td><strong>${labelTaskExternalId}</strong></td>

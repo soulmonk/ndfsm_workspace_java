@@ -19,13 +19,15 @@
     <spring:message code="label_task_project" var="labelTaskProject"/>
     <spring:message code="label_task_external_id" var="labelTaskExternalId"/>
 
+    <!--@elvariable id="task" type="com.soulmonk.ndfsm.domain.time.Task"-->
     <spring:eval expression="task.id == null ? labelTaskNew:labelTaskUpdate" var="formTitle"/>
 
     <html:pageHeader text="${formTitle}"/>
 
     <div id="taskUpdate">
-        <form:form modelAttribute="task" id="taskUpdateForm" method="post" cssClass="form-horizontal">
+        <form:form modelAttribute="task" id="taskUpdateForm" method="post" cssClass="form-horizontal" rol="form">
             <div>
+                <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                 <c:if test="${not empty message}">
                     <div id="message" class="alert alert-${message.type}">${message.message}</div>
                 </c:if>
@@ -70,10 +72,9 @@
                     </c:forEach>
                 </form:select>
                 <div>
-                    <form:errors path="projectsByProjectId.id" cssClass="error" />
+                    <form:errors path="project.id" cssClass="error" />
                 </div>
             </div>
-
 
             <button type="submit" class="btn btn-default">Save</button>
             <button type="reset" class="btn btn-default">Reset</button>

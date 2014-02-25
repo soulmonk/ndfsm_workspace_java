@@ -22,13 +22,11 @@
 
     <spring:url value="/comment" var="editCommentUrl"/>
 
-    <!--@elvariable id="comment" type="com.valpio.soulmonk.domain.Comments"-->
+    <!--@elvariable id="comment" type="com.soulmonk.ndfsm.domain.time.Comment"-->
     <html:pageHeader text="${labelCommentInfo}"/>
 
     <div id="commentInfo">
-        <c:if test="${not empty message}">
-            <div id="message" class="alert alert-${message.type}">${message.message}</div>
-        </c:if>
+        <html:message/>
 
         <table class="table table-hover">
             <tr>
@@ -45,11 +43,11 @@
             </tr>
             <tr>
                 <td><strong>${labelCommentTask}</strong></td>
-                <td>${comment.tasksByTaskId.name}</td>
+                <td>${comment.task.name}</td>
             </tr>
-            <tr style="background-color:${comment.commentStatusesByStatusId.colorHtml}">
+            <tr style="background-color:${comment.commentStatus.colorHtml}">
                 <td><strong>${labelCommentStatus}</strong></td>
-                <td>${comment.commentStatusesByStatusId.name}</td>
+                <td>${comment.commentStatus.name}</td>
             </tr>
         </table>
 

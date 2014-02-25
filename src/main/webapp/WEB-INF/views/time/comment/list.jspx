@@ -19,16 +19,13 @@
     <spring:message code="label_comment_to" var="labelCommentTo"/>
 
     <spring:url value="/comment" var="showCommentsUrl"/>
-
-    <c:if test="${not empty message}">
-        <div id="message" class="alert alert-${message.type}">${message.message}</div>
-    </c:if>
-
-    <!--@elvariable id="comment" type="List<com.valpio.soulmonk.domain.Comments>"-->
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <html:message message="${message}"/>
 
     <html:pageHeader text="${labelCommentesList}" tag="h2"/>
 
-    <c:if test="${not empty comment}">
+    <!--@elvariable id="comments" type="java.util.List<com.soulmonk.ndfsm.domain.time.Comment>"-->
+    <c:if test="${not empty comments}">
         <div>
             <table id="list" class="table table-hover table-bordered">
                 <thead>
@@ -42,15 +39,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!--@elvariable id="comment" type="com.valpio.soulmonk.domain.Comments"-->
-                <c:forEach items="${comment}" var="comment">
-                    <tr style="background-color:#${comment.commentStatusesByStatusId.color}">
+                <c:forEach items="${comments}" var="comment">
+                    <tr style="background-color:${comment.commentStatus.colorHtml}">
                         <td><a href="${showCommentsUrl}/${comment.id}">${comment.id}</a></td>
                         <td>${comment.value}</td>
                         <td>${comment.from}</td>
                         <td>${comment.to}</td>
-                        <td>${comment.tasksByTaskId.name}</td>
-                        <td>${comment.commentStatusesByStatusId.name}</td>
+                        <td>${comment.task.name}</td>
+                        <td>${comment.commentStatus.name}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
