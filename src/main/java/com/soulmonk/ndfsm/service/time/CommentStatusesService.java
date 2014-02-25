@@ -1,15 +1,15 @@
 package com.soulmonk.ndfsm.service.time;
 
-import com.soulmonk.ndfsm.domain.time.CommentStatuses;
+import com.soulmonk.ndfsm.domain.time.CommentStatus;
 
 import java.util.List;
 
 public interface CommentStatusesService {
-  public List<CommentStatuses> findAll();
+  public List<CommentStatus> findAll();
 
-  public CommentStatuses findById(Long id);
+  public CommentStatus findById(Long id);
 
-  public CommentStatuses save(CommentStatuses commentStatus);
+  public CommentStatus save(CommentStatus commentStatus);
 
   void delete(Long id);
 }

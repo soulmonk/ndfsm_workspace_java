@@ -13,12 +13,12 @@ import java.util.List;
  */
 @javax.persistence.Table(name = "time_comment_statuses")
 @Entity
-public class CommentStatuses implements Serializable {
+public class CommentStatus implements Serializable {
   private Long id;
   private String name;
   private String description;
   private String color;
-  private List<Comments> comments = new ArrayList<Comments>();
+  private List<Comment> comments = new ArrayList<Comment>();
 
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,7 +66,7 @@ public class CommentStatuses implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    CommentStatuses that = (CommentStatuses) o;
+    CommentStatus that = (CommentStatus) o;
 
     if (color != null ? !color.equals(that.color) : that.color != null) return false;
     if (description != null ? !description.equals(that.description) : that.description != null) return false;
@@ -85,12 +85,12 @@ public class CommentStatuses implements Serializable {
     return result;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "commentStatuses")
-  public List<Comments> getComments() {
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "commentStatus")
+  public List<Comment> getComments() {
     return comments;
   }
 
-  public void setComments(List<Comments> comments) {
+  public void setComments(List<Comment> comments) {
     this.comments = comments;
   }
 

@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.service.jpa.time;
 
 import com.google.common.collect.Lists;
-import com.soulmonk.ndfsm.domain.time.Comments;
+import com.soulmonk.ndfsm.domain.time.Comment;
 import com.soulmonk.ndfsm.repository.time.CommentsRepository;
 import com.soulmonk.ndfsm.service.time.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +21,19 @@ public class CommentsImpl implements CommentsService {
 
   @Override
   @Transactional(readOnly = true)
-  public List<Comments> findAll() {
+  public List<Comment> findAll() {
     return Lists.newArrayList(commentsRepository.findAll());
   }
 
   @Override
   @Transactional(readOnly = true)
-  public Comments findById(Long id) {
+  public Comment findById(Long id) {
     return commentsRepository.findOne(id);
   }
 
   @Override
   @Transactional(readOnly = true)
-  public Comments save(Comments comment) {
+  public Comment save(Comment comment) {
     return commentsRepository.saveAndFlush(comment);
   }
 

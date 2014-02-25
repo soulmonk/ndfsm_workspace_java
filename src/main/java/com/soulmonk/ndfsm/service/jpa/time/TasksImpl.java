@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.service.jpa.time;
 
 import com.google.common.collect.Lists;
-import com.soulmonk.ndfsm.domain.time.Tasks;
+import com.soulmonk.ndfsm.domain.time.Task;
 import com.soulmonk.ndfsm.repository.time.TasksRepository;
 import com.soulmonk.ndfsm.service.time.TasksService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +21,19 @@ public class TasksImpl implements TasksService {
 
   @Override
   @Transactional(readOnly = true)
-  public List<Tasks> findAll() {
+  public List<Task> findAll() {
     return Lists.newArrayList(tasksRepository.findAll());
   }
 
   @Override
   @Transactional(readOnly = true)
-  public Tasks findById(Long id) {
+  public Task findById(Long id) {
     return tasksRepository.findOne(id);
   }
 
   @Override
   @Transactional(readOnly = true)
-  public Tasks save(Tasks task) {
+  public Task save(Task task) {
     return tasksRepository.saveAndFlush(task);
   }
 

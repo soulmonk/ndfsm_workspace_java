@@ -7,6 +7,7 @@
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
      xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:html="/WEB-INF/html"
      version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -26,7 +27,7 @@
     <!--@elvariable id="comment" type="com.valpio.soulmonk.domain.Comments"-->
     <spring:eval expression="comment.id == null ? labelCommentNew:labelCommentUpdate" var="formTitle"/>
 
-    <h1>${formTitle}</h1>
+    <html:pageHeader text="${formTitle}"/>
 
     <div id="commentUpdate">
         <form:form modelAttribute="comment" id="commentUpdateForm" method="post" cssClass="form-horizontal">
@@ -53,7 +54,7 @@
                 <form:select path="tasksByTaskId.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""></option>
                     <!--@elvariable id="task" type="com.valpio.soulmonk.domain.Tasks"-->
-                    <c:forEach items="${tasks}" var="task">
+                    <c:forEach items="${task}" var="task">
                         <c:choose>
                             <c:when test="${task.id == comment.tasksByTaskId.id}">
                                 <option value="${task.id}" selected="true">${task.name}</option>
@@ -76,7 +77,7 @@
                 <form:select path="commentStatusesByStatusId.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""></option>
                     <!--@elvariable id="commentStatus" type="com.valpio.soulmonk.domain.CommentStatuses"-->
-                    <c:forEach items="${commentStatuses}" var="commentStatus">
+                    <c:forEach items="${commentStatus}" var="commentStatus">
                         <c:choose>
                             <c:when test="${commentStatus.id == comment.commentStatusesByStatusId.id}">
                                 <option value="${commentStatus.id}" selected="true">${commentStatus.name}</option>

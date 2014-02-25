@@ -7,6 +7,7 @@
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
      xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:html="/WEB-INF/html"
      version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -23,12 +24,7 @@
     <!--@elvariable id="service" type="com.soulmonk.ndfsm.domain.time.Services"-->
     <spring:eval expression="service.id == null ? labelServiceNew:labelServiceUpdate" var="formTitle"/>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">${formTitle}</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
+    <html:pageHeader text="${formTitle}"/>
 
     <div class="row">
         <div class="col-lg-12">

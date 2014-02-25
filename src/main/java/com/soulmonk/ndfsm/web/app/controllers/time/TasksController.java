@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
-import com.soulmonk.ndfsm.domain.time.Projects;
-import com.soulmonk.ndfsm.domain.time.Tasks;
+import com.soulmonk.ndfsm.domain.time.Project;
+import com.soulmonk.ndfsm.domain.time.Task;
 import com.soulmonk.ndfsm.service.time.ProjectsService;
 import com.soulmonk.ndfsm.service.time.TasksService;
 import com.soulmonk.ndfsm.web.form.Message;
@@ -48,7 +48,7 @@ public class TasksController {
   public String list(Model uiModel) {
     logger.info("Listing tasks");
 
-    List<Tasks> tasks = tasksService.findAll();
+    List<Task> tasks = tasksService.findAll();
     uiModel.addAttribute("tasks", tasks);
 
     logger.info("No. of tasks: " + tasks.size());
@@ -59,15 +59,15 @@ public class TasksController {
   @RequestMapping(params = "form", method = RequestMethod.GET)
   public String createForm(Model uiModel) {
     logger.info("Create form");
-    Tasks task = new Tasks();
-    task.setProjects(new Projects());
+    Task task = new Task();
+    task.setProject(new Project());
     uiModel.addAttribute("task", task);
     uiModel.addAttribute("projects", projectsService.findAll());
     return "time/tasks/create";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Tasks task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String create(@Valid Task task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Create task");
 
     if (bindingResult.hasErrors()) {
@@ -79,12 +79,12 @@ public class TasksController {
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_save_success", new Object[]{}, locale)));
 
     tasksService.save(task);
-    logger.info("Tasks id: " + task.getId());
+    logger.info("Task id: " + task.getId());
     return "redirect:/time/tasks/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Tasks task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String update(@Valid Task task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update task");
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
@@ -96,21 +96,21 @@ public class TasksController {
 
     tasksService.save(task);
 
-    logger.info("Update Tasks id: " + task.getId());
+    logger.info("Update Task id: " + task.getId());
 
     return "redirect:/time/tasks/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Tasks task = tasksService.findById(id);
+    Task task = tasksService.findById(id);
     uiModel.addAttribute("task", task);
     return "time/tasks/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    Tasks task = tasksService.findById(id);
+    Task task = tasksService.findById(id);
     uiModel.addAttribute("task", task);
     uiModel.addAttribute("projects", projectsService.findAll());
     return "time/tasks/update";

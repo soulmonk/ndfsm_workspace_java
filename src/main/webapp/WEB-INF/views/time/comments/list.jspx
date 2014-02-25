@@ -6,6 +6,7 @@
 <div id="page-wrapper" xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:html="/WEB-INF/html"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
@@ -17,16 +18,17 @@
     <spring:message code="label_comment_from" var="labelCommentFrom"/>
     <spring:message code="label_comment_to" var="labelCommentTo"/>
 
-    <spring:url value="/comments" var="showCommentsUrl"/>
+    <spring:url value="/comment" var="showCommentsUrl"/>
 
     <c:if test="${not empty message}">
         <div id="message" class="alert alert-${message.type}">${message.message}</div>
     </c:if>
 
-    <!--@elvariable id="comments" type="List<com.valpio.soulmonk.domain.Comments>"-->
-    <h2>${labelCommentesList}</h2>
+    <!--@elvariable id="comment" type="List<com.valpio.soulmonk.domain.Comments>"-->
 
-    <c:if test="${not empty comments}">
+    <html:pageHeader text="${labelCommentesList}" tag="h2"/>
+
+    <c:if test="${not empty comment}">
         <div>
             <table id="list" class="table table-hover table-bordered">
                 <thead>
@@ -41,7 +43,7 @@
                 </thead>
                 <tbody>
                 <!--@elvariable id="comment" type="com.valpio.soulmonk.domain.Comments"-->
-                <c:forEach items="${comments}" var="comment">
+                <c:forEach items="${comment}" var="comment">
                     <tr style="background-color:#${comment.commentStatusesByStatusId.color}">
                         <td><a href="${showCommentsUrl}/${comment.id}">${comment.id}</a></td>
                         <td>${comment.value}</td>

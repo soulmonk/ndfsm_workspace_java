@@ -1,6 +1,6 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
-import com.soulmonk.ndfsm.domain.time.Projects;
+import com.soulmonk.ndfsm.domain.time.Project;
 import com.soulmonk.ndfsm.domain.time.Services;
 import com.soulmonk.ndfsm.service.time.ProjectsService;
 import com.soulmonk.ndfsm.service.time.ServicesService;
@@ -48,7 +48,7 @@ public class ProjectsController {
   public String list(Model uiModel) {
     logger.info("Listing projects");
 
-    List<Projects> projects = projectsService.findAll();
+    List<Project> projects = projectsService.findAll();
     uiModel.addAttribute("projects", projects);
 
     logger.info("No. of projects: " + projects.size());
@@ -59,7 +59,7 @@ public class ProjectsController {
   @RequestMapping(params = "form", method = RequestMethod.GET)
   public String createForm(Model uiModel) {
     logger.info("Create form");
-    Projects project = new Projects();
+    Project project = new Project();
     project.setService(new Services());
     uiModel.addAttribute("project", project);
     uiModel.addAttribute("services", servicesService.findAll());
@@ -67,7 +67,7 @@ public class ProjectsController {
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Projects project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String create(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Create project");
 
     if (bindingResult.hasErrors()) {
@@ -79,12 +79,12 @@ public class ProjectsController {
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("project_save_success", new Object[]{}, locale)));
 
     projectsService.save(project);
-    logger.info("Projects id: " + project.getId());
+    logger.info("Project id: " + project.getId());
     return "redirect:/time/projects/" + UrlUtil.encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Projects project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String update(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update project");
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message("danger", messageSource.getMessage("project_update_fail", new Object[]{}, locale)));
@@ -96,21 +96,21 @@ public class ProjectsController {
 
     projectsService.save(project);
 
-    logger.info("Update Projects id: " + project.getId());
+    logger.info("Update Project id: " + project.getId());
 
     return "redirect:/time/projects/" + UrlUtil.encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Projects project = projectsService.findById(id);
+    Project project = projectsService.findById(id);
     uiModel.addAttribute("project", project);
     return "time/projects/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    Projects project = projectsService.findById(id);
+    Project project = projectsService.findById(id);
     uiModel.addAttribute("project", project);
     uiModel.addAttribute("services", servicesService.findAll());
     return "time/projects/update";

@@ -2,16 +2,16 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="time/comments/list">
-        <put-attribute name="body" value="/WEB-INF/views/time/comments/list.jspx"/>
+    <definition extends="default" name="time/comment/list">
+        <put-attribute name="body" value="/WEB-INF/views/time/comment/list.jspx"/>
     </definition>
-    <definition extends="default" name="time/comments/create">
-        <put-attribute name="body" value="/WEB-INF/views/time/comments/edit.jspx"/>
+    <definition extends="default" name="time/comment/create">
+        <put-attribute name="body" value="/WEB-INF/views/time/comment/edit.jspx"/>
     </definition>
-    <definition extends="default" name="time/comments/show">
-        <put-attribute name="body" value="/WEB-INF/views/time/comments/show.jspx"/>
+    <definition extends="default" name="time/comment/show">
+        <put-attribute name="body" value="/WEB-INF/views/time/comment/show.jspx"/>
     </definition>
-    <definition extends="default" name="time/comments/update">
-        <put-attribute name="body" value="/WEB-INF/views/time/comments/edit.jspx"/>
+    <definition extends="default" name="time/comment/update">
+        <put-attribute name="body" value="/WEB-INF/views/time/comment/edit.jspx"/>
     </definition>
 </tiles-definitions>

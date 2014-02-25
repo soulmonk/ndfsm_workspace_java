@@ -13,14 +13,14 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "time_comments")
-public class Comments implements Serializable {
+public class Comment implements Serializable {
   private Long id;
   private String value;
   private Timestamp from;
   private Timestamp to;
   private Time timePlus = Time.valueOf("00:00:00");
-  private Tasks tasks;
-  private CommentStatuses commentStatuses;
+  private Task task;
+  private CommentStatus commentStatus;
 
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -78,13 +78,13 @@ public class Comments implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    Comments comments = (Comments) o;
+    Comment comment = (Comment) o;
 
-    if (from != null ? !from.equals(comments.from) : comments.from != null) return false;
-    if (id != null ? !id.equals(comments.id) : comments.id != null) return false;
-    if (timePlus != null ? !timePlus.equals(comments.timePlus) : comments.timePlus != null) return false;
-    if (to != null ? !to.equals(comments.to) : comments.to != null) return false;
-    if (value != null ? !value.equals(comments.value) : comments.value != null) return false;
+    if (from != null ? !from.equals(comment.from) : comment.from != null) return false;
+    if (id != null ? !id.equals(comment.id) : comment.id != null) return false;
+    if (timePlus != null ? !timePlus.equals(comment.timePlus) : comment.timePlus != null) return false;
+    if (to != null ? !to.equals(comment.to) : comment.to != null) return false;
+    if (value != null ? !value.equals(comment.value) : comment.value != null) return false;
 
     return true;
   }
@@ -101,21 +101,21 @@ public class Comments implements Serializable {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "task_id", referencedColumnName = "id", nullable = false)
-  public Tasks getTasks() {
-    return tasks;
+  public Task getTask() {
+    return task;
   }
 
-  public void setTasks(Tasks tasks) {
-    this.tasks = tasks;
+  public void setTask(Task task) {
+    this.task = task;
   }
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
-  public CommentStatuses getCommentStatuses() {
-    return commentStatuses;
+  public CommentStatus getCommentStatus() {
+    return commentStatus;
   }
 
-  public void setCommentStatuses(CommentStatuses commentStatuses) {
-    this.commentStatuses = commentStatuses;
+  public void setCommentStatus(CommentStatus commentStatus) {
+    this.commentStatus = commentStatus;
   }
 }

@@ -72,17 +72,17 @@
             <spring:url var="servicesListUrl" value="/time/services" />
             <spring:url var="servicesAddUrl" value="/time/services?form" />
 
-            <spring:url var="projectsListUrl" value="/time/projects" />
-            <spring:url var="projectsAddUrl" value="/time/projects?form" />
+            <spring:url var="projectsListUrl" value="/time/project" />
+            <spring:url var="projectsAddUrl" value="/time/project?form" />
 
             <spring:url var="commentStatusesListUrl" value="/time/comment_statuses" />
             <spring:url var="commentStatusesAddUrl" value="/time/comment_statuses?form" />
 
-            <spring:url var="tasksListUrl" value="/time/tasks" />
-            <spring:url var="tasksAddUrl" value="/time/tasks?form" />
+            <spring:url var="tasksListUrl" value="/time/task" />
+            <spring:url var="tasksAddUrl" value="/time/task?form" />
 
-            <spring:url var="commentsListUrl" value="/time/comments" />
-            <spring:url var="commentsAddUrl" value="/time/comments?form" />
+            <spring:url var="commentsListUrl" value="/time/comment" />
+            <spring:url var="commentsAddUrl" value="/time/comment?form" />
 
             <li>
                 <a href="#"><i class="fa fa-sitemap fa-fw"><jsp:text/></i>${menuBaseTime}<span class="fa arrow"><jsp:text/></span></a>

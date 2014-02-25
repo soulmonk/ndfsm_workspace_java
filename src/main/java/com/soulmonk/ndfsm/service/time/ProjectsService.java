@@ -1,13 +1,13 @@
 package com.soulmonk.ndfsm.service.time;
 
-import com.soulmonk.ndfsm.domain.time.Projects;
+import com.soulmonk.ndfsm.domain.time.Project;
 
 import java.util.List;
 
 public interface ProjectsService {
-  public List<Projects> findAll();
+  public List<Project> findAll();
 
-  public Projects findById(Long id);
+  public Project findById(Long id);
 
-  public Projects save(Projects project);
+  public Project save(Project project);
 }

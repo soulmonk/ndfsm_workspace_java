@@ -20,7 +20,7 @@ public class Services implements Serializable {
   private Long id;
   private String name;
   private String url;
-  private List<Projects> projects = new ArrayList<Projects>();
+  private List<Project> projects = new ArrayList<Project>();
 
   @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -75,11 +75,11 @@ public class Services implements Serializable {
 
   @Fetch(value = FetchMode.SUBSELECT)
   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "service")
-  public List<Projects> getProjects() {
+  public List<Project> getProjects() {
     return projects;
   }
 
-  public void setProjects(List<Projects> projects) {
+  public void setProjects(List<Project> projects) {
     this.projects = projects;
   }
 }

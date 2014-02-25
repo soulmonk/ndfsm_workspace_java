@@ -16,11 +16,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "time_projects")
-public class Projects implements Serializable {
+public class Project implements Serializable {
   private Long id;
   private String name;
   private Services service;
-  private List<Tasks> tasks = new ArrayList<Tasks>();
+  private List<Task> tasks = new ArrayList<Task>();
 
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,10 +48,10 @@ public class Projects implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    Projects projects = (Projects) o;
+    Project project = (Project) o;
 
-    if (id != null ? !id.equals(projects.id) : projects.id != null) return false;
-    if (name != null ? !name.equals(projects.name) : projects.name != null) return false;
+    if (id != null ? !id.equals(project.id) : project.id != null) return false;
+    if (name != null ? !name.equals(project.name) : project.name != null) return false;
 
     return true;
   }
@@ -74,12 +74,12 @@ public class Projects implements Serializable {
   }
 
   @Fetch(value = FetchMode.SUBSELECT)
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "projects")
-  public List<Tasks> getTasks() {
+  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+  public List<Task> getTasks() {
     return tasks;
   }
 
-  public void setTasks(List<Tasks> tasks) {
+  public void setTasks(List<Task> tasks) {
     this.tasks = tasks;
   }
 }

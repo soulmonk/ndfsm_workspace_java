@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.service.jpa.time;
 
 import com.google.common.collect.Lists;
-import com.soulmonk.ndfsm.domain.time.CommentStatuses;
+import com.soulmonk.ndfsm.domain.time.CommentStatus;
 import com.soulmonk.ndfsm.repository.time.CommentStatusesRepository;
 import com.soulmonk.ndfsm.service.time.CommentStatusesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +21,19 @@ public class CommentStatusesImpl implements CommentStatusesService {
 
   @Override
   @Transactional(readOnly = true)
-  public List<CommentStatuses> findAll() {
+  public List<CommentStatus> findAll() {
     return Lists.newArrayList(commentStatusRepository.findAll());
   }
 
   @Override
   @Transactional(readOnly = true)
-  public CommentStatuses findById(Long id) {
+  public CommentStatus findById(Long id) {
     return commentStatusRepository.findOne(id);
   }
 
   @Override
   @Transactional(readOnly = true)
-  public CommentStatuses save(CommentStatuses commentStatus) {
+  public CommentStatus save(CommentStatus commentStatus) {
     return commentStatusRepository.saveAndFlush(commentStatus);
   }
 

@@ -1,8 +1,8 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
-import com.soulmonk.ndfsm.domain.time.CommentStatuses;
-import com.soulmonk.ndfsm.domain.time.Comments;
-import com.soulmonk.ndfsm.domain.time.Tasks;
+import com.soulmonk.ndfsm.domain.time.Comment;
+import com.soulmonk.ndfsm.domain.time.CommentStatus;
+import com.soulmonk.ndfsm.domain.time.Task;
 import com.soulmonk.ndfsm.service.time.CommentStatusesService;
 import com.soulmonk.ndfsm.service.time.CommentsService;
 import com.soulmonk.ndfsm.service.time.TasksService;
@@ -52,7 +52,7 @@ public class CommentsController {
   public String list(Model uiModel) {
     logger.info("Listing Comment");
 
-    List<Comments> comments = commentsService.findAll();
+    List<Comment> comments = commentsService.findAll();
     uiModel.addAttribute("comments", comments);
 
     logger.info("No. of comments: " + comments.size());
@@ -63,9 +63,9 @@ public class CommentsController {
   @RequestMapping(params = "form", method = RequestMethod.GET)
   public String createForm(Model uiModel) {
     logger.info("Create form");
-    Comments comment = new Comments();
-    comment.setCommentStatuses(new CommentStatuses());
-    comment.setTasks(new Tasks());
+    Comment comment = new Comment();
+    comment.setCommentStatus(new CommentStatus());
+    comment.setTask(new Task());
 
     uiModel.addAttribute("comment", comment);
     uiModel.addAttribute("tasks", tasksService.findAll());
@@ -74,7 +74,7 @@ public class CommentsController {
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Comments comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String create(@Valid Comment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Create Comment");
 
     if (bindingResult.hasErrors()) {
@@ -95,7 +95,7 @@ public class CommentsController {
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Comments comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String update(@Valid Comment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update Comment");
 
     if (bindingResult.hasErrors()) {
@@ -116,7 +116,7 @@ public class CommentsController {
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Comments comment = commentsService.findById(id);
+    Comment comment = commentsService.findById(id);
     uiModel.addAttribute("comment", comment);
     return "time/comments/show";
   }

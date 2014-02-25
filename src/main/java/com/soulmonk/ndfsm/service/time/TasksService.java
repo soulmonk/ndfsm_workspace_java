@@ -1,15 +1,15 @@
 package com.soulmonk.ndfsm.service.time;
 
-import com.soulmonk.ndfsm.domain.time.Tasks;
+import com.soulmonk.ndfsm.domain.time.Task;
 
 import java.util.List;
 
 public interface TasksService {
-  public List<Tasks> findAll();
+  public List<Task> findAll();
 
-  public Tasks findById(Long id);
+  public Task findById(Long id);
 
-  public Tasks save(Tasks task);
+  public Task save(Task task);
 
   public void delete(Long id);
 }

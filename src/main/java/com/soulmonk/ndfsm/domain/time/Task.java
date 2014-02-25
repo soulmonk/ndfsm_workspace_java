@@ -16,13 +16,13 @@ import java.util.List;
  */
 @Entity
 @Table(name = "time_tasks")
-public class Tasks implements Serializable {
+public class Task implements Serializable {
   private Long id;
   private String name;
   private int sum;
   private String extId;
-  private List<Comments> comments = new ArrayList<Comments>();
-  private Projects projects;
+  private List<Comment> comments = new ArrayList<Comment>();
+  private Project project;
 
   @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,12 +70,12 @@ public class Tasks implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    Tasks tasks = (Tasks) o;
+    Task task = (Task) o;
 
-    if (sum != tasks.sum) return false;
-    if (extId != null ? !extId.equals(tasks.extId) : tasks.extId != null) return false;
-    if (id != null ? !id.equals(tasks.id) : tasks.id != null) return false;
-    if (name != null ? !name.equals(tasks.name) : tasks.name != null) return false;
+    if (sum != task.sum) return false;
+    if (extId != null ? !extId.equals(task.extId) : task.extId != null) return false;
+    if (id != null ? !id.equals(task.id) : task.id != null) return false;
+    if (name != null ? !name.equals(task.name) : task.name != null) return false;
 
     return true;
   }
@@ -91,21 +91,21 @@ public class Tasks implements Serializable {
 
   @Fetch(value = FetchMode.SUBSELECT)
   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "tasks")
-  public List<Comments> getComments() {
+  public List<Comment> getComments() {
     return comments;
   }
 
-  public void setComments(List<Comments> comments) {
+  public void setComments(List<Comment> comments) {
     this.comments = comments;
   }
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "project_id", referencedColumnName = "id", nullable = false)
-  public Projects getProjects() {
-    return projects;
+  public Project getProject() {
+    return project;
   }
 
-  public void setProjects(Projects projects) {
-    this.projects = projects;
+  public void setProject(Project project) {
+    this.project = project;
   }
 }

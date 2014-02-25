@@ -6,6 +6,7 @@
 <div id="page-wrapper" xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:html="/WEB-INF/html"
      version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -21,7 +22,7 @@
 
     <spring:message code="label_not_set" var="labelNotSet"/>
 
-    <spring:url value="/tasks" var="editTaskUrl"/>
+    <spring:url value="/task" var="editTaskUrl"/>
 
     <h1>${labelTasksInfo}</h1>
 

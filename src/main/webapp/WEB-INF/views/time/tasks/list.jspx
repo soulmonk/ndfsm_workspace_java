@@ -6,6 +6,7 @@
 <div id="page-wrapper" xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:html="/WEB-INF/html"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
@@ -14,15 +15,15 @@
     <spring:message code="label_task_name" var="labelTaskName"/>
     <spring:message code="label_task_project" var="labelTaskProject"/>
 
-    <spring:url value="/tasks" var="showTasksUrl"/>
+    <spring:url value="/task" var="showTasksUrl"/>
 
     <c:if test="${not empty message}">
         <div id="message" class="alert alert-${message.type}">${message.message}</div>
     </c:if>
+    <html:pageHeader text="${labelTasksList}" tag="h2"/>
 
-    <h2>${labelTasksList}</h2>
-
-    <c:if test="${not empty tasks}">
+    <!--@elvariable id="task" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
+    <c:if test="${not empty task}">
         <div>
             <table id="list" class="table table-hover table-bordered">
                 <thead>
@@ -33,11 +34,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${tasks}" var="task">
+
+                <c:forEach items="${task}" var="task">
                     <tr>
                         <td><a href="${showTasksUrl}/${task.id}">${task.id}</a></td>
                         <td>${task.name}</td>
-                        <td>${task.projectsByProjectId.name}</td>
+                        <td>${task.project.name}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

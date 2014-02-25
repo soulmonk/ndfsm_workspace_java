@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/time")
 public class TimeController {
 
-  @RequestMapping(value = "/index", method = RequestMethod.GET)
+  @RequestMapping(value = "", method = RequestMethod.GET)
   public String index() {
     return "time/index";
   }
