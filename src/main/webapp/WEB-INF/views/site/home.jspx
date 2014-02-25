@@ -3,7 +3,7 @@
   Date: 11.07.13
   Time: 7:51
 -->
-<div id="page-wrapper" xmlns:jsp="http://java.sun.com/JSP/Page"
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>

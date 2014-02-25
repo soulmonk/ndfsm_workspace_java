@@ -3,7 +3,7 @@
   Date: 11.07.13
   Time: 7:51
 -->
-<div id="page-wrapper" xmlns:jsp="http://java.sun.com/JSP/Page"
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:spring="http://www.springframework.org/tags"
      xmlns:html="/WEB-INF/html"
      version="2.0">
