@@ -5,6 +5,7 @@
 -->
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
      xmlns:html="/WEB-INF/html"
      version="2.0">
 
@@ -21,23 +22,26 @@
 
     <spring:url value="/project" var="editProjectUrl"/>
 
-    <html:pageHeader text="${labelProjectsInfo}"/>
-    <!--@elvariable id="project" type="com.soulmonk.ndfsm.domain.time.Project"-->
-    <div id="projectInfo">
-        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-        <html:message message="${message}"/>
+    <sbAdmin:pageHeader text="${labelProjectsInfo}"/>
+    <sbAdmin:blockRow12WithDefPanel>
 
-        <table class="table table-hover">
-            <tr>
-                <td><strong>${labelProjectName}</strong></td>
-                <td>${project.name}</td>
-            </tr>
-            <tr>
-                <td><strong>${labelProjectService}</strong></td>
-                <td>${project.service.name}</td>
-            </tr>
-        </table>
+        <!--@elvariable id="project" type="com.soulmonk.ndfsm.domain.time.Project"-->
+        <div id="projectInfo">
+            <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+            <html:message message="${message}"/>
 
-        <a href="${editProjectUrl}/${project.id}?form">${labelProjectUpdate}</a>
-    </div>
+            <table class="table table-hover">
+                <tr>
+                    <td><strong>${labelProjectName}</strong></td>
+                    <td>${project.name}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelProjectService}</strong></td>
+                    <td>${project.service.name}</td>
+                </tr>
+            </table>
+
+            <a href="${editProjectUrl}/${project.id}?form">${labelProjectUpdate}</a>
+        </div>
+    </sbAdmin:blockRow12WithDefPanel>
 </div>

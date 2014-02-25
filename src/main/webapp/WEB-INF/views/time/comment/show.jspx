@@ -5,6 +5,7 @@
 -->
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
      xmlns:html="/WEB-INF/html"
      version="2.0">
 
@@ -22,35 +23,36 @@
     <spring:url value="/comment" var="editCommentUrl"/>
 
     <!--@elvariable id="comment" type="com.soulmonk.ndfsm.domain.time.Comment"-->
-    <html:pageHeader text="${labelCommentInfo}"/>
+    <sbAdmin:pageHeader text="${labelCommentInfo}"/>
+    <sbAdmin:blockRow12WithDefPanel>
+        <div id="commentInfo">
+            <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+            <html:message message="${message}"/>
 
-    <div id="commentInfo">
-        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-        <html:message message="${message}"/>
+            <table class="table table-hover">
+                <tr>
+                    <td><strong>${labelCommentValue}</strong></td>
+                    <td>${comment.value}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelCommentFrom}</strong></td>
+                    <td>${comment.from}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelCommentTo}</strong></td>
+                    <td>${comment.to}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelCommentTask}</strong></td>
+                    <td>${comment.task.name}</td>
+                </tr>
+                <tr style="background-color:${comment.commentStatus.colorHtml}">
+                    <td><strong>${labelCommentStatus}</strong></td>
+                    <td>${comment.commentStatus.name}</td>
+                </tr>
+            </table>
 
-        <table class="table table-hover">
-            <tr>
-                <td><strong>${labelCommentValue}</strong></td>
-                <td>${comment.value}</td>
-            </tr>
-            <tr>
-                <td><strong>${labelCommentFrom}</strong></td>
-                <td>${comment.from}</td>
-            </tr>
-            <tr>
-                <td><strong>${labelCommentTo}</strong></td>
-                <td>${comment.to}</td>
-            </tr>
-            <tr>
-                <td><strong>${labelCommentTask}</strong></td>
-                <td>${comment.task.name}</td>
-            </tr>
-            <tr style="background-color:${comment.commentStatus.colorHtml}">
-                <td><strong>${labelCommentStatus}</strong></td>
-                <td>${comment.commentStatus.name}</td>
-            </tr>
-        </table>
-
-        <a href="${editCommentUrl}/${comment.id}?form">${labelCommentUpdate}</a>
-    </div>
+            <a href="${editCommentUrl}/${comment.id}?form">${labelCommentUpdate}</a>
+        </div>
+    </sbAdmin:blockRow12WithDefPanel>
 </div>

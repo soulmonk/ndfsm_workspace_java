@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>html</short-name>
+    <uri>/WEB-INF/sbAdmin</uri>
+
+    <tag>
+        <description>Page Header</description>
+        <name>pageHeader</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.PageHeaderTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+                Tag by default h1
+            </description>
+            <name>tag</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                Page Header text
+            </description>
+            <name>text</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>Page Header</description>
+        <name>blockRow12WithDefPanel</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.BlockRow12WithDefPanelTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+                Tag by default h1
+            </description>
+            <name>colNum</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>Submit And Reset Buttons</description>
+        <name>submitResetButtons</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.SubmitResetButtonsTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+<!--
+    <tag>
+        <description>Page Header Boot strap</description>
+        <name>panel</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.PanelTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+                Tag by default "default"
+            </description>
+            <name>type</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                Page Header text
+            </description>
+            <name>text</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>Page Header Boot strap</description>
+        <name>panelHeading</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.PanelHeadingTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+
+    <tag>
+        <description>Page Header Boot strap</description>
+        <name>panelBody</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.PanelHeadingTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>-->
+</taglib>

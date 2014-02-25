@@ -6,6 +6,7 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
      xmlns:html="/WEB-INF/html"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -20,7 +21,7 @@
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <html:message message="${message}"/>
 
-    <html:pageHeader text="${labelTasksList}" tag="h2"/>
+    <sbAdmin:pageHeader text="${labelTasksList}" tag="h2"/>
 
     <!--@elvariable id="task" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
     <c:if test="${not empty task}">

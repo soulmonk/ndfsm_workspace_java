@@ -1,4 +1,4 @@
-package com.soulmonk.ndfsm.web.jstl.html;
+package com.soulmonk.ndfsm.web.jstl.sbAdmin;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -13,7 +13,7 @@ import java.util.Locale;
  * Date: 25.02.14
  * Time: 16:05
  */
-public class PageHeader extends TagSupport {
+public class PageHeaderTag extends TagSupport {
   private static final long serialVersionUID = 1L;
 
   private String tag = "h1";

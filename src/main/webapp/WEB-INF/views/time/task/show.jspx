@@ -5,6 +5,7 @@
 -->
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
      xmlns:html="/WEB-INF/html"
      version="2.0">
 
@@ -22,7 +23,7 @@
 
     <spring:url value="/time/task" var="editTaskUrl"/>
 
-    <html:pageHeader text="${labelTasksInfo}"/>
+    <sbAdmin:pageHeader text="${labelTasksInfo}"/>
 
     <div id="taskInfo">
         <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->

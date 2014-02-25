@@ -1,5 +1,7 @@
 package com.soulmonk.ndfsm.web.jstl.html;
 
+import com.soulmonk.ndfsm.web.form.Message;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
@@ -10,10 +12,10 @@ import java.io.IOException;
  * Date: 25.02.14
  * Time: 16:03
  */
-public class Message extends TagSupport {
+public class MessageTag extends TagSupport {
   private static final long serialVersionUID = 1L;
 
-  private com.soulmonk.ndfsm.web.form.Message message = null;
+  private Message message = null;
 
   @Override
   public int doStartTag() throws JspException {
@@ -28,10 +30,10 @@ public class Message extends TagSupport {
   }
 
   public void setMessage(Object message) {
-    if (message == null || message.getClass() != com.soulmonk.ndfsm.web.form.Message.class) {
+    if (message == null || message.getClass() != Message.class) {
       this.message = null;
     } else {
-      this.message = (com.soulmonk.ndfsm.web.form.Message)message;
+      this.message = (Message)message;
     }
   }
 }

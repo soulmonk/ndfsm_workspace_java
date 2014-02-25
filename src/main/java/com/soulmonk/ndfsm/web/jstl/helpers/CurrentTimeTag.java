@@ -13,7 +13,7 @@ import java.util.Locale;
  * Date: 20.09.13
  * Time: 8:02
  */
-public class CurrentTime extends TagSupport {
+public class CurrentTimeTag extends TagSupport {
   private static final long serialVersionUID = 1L;
 
   @Override
