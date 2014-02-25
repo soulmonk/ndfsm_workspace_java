@@ -20,6 +20,7 @@
     <spring:message code="label_form_save" var="labelFormSave"/>
     <spring:message code="label_form_reset" var="labelFormReset"/>
 
+    <!--@elvariable id="service" type="com.soulmonk.ndfsm.domain.time.Services"-->
     <spring:eval expression="service.id == null ? labelServiceNew:labelServiceUpdate" var="formTitle"/>
 
     <div class="row">
@@ -42,6 +43,7 @@
 
                                 <form:form modelAttribute="service" id="serviceUpdateForm" method="post" role="form">
                                     <div>
+                                        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                                         <c:if test="${not empty message}">
                                             <div id="message"
                                                  class="alert alert-${message.type}">${message.message}</div>

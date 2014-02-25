@@ -3,7 +3,7 @@
   Date: 11.07.13
   Time: 7:51
 -->
-<div xmlns:jsp="http://java.sun.com/JSP/Page"
+<div id="page-wrapper" xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
      version="2.0">
@@ -21,11 +21,13 @@
 
     <spring:url value="/services" var="editServicetUrl"/>
 
+    <!--@elvariable id="service" type="com.soulmonk.ndfsm.domain.time.Services"-->
     <spring:eval expression="service.url == '' ? labelNotSet:service.url" var="serviceUrlValue"/>
 
     <h1>${labelServicesInfo}</h1>
 
     <div id="serviceInfo">
+        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
         <c:if test="${not empty message}">
             <div id="message" class="alert alert-${message.type}">${message.message}</div>
         </c:if>
