@@ -15,6 +15,7 @@
     <spring:message code="label_comment_statuses_list" var="labelCommentStatusesList"/>
     <spring:message code="label_comment_status_name" var="labelCommentStatusName"/>
     <spring:message code="label_comment_status_color" var="labelCommentStatusColor"/>
+    <spring:message code="label_actions" var="labelActions"/>
 
     <spring:url value="/time/comment_statuses" var="showCommentStatusUrl"/>
     <spring:url value="/time/comment_statuses/delete" var="removeCommentStatusUrl"/>
@@ -34,9 +35,7 @@
                         <th>#</th>
                         <th>${labelCommentStatusName}</th>
                         <th>${labelCommentStatusColor}</th>
-                        <th>
-                            <jsp:text/>
-                        </th>
+                        <th>${labelActions}</th>
                     </tr>
                     </thead>
                     <tbody>

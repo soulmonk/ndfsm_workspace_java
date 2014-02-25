@@ -15,6 +15,7 @@
     <spring:message code="label_projects_list" var="labelProjectsList"/>
     <spring:message code="label_project_name" var="labelProjectName"/>
     <spring:message code="label_project_service" var="labelProjectService"/>
+    <spring:message code="label_actions" var="labelActions"/>
 
     <spring:url value="/time/project" var="showProjectsUrl"/>
     <spring:url value="/time/project/delete" var="removeProjectUrl"/>
@@ -33,7 +34,7 @@
                         <th>#</th>
                         <th>${labelProjectName}</th>
                         <th>${labelProjectService}</th>
-
+                        <th>${labelActions}</th>
                     </tr>
                     </thead>
                     <tbody>

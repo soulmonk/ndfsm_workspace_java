@@ -18,6 +18,7 @@
     <spring:message code="label_comment_status" var="labelCommentStatus"/>
     <spring:message code="label_comment_from" var="labelCommentFrom"/>
     <spring:message code="label_comment_to" var="labelCommentTo"/>
+    <spring:message code="label_actions" var="labelActions"/>
 
     <spring:url value="/time/comment" var="showCommentsUrl"/>
     <spring:url value="/time/comment/delete" var="removeCommentUrl"/>
@@ -38,6 +39,7 @@
                         <th>${labelCommentTo}</th>
                         <th>${labelCommentTask}</th>
                         <th>${labelCommentStatus}</th>
+                        <th>${labelActions}</th>
                     </tr>
                     </thead>
                     <tbody>

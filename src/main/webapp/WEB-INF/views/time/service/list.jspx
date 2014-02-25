@@ -15,6 +15,7 @@
     <spring:message code="label_services_list" var="labelServicesList"/>
     <spring:message code="label_service_name" var="labelServiceName"/>
     <spring:message code="label_service_url" var="labelServiceUrl"/>
+    <spring:message code="label_actions" var="labelActions"/>
 
     <spring:url value="/time/service" var="showServiceUrl"/>
     <spring:url value="/time/service/delete" var="removeServiceUrl"/>
@@ -34,6 +35,7 @@
                         <th>#</th>
                         <th>${labelServiceName}</th>
                         <th>${labelServiceUrl}</th>
+                        <th>${labelActions}</th>
                     </tr>
                     </thead>
                     <tbody>

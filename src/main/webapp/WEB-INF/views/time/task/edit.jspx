@@ -24,7 +24,7 @@
     <spring:eval expression="task.id == null ? labelTaskNew:labelTaskUpdate" var="formTitle"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>
-
+    <sbAdmin:blockRow12WithDefPanel>
     <div id="taskUpdate">
         <form:form modelAttribute="task" id="taskUpdateForm" method="post" cssClass="form-horizontal" rol="form">
             <div>
@@ -82,4 +82,5 @@
             <sbAdmin:submitResetButtons/>
         </form:form>
     </div>
+    </sbAdmin:blockRow12WithDefPanel>
 </div>

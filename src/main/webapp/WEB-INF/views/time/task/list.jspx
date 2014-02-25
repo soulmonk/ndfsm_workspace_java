@@ -15,14 +15,16 @@
     <spring:message code="label_tasks_list" var="labelTasksList"/>
     <spring:message code="label_task_name" var="labelTaskName"/>
     <spring:message code="label_task_project" var="labelTaskProject"/>
+    <spring:message code="label_actions" var="labelActions"/>
 
-    <spring:url value="/task" var="showTasksUrl"/>
+    <spring:url value="/time/task" var="showTasksUrl"/>
+    <spring:url value="/time/task/delete" var="removeTasksUrl"/>
 
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <html:message message="${message}"/>
 
     <sbAdmin:pageHeader text="${labelTasksList}" tag="h2"/>
-
+    <sbAdmin:blockRow12WithDefPanel>
     <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
     <c:if test="${not empty tasks}">
         <div>
@@ -32,6 +34,7 @@
                     <th>#</th>
                     <th>${labelTaskName}</th>
                     <th>${labelTaskProject}</th>
+                    <th>${labelActions}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,6 +44,8 @@
                         <td><a href="${showTasksUrl}/${task.id}">${task.id}</a></td>
                         <td>${task.name}</td>
                         <td>${task.project.name}</td>
+                        <td><a href="#" class="btn btn-default"
+                               onclick="confirmDelete('${removeServiceUrl}/${service.id}'); return false;">Delete</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -48,6 +53,6 @@
         </div>
         <div id="pager"></div>
     </c:if>
-
+    </sbAdmin:blockRow12WithDefPanel>
 
 </div>
