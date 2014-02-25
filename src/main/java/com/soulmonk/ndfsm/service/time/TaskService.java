@@ -4,7 +4,7 @@ import com.soulmonk.ndfsm.domain.time.Task;
 
 import java.util.List;
 
-public interface TasksService {
+public interface TaskService {
   public List<Task> findAll();
 
   public Task findById(Long id);

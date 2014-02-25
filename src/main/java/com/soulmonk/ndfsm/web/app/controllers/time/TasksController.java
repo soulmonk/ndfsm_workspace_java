@@ -2,8 +2,8 @@ package com.soulmonk.ndfsm.web.app.controllers.time;
 
 import com.soulmonk.ndfsm.domain.time.Project;
 import com.soulmonk.ndfsm.domain.time.Task;
-import com.soulmonk.ndfsm.service.time.ProjectsService;
-import com.soulmonk.ndfsm.service.time.TasksService;
+import com.soulmonk.ndfsm.service.time.ProjectService;
+import com.soulmonk.ndfsm.service.time.TaskService;
 import com.soulmonk.ndfsm.web.form.Message;
 import com.soulmonk.ndfsm.web.util.UrlUtil;
 import org.slf4j.Logger;
@@ -36,10 +36,10 @@ public class TasksController {
   final Logger logger = LoggerFactory.getLogger(TasksController.class);
 
   @Autowired
-  private TasksService tasksService;
+  private TaskService taskService;
 
   @Autowired
-  private ProjectsService projectsService;
+  private ProjectService projectService;
 
   @Autowired
   private MessageSource messageSource;
@@ -48,7 +48,7 @@ public class TasksController {
   public String list(Model uiModel) {
     logger.info("Listing tasks");
 
-    List<Task> tasks = tasksService.findAll();
+    List<Task> tasks = taskService.findAll();
     uiModel.addAttribute("tasks", tasks);
 
     logger.info("No. of tasks: " + tasks.size());
@@ -62,7 +62,7 @@ public class TasksController {
     Task task = new Task();
     task.setProject(new Project());
     uiModel.addAttribute("task", task);
-    uiModel.addAttribute("projects", projectsService.findAll());
+    uiModel.addAttribute("projects", projectService.findAll());
     return "time/tasks/create";
   }
 
@@ -78,7 +78,7 @@ public class TasksController {
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_save_success", new Object[]{}, locale)));
 
-    tasksService.save(task);
+    taskService.save(task);
     logger.info("Task id: " + task.getId());
     return "redirect:/time/tasks/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
   }
@@ -94,7 +94,7 @@ public class TasksController {
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("task_update_success", new Object[]{}, locale)));
 
-    tasksService.save(task);
+    taskService.save(task);
 
     logger.info("Update Task id: " + task.getId());
 
@@ -103,22 +103,22 @@ public class TasksController {
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Task task = tasksService.findById(id);
+    Task task = taskService.findById(id);
     uiModel.addAttribute("task", task);
     return "time/tasks/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    Task task = tasksService.findById(id);
+    Task task = taskService.findById(id);
     uiModel.addAttribute("task", task);
-    uiModel.addAttribute("projects", projectsService.findAll());
+    uiModel.addAttribute("projects", projectService.findAll());
     return "time/tasks/update";
   }
 
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
-    tasksService.delete(id);
+    taskService.delete(id);
     return "redirect:/time/tasks/list";
   }
 }

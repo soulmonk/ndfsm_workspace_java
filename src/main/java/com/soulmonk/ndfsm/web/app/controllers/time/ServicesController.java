@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
 import com.soulmonk.ndfsm.domain.time.Services;
-import com.soulmonk.ndfsm.service.time.ServicesService;
+import com.soulmonk.ndfsm.service.time.ServiceService;
 import com.soulmonk.ndfsm.web.form.Message;
 import com.soulmonk.ndfsm.web.util.UrlUtil;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ public class ServicesController {
   final Logger logger = LoggerFactory.getLogger(ServicesController.class);
 
   @Autowired
-  private ServicesService servicesService;
+  private ServiceService serviceService;
 
   @Autowired
   private MessageSource messageSource;
@@ -41,7 +41,7 @@ public class ServicesController {
   public String list(Model uiModel) {
     logger.info("Listing services");
 
-    List<Services> services = servicesService.findAll();
+    List<Services> services = serviceService.findAll();
     uiModel.addAttribute("services", services);
 
     logger.info("No. of services: " + services.size());
@@ -67,7 +67,7 @@ public class ServicesController {
     }
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("service_save_success", new Object[]{}, locale)));
-    servicesService.save(service);
+    serviceService.save(service);
     logger.info("Services id: " + service.getId());
     return "redirect:/time/services/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
   }
@@ -83,21 +83,21 @@ public class ServicesController {
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("service_update_success", new Object[]{}, locale)));
 
-    servicesService.save(service);
+    serviceService.save(service);
 
     return "redirect:/time/services/" + UrlUtil.encodeUrlPathSegment(service.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Services service = servicesService.findById(id);
+    Services service = serviceService.findById(id);
     uiModel.addAttribute("service", service);
     return "time/services/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    uiModel.addAttribute("service", servicesService.findById(id));
+    uiModel.addAttribute("service", serviceService.findById(id));
     return "time/services/update";
   }
 }

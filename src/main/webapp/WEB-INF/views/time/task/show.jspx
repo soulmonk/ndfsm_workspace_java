@@ -19,18 +19,19 @@
     <spring:message code="label_task_external_id" var="labelTaskExternalId"/>
     <spring:message code="label_task_summary" var="labelTaskSummary"/>
 
-
     <spring:message code="label_not_set" var="labelNotSet"/>
 
-    <spring:url value="/task" var="editTaskUrl"/>
+    <spring:url value="/time/task" var="editTaskUrl"/>
 
-    <h1>${labelTasksInfo}</h1>
+    <html:pageHeader text="${labelTasksInfo}"/>
 
     <div id="taskInfo">
+        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
         <c:if test="${not empty message}">
             <div id="message" class="alert alert-${message.type}">${message.message}</div>
         </c:if>
 
+        <!--@elvariable id="task" type="com.soulmonk.ndfsm.domain.time.Task"-->
         <table class="table table-hover">
             <tr>
                 <td><strong>${labelTaskName}</strong></td>

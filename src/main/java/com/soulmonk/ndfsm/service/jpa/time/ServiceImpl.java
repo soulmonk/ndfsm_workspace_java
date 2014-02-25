@@ -2,8 +2,8 @@ package com.soulmonk.ndfsm.service.jpa.time;
 
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.Services;
-import com.soulmonk.ndfsm.repository.time.ServicesRepository;
-import com.soulmonk.ndfsm.service.time.ServicesService;
+import com.soulmonk.ndfsm.repository.time.ServiceRepository;
+import com.soulmonk.ndfsm.service.time.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,36 +13,36 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("servicesService")
+@Service("serviceService")
 @Repository
 @Transactional
-public class ServicesImpl implements ServicesService {
+public class ServiceImpl implements ServiceService {
 
   @Autowired
-  private ServicesRepository servicesRepository;
+  private ServiceRepository serviceRepository;
 
   @Override
   @Transactional(readOnly = true)
   public List<Services> findAll() {
-    return Lists.newArrayList(servicesRepository.findAll());
+    return Lists.newArrayList(serviceRepository.findAll());
   }
 
   @Override
   @Transactional(readOnly = true)
   public Services findById(Long id) {
-    return servicesRepository.findOne(id);
+    return serviceRepository.findOne(id);
   }
 
   @Override
   @Transactional(readOnly = true)
   public Services save(Services service) {
-    return servicesRepository.saveAndFlush(service);
+    return serviceRepository.saveAndFlush(service);
   }
 
   @Override
   @Transactional(readOnly = true)
   public Page<Services> findAllByPage(Pageable pageable) {
-    return servicesRepository.findAll(pageable);
+    return serviceRepository.findAll(pageable);
   }
 
 }

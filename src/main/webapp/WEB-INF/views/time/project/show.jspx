@@ -22,7 +22,7 @@
 
     <spring:url value="/project" var="editProjectUrl"/>
 
-    <h1>${labelProjectsInfo}</h1>
+    <html:pageHeader text="${labelProjectsInfo}"/>
     <!--@elvariable id="project" type="com.valpio.soulmonk.domain.Projects"-->
     <div id="projectInfo">
         <c:if test="${not empty message}">

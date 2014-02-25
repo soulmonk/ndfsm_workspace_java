@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.security;
 
 import com.soulmonk.ndfsm.domain.user.User;
-import com.soulmonk.ndfsm.repository.user.UsersRepository;
+import com.soulmonk.ndfsm.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,11 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailsImpl implements UserDetailsService {
 
   @Autowired
-  private UsersRepository usersRepository;
+  private UserRepository userRepository;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = usersRepository.findByLogin(username);
+    User user = userRepository.findByLogin(username);
 
     if (user == null) {
       throw new UsernameNotFoundException("No such user: " + username);

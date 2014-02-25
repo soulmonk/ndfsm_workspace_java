@@ -52,14 +52,15 @@
             </div>
 
             <div class="form-group">
-                <form:label path="projectsByProjectId.id" cssClass="control-label" cssErrorClass="error">
+                <form:label path="project.id" cssClass="control-label" cssErrorClass="error">
                     ${labelTaskProject}
                 </form:label>
-                <form:select path="projectsByProjectId.id" cssClass="form-control" cssErrorClass="error">
-                    <option value=""></option>
+                <form:select path="project.id" cssClass="form-control" cssErrorClass="error">
+                    <option value=""><jsp:text/></option>
+                    <!--@elvariable id="project" type="java.util.List<com.soulmonk.ndfsm.domain.time.Project>"-->
                     <c:forEach items="${project}" var="project">
                         <c:choose>
-                            <c:when test="${project.id == task.projectsByProjectId.id}">
+                            <c:when test="${project.id == task.project.id}">
                                 <option value="${project.id}" selected="true">${project.name}</option>
                             </c:when>
                             <c:otherwise>

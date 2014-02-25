@@ -4,7 +4,7 @@ import com.soulmonk.ndfsm.domain.time.CommentStatus;
 
 import java.util.List;
 
-public interface CommentStatusesService {
+public interface CommentStatusService {
   public List<CommentStatus> findAll();
 
   public CommentStatus findById(Long id);

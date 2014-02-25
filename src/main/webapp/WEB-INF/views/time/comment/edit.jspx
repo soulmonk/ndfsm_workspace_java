@@ -52,7 +52,7 @@
                     ${labelCommentTask}
                 </form:label>
                 <form:select path="tasksByTaskId.id" cssClass="form-control" cssErrorClass="error">
-                    <option value=""></option>
+                    <option value=""><jsp:text/></option>
                     <!--@elvariable id="task" type="com.valpio.soulmonk.domain.Tasks"-->
                     <c:forEach items="${task}" var="task">
                         <c:choose>
@@ -75,7 +75,7 @@
                     ${labelCommentStatus}
                 </form:label>
                 <form:select path="commentStatusesByStatusId.id" cssClass="form-control" cssErrorClass="error">
-                    <option value=""></option>
+                    <option value=""><jsp:text/></option>
                     <!--@elvariable id="commentStatus" type="com.valpio.soulmonk.domain.CommentStatuses"-->
                     <c:forEach items="${commentStatus}" var="commentStatus">
                         <c:choose>

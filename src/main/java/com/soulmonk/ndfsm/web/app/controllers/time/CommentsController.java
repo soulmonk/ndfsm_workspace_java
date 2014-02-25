@@ -3,9 +3,9 @@ package com.soulmonk.ndfsm.web.app.controllers.time;
 import com.soulmonk.ndfsm.domain.time.Comment;
 import com.soulmonk.ndfsm.domain.time.CommentStatus;
 import com.soulmonk.ndfsm.domain.time.Task;
-import com.soulmonk.ndfsm.service.time.CommentStatusesService;
-import com.soulmonk.ndfsm.service.time.CommentsService;
-import com.soulmonk.ndfsm.service.time.TasksService;
+import com.soulmonk.ndfsm.service.time.CommentService;
+import com.soulmonk.ndfsm.service.time.CommentStatusService;
+import com.soulmonk.ndfsm.service.time.TaskService;
 import com.soulmonk.ndfsm.web.form.Message;
 import com.soulmonk.ndfsm.web.util.UrlUtil;
 import org.slf4j.Logger;
@@ -37,13 +37,13 @@ public class CommentsController {
   final Logger logger = LoggerFactory.getLogger(CommentsController.class);
 
   @Autowired
-  private CommentsService commentsService;
+  private CommentService commentService;
 
   @Autowired
-  private TasksService tasksService;
+  private TaskService taskService;
 
   @Autowired
-  private CommentStatusesService commentStatusesService;
+  private CommentStatusService commentStatusService;
 
   @Autowired
   private MessageSource messageSource;
@@ -52,7 +52,7 @@ public class CommentsController {
   public String list(Model uiModel) {
     logger.info("Listing Comment");
 
-    List<Comment> comments = commentsService.findAll();
+    List<Comment> comments = commentService.findAll();
     uiModel.addAttribute("comments", comments);
 
     logger.info("No. of comments: " + comments.size());
@@ -68,8 +68,8 @@ public class CommentsController {
     comment.setTask(new Task());
 
     uiModel.addAttribute("comment", comment);
-    uiModel.addAttribute("tasks", tasksService.findAll());
-    uiModel.addAttribute("commentStatuses", commentStatusesService.findAll());
+    uiModel.addAttribute("tasks", taskService.findAll());
+    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
     return "time/comments/create";
   }
 
@@ -88,7 +88,7 @@ public class CommentsController {
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("comment_save_success", new Object[]{}, locale)));
 
-    commentsService.save(comment);
+    commentService.save(comment);
     logger.info("Comment id: " + comment.getId());
 
     return "redirect:/time/comments/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
@@ -107,7 +107,7 @@ public class CommentsController {
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message("success", messageSource.getMessage("comment_update_success", new Object[]{}, locale)));
 
-    commentsService.save(comment);
+    commentService.save(comment);
 
     logger.info("Update Comment id: " + comment.getId());
 
@@ -116,16 +116,16 @@ public class CommentsController {
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Comment comment = commentsService.findById(id);
+    Comment comment = commentService.findById(id);
     uiModel.addAttribute("comment", comment);
     return "time/comments/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    uiModel.addAttribute("comment", commentsService.findById(id));
-    uiModel.addAttribute("tasks", tasksService.findAll());
-    uiModel.addAttribute("commentStatuses", commentStatusesService.findAll());
+    uiModel.addAttribute("comment", commentService.findById(id));
+    uiModel.addAttribute("tasks", taskService.findAll());
+    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
     return "time/comments/update";
   }
 }

@@ -3,9 +3,9 @@ package com.soulmonk.ndfsm.service.jpa.user;
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.user.User;
 import com.soulmonk.ndfsm.domain.user.UserRole;
-import com.soulmonk.ndfsm.repository.user.UsersRepository;
-import com.soulmonk.ndfsm.service.user.RolesService;
-import com.soulmonk.ndfsm.service.user.UsersService;
+import com.soulmonk.ndfsm.repository.user.UserRepository;
+import com.soulmonk.ndfsm.service.user.RoleService;
+import com.soulmonk.ndfsm.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -15,16 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.inject.Inject;
 import java.util.List;
 
-@Service("usersService")
+@Service("userService")
 @Repository
 @Transactional
-public class UsersImpl implements UsersService {
+public class UserImpl implements UserService {
 
   @Autowired
-  private UsersRepository usersRepository;
+  private UserRepository userRepository;
 
   @Autowired
-  private RolesService rolesService;
+  private RoleService roleService;
 
   @Inject
   private PasswordEncoder passwordEncoder;
@@ -32,13 +32,13 @@ public class UsersImpl implements UsersService {
   @Override
   @Transactional(readOnly = true)
   public List<User> findAll() {
-    return Lists.newArrayList(usersRepository.findAll());
+    return Lists.newArrayList(userRepository.findAll());
   }
 
   @Override
   @Transactional(readOnly = true)
   public User findById(Long id) {
-    return usersRepository.findOne(id);
+    return userRepository.findOne(id);
   }
 
   @Override
@@ -47,18 +47,18 @@ public class UsersImpl implements UsersService {
     if (user.getId() == null) {
       if (user.getUserRoles().isEmpty()) {
         UserRole userRole = new UserRole();
-        userRole.setRole(rolesService.findByAuthority("ROLE_USER"));
+        userRole.setRole(roleService.findByAuthority("ROLE_USER"));
         userRole.setUser(user);
         user.getUserRoles().add(userRole);
       }
       user.setPassword(passwordEncoder.encode(user.getPassword()));
     }
-    return usersRepository.saveAndFlush(user);
+    return userRepository.saveAndFlush(user);
   }
 
   @Override
   public User findByLogin(String login) {
-    return usersRepository.findByLogin(login);
+    return userRepository.findByLogin(login);
   }
 
 }

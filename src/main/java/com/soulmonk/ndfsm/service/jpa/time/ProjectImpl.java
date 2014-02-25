@@ -2,8 +2,8 @@ package com.soulmonk.ndfsm.service.jpa.time;
 
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.Project;
-import com.soulmonk.ndfsm.service.time.ProjectsService;
-import com.soulmonk.ndfsm.repository.time.ProjectsRepository;
+import com.soulmonk.ndfsm.repository.time.ProjectRepository;
+import com.soulmonk.ndfsm.service.time.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -11,30 +11,30 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("projectsService")
+@Service("projectService")
 @Repository
 @Transactional
-public class ProjectsImpl implements ProjectsService {
+public class ProjectImpl implements ProjectService {
 
   @Autowired
-  private ProjectsRepository projectsRepository;
+  private ProjectRepository projectRepository;
 
   @Override
   @Transactional(readOnly = true)
   public List<Project> findAll() {
-    return Lists.newArrayList(projectsRepository.findAll());
+    return Lists.newArrayList(projectRepository.findAll());
   }
 
   @Override
   @Transactional(readOnly = true)
   public Project findById(Long id) {
-    return projectsRepository.findOne(id);
+    return projectRepository.findOne(id);
   }
 
   @Override
   @Transactional(readOnly = true)
   public Project save(Project project) {
-    return projectsRepository.saveAndFlush(project);
+    return projectRepository.saveAndFlush(project);
   }
 
 }

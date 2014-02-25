@@ -4,7 +4,7 @@ import com.soulmonk.ndfsm.domain.time.Project;
 
 import java.util.List;
 
-public interface ProjectsService {
+public interface ProjectService {
   public List<Project> findAll();
 
   public Project findById(Long id);

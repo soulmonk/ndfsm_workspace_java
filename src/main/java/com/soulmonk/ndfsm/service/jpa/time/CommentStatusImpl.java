@@ -2,8 +2,8 @@ package com.soulmonk.ndfsm.service.jpa.time;
 
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.CommentStatus;
-import com.soulmonk.ndfsm.repository.time.CommentStatusesRepository;
-import com.soulmonk.ndfsm.service.time.CommentStatusesService;
+import com.soulmonk.ndfsm.repository.time.CommentStatusRepository;
+import com.soulmonk.ndfsm.service.time.CommentStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -11,13 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("commentStatusesService")
+@Service("commentStatusService")
 @Repository
 @Transactional
-public class CommentStatusesImpl implements CommentStatusesService {
+public class CommentStatusImpl implements CommentStatusService {
 
   @Autowired
-  private CommentStatusesRepository commentStatusRepository;
+  private CommentStatusRepository commentStatusRepository;
 
   @Override
   @Transactional(readOnly = true)

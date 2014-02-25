@@ -4,7 +4,7 @@ import com.soulmonk.ndfsm.domain.user.User;
 
 import java.util.List;
 
-public interface UsersService {
+public interface UserService {
   public List<User> findAll();
 
   public User findById(Long id);

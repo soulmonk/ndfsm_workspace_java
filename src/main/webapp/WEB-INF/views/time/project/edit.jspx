@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
   User: soulmonk
   Date: 11.07.13
@@ -18,6 +19,7 @@
     <spring:message code="label_project_name" var="labelProjectName"/>
     <spring:message code="label_project_service" var="labelProjectService"/>
 
+    <!--@elvariable id="project" type="com.soulmonk.ndfsm.domain.time.Project"-->
     <spring:eval expression="project.id == null ? labelProjectNew:labelProjectUpdate" var="formTitle"/>
 
     <html:pageHeader text="${formTitle}"/>
@@ -25,6 +27,7 @@
     <div id="projectUpdate">
         <form:form modelAttribute="project" id="projectUpdateForm" method="post" cssClass="form-horizontal">
             <div>
+                <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                 <c:if test="${not empty message}">
                     <div id="message" class="alert alert-${message.type}">${message.message}</div>
                 </c:if>
@@ -41,14 +44,15 @@
             </div>
 
             <div class="form-group">
-                <form:label path="servicesByServiceId.id" cssClass="control-label" cssErrorClass="error">
+                <form:label path="service.id" cssClass="control-label" cssErrorClass="error">
                     ${labelProjectService}
                 </form:label>
-                <form:select path="servicesByServiceId.id" cssClass="form-control" cssErrorClass="error">
-                    <option value=""></option>
+                <form:select path="service.id" cssClass="form-control" cssErrorClass="error">
+                    <option value=""><jsp:text/></option>
+                    <!--@elvariable id="services" type="java.util.List<com.soulmonk.ndfsm.domain.time.Services>"-->
                     <c:forEach items="${services}" var="service">
                         <c:choose>
-                            <c:when test="${service.id == project.servicesByServiceId.id}">
+                            <c:when test="${service.id == project.service.id}">
                                 <option value="${service.id}" selected="true">${service.name}</option>
                             </c:when>
                             <c:otherwise>
@@ -58,7 +62,7 @@
                     </c:forEach>
                 </form:select>
                 <div>
-                    <form:errors path="servicesByServiceId.id" cssClass="error" />
+                    <form:errors path="service.id" cssClass="error" />
                 </div>
             </div>
 

@@ -4,7 +4,7 @@ import com.soulmonk.ndfsm.domain.user.Role;
 
 import java.util.List;
 
-public interface RolesService {
+public interface RoleService {
   public List<Role> findAll();
 
   public Role findById(Long id);

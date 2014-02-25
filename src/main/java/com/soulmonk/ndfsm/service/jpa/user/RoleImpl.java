@@ -2,8 +2,8 @@ package com.soulmonk.ndfsm.service.jpa.user;
 
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.user.Role;
-import com.soulmonk.ndfsm.repository.user.RolesRepository;
-import com.soulmonk.ndfsm.service.user.RolesService;
+import com.soulmonk.ndfsm.repository.user.RoleRepository;
+import com.soulmonk.ndfsm.service.user.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -11,35 +11,35 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("rolesService")
+@Service("roleService")
 @Repository
 @Transactional
-public class RolesImpl implements RolesService {
+public class RoleImpl implements RoleService {
 
   @Autowired
-  private RolesRepository rolesRepository;
+  private RoleRepository roleRepository;
 
   @Override
   @Transactional(readOnly = true)
   public List<Role> findAll() {
-    return Lists.newArrayList(rolesRepository.findAll());
+    return Lists.newArrayList(roleRepository.findAll());
   }
 
   @Override
   @Transactional(readOnly = true)
   public Role findById(Long id) {
-    return rolesRepository.findOne(id);
+    return roleRepository.findOne(id);
   }
 
   @Override
   public Role findByAuthority(String authority) {
-    return rolesRepository.findByAuthority(authority);
+    return roleRepository.findByAuthority(authority);
   }
 
   @Override
   @Transactional(readOnly = true)
   public Role save(Role role) {
-    return rolesRepository.saveAndFlush(role);
+    return roleRepository.saveAndFlush(role);
   }
 
 }
