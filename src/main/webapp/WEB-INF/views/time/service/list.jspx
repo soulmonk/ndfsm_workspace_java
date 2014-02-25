@@ -60,10 +60,4 @@
         </c:if>
     </sbAdmin:blockRow12WithDefPanel>
     <!-- /.row -->
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#list').dataTable();
-        });
-    </script>
 </div>

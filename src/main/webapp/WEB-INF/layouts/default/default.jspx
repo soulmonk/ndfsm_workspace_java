@@ -21,6 +21,10 @@
     <spring:url value="/resources/font-awesome/css/font-awesome.css" var="font_awesome"/>
     <link rel="stylesheet" type="text/css" media="screen" href="${font_awesome}"/>
 
+    <!-- Page-Level Plugin CSS - Tables -->
+    <spring:url value="/resources/stylesheet/plugins/dataTables/dataTables.bootstrap.css" var="dataTables_bootstrap_css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${dataTables_bootstrap_css}"/>
+
     <!-- Page-Level Plugin CSS - Dashboard -->
     <spring:url value="/resources/stylesheets/plugins/morris/morris-0.4.3.min.css" var="morris"/>
     <link rel="stylesheet" type="text/css" media="screen" href="${morris}"/>

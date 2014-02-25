@@ -23,8 +23,8 @@
 
     <sbAdmin:pageHeader text="${labelTasksList}" tag="h2"/>
 
-    <!--@elvariable id="task" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
-    <c:if test="${not empty task}">
+    <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
+    <c:if test="${not empty tasks}">
         <div>
             <table id="list" class="table table-hover table-bordered">
                 <thead>
@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
 
-                <c:forEach items="${task}" var="task">
+                <c:forEach items="${tasks}" var="task">
                     <tr>
                         <td><a href="${showTasksUrl}/${task.id}">${task.id}</a></td>
                         <td>${task.name}</td>

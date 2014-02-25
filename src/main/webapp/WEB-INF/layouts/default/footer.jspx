@@ -22,4 +22,22 @@
     <!-- SB Admin Scripts - Include with every page -->
     <spring:url value="/resources/scripts/sb-admin.js" var="sb_admin"/>
     <script type="text/javascript" src="${sb_admin}"><jsp:text/></script>
+
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <spring:url value="/resources/scripts/plugins/dataTables/jquery.dataTables.js" var="jquery_dataTables_js"/>
+    <script type="text/javascript" src="${jquery_dataTables_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/plugins/dataTables/dataTables.bootstrap.js" var="dataTables_bootstrap_js"/>
+    <script type="text/javascript" src="${dataTables_bootstrap_js}"><jsp:text/></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <!--<script type="text/javascript">
+        $(document).ready(function () {
+            (function(){
+                var elements = $('table#list');
+                if (elements.length > 0) {
+                    $('#list').dataTable();
+                }
+            })();
+        });
+    </script>-->
 </div>
