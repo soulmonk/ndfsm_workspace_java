@@ -14,4 +14,6 @@ public interface ServiceService {
   public Service save(Service service);
 
   public Page<Service> findAllByPage(Pageable pageable);
+
+  void delete(Long id);
 }

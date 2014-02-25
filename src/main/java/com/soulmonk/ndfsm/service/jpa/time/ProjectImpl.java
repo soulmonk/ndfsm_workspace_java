@@ -37,4 +37,9 @@ public class ProjectImpl implements ProjectService {
     return projectRepository.saveAndFlush(project);
   }
 
+  @Override
+  public void delete(Long id) {
+    projectRepository.delete(id);
+  }
+
 }

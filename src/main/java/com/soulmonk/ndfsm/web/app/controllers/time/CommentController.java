@@ -128,4 +128,10 @@ public class CommentController {
     uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
     return "time/comment/update";
   }
+
+  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+  public String delete(@PathVariable("id") Long id, Model uiModel) {
+    commentService.delete(id);
+    return "redirect:/time/comment/list";
+  }
 }

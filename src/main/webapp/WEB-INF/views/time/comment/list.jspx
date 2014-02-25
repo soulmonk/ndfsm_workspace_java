@@ -19,7 +19,8 @@
     <spring:message code="label_comment_from" var="labelCommentFrom"/>
     <spring:message code="label_comment_to" var="labelCommentTo"/>
 
-    <spring:url value="/comment" var="showCommentsUrl"/>
+    <spring:url value="/time/comment" var="showCommentsUrl"/>
+    <spring:url value="/time/comment/delete" var="removeCommentUrl"/>
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <html:message message="${message}"/>
 
@@ -48,6 +49,8 @@
                             <td>${comment.to}</td>
                             <td>${comment.task.name}</td>
                             <td>${comment.commentStatus.name}</td>
+                            <td><a href="#" class="btn btn-default"
+                                   onclick="confirmDelete('${removeCommentUrl}/${comment.id}'); return false;">Delete</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

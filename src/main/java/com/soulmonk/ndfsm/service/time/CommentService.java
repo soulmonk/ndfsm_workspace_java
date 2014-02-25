@@ -10,4 +10,6 @@ public interface CommentService {
   public Comment findById(Long id);
 
   public Comment save(Comment comment);
+
+  public void delete(Long id);
 }

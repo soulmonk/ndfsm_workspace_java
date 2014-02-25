@@ -100,4 +100,10 @@ public class ServiceController {
     uiModel.addAttribute("service", serviceService.findById(id));
     return "time/service/update";
   }
+
+  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+  public String delete(@PathVariable("id") Long id, Model uiModel) {
+    serviceService.delete(id);
+    return "redirect:/time/service/list";
+  }
 }

@@ -16,7 +16,8 @@
     <spring:message code="label_project_name" var="labelProjectName"/>
     <spring:message code="label_project_service" var="labelProjectService"/>
 
-    <spring:url value="/project" var="showProjectsUrl"/>
+    <spring:url value="/time/project" var="showProjectsUrl"/>
+    <spring:url value="/time/project/delete" var="removeProjectUrl"/>
 
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <html:message message="${message}"/>
@@ -41,6 +42,8 @@
                             <td><a href="${showProjectsUrl}/${project.id}">${project.id}</a></td>
                             <td>${project.name}</td>
                             <td>${project.service.name}</td>
+                            <td><a href="#" class="btn btn-default"
+                                   onclick="confirmDelete('${removeProjectUrl}/${comment.id}'); return false;">Delete</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

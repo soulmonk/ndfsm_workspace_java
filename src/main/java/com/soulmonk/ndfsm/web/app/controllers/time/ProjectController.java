@@ -115,4 +115,10 @@ public class ProjectController {
     uiModel.addAttribute("services", serviceService.findAll());
     return "time/project/update";
   }
+
+  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+  public String delete(@PathVariable("id") Long id, Model uiModel) {
+    projectService.delete(id);
+    return "redirect:/time/project/list";
+  }
 }

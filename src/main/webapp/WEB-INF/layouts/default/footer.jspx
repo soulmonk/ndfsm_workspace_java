@@ -12,8 +12,11 @@
     <spring:url value="/resources/scripts/plugins/metisMenu/jquery.metisMenu.js" var="jquery_metisMenu"/>
     <script type="text/javascript" src="${jquery_metisMenu}"><jsp:text/></script>
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <!-- Standart -->
+    <spring:url value="/resources/scripts/standard.js" var="standard_url" />
+    <script type="text/javascript" src="${standard_url}"><jsp:text/></script>
 
+    <!-- Page-Level Plugin Scripts - Dashboard -->
     <spring:url value="/resources/scripts/plugins/morris/raphael-2.1.0.min.js" var="raphael"/>
     <script type="text/javascript" src="${raphael}"><jsp:text/></script>
     <spring:url value="/resources/scripts/plugins/morris/morris.js" var="morris"/>

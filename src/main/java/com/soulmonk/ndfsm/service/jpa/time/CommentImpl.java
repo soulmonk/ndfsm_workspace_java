@@ -37,4 +37,9 @@ public class CommentImpl implements CommentService {
     return commentRepository.saveAndFlush(comment);
   }
 
+  @Override
+  public void delete(Long id) {
+     commentRepository.delete(id);
+  }
+
 }

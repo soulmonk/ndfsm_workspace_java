@@ -44,4 +44,8 @@ public class ServiceImpl implements ServiceService {
     return serviceRepository.findAll(pageable);
   }
 
+  @Override
+  public void delete(Long id) {
+    serviceRepository.delete(id);
+  }
 }
