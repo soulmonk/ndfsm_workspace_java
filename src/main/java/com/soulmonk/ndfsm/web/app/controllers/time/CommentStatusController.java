@@ -29,9 +29,9 @@ import java.util.Locale;
  */
 @Controller
 @RequestMapping(value = "/time/comment_status")
-public class CommentStatusesController {
+public class CommentStatusController {
 
-  final Logger logger = LoggerFactory.getLogger(CommentStatusesController.class);
+  final Logger logger = LoggerFactory.getLogger(CommentStatusController.class);
 
   @Autowired
   private CommentStatusService commentStatusService;

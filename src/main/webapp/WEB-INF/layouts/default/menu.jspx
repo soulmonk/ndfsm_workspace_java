@@ -57,9 +57,9 @@
             <spring:message code="menu_projects_list" var="menuProjectsList"/>
             <spring:message code="menu_projects_add" var="menuProjectsAdd"/>
 
-            <spring:message code="menu_comment_statuses" var="menuCommentStatus"/>
+            <spring:message code="menu_comment_status" var="menuCommentStatus"/>
             <spring:message code="menu_comment_statuses_list" var="menuCommentStatusList"/>
-            <spring:message code="menu_comment_statuses_add" var="menuCommentStatusAdd"/>
+            <spring:message code="menu_comment_status_add" var="menuCommentStatusAdd"/>
 
             <spring:message code="menu_tasks" var="menuTask"/>
             <spring:message code="menu_tasks_list" var="menuTaskList"/>
@@ -75,8 +75,8 @@
             <spring:url var="projectsListUrl" value="/time/project" />
             <spring:url var="projectsAddUrl" value="/time/project?form" />
 
-            <spring:url var="commentStatusesListUrl" value="/time/comment_statuses" />
-            <spring:url var="commentStatusesAddUrl" value="/time/comment_statuses?form" />
+            <spring:url var="commentStatusesListUrl" value="/time/comment_status" />
+            <spring:url var="commentStatusesAddUrl" value="/time/comment_status?form" />
 
             <spring:url var="tasksListUrl" value="/time/task" />
             <spring:url var="tasksAddUrl" value="/time/task?form" />

@@ -26,7 +26,8 @@
     <html:pageHeader text="${labelCommentInfo}"/>
 
     <div id="commentInfo">
-        <html:message/>
+        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+        <html:message message="${message}"/>
 
         <table class="table table-hover">
             <tr>

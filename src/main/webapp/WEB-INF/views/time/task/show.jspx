@@ -27,9 +27,7 @@
 
     <div id="taskInfo">
         <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-        <c:if test="${not empty message}">
-            <div id="message" class="alert alert-${message.type}">${message.message}</div>
-        </c:if>
+        <html:message message="${message}"/>
 
         <!--@elvariable id="task" type="com.soulmonk.ndfsm.domain.time.Task"-->
         <table class="table table-hover">

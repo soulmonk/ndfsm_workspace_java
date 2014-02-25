@@ -28,9 +28,7 @@
         <form:form modelAttribute="task" id="taskUpdateForm" method="post" cssClass="form-horizontal" rol="form">
             <div>
                 <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-                <c:if test="${not empty message}">
-                    <div id="message" class="alert alert-${message.type}">${message.message}</div>
-                </c:if>
+                <html:message message="${message}"/>
             </div>
 
             <div class="form-group">
@@ -59,8 +57,8 @@
                 </form:label>
                 <form:select path="project.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""><jsp:text/></option>
-                    <!--@elvariable id="project" type="java.util.List<com.soulmonk.ndfsm.domain.time.Project>"-->
-                    <c:forEach items="${project}" var="project">
+                    <!--@elvariable id="projects" type="java.util.List<com.soulmonk.ndfsm.domain.time.Project>"-->
+                    <c:forEach items="${projects}" var="project">
                         <c:choose>
                             <c:when test="${project.id == task.project.id}">
                                 <option value="${project.id}" selected="true">${project.name}</option>

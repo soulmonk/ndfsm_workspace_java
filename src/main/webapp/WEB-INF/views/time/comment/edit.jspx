@@ -52,8 +52,8 @@
                 </form:label>
                 <form:select path="task.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""><jsp:text/></option>
-                    <!--@elvariable id="task" type="com.valpio.soulmonk.domain.Tasks"-->
-                    <c:forEach items="${task}" var="task">
+                    <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
+                    <c:forEach items="${tasks}" var="task">
                         <c:choose>
                             <c:when test="${task.id == comment.task.id}">
                                 <option value="${task.id}" selected="true">${task.name}</option>
@@ -75,8 +75,8 @@
                 </form:label>
                 <form:select path="commentStatus.id" cssClass="form-control" cssErrorClass="error">
                     <option value=""><jsp:text/></option>
-                    <!--@elvariable id="commentStatus" type="com.valpio.soulmonk.domain.CommentStatuses"-->
-                    <c:forEach items="${commentStatus}" var="commentStatus">
+                    <!--@elvariable id="commentStatuses" type="java.util.List<com.soulmonk.ndfsm.domain.time.CommentStatus>"-->
+                    <c:forEach items="${commentStatuses}" var="commentStatus">
                         <c:choose>
                             <c:when test="${commentStatus.id == comment.commentStatus.id}">
                                 <option value="${commentStatus.id}" selected="true">${commentStatus.name}</option>

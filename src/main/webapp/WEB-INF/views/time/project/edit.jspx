@@ -28,9 +28,7 @@
         <form:form modelAttribute="project" id="projectUpdateForm" method="post" cssClass="form-horizontal">
             <div>
                 <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-                <c:if test="${not empty message}">
-                    <div id="message" class="alert alert-${message.type}">${message.message}</div>
-                </c:if>
+                <html:message message="${message}"/>
             </div>
 
             <div class="form-group">

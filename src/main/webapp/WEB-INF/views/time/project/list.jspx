@@ -18,9 +18,7 @@
     <spring:url value="/project" var="showProjectsUrl"/>
 
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-    <c:if test="${not empty message}">
-        <div id="message" class="alert alert-${message.type}">${message.message}</div>
-    </c:if>
+    <html:message message="${message}"/>
     <html:pageHeader text="${labelProjectsList}" tag="h2"/>
 
     <c:if test="${not empty project}">
@@ -39,7 +37,7 @@
                     <tr>
                         <td><a href="${showProjectsUrl}/${project.id}">${project.id}</a></td>
                         <td>${project.name}</td>
-                        <td>${project.servicesByServiceId.name}</td>
+                        <td>${project.service.name}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
