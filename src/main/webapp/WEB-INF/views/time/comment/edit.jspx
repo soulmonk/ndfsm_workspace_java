@@ -33,93 +33,13 @@
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                     <helpers:message message="${message}"/>
                 </div>
-
-                <div class="form-group">
-                    <form:label path="value" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentValue}*
-                    </form:label>
-                    <form:textarea path="value" cssClass="form-control" cssErrorClass="error"/>
-
-                    <div>
-                        <form:errors path="value" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="task.id" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentTask}
-                    </form:label>
-                    <form:select path="task.id" cssClass="form-control" cssErrorClass="error">
-                        <option value="">
-                            <jsp:text/>
-                        </option>
-                        <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
-                        <c:forEach items="${tasks}" var="task">
-                            <c:choose>
-                                <c:when test="${task.id == comment.task.id}">
-                                    <option value="${task.id}" selected="true">${task.name}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${task.id}">${task.name}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </form:select>
-
-                    <div>
-                        <form:errors path="task.id" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="commentStatus.id" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentStatus}
-                    </form:label>
-                    <form:select path="commentStatus.id" cssClass="form-control" cssErrorClass="error">
-                        <option value="">
-                            <jsp:text/>
-                        </option>
-                        <!--@elvariable id="commentStatuses" type="java.util.List<com.soulmonk.ndfsm.domain.time.CommentStatus>"-->
-                        <c:forEach items="${commentStatuses}" var="commentStatus">
-                            <c:choose>
-                                <c:when test="${commentStatus.id == comment.commentStatus.id}">
-                                    <option value="${commentStatus.id}" selected="true">${commentStatus.name}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${commentStatus.id}">${commentStatus.name}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </form:select>
-
-                    <div>
-                        <form:errors path="commentStatus.id" cssClass="error"/>
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <form:label path="from" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentFrom}*
-                    </form:label>
-                    <form:input path="from" cssClass="form-control" cssErrorClass="error" placeholder="time start"/>
-
-                    <div>
-                        <form:errors path="from" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="to" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentTo}*
-                    </form:label>
-                    <form:input path="to" cssClass="form-control" cssErrorClass="error" placeholder="tame end"/>
-
-                    <div>
-                        <form:errors path="to" cssClass="error"/>
-                    </div>
-                </div>
-
+                <sbAdmin:textareaGroup path="value" labelValue="${labelCommentValue}*"/>
+                <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
+                <sbAdmin:selectGroup path="task.id" labelValue="${labelCommentTask}" items="${tasks}" itemValue="id" itemLabel="name"/>
+                <!--@elvariable id="commentStatuses" type="java.util.List<com.soulmonk.ndfsm.domain.time.CommentStatus>"-->
+                <sbAdmin:selectGroup path="from" labelValue="${labelCommentStatus}*" items="${commentStatuses}" itemValue="id" itemLabel="name"/>
+                <sbAdmin:inputGroup path="from" labelValue="${labelCommentFrom}*" placeholder="time start"/>
+                <sbAdmin:inputGroup path="to" labelValue="${labelCommentTo}*" placeholder="time end"/>
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>
