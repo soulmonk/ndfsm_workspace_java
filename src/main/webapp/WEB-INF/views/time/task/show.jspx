@@ -6,7 +6,7 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:spring="http://www.springframework.org/tags"
      xmlns:sbAdmin="/WEB-INF/sbAdmin"
-     xmlns:html="/WEB-INF/html"
+     xmlns:helpers="/WEB-INF/helpers"
      version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -27,7 +27,7 @@
     <sbAdmin:blockRow12WithDefPanel>
         <div id="taskInfo">
             <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-            <html:message message="${message}"/>
+            <helpers:message message="${message}"/>
 
             <!--@elvariable id="task" type="com.soulmonk.ndfsm.domain.time.Task"-->
             <table class="table table-hover">

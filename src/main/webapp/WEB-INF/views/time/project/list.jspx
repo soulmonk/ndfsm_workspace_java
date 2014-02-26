@@ -7,7 +7,7 @@
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:spring="http://www.springframework.org/tags"
      xmlns:sbAdmin="/WEB-INF/sbAdmin"
-     xmlns:html="/WEB-INF/html"
+     xmlns:helpers="/WEB-INF/helpers"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
@@ -21,7 +21,7 @@
     <spring:url value="/time/project/delete" var="removeProjectUrl"/>
 
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-    <html:message message="${message}"/>
+    <helpers:message message="${message}"/>
     <sbAdmin:pageHeader text="${labelProjectsList}" tag="h2"/>
 
     <sbAdmin:blockRow12WithDefPanel>

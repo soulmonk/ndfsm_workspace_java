@@ -15,4 +15,23 @@
         <tag-class>com.soulmonk.ndfsm.web.jstl.helpers.CurrentTimeTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+
+    <tag>
+        <description>Draw Message</description>
+        <name>message</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.html.MessageTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+                Message class
+            </description>
+            <name>message</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Object</type>
+            <deferred-value>
+                <type>java.lang.Object</type>
+            </deferred-value>
+        </attribute>
+    </tag>
 </taglib>

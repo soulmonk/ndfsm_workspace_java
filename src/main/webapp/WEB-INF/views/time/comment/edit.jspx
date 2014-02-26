@@ -8,7 +8,7 @@
      xmlns:spring="http://www.springframework.org/tags"
      xmlns:form="http://www.springframework.org/tags/form"
      xmlns:sbAdmin="/WEB-INF/sbAdmin"
-     xmlns:html="/WEB-INF/html"
+     xmlns:helpers="/WEB-INF/helpers"
      version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -31,7 +31,7 @@
             <form:form modelAttribute="comment" id="commentUpdateForm" method="post" rol="form">
                 <div>
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-                    <html:message message="${message}"/>
+                    <helpers:message message="${message}"/>
                 </div>
 
                 <div class="form-group">
