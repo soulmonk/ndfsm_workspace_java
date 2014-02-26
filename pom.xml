@@ -15,6 +15,7 @@
         <hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
         <org.slf4j-version>1.7.5</org.slf4j-version>
         <org.aspectj-version>1.7.4</org.aspectj-version>
+        <org.flyway-version>2.3</org.flyway-version>
     </properties>
 
     <dependencies>
@@ -273,6 +274,12 @@
             <version>14.0.1</version>
         </dependency>
         <!-- /END -->
+
+        <dependency>
+            <groupId>com.googlecode.flyway</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${org.flyway-version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -318,6 +325,15 @@
                             <destination>${project.basedir}/src/main/webapp/stylesheet</destination>
                         </resource>
                     </resources>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.googlecode.flyway</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${org.flyway-version}</version>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/ndfsm?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=UTF-8</url>
+                    <user>root</user>
                 </configuration>
             </plugin>
         </plugins>
