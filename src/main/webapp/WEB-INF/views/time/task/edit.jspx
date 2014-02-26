@@ -31,54 +31,10 @@
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                     <helpers:message message="${message}"/>
                 </div>
-
-                <div class="form-group">
-                    <form:label path="name" cssClass="control-label" cssErrorClass="error">
-                        ${labelTaskName}*
-                    </form:label>
-                    <form:input path="name" cssClass="form-control" cssErrorClass="error" placeholder="Name"/>
-
-                    <div>
-                        <form:errors path="name" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="extId" cssClass="control-label" cssErrorClass="error">
-                        ${labelTaskExternalId}*
-                    </form:label>
-                    <form:input path="extId" cssClass="form-control" cssErrorClass="error" placeholder="0"/>
-
-                    <div>
-                        <form:errors path="extId" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="project.id" cssClass="control-label" cssErrorClass="error">
-                        ${labelTaskProject}
-                    </form:label>
-                    <form:select path="project.id" cssClass="form-control" cssErrorClass="error">
-                        <option value="">
-                            <jsp:text/>
-                        </option>
-                        <!--@elvariable id="projects" type="java.util.List<com.soulmonk.ndfsm.domain.time.Project>"-->
-                        <c:forEach items="${projects}" var="project">
-                            <c:choose>
-                                <c:when test="${project.id == task.project.id}">
-                                    <option value="${project.id}" selected="true">${project.name}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${project.id}">${project.name}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </form:select>
-
-                    <div>
-                        <form:errors path="project.id" cssClass="error"/>
-                    </div>
-                </div>
+                <sbAdmin:inputGroup path="name" labelValue="${labelTaskName}*" placeholder="Name"/>
+                <sbAdmin:inputGroup path="extId" labelValue="${labelTaskExternalId}*" placeholder="0"/>
+                <!--@elvariable id="projects" type="java.util.List<com.soulmonk.ndfsm.domain.time.Project>"-->
+                <sbAdmin:selectGroup path="project.id" labelValue="${labelTaskProject}*" items="${projects}" itemValue="id" itemLabel="name"/>
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>

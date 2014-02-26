@@ -36,41 +36,9 @@
                     <helpers:message message="${message}"/>
                 </div>
 
-                <div class="form-group">
-                    <form:label path="name" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentStatusName}*
-                    </form:label>
-                    <form:input path="name" cssClass="form-control" cssErrorClass="error"
-                                placeholder="Name"/>
-
-                    <div>
-                        <form:errors path="name" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="description" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentStatusDescription}
-                    </form:label>
-                    <form:textarea path="description" cssClass="form-control"
-                                   cssErrorClass="error"/>
-
-                    <div>
-                        <form:errors path="description" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="color" cssClass="control-label" cssErrorClass="error">
-                        ${labelCommentStatusColor}*
-                    </form:label>
-                    <form:input path="color" cssClass="form-control" cssErrorClass="error"
-                                placeholder="ffffff" maxlength="6"/>
-
-                    <div>
-                        <form:errors path="color" cssClass="error"/>
-                    </div>
-                </div>
+                <sbAdmin:inputGroup path="name" labelValue="${labelCommentStatusName}*" placeholder="Name"/>
+                <sbAdmin:textareaGroup path="name" labelValue="${labelCommentStatusDescription}"/>
+                <sbAdmin:inputGroup path="color" labelValue="${labelCommentStatusName}*" placeholder="ffffff" maxlength="6"/>
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>

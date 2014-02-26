@@ -31,43 +31,9 @@
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                     <helpers:message message="${message}"/>
                 </div>
-
-                <div class="form-group">
-                    <form:label path="name" cssClass="control-label" cssErrorClass="error">
-                        ${labelProjectName}*
-                    </form:label>
-                    <form:input path="name" cssClass="form-control" cssErrorClass="error" placeholder="Name"/>
-
-                    <div>
-                        <form:errors path="name" cssClass="error"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <form:label path="service.id" cssClass="control-label" cssErrorClass="error">
-                        ${labelProjectService}
-                    </form:label>
-                    <form:select path="service.id" cssClass="form-control" cssErrorClass="error">
-                        <option value="">
-                            <jsp:text/>
-                        </option>
-                        <!--@elvariable id="services" type="java.util.List<com.soulmonk.ndfsm.domain.time.Service>"-->
-                        <c:forEach items="${services}" var="service">
-                            <c:choose>
-                                <c:when test="${service.id == project.service.id}">
-                                    <option value="${service.id}" selected="true">${service.name}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${service.id}">${service.name}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </form:select>
-
-                    <div>
-                        <form:errors path="service.id" cssClass="error"/>
-                    </div>
-                </div>
+                <sbAdmin:inputGroup path="name" labelValue="${labelProjectName}*" placeholder="Name"/>
+                <!--@elvariable id="services" type="java.util.List<com.soulmonk.ndfsm.domain.time.Service>"-->
+                <sbAdmin:selectGroup path="service.id" labelValue="${labelProjectService}*" items="${services}" itemValue="id" itemLabel="name"/>
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>
