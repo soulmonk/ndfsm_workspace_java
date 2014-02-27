@@ -2,8 +2,11 @@ package com.soulmonk.ndfsm.security;
 
 import com.soulmonk.ndfsm.domain.user.User;
 import com.soulmonk.ndfsm.domain.user.UserRole;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -90,5 +93,17 @@ public class UserDetailsAdapter implements UserDetails {
   @Override
   public boolean isEnabled() {
     return user.getEnabled();
+  }
+
+  /**
+   * @return UserDetailsAdapter or null if not logging
+   */
+  public static UserDetailsAdapter getLogged() {
+    Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    if (o instanceof UserDetailsAdapter) {
+      return (UserDetailsAdapter) o;
+    } else {
+      return null;
+    }
   }
 }

@@ -22,7 +22,7 @@
 
     <spring:url value="/time/comment" var="editCommentUrl"/>
 
-    <!--@elvariable id="comment" type="com.soulmonk.ndfsm.domain.time.Comment"-->
+    <!--@elvariable id="comment" type="com.soulmonk.ndfsm.domain.time.ProjectComment"-->
     <sbAdmin:pageHeader text="${labelCommentInfo}"/>
     <sbAdmin:blockRow12WithDefPanel>
         <div id="commentInfo">

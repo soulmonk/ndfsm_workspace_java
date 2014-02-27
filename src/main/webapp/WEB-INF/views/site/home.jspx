@@ -21,7 +21,7 @@
                     <i class="fa fa-clock-o fa-fw"><jsp:text/></i>Tests
                 </div>
                 <div class="panel-body">
-                    ${user}
+                    ${username}
                 </div>
             </div>
             <div class="panel panel-default">

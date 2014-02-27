@@ -18,7 +18,7 @@ public class CommentStatus implements Serializable {
   private String name;
   private String description;
   private String color;
-  private List<Comment> comments = new ArrayList<Comment>();
+  private List<ProjectComment> comments = new ArrayList<ProjectComment>();
 
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -86,11 +86,11 @@ public class CommentStatus implements Serializable {
   }
 
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "commentStatus")
-  public List<Comment> getComments() {
+  public List<ProjectComment> getComments() {
     return comments;
   }
 
-  public void setComments(List<Comment> comments) {
+  public void setComments(List<ProjectComment> comments) {
     this.comments = comments;
   }
 

@@ -27,7 +27,7 @@
 
     <sbAdmin:pageHeader text="${labelCommentesList}" tag="h2"/>
     <sbAdmin:blockRow12WithDefPanel>
-        <!--@elvariable id="comments" type="java.util.List<com.soulmonk.ndfsm.domain.time.Comment>"-->
+        <!--@elvariable id="comments" type="java.util.List<com.soulmonk.ndfsm.domain.time.ProjectComment>"-->
         <c:if test="${not empty comments}">
             <div>
                 <table id="list" class="table table-hover table-bordered">

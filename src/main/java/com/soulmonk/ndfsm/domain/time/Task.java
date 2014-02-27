@@ -21,7 +21,7 @@ public class Task implements Serializable {
   private String name;
   private int sum;
   private String extId;
-  private List<Comment> comments = new ArrayList<Comment>();
+  private List<ProjectComment> comments = new ArrayList<ProjectComment>();
   private Project project;
 
   @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -91,11 +91,11 @@ public class Task implements Serializable {
 
   @Fetch(value = FetchMode.SUBSELECT)
   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "task")
-  public List<Comment> getComments() {
+  public List<ProjectComment> getComments() {
     return comments;
   }
 
-  public void setComments(List<Comment> comments) {
+  public void setComments(List<ProjectComment> comments) {
     this.comments = comments;
   }
 

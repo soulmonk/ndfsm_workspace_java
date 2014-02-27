@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "time_comments")
-public class Comment implements Serializable {
+public class ProjectComment implements Serializable {
   private Long id;
   private String value;
   private Timestamp from;
@@ -78,7 +78,7 @@ public class Comment implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    Comment comment = (Comment) o;
+    ProjectComment comment = (ProjectComment) o;
 
     if (from != null ? !from.equals(comment.from) : comment.from != null) return false;
     if (id != null ? !id.equals(comment.id) : comment.id != null) return false;

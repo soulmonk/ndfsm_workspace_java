@@ -1,6 +1,6 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
-import com.soulmonk.ndfsm.domain.time.Comment;
+import com.soulmonk.ndfsm.domain.time.ProjectComment;
 import com.soulmonk.ndfsm.domain.time.CommentStatus;
 import com.soulmonk.ndfsm.domain.time.Task;
 import com.soulmonk.ndfsm.service.time.CommentService;
@@ -52,7 +52,7 @@ public class CommentController {
   public String list(Model uiModel) {
     logger.info("Listing Comment");
 
-    List<Comment> comments = commentService.findAll();
+    List<ProjectComment> comments = commentService.findAll();
     uiModel.addAttribute("comments", comments);
 
     logger.info("No. of comments: " + comments.size());
@@ -63,7 +63,7 @@ public class CommentController {
   @RequestMapping(params = "form", method = RequestMethod.GET)
   public String createForm(Model uiModel) {
     logger.info("Create form");
-    Comment comment = new Comment();
+    ProjectComment comment = new ProjectComment();
     comment.setCommentStatus(new CommentStatus());
     comment.setTask(new Task());
 
@@ -74,7 +74,7 @@ public class CommentController {
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Comment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String create(@Valid ProjectComment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Create Comment");
 
     if (bindingResult.hasErrors()) {
@@ -95,7 +95,7 @@ public class CommentController {
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Comment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+  public String update(@Valid ProjectComment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Update Comment");
 
     if (bindingResult.hasErrors()) {
@@ -116,7 +116,7 @@ public class CommentController {
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    Comment comment = commentService.findById(id);
+    ProjectComment comment = commentService.findById(id);
     uiModel.addAttribute("comment", comment);
     return "time/comment/show";
   }

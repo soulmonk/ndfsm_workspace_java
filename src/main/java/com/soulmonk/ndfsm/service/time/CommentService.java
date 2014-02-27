@@ -1,15 +1,15 @@
 package com.soulmonk.ndfsm.service.time;
 
-import com.soulmonk.ndfsm.domain.time.Comment;
+import com.soulmonk.ndfsm.domain.time.ProjectComment;
 
 import java.util.List;
 
 public interface CommentService {
-  public List<Comment> findAll();
+  public List<ProjectComment> findAll();
 
-  public Comment findById(Long id);
+  public ProjectComment findById(Long id);
 
-  public Comment save(Comment comment);
+  public ProjectComment save(ProjectComment comment);
 
   public void delete(Long id);
 }
