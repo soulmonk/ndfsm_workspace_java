@@ -12,12 +12,12 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
-    <spring:message code="label_comments_list" var="labelCommentesList"/>
-    <spring:message code="label_comment_value" var="labelCommentValue"/>
-    <spring:message code="label_comment_task" var="labelCommentTask"/>
-    <spring:message code="label_comment_status" var="labelCommentStatus"/>
-    <spring:message code="label_comment_from" var="labelCommentFrom"/>
-    <spring:message code="label_comment_to" var="labelCommentTo"/>
+    <spring:message code="label_task_comments_list" var="labelCommentesList"/>
+    <spring:message code="label_task_comment_value" var="labelCommentValue"/>
+    <spring:message code="label_task_comment_task" var="labelCommentTask"/>
+    <spring:message code="label_task_comment_status" var="labelCommentStatus"/>
+    <spring:message code="label_task_comment_from" var="labelCommentFrom"/>
+    <spring:message code="label_task_comment_to" var="labelCommentTo"/>
     <spring:message code="label_actions" var="labelActions"/>
 
     <spring:url value="/time/comment" var="showCommentsUrl"/>

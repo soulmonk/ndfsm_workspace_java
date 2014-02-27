@@ -1,11 +1,8 @@
-package com.soulmonk.ndfsm.web.app.controllers.time;
+package com.soulmonk.ndfsm.web.app.controllers.note;
 
-import com.soulmonk.ndfsm.domain.time.ProjectComment;
-import com.soulmonk.ndfsm.domain.time.CommentStatus;
-import com.soulmonk.ndfsm.domain.time.Task;
-import com.soulmonk.ndfsm.service.time.CommentService;
-import com.soulmonk.ndfsm.service.time.CommentStatusService;
-import com.soulmonk.ndfsm.service.time.TaskService;
+import com.soulmonk.ndfsm.domain.note.PostComment;
+import com.soulmonk.ndfsm.service.note.PostCommentService;
+import com.soulmonk.ndfsm.service.note.PostService;
 import com.soulmonk.ndfsm.web.form.Message;
 import com.soulmonk.ndfsm.web.util.UrlUtil;
 import org.slf4j.Logger;
@@ -27,111 +24,95 @@ import java.util.Locale;
 
 /**
  * Company: Valpio
- * User: soulmonk
- * Date: 03.09.13
- * Time: 8:02
+ * User: SoulMonk
+ * Date: 27.02.14
+ * Time: 22:32
  */
 @Controller
-@RequestMapping(value = "/time/comment")
-public class CommentController {
-  final Logger logger = LoggerFactory.getLogger(CommentController.class);
+@RequestMapping(value = "/note/comment")
+public class PostCommentController {
+
+  final Logger logger = LoggerFactory.getLogger(PostCommentController.class);
 
   @Autowired
-  private CommentService commentService;
+  private PostCommentService postCommentService;
 
   @Autowired
-  private TaskService taskService;
-
-  @Autowired
-  private CommentStatusService commentStatusService;
+  private PostService postService;
 
   @Autowired
   private MessageSource messageSource;
 
   @RequestMapping(method = RequestMethod.GET)
   public String list(Model uiModel) {
-    logger.info("Listing Comment");
+    logger.info("Listing comments");
 
-    List<ProjectComment> comments = commentService.findAll();
+    List<PostComment> comments = postCommentService.findAll();
     uiModel.addAttribute("comments", comments);
 
     logger.info("No. of comments: " + comments.size());
 
-    return "time/comment/list";
+    return "note/comment/list";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.GET)
   public String createForm(Model uiModel) {
-    logger.info("Create form");
-    ProjectComment comment = new ProjectComment();
-    comment.setCommentStatus(new CommentStatus());
-    comment.setTask(new Task());
-
+    PostComment comment = new PostComment();
     uiModel.addAttribute("comment", comment);
-    uiModel.addAttribute("tasks", taskService.findAll());
-    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-    return "time/comment/create";
+    uiModel.addAttribute("posts", postService.findAll());
+    return "note/comment/create";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid ProjectComment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create Comment");
+  public String create(@Valid PostComment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+    logger.info("Create comment");
 
     if (bindingResult.hasErrors()) {
-      logger.error("bindingResult hasErrors");
-      logger.error("bindingResult hasErrors message: " + bindingResult.toString());
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
-      return "time/comment/create";
+      return "note/comment/create";
     }
-    logger.info("no bindingResult hasErrors");
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("comment_save_success", new Object[]{}, locale)));
-
-    commentService.save(comment);
-    logger.info("Comment id: " + comment.getId());
-
-    return "redirect:/time/comment/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
+    postCommentService.save(comment);
+    logger.info("PostComment id: " + comment.getId());
+    return "redirect:/note/comment/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid ProjectComment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update Comment");
-
+  public String update(@Valid PostComment comment, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+    logger.info("Update comment");
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
-      return "time/comment/update";
+      return "note/comment/update";
     }
-
     uiModel.asMap().clear();
     redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("comment_update_success", new Object[]{}, locale)));
 
-    commentService.save(comment);
+    postCommentService.save(comment);
 
-    logger.info("Update Comment id: " + comment.getId());
-
-    return "redirect:/time/comment/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
+    return "redirect:/note/comment/" + UrlUtil.encodeUrlPathSegment(comment.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
-    ProjectComment comment = commentService.findById(id);
+    PostComment comment = postCommentService.findById(id);
     uiModel.addAttribute("comment", comment);
-    return "time/comment/show";
+    return "note/comment/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    uiModel.addAttribute("comment", commentService.findById(id));
-    uiModel.addAttribute("tasks", taskService.findAll());
-    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-    return "time/comment/update";
+    uiModel.addAttribute("comment", postCommentService.findById(id));
+    uiModel.addAttribute("posts", postService.findAll());
+    return "note/comment/update";
   }
 
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
-    commentService.delete(id);
-    return "redirect:/time/comment/list";
+    postCommentService.delete(id);
+    return "redirect:/note/comment/list";
   }
 }
+

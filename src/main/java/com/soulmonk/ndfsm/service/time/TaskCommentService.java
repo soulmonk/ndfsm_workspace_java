@@ -4,7 +4,7 @@ import com.soulmonk.ndfsm.domain.time.ProjectComment;
 
 import java.util.List;
 
-public interface CommentService {
+public interface TaskCommentService {
   public List<ProjectComment> findAll();
 
   public ProjectComment findById(Long id);
