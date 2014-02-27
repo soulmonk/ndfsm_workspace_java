@@ -1,0 +1,57 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_comments_list" var="labelCommentesList"/>
+    <spring:message code="label_comment_value" var="labelCommentContent"/>
+    <spring:message code="label_comment_value" var="labelCommentDateAdd"/>
+    <spring:message code="label_actions" var="labelActions"/>
+
+    <spring:url value="/time/comment" var="showCommentsUrl"/>
+    <spring:url value="/time/comment/delete" var="removeCommentUrl"/>
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <helpers:message message="${message}"/>
+
+    <sbAdmin:pageHeader text="${labelCommentesList}" tag="h2"/>
+    <sbAdmin:blockRow12WithDefPanel>
+        <!--&lt;!&ndash;@elvariable id="comments" type="java.util.List<com.soulmonk.ndfsm.domain.note.PostComment>"&ndash;&gt;
+        <c:if test="${not empty comments}">
+            <div>
+                <table id="list" class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>${labelCommentContent}</th>
+                        <th>${labelCommentDateAdd}</th>
+                        <th>${labelActions}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${comments}" var="comment">
+                        <tr>
+                            <td><a href="${showCommentsUrl}/${comment.id}">${comment.id}</a></td>
+                            <td>${comment.content}</td>
+                            <td>${comment.dateAdd}</td>
+                            <td><a href="#" class="btn btn-default"
+                                   onclick="confirmDelete('${removeCommentUrl}/${comment.id}'); return false;">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <div id="pager"></div>
+        </c:if>-->
+    </sbAdmin:blockRow12WithDefPanel>
+
+</div>
