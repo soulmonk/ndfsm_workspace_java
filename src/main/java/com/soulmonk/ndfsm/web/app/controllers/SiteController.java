@@ -25,4 +25,9 @@ public class SiteController {
     }
     return "site/home";
   }
+
+  @RequestMapping(value = "/testConvert", method = RequestMethod.GET)
+  public String convertToUnicode(ModelMap model) {
+    return "site/testConvert";
+  }
 }

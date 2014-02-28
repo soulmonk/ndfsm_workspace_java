@@ -33,6 +33,40 @@
 
     <tag>
         <description>Page Header</description>
+        <name>panel</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.panel.PanelHtmlTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+                Type of panel
+            </description>
+            <name>type</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>Page Header</description>
+        <name>panelHead</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.panel.PanelHeadingHtmlTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+    <tag>
+        <description>Page Header</description>
+        <name>panelBody</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.panel.PanelBodyTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+    <tag>
+        <description>Page Header</description>
+        <name>panelFooter</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.panel.PanelFooterTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+
+    <tag>
+        <description>Page Header</description>
         <name>blockRow12WithDefPanel</name>
         <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.BlockRow12WithDefPanelTag</tag-class>
         <body-content>JSP</body-content>
