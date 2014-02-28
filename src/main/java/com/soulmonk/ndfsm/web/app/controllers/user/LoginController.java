@@ -25,7 +25,7 @@ public class LoginController {
   }
 
   @RequestMapping(params = "failure", method = RequestMethod.GET)
-  public String createForm(Model uiModel) {
+  public String loginFailure(Model uiModel) {
     logger.info("Login failure");
     return "login/login_form";
   }

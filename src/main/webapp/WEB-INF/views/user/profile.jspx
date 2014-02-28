@@ -5,8 +5,43 @@
   Time: 10:28
 -->
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:spring="http://www.springframework.org/tags"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    Place content here
+
+    <!--@elvariable id="user" type="com.soulmonk.ndfsm.domain.user.User"-->
+    <spring:message code="profile_page_title" var="profilePageTitle" arguments="${user.fullName}"/>
+
+    <sbAdmin:pageHeader text="${profilePageTitle}"/>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <td>Login</td>
+                                <td>${user.login}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>${user.email}</td>
+                            </tr>
+                            <tr>
+                                <td>First Name</td>
+                                <td>${user.firstName}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td>${user.lastName}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
