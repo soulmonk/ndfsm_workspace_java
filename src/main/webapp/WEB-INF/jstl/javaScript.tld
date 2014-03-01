@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>js</short-name>
+    <uri>/WEB-INF/javaScript</uri>
+
+    <tag>
+        <description>
+            add script
+        </description>
+        <name>add</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.javaScript.AddTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+
+    <tag>
+        <description>
+            draw all added scripts
+        </description>
+        <name>print</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.javaScript.PrintTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+</taglib>

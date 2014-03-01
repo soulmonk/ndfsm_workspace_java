@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:js="/WEB-INF/javaScript"
      xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
@@ -31,6 +32,8 @@
     <script type="text/javascript" src="${jquery_dataTables_js}"><jsp:text/></script>
     <spring:url value="/resources/scripts/plugins/dataTables/dataTables.bootstrap.js" var="dataTables_bootstrap_js"/>
     <script type="text/javascript" src="${dataTables_bootstrap_js}"><jsp:text/></script>
+
+    <js:print/>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <!--<script type="text/javascript">

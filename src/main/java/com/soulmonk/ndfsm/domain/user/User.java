@@ -1,5 +1,7 @@
 package com.soulmonk.ndfsm.domain.user;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -65,7 +67,7 @@ public class User implements Serializable {
     return firstName + " " + lastName;
   }
 
-  @Column(name = "login", nullable = false, insertable = true, updatable = true, length = 127, precision = 0)
+  @Column(name = "login", nullable = false, insertable = true, updatable = true, length = 127, precision = 0, unique = true)
   @Basic
   public String getLogin() {
     return login;
@@ -86,6 +88,7 @@ public class User implements Serializable {
   }
 
   @Column(name = "email", nullable = false, insertable = true, updatable = true, length = 255, precision = 0)
+  @Email(regexp = "^[0-9A-Za-z\\.\\-_]+\\@[0-9A-Za-z\\.\\-]+\\.[A-Za-z]{2,4}$")
   @Basic
   public String getEmail() {
     return email;
