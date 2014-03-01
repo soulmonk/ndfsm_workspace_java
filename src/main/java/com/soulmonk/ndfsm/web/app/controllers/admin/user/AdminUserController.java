@@ -90,6 +90,14 @@ public class AdminUserController {
     }
 
     uiModel.asMap().clear();
+
+    if (user.getPassword().isEmpty()) {
+      User userOld = userService.findById(user.getId());
+      user.setPassword(userOld.getPassword());
+    } else {
+      user.setPasswordChanged(true);
+    }
+
     redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("admin_user_update_success", new Object[]{}, locale)));
 
     userService.save(user);

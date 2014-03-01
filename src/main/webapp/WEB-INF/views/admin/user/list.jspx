@@ -14,6 +14,10 @@
 
     <spring:message code="label_users_list" var="labelUsersList"/>
 
+    <spring:message code="label_user_login" var="labelUserLogin"/>
+    <spring:message code="label_user_email" var="labelUserEmail"/>
+    <spring:message code="label_user_enabled" var="labelUserEnabled"/>
+
     <spring:message code="label_actions" var="labelActions"/>
 
     <spring:url value="/admin/user" var="showUserUrl"/>
@@ -30,6 +34,9 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>${labelUserLogin}</th>
+                        <th>${labelUserEmail}</th>
+                        <th>${labelUserEnabled}</th>
                         <th>${labelActions}</th>
                     </tr>
                     </thead>
@@ -37,6 +44,9 @@
                     <c:forEach items="${users}" var="user">
                         <tr>
                             <td><a href="${showUserUrl}/${user.id}">${user.id}</a></td>
+                            <td>${user.login}</td>
+                            <td>${user.email}</td>
+                            <td>${user.enabled}</td>
                             <td><a href="#" class="btn btn-default"
                                    onclick="confirmDelete('${removeUserUrl}/${comment.id}'); return false;">Delete</a>
                             </td>

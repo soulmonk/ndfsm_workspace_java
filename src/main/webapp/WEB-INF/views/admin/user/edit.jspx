@@ -59,6 +59,8 @@
                                 <sbAdmin:inputGroup path="firstName" labelValue="${labelUserFirstName}*" placeholder="${placeholderUserFirstName}"/>
                                 <sbAdmin:inputGroup path="lastName" labelValue="${labelUserLastName}*" placeholder="${placeholderUserLastName}"/>
                                 <sbAdmin:checkboxGroup path="enabled" labelValue="${labelUserEnabled}"/>
+
+                                <sbAdmin:submitResetButtons/>
                             </form:form>
                         </sbAdmin:panelBody>
                     </sbAdmin:panel>
