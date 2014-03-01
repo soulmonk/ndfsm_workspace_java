@@ -49,7 +49,7 @@ public class UserController {
         user = new User();
       }
       user.setLogin("user");
-      user.setPassword("user");
+      user.setPassword("123098");
       user.setEmail("user@example.com");
       user.setFirstName("User");
       user.setLastName("User");

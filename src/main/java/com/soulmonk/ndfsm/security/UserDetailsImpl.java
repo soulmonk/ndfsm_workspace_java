@@ -24,15 +24,12 @@ public class UserDetailsImpl implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepository.findByLogin(username);
-
+    User user = userRepository.findByLogin(username.toLowerCase());
     if (user == null) {
       throw new UsernameNotFoundException("No such user: " + username);
     } else if (user.getUserRoles().isEmpty()) {
       throw new UsernameNotFoundException("User " + username + " has no authorities");
     }
-    UserDetailsAdapter userDetails = new UserDetailsAdapter(user);
-    userDetails.setPassword(user.getPassword());
-    return userDetails;
+    return new UserDetailsAdapter(user);
   }
 }

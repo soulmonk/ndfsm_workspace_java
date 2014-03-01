@@ -6,6 +6,8 @@ import com.soulmonk.ndfsm.domain.user.UserRole;
 import com.soulmonk.ndfsm.repository.user.UserRepository;
 import com.soulmonk.ndfsm.service.user.RoleService;
 import com.soulmonk.ndfsm.service.user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -44,6 +46,7 @@ public class UserImpl implements UserService {
   @Override
   @Transactional(readOnly = true)
   public User save(User user) {
+    Logger logger = LoggerFactory.getLogger(getClass());
     if (user.getId() == null) {
       if (user.getUserRoles().isEmpty()) {
         UserRole userRole = new UserRole();
@@ -51,7 +54,9 @@ public class UserImpl implements UserService {
         userRole.setUser(user);
         user.getUserRoles().add(userRole);
       }
+      logger.debug("Password Before: " + user.getPassword());
       user.setPassword(passwordEncoder.encode(user.getPassword()));
+      logger.debug("Password After: " + user.getPassword());
     }
     return userRepository.saveAndFlush(user);
   }

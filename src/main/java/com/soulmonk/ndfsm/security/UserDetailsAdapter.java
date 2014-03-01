@@ -22,7 +22,6 @@ import java.util.Set;
 public class UserDetailsAdapter implements UserDetails {
 
   private User user;
-  private String password;
 
   public UserDetailsAdapter(User user) {
     this.user = user;
@@ -63,11 +62,7 @@ public class UserDetailsAdapter implements UserDetails {
 
   @Override
   public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
+    return user.getPassword();
   }
 
   @Override
