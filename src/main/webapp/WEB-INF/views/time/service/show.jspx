@@ -27,7 +27,7 @@
 
     <sbAdmin:pageHeader text="${labelServicesInfo}"/>
 
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
 
         <div id="serviceInfo">
             <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
@@ -47,5 +47,5 @@
             <a href="${editServicetUrl}/${service.id}?form">${labelServiceUpdate}</a>
         </div>
 
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

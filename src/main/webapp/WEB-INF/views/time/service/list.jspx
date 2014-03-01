@@ -25,7 +25,7 @@
     <helpers:message message="${message}"/>
 
     <sbAdmin:pageHeader text="${labelServicesList}" tag="h2"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <!--@elvariable id="services" type="java.util.List<com.soulmonk.ndfsm.domain.time.Service>"-->
         <c:if test="${not empty services}">
             <div class="table-responsive">
@@ -64,6 +64,6 @@
             </div>
             <div id="pager"></div>
         </c:if>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
     <!-- /.row -->
 </div>

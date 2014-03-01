@@ -39,9 +39,29 @@
 
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <li>
-                    <a href="${adminUrl}"><i class="fa fa-dashboard fa-fw">
-                        <jsp:text/>
-                    </i> ${menuAdmin}</a>
+                    <a href="#"><i class="fa fa-sitemap fa-fw"><jsp:text/></i>${menuAdmin}<span class="fa arrow"><jsp:text/></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="${adminUrl}"><i class="fa fa-dashboard fa-fw">
+                                <jsp:text/>
+                            </i> ${menuAdmin}</a>
+                        </li>
+
+                        <spring:message code="menu_admin_user" var="menuAdminUser"/>
+                        <spring:message code="menu_admin_users_list" var="menuAdminUserList"/>
+                        <spring:message code="menu_admin_user_add" var="menuAdminUserAdd"/>
+
+                        <spring:url var="adminUsersListUrl" value="/admin/user" />
+                        <spring:url var="adminUserAddUrl" value="/admin/user?form" />
+
+                        <li>
+                            <a href="#">${menuAdminUser}<span class="fa arrow"><jsp:text/></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="${adminUsersListUrl}">${menuAdminUserList}</a></li>
+                                <li><a href="${adminUserAddUrl}">${menuAdminUserAdd}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
             </sec:authorize>
 

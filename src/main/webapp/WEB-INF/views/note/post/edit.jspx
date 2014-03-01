@@ -26,7 +26,7 @@
     <spring:eval expression="comment.id == null ? labelCommentNew:labelCommentUpdate" var="formTitle"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <div id="commentUpdate">
             <!--<form:form modelAttribute="comment" id="commentUpdateForm" method="post" rol="form">
                 <div>
@@ -43,5 +43,5 @@
                 <sbAdmin:submitResetButtons/>
             </form:form>-->
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

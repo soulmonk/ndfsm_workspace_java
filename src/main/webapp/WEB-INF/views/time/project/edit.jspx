@@ -24,7 +24,7 @@
     <spring:eval expression="project.id == null ? labelProjectNew:labelProjectUpdate" var="formTitle"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <div id="projectUpdate">
             <form:form modelAttribute="project" id="projectUpdateForm" method="post" rol="form">
                 <div>
@@ -37,5 +37,5 @@
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

@@ -26,7 +26,7 @@
 
     <sbAdmin:pageHeader text="${formTitle}"/>
 
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
 
         <div id="comment_statusUpdate">
             <form:form modelAttribute="comment_status" id="comment_statusUpdateForm" method="post"
@@ -42,5 +42,5 @@
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

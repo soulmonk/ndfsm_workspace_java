@@ -24,7 +24,7 @@
     <spring:url value="/time/task" var="editTaskUrl"/>
 
     <sbAdmin:pageHeader text="${labelTasksInfo}"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <div id="taskInfo">
             <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
             <helpers:message message="${message}"/>
@@ -51,5 +51,5 @@
 
             <a href="${editTaskUrl}/${task.id}?form">${labelTaskUpdate}</a>
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

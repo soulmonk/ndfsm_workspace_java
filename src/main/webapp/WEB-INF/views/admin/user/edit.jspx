@@ -1,0 +1,42 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_user_new" var="labelUserNew"/>
+    <spring:message code="label_user_update" var="labelUserUpdate"/>
+
+    <!--@elvariable id="user" type="com.soulmonk.ndfsm.domain.user.User"-->
+    <spring:eval expression="user.id == null ? labelUserNew:labelUserUpdate" var="formTitle"/>
+
+    <sbAdmin:pageHeader text="${formTitle}"/>
+    <sbAdmin:blockRowColWithDefPanel colNum="6">
+        <div id="commentUpdate">
+            <form:form modelAttribute="comment" id="commentUpdateForm" method="post" rol="form">
+                <div>
+                    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+                    <helpers:message message="${message}"/>
+                </div><!--
+                <sbAdmin:textareaGroup path="value" labelValue="${labelUserValue}*"/>
+                &lt;!&ndash;@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"&ndash;&gt;
+                <sbAdmin:selectGroup path="task.id" labelValue="${labelUserTask}" items="${tasks}" itemValue="id" itemLabel="name"/>
+                &lt;!&ndash;@elvariable id="commentStatuses" type="java.util.List<com.soulmonk.ndfsm.domain.time.UserStatus>"&ndash;&gt;
+                <sbAdmin:selectGroup path="from" labelValue="${labelUserStatus}*" items="${commentStatuses}" itemValue="id" itemLabel="name"/>
+                <sbAdmin:inputGroup path="from" labelValue="${labelUserFrom}*" placeholder="time start"/>
+                <sbAdmin:inputGroup path="to" labelValue="${labelUserTo}*" placeholder="time end"/>
+                <sbAdmin:submitResetButtons/>-->
+            </form:form>
+        </div>
+    </sbAdmin:blockRowColWithDefPanel>
+</div>

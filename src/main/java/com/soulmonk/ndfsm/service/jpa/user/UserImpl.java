@@ -46,7 +46,6 @@ public class UserImpl implements UserService {
   @Override
   @Transactional(readOnly = true)
   public User save(User user) {
-    Logger logger = LoggerFactory.getLogger(getClass());
     if (user.getId() == null) {
       if (user.getUserRoles().isEmpty()) {
         UserRole userRole = new UserRole();
@@ -54,9 +53,10 @@ public class UserImpl implements UserService {
         userRole.setUser(user);
         user.getUserRoles().add(userRole);
       }
-      logger.debug("Password Before: " + user.getPassword());
+      user.setPasswordChanged(true);
+    }
+    if (user.isPasswordChanged()) {
       user.setPassword(passwordEncoder.encode(user.getPassword()));
-      logger.debug("Password After: " + user.getPassword());
     }
     return userRepository.saveAndFlush(user);
   }
@@ -64,6 +64,11 @@ public class UserImpl implements UserService {
   @Override
   public User findByLogin(String login) {
     return userRepository.findByLogin(login);
+  }
+
+  @Override
+  public void delete(Long id) {
+    userRepository.delete(id);
   }
 
 }

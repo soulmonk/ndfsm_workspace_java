@@ -21,7 +21,7 @@
     <spring:url value="/time/comment_status" var="editCommentStatusUrl"/>
 
     <sbAdmin:pageHeader text="${labelCommentStatusInfo}"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <div id="comment_statusInfo">
             <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
             <helpers:message message="${message}"/>
@@ -44,5 +44,5 @@
 
             <a href="${editCommentStatusUrl}/${comment_status.id}?form">${labelCommentStatusUpdate}</a>
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

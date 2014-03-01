@@ -1,0 +1,35 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_user_info" var="labelUserInfo"/>
+    <spring:message code="label_user_update" var="labelUserUpdate"/>
+    <spring:url value="/user" var="editUserUrl"/>
+
+    <!--@elvariable id="user" type="com.soulmonk.ndfsm.domain.user.User"-->
+    <sbAdmin:pageHeader text="${labelUserInfo}"/>
+    <sbAdmin:blockRowColWithDefPanel>
+        <div id="commentInfo">
+            <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+            <helpers:message message="${message}"/>
+
+            <table class="table table-hover">
+                <tr>
+                    <td>Here</td>
+                </tr>
+            </table>
+
+            <a href="${editUserUrl}/${user.id}?form">${labelUserUpdate}</a>
+        </div>
+    </sbAdmin:blockRowColWithDefPanel>
+</div>

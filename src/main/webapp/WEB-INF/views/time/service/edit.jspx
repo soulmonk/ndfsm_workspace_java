@@ -25,7 +25,7 @@
     <spring:eval expression="service.id == null ? labelServiceNew:labelServiceUpdate" var="formTitle"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <div id="serviceUpdate">
 
             <form:form modelAttribute="service" id="serviceUpdateForm" method="post" role="form">
@@ -40,5 +40,5 @@
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

@@ -27,6 +27,8 @@ public class User implements Serializable {
 
   private Set<UserRole> userRoles = new HashSet<UserRole>(0);
 
+  private boolean isPasswordChanged = false;
+
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Id
@@ -163,6 +165,15 @@ public class User implements Serializable {
 
   @Override
   public String toString() {
-    return "id = " + id + "<br/>full name: " + getFullName();
+    return "id = " + id + "<br/>login: " + login;
+  }
+
+  @Transient
+  public boolean isPasswordChanged() {
+    return this.isPasswordChanged;
+  }
+
+  public void setPasswordChanged(boolean isPasswordChanged) {
+    this.isPasswordChanged = isPasswordChanged;
   }
 }

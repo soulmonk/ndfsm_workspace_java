@@ -24,7 +24,7 @@
     <helpers:message message="${message}"/>
     <sbAdmin:pageHeader text="${labelProjectsList}" tag="h2"/>
 
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <!--@elvariable id="projects" type="com.soulmonk.ndfsm.domain.time.Project"-->
         <c:if test="${not empty projects}">
             <div>
@@ -53,5 +53,5 @@
             </div>
             <div id="pager"></div>
         </c:if>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

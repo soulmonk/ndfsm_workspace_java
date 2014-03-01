@@ -25,7 +25,7 @@
 
     <sbAdmin:pageHeader text="${labelCommentStatusesList}" tag="h2"/>
 
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <!--@elvariable id="comment_statuses" type="com.soulmonk.ndfsm.domain.time.CommentStatus"-->
         <c:if test="${not empty comment_statuses}">
             <div>
@@ -54,5 +54,5 @@
             </div>
             <div id="pager"></div>
         </c:if>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

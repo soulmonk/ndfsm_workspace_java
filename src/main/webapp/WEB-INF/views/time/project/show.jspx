@@ -23,7 +23,7 @@
     <spring:url value="/time/project" var="editProjectUrl"/>
 
     <sbAdmin:pageHeader text="${labelProjectsInfo}"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
 
         <!--@elvariable id="project" type="com.soulmonk.ndfsm.domain.time.Project"-->
         <div id="projectInfo">
@@ -43,5 +43,5 @@
 
             <a href="${editProjectUrl}/${project.id}?form">${labelProjectUpdate}</a>
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

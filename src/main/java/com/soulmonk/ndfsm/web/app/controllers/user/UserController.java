@@ -4,14 +4,25 @@ import com.soulmonk.ndfsm.domain.user.User;
 import com.soulmonk.ndfsm.repository.user.UserRepository;
 import com.soulmonk.ndfsm.security.UserDetailsAdapter;
 import com.soulmonk.ndfsm.service.user.UserService;
+import com.soulmonk.ndfsm.web.form.Message;
+import com.soulmonk.ndfsm.web.util.UrlUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Company: Valpio
@@ -25,9 +36,6 @@ public class UserController {
 
   private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-  @Autowired
-  private UserService userService;
-
   @RequestMapping(value = "/profile", method = RequestMethod.GET)
   public String profile(Model model) throws Exception {
     UserDetailsAdapter user = UserDetailsAdapter.getLogged();
@@ -36,29 +44,5 @@ public class UserController {
     }
     model.addAttribute("user", user.getUser());
     return "user/profile";
-  }
-
-  @RequestMapping(value = "/newUser", method = RequestMethod.GET, produces = "application/json")
-  @ResponseBody
-  public String createNewUser() {
-    try {
-      logger.info("createNewUser begin");
-
-      User user = userService.findByLogin("user");
-      if (user == null) {
-        user = new User();
-      }
-      user.setLogin("user");
-      user.setPassword("123098");
-      user.setEmail("user@example.com");
-      user.setFirstName("User");
-      user.setLastName("User");
-      user.setEnabled(true);
-      userService.save(user);
-      logger.info("createNewUser end");
-    } catch (Exception ex) {
-      ex.printStackTrace();
-    }
-    return "{result:'ok'}";
   }
 }

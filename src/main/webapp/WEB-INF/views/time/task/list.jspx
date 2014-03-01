@@ -24,7 +24,7 @@
     <helpers:message message="${message}"/>
 
     <sbAdmin:pageHeader text="${labelTasksList}" tag="h2"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
         <c:if test="${not empty tasks}">
             <div>
@@ -54,6 +54,6 @@
             </div>
             <div id="pager"></div>
         </c:if>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 
 </div>

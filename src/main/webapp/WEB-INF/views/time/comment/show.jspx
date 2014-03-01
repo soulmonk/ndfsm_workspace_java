@@ -24,7 +24,7 @@
 
     <!--@elvariable id="comment" type="com.soulmonk.ndfsm.domain.time.ProjectComment"-->
     <sbAdmin:pageHeader text="${labelCommentInfo}"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <div id="commentInfo">
             <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
             <helpers:message message="${message}"/>
@@ -54,5 +54,5 @@
 
             <a href="${editCommentUrl}/${comment.id}?form">${labelCommentUpdate}</a>
         </div>
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 </div>

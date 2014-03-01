@@ -12,38 +12,33 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
-    <spring:message code="label_task_comments_list" var="labelCommentesList"/>
-    <spring:message code="label_task_comment_value" var="labelCommentContent"/>
-    <spring:message code="label_task_comment_value" var="labelCommentDateAdd"/>
+    <spring:message code="label_users_list" var="labelUsersList"/>
+
     <spring:message code="label_actions" var="labelActions"/>
 
-    <spring:url value="/time/comment" var="showCommentsUrl"/>
-    <spring:url value="/time/comment/delete" var="removeCommentUrl"/>
+    <spring:url value="/user" var="showUserUrl"/>
+    <spring:url value="/user/delete" var="removeUserUrl"/>
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <helpers:message message="${message}"/>
 
-    <sbAdmin:pageHeader text="${labelCommentesList}" tag="h2"/>
+    <sbAdmin:pageHeader text="${labelUsersList}" tag="h2"/>
     <sbAdmin:blockRowColWithDefPanel>
-        <!--&lt;!&ndash;@elvariable id="comments" type="java.util.List<com.soulmonk.ndfsm.domain.note.PostComment>"&ndash;&gt;
-        <c:if test="${not empty comments}">
+        <!--@elvariable id="users" type="java.util.List<com.soulmonk.ndfsm.domain.user.User>"-->
+        <c:if test="${not empty users}">
             <div>
                 <table id="list" class="table table-hover table-bordered">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>${labelCommentContent}</th>
-                        <th>${labelCommentDateAdd}</th>
                         <th>${labelActions}</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${comments}" var="comment">
+                    <c:forEach items="${users}" var="user">
                         <tr>
-                            <td><a href="${showCommentsUrl}/${comment.id}">${comment.id}</a></td>
-                            <td>${comment.content}</td>
-                            <td>${comment.dateAdd}</td>
+                            <td><a href="${showUserUrl}/${user.id}">${user.id}</a></td>
                             <td><a href="#" class="btn btn-default"
-                                   onclick="confirmDelete('${removeCommentUrl}/${comment.id}'); return false;">Delete</a>
+                                   onclick="confirmDelete('${removeUserUrl}/${comment.id}'); return false;">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -51,7 +46,7 @@
                 </table>
             </div>
             <div id="pager"></div>
-        </c:if>-->
+        </c:if>
     </sbAdmin:blockRowColWithDefPanel>
 
 </div>

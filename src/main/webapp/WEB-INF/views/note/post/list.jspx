@@ -23,7 +23,7 @@
     <helpers:message message="${message}"/>
 
     <sbAdmin:pageHeader text="${labelCommentesList}" tag="h2"/>
-    <sbAdmin:blockRow12WithDefPanel>
+    <sbAdmin:blockRowColWithDefPanel>
         <!--&lt;!&ndash;@elvariable id="comments" type="java.util.List<com.soulmonk.ndfsm.domain.note.PostComment>"&ndash;&gt;
         <c:if test="${not empty comments}">
             <div>
@@ -52,6 +52,6 @@
             </div>
             <div id="pager"></div>
         </c:if>-->
-    </sbAdmin:blockRow12WithDefPanel>
+    </sbAdmin:blockRowColWithDefPanel>
 
 </div>

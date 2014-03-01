@@ -67,8 +67,8 @@
 
     <tag>
         <description>Page Header</description>
-        <name>blockRow12WithDefPanel</name>
-        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.BlockRow12WithDefPanelTag</tag-class>
+        <name>blockRowColWithDefPanel</name>
+        <tag-class>com.soulmonk.ndfsm.web.jstl.sbAdmin.BlockRowColWithDefPanelTag</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <description>

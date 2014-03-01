@@ -10,7 +10,7 @@ import java.io.IOException;
  * Date: 25.02.14
  * Time: 20:02
  */
-public class BlockRow12WithDefPanelTag extends TagSupport {
+public class BlockRowColWithDefPanelTag extends TagSupport {
   private static final long serialVersionUID = 1L;
 
   private String colNum = "12";

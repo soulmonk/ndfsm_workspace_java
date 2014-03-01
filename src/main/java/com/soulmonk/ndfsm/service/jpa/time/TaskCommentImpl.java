@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("commentService")
+@Service("taskCommentService")
 @Repository
 @Transactional
 public class TaskCommentImpl implements TaskCommentService {
