@@ -16,8 +16,8 @@
 
     <spring:message code="label_actions" var="labelActions"/>
 
-    <spring:url value="/user" var="showUserUrl"/>
-    <spring:url value="/user/delete" var="removeUserUrl"/>
+    <spring:url value="/admin/user" var="showUserUrl"/>
+    <spring:url value="/admin/user/delete" var="removeUserUrl"/>
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <helpers:message message="${message}"/>
 

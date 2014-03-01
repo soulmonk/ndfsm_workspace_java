@@ -17,26 +17,59 @@
     <spring:message code="label_user_new" var="labelUserNew"/>
     <spring:message code="label_user_update" var="labelUserUpdate"/>
 
+    <spring:message code="label_user_login" var="labelUserLogin"/>
+    <spring:message code="label_user_email" var="labelUserEmail"/>
+    <spring:message code="label_user_password" var="labelUserPassword"/>
+    <spring:message code="label_user_first_name" var="labelUserFirstName"/>
+    <spring:message code="label_user_last_name" var="labelUserLastName"/>
+    <spring:message code="label_user_enabled" var="labelUserEnabled"/>
+
+    <spring:message code="placeholder_user_login" var="placeholderUserLogin"/>
+    <spring:message code="placeholder_user_email" var="placeholderUserEmail"/>
+    <spring:message code="placeholder_user_first_name" var="placeholderUserFirstName"/>
+    <spring:message code="placeholder_user_last_name" var="placeholderUserLastName"/>
+
+    <spring:message code="label_role_to_user" var="labelRoleToUser"/>
+
+    <spring:message code="text_main_form_admin_user" var="textMainFormAdminUser"/>
+
     <!--@elvariable id="user" type="com.soulmonk.ndfsm.domain.user.User"-->
     <spring:eval expression="user.id == null ? labelUserNew:labelUserUpdate" var="formTitle"/>
+    <spring:eval expression="user.id == null" var="isNewRecord"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>
-    <sbAdmin:blockRowColWithDefPanel colNum="6">
-        <div id="commentUpdate">
-            <form:form modelAttribute="comment" id="commentUpdateForm" method="post" rol="form">
-                <div>
-                    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
-                    <helpers:message message="${message}"/>
-                </div><!--
-                <sbAdmin:textareaGroup path="value" labelValue="${labelUserValue}*"/>
-                &lt;!&ndash;@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"&ndash;&gt;
-                <sbAdmin:selectGroup path="task.id" labelValue="${labelUserTask}" items="${tasks}" itemValue="id" itemLabel="name"/>
-                &lt;!&ndash;@elvariable id="commentStatuses" type="java.util.List<com.soulmonk.ndfsm.domain.time.UserStatus>"&ndash;&gt;
-                <sbAdmin:selectGroup path="from" labelValue="${labelUserStatus}*" items="${commentStatuses}" itemValue="id" itemLabel="name"/>
-                <sbAdmin:inputGroup path="from" labelValue="${labelUserFrom}*" placeholder="time start"/>
-                <sbAdmin:inputGroup path="to" labelValue="${labelUserTo}*" placeholder="time end"/>
-                <sbAdmin:submitResetButtons/>-->
-            </form:form>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-8">
+                    <sbAdmin:panel>
+                        <sbAdmin:panelHead>
+                            ${textMainFormAdminUser}
+                        </sbAdmin:panelHead>
+                        <sbAdmin:panelBody>
+                            <form:form modelAttribute="user" id="commentUpdateForm" method="post" rol="form">
+                                <div>
+                                    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+                                    <helpers:message message="${message}"/>
+                                </div>
+                                <sbAdmin:inputGroup path="login" labelValue="${labelUserLogin}*" placeholder="${placeholderUserLogin}"/>
+                                <sbAdmin:inputGroup path="email" labelValue="${labelUserEmail}*" placeholder="${placeholderUserEmail}"/>
+                                <sbAdmin:passwordGroup path="password" labelValue="${labelUserPassword}"/>
+                                <sbAdmin:inputGroup path="firstName" labelValue="${labelUserFirstName}*" placeholder="${placeholderUserFirstName}"/>
+                                <sbAdmin:inputGroup path="lastName" labelValue="${labelUserLastName}*" placeholder="${placeholderUserLastName}"/>
+                                <sbAdmin:checkboxGroup path="enabled" labelValue="${labelUserEnabled}"/>
+                            </form:form>
+                        </sbAdmin:panelBody>
+                    </sbAdmin:panel>
+                </div>
+                <div class="col-lg-4">
+                    <sbAdmin:panel>
+                        <sbAdmin:panelHead>${labelRoleToUser}</sbAdmin:panelHead>
+                        <sbAdmin:panelBody>Body Role</sbAdmin:panelBody>
+                    </sbAdmin:panel>
+                </div>
+            </div>
         </div>
-    </sbAdmin:blockRowColWithDefPanel>
+    </div>
 </div>

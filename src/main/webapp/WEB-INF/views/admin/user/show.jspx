@@ -14,7 +14,14 @@
 
     <spring:message code="label_user_info" var="labelUserInfo"/>
     <spring:message code="label_user_update" var="labelUserUpdate"/>
-    <spring:url value="/user" var="editUserUrl"/>
+
+    <spring:message code="label_user_login" var="labelUserLogin"/>
+    <spring:message code="label_user_email" var="labelUserEmail"/>
+    <spring:message code="label_user_first_name" var="labelUserFirstName"/>
+    <spring:message code="label_user_last_name" var="labelUserLastName"/>
+    <spring:message code="label_user_enabled" var="labelUserEnabled"/>
+
+    <spring:url value="/admin/user" var="editUserUrl"/>
 
     <!--@elvariable id="user" type="com.soulmonk.ndfsm.domain.user.User"-->
     <sbAdmin:pageHeader text="${labelUserInfo}"/>
@@ -25,6 +32,8 @@
 
             <table class="table table-hover">
                 <tr>
+                    <td>${labelUserLogin}</td>
+                    <td>${labelUserLogin}</td>
                     <td>Here</td>
                 </tr>
             </table>

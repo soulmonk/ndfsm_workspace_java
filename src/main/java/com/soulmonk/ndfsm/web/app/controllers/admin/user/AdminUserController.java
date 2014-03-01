@@ -40,14 +40,14 @@ public class AdminUserController {
 
   @RequestMapping(method = RequestMethod.GET)
   public String list(Model uiModel) {
-    logger.info("Listing Comment");
+    logger.info("Listing User");
 
     List<User> users = userService.findAll();
     uiModel.addAttribute("users", users);
 
     logger.info("No. of users: " + users.size());
 
-    return "user/list";
+    return "admin/user/list";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.GET)
@@ -55,66 +55,68 @@ public class AdminUserController {
     logger.info("Create form");
     User user = new User();
     uiModel.addAttribute("user", user);
-    return "user/create";
+    return "admin/user/create";
   }
 
   @RequestMapping(params = "form", method = RequestMethod.POST)
   public String create(@Valid User user, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create Comment");
+    logger.info("Create User");
 
     if (bindingResult.hasErrors()) {
       logger.error("bindingResult hasErrors");
       logger.error("bindingResult hasErrors message: " + bindingResult.toString());
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("user_save_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("admin_user_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("user", user);
-      return "user/create";
+      return "admin/user/create";
     }
     logger.info("no bindingResult hasErrors");
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("user_save_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("admin_user_save_success", new Object[]{}, locale)));
 
     userService.save(user);
-    logger.info("Comment id: " + user.getId());
+    logger.info("User id: " + user.getId());
 
-    return "redirect:/user/" + UrlUtil.encodeUrlPathSegment(user.getId().toString(), httpServletRequest);
+    return "redirect:/admin/user/" + UrlUtil.encodeUrlPathSegment(user.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
   public String update(@Valid User user, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update Comment");
+    logger.info("Update User");
 
     if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("user_update_fail", new Object[]{}, locale)));
+      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("admin_user_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("user", user);
-      return "user/update";
+      return "admin/user/update";
     }
 
     uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("user_update_success", new Object[]{}, locale)));
+    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("admin_user_update_success", new Object[]{}, locale)));
 
     userService.save(user);
 
-    logger.info("Update Comment id: " + user.getId());
+    logger.info("Update User id: " + user.getId());
 
-    return "redirect:/user/" + UrlUtil.encodeUrlPathSegment(user.getId().toString(), httpServletRequest);
+    return "redirect:/admin/user/" + UrlUtil.encodeUrlPathSegment(user.getId().toString(), httpServletRequest);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public String show(@PathVariable("id") Long id, Model uiModel) {
     User user = userService.findById(id);
     uiModel.addAttribute("user", user);
-    return "user/show";
+    return "admin/user/show";
   }
 
   @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    uiModel.addAttribute("user", userService.findById(id));
-    return "user/update";
+    User user = userService.findById(id);
+    user.setPassword("");
+    uiModel.addAttribute("user", user);
+    return "admin/user/update";
   }
 
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     userService.delete(id);
-    return "redirect:/user/list";
+    return "redirect:/admin/user/list";
   }
 }
