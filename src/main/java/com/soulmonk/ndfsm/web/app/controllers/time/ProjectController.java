@@ -116,6 +116,12 @@ public class ProjectController {
     return "time/project/update";
   }
 
+  @RequestMapping(value = "/byService/{id}", method = RequestMethod.GET)
+  public String byService(@PathVariable("id") Long id, Model uiModel) {
+    uiModel.addAttribute("projects", projectService.findByServiceId(id));
+    return "time/project/list";
+  }
+
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     projectService.delete(id);

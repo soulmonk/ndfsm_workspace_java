@@ -18,6 +18,7 @@
     <spring:message code="label_actions" var="labelActions"/>
 
     <spring:url value="/time/service" var="showServiceUrl"/>
+    <spring:url value="/time/project/byService" var="showServiceProjectsUrl"/>
     <spring:url value="/time/service/delete" var="removeServiceUrl"/>
     <spring:url value="/time/project" var="showProjectsUrl"/>
 
@@ -46,18 +47,11 @@
                             <td>${service.url}</td>
                             <td><a href="#" class="btn btn-default"
                                    onclick="confirmDelete('${removeServiceUrl}/${service.id}'); return false;">Delete</a>
+                                <c:if test="${not empty service.projects}">
+                                    <a href="${showServiceProjectsUrl}/${service.id}" class="btn btn-default">Project List</a>
+                                </c:if>
                             </td>
                         </tr>
-                        <c:if test="${not empty service.projects}">
-                            <tr>
-                                <td colspan="3">
-                                    <c:forEach items="${service.projects}" var="project">
-                                        <a href="${showProjectsUrl}/${project.id}">${project.name}</a>
-                                        <jsp:text/>
-                                    </c:forEach>
-                                </td>
-                            </tr>
-                        </c:if>
                     </c:forEach>
                     </tbody>
                 </table>

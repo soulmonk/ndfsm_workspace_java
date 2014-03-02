@@ -12,15 +12,10 @@ import java.util.List;
 public class AddTag extends AbstractJavaScriptTag {
   @Override
   public int doEndTag() throws JspException {
-    logger.info("Add tag");
+    logger.debug("Add tag");
     List<String> scripts = getModelAttribute();
-    logger.info("Body Content Class: " + bodyContent.getClass());
-    logger.info("Body Content String: " + bodyContent.getString());
     scripts.add(bodyContent.getString());
     setModelAttribute(scripts);
-    logger.info("Scripts count: " + scripts.size());
-    scripts = getModelAttribute();
-    logger.info("Scripts count: " + scripts.size());
     return super.doEndTag();
   }
 }

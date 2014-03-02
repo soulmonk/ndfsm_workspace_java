@@ -3,6 +3,9 @@ package com.soulmonk.ndfsm.repository.time;
 import com.soulmonk.ndfsm.domain.time.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
+  public List<Project> findByServiceId(Long id);
 }

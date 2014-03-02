@@ -16,7 +16,7 @@ public class PrintTag extends AbstractJavaScriptTag {
   @Override
   public int doStartTag() throws JspException {
     List<String> scripts = getModelAttribute();
-    logger.info("Scripts count: " + scripts.size());
+    logger.debug("Scripts count: " + scripts.size());
     for (String script : scripts) {
       try {
         pageContext.getOut().print(script);

@@ -12,4 +12,6 @@ public interface ProjectService {
   public Project save(Project project);
 
   void delete(Long id);
+
+  public List<Project> findByServiceId(Long id);
 }
