@@ -125,6 +125,6 @@ public class ProjectController {
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     projectService.delete(id);
-    return "redirect:/time/project/list";
+    return "redirect:/time/project";
   }
 }

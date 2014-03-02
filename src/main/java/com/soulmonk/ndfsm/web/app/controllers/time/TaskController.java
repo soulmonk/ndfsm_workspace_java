@@ -119,6 +119,6 @@ public class TaskController {
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     taskService.delete(id);
-    return "redirect:/time/task/list";
+    return "redirect:/time/task";
   }
 }

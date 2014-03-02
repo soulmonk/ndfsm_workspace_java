@@ -30,8 +30,6 @@ public class WrapperGroupTag {
   }
 
   public void endGroup(TagWriter tagWriter, String path, PageContext pageContext) throws JspException {
-    tagWriter.startTag("div");
-    tagWriter.forceBlock();
     CErrorsTag errorsTag = new CErrorsTag();
     errorsTag.setTagWriter(tagWriter);
     errorsTag.setPageContext(pageContext);
@@ -39,7 +37,6 @@ public class WrapperGroupTag {
     errorsTag.doStartTag();
     errorsTag.doEndTag();
     errorsTag.doFinally();
-    tagWriter.endTag();
 
     tagWriter.endTag();
   }

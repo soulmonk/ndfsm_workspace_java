@@ -21,6 +21,7 @@ public class CErrorsTag extends ErrorsTag {
       throw new IllegalStateException("Cannot write without TagWriter.");
     }
     setCssClass("alert alert-danger");
+    setElement("div");
     return super.writeTagContent(this.tagWriter);
   }
 

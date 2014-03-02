@@ -132,6 +132,6 @@ public class TaskCommentController {
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     taskCommentService.delete(id);
-    return "redirect:/time/comment/list";
+    return "redirect:/time/comment";
   }
 }

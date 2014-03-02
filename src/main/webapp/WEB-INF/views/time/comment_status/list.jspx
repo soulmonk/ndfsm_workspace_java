@@ -17,8 +17,8 @@
     <spring:message code="label_comment_status_color" var="labelCommentStatusColor"/>
     <spring:message code="label_actions" var="labelActions"/>
 
-    <spring:url value="/time/comment_statuses" var="showCommentStatusUrl"/>
-    <spring:url value="/time/comment_statuses/delete" var="removeCommentStatusUrl"/>
+    <spring:url value="/time/comment_status" var="showCommentStatusUrl"/>
+    <spring:url value="/time/comment_status/delete" var="removeCommentStatusUrl"/>
 
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <helpers:message message="${message}"/>

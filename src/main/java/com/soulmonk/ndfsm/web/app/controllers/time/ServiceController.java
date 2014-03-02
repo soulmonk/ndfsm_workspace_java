@@ -104,6 +104,6 @@ public class ServiceController {
   @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     serviceService.delete(id);
-    return "redirect:/time/service/list";
+    return "redirect:/time/service";
   }
 }
