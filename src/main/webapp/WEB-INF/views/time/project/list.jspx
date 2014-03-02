@@ -16,6 +16,7 @@
     <spring:message code="label_project_name" var="labelProjectName"/>
     <spring:message code="label_project_service" var="labelProjectService"/>
     <spring:message code="label_actions" var="labelActions"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
 
     <spring:url value="/time/project" var="showProjectsUrl"/>
     <spring:url value="/time/project/delete" var="removeProjectUrl"/>
@@ -53,5 +54,6 @@
             </div>
             <div id="pager"></div>
         </c:if>
+        <c:if test="${empty projects}">${textEmptyResult}</c:if>
     </sbAdmin:blockRowColWithDefPanel>
 </div>

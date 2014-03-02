@@ -16,6 +16,7 @@
     <spring:message code="label_service_name" var="labelServiceName"/>
     <spring:message code="label_service_url" var="labelServiceUrl"/>
     <spring:message code="label_actions" var="labelActions"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
 
     <spring:url value="/time/service" var="showServiceUrl"/>
     <spring:url value="/time/project/byService" var="showServiceProjectsUrl"/>
@@ -58,6 +59,7 @@
             </div>
             <div id="pager"></div>
         </c:if>
+        <c:if test="${empty services}">${textEmptyResult}</c:if>
     </sbAdmin:blockRowColWithDefPanel>
     <!-- /.row -->
 </div>

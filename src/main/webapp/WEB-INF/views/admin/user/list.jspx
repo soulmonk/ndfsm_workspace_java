@@ -19,6 +19,7 @@
     <spring:message code="label_user_enabled" var="labelUserEnabled"/>
 
     <spring:message code="label_actions" var="labelActions"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
 
     <spring:url value="/admin/user" var="showUserUrl"/>
     <spring:url value="/admin/user/delete" var="removeUserUrl"/>
@@ -57,6 +58,7 @@
             </div>
             <div id="pager"></div>
         </c:if>
+        <c:if test="${empty users}">${textEmptyResult}</c:if>
     </sbAdmin:blockRowColWithDefPanel>
 
 </div>

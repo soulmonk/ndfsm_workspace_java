@@ -16,6 +16,7 @@
     <spring:message code="label_task_name" var="labelTaskName"/>
     <spring:message code="label_task_project" var="labelTaskProject"/>
     <spring:message code="label_actions" var="labelActions"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
 
     <spring:url value="/time/task" var="showTasksUrl"/>
     <spring:url value="/time/task/delete" var="removeTasksUrl"/>
@@ -54,6 +55,7 @@
             </div>
             <div id="pager"></div>
         </c:if>
+        <c:if test="${empty tasks}">${textEmptyResult}</c:if>
     </sbAdmin:blockRowColWithDefPanel>
 
 </div>

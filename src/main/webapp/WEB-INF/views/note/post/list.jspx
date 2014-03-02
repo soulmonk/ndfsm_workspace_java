@@ -16,6 +16,7 @@
     <spring:message code="label_task_comment_value" var="labelCommentContent"/>
     <spring:message code="label_task_comment_value" var="labelCommentDateAdd"/>
     <spring:message code="label_actions" var="labelActions"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
 
     <spring:url value="/time/comment" var="showCommentsUrl"/>
     <spring:url value="/time/comment/delete" var="removeCommentUrl"/>
@@ -52,6 +53,7 @@
             </div>
             <div id="pager"></div>
         </c:if>-->
+        <!--<c:if test="${empty comments}">${textEmptyResult}</c:if>-->
     </sbAdmin:blockRowColWithDefPanel>
 
 </div>

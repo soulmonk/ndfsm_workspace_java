@@ -3,6 +3,7 @@ package com.soulmonk.ndfsm.domain.user;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.HashSet;

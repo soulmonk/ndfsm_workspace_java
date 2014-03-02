@@ -16,6 +16,7 @@
     <spring:message code="label_comment_status_name" var="labelCommentStatusName"/>
     <spring:message code="label_comment_status_color" var="labelCommentStatusColor"/>
     <spring:message code="label_actions" var="labelActions"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
 
     <spring:url value="/time/comment_status" var="showCommentStatusUrl"/>
     <spring:url value="/time/comment_status/delete" var="removeCommentStatusUrl"/>
@@ -54,5 +55,6 @@
             </div>
             <div id="pager"></div>
         </c:if>
+        <c:if test="${empty comment_statuses}">${textEmptyResult}</c:if>
     </sbAdmin:blockRowColWithDefPanel>
 </div>
