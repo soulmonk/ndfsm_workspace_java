@@ -1,6 +1,7 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
 import com.soulmonk.ndfsm.domain.time.Service;
+import com.soulmonk.ndfsm.security.UserDetailsAdapter;
 import com.soulmonk.ndfsm.service.time.ServiceService;
 import com.soulmonk.ndfsm.web.form.Message;
 import com.soulmonk.ndfsm.web.util.UrlUtil;
@@ -40,12 +41,9 @@ public class ServiceController {
   @RequestMapping(method = RequestMethod.GET)
   public String list(Model uiModel) {
     logger.info("Listing services");
-
     List<Service> services = serviceService.findAll();
     uiModel.addAttribute("services", services);
-
     logger.info("No. of services: " + services.size());
-
     return "time/service/list";
   }
 
@@ -59,7 +57,6 @@ public class ServiceController {
   @RequestMapping(params = "form", method = RequestMethod.POST)
   public String create(@Valid Service service, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
     logger.info("Create service");
-
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("service_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("service", service);

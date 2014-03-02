@@ -1,5 +1,6 @@
 package com.soulmonk.ndfsm.domain.time;
 
+import com.soulmonk.ndfsm.domain.user.User;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -21,6 +22,7 @@ public class Service implements Serializable {
   private String name;
   private String url;
   private List<Project> projects = new ArrayList<Project>();
+  private User user;
 
   @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -81,5 +83,15 @@ public class Service implements Serializable {
 
   public void setProjects(List<Project> projects) {
     this.projects = projects;
+  }
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

@@ -1,6 +1,7 @@
 package com.soulmonk.ndfsm.service.time;
 
 import com.soulmonk.ndfsm.domain.time.Task;
+import com.soulmonk.ndfsm.domain.user.User;
 
 import java.util.List;
 

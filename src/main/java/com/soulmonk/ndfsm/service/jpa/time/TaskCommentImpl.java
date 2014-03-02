@@ -3,6 +3,7 @@ package com.soulmonk.ndfsm.service.jpa.time;
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.ProjectComment;
 import com.soulmonk.ndfsm.repository.time.TaskCommentRepository;
+import com.soulmonk.ndfsm.security.UserDetailsAdapter;
 import com.soulmonk.ndfsm.service.time.TaskCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,7 @@ public class TaskCommentImpl implements TaskCommentService {
   @Override
   @Transactional(readOnly = true)
   public List<ProjectComment> findAll() {
-    return Lists.newArrayList(taskCommentRepository.findAll());
+    return taskCommentRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
   }
 
   @Override
@@ -34,6 +35,11 @@ public class TaskCommentImpl implements TaskCommentService {
   @Override
   @Transactional(readOnly = true)
   public ProjectComment save(ProjectComment comment) {
+    if (comment.getId() == null) {
+      comment.setUser(UserDetailsAdapter.getLogged().getUser());
+    } else {
+      comment.setUser(findById(comment.getId()).getUser());
+    }
     return taskCommentRepository.saveAndFlush(comment);
   }
 

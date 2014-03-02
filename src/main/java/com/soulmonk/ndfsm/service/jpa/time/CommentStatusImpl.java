@@ -3,6 +3,7 @@ package com.soulmonk.ndfsm.service.jpa.time;
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.CommentStatus;
 import com.soulmonk.ndfsm.repository.time.CommentStatusRepository;
+import com.soulmonk.ndfsm.security.UserDetailsAdapter;
 import com.soulmonk.ndfsm.service.time.CommentStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,7 @@ public class CommentStatusImpl implements CommentStatusService {
   @Override
   @Transactional(readOnly = true)
   public List<CommentStatus> findAll() {
-    return Lists.newArrayList(commentStatusRepository.findAll());
+    return commentStatusRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
   }
 
   @Override
@@ -34,6 +35,11 @@ public class CommentStatusImpl implements CommentStatusService {
   @Override
   @Transactional(readOnly = true)
   public CommentStatus save(CommentStatus commentStatus) {
+    if (commentStatus.getId() == null) {
+      commentStatus.setUser(UserDetailsAdapter.getLogged().getUser());
+    } else {
+      commentStatus.setUser(findById(commentStatus.getId()).getUser());
+    }
     return commentStatusRepository.saveAndFlush(commentStatus);
   }
 

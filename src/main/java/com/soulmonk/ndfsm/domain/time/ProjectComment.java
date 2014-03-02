@@ -1,5 +1,7 @@
 package com.soulmonk.ndfsm.domain.time;
 
+import com.soulmonk.ndfsm.domain.user.User;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
@@ -21,6 +23,7 @@ public class ProjectComment implements Serializable {
   private Time timePlus = Time.valueOf("00:00:00");
   private Task task;
   private CommentStatus commentStatus;
+  private User user;
 
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -117,5 +120,15 @@ public class ProjectComment implements Serializable {
 
   public void setCommentStatus(CommentStatus commentStatus) {
     this.commentStatus = commentStatus;
+  }
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

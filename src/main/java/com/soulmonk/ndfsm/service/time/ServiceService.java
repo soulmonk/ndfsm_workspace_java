@@ -1,6 +1,7 @@
 package com.soulmonk.ndfsm.service.time;
 
 import com.soulmonk.ndfsm.domain.time.Service;
+import com.soulmonk.ndfsm.domain.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

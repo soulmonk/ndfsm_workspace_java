@@ -48,7 +48,7 @@
                             <td>${user.email}</td>
                             <td>${user.enabled}</td>
                             <td><a href="#" class="btn btn-default"
-                                   onclick="confirmDelete('${removeUserUrl}/${comment.id}'); return false;">Delete</a>
+                                   onclick="confirmDelete('${removeUserUrl}/${user.id}'); return false;">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>

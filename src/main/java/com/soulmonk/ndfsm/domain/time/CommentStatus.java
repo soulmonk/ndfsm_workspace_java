@@ -1,5 +1,7 @@
 package com.soulmonk.ndfsm.domain.time;
 
+import com.soulmonk.ndfsm.domain.user.User;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class CommentStatus implements Serializable {
   private String description;
   private String color;
   private List<ProjectComment> comments = new ArrayList<ProjectComment>();
+  private User user;
 
   @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -97,5 +100,15 @@ public class CommentStatus implements Serializable {
   @Transient
   public String getColorHtml() {
     return "#" + color;
+  }
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

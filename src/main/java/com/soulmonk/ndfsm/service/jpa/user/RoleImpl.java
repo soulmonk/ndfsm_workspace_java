@@ -5,6 +5,7 @@ import com.soulmonk.ndfsm.domain.user.Role;
 import com.soulmonk.ndfsm.repository.user.RoleRepository;
 import com.soulmonk.ndfsm.service.user.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import java.util.List;
 @Service("roleService")
 @Repository
 @Transactional
+@Secured("ROLE_ADMIN")
 public class RoleImpl implements RoleService {
 
   @Autowired

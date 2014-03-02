@@ -13,9 +13,6 @@
         <intercept-url pattern="/dev/**" access="hasRole('ROLE_DEV')" />
         <intercept-url pattern="/test/**" access="hasRole('ROLE_DEV')" />
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/time/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/note/**" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/login/**" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />

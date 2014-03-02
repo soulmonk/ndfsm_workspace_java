@@ -2,7 +2,9 @@ package com.soulmonk.ndfsm.service.jpa.time;
 
 import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.Task;
+import com.soulmonk.ndfsm.domain.user.User;
 import com.soulmonk.ndfsm.repository.time.TaskRepository;
+import com.soulmonk.ndfsm.security.UserDetailsAdapter;
 import com.soulmonk.ndfsm.service.time.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +24,7 @@ public class TaskImpl implements TaskService {
   @Override
   @Transactional(readOnly = true)
   public List<Task> findAll() {
-    return Lists.newArrayList(taskRepository.findAll());
+    return taskRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
   }
 
   @Override
@@ -34,6 +36,11 @@ public class TaskImpl implements TaskService {
   @Override
   @Transactional(readOnly = true)
   public Task save(Task task) {
+    if (task.getId() == null) {
+      task.setUser(UserDetailsAdapter.getLogged().getUser());
+    } else {
+      task.setUser(findById(task.getId()).getUser());
+    }
     return taskRepository.saveAndFlush(task);
   }
 
