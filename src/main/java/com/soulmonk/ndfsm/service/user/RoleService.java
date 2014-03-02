@@ -12,4 +12,6 @@ public interface RoleService {
   public Role findByAuthority(String authority);
 
   public Role save(Role role);
+
+  public void delete(Long id);
 }

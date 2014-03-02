@@ -1,0 +1,50 @@
+<!--
+  Role: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_role_new" var="labelRoleNew"/>
+    <spring:message code="label_role_update" var="labelRoleUpdate"/>
+
+    <spring:message code="label_role_name" var="labelRoleName"/>
+    <spring:message code="label_role_authority" var="labelRoleAuthority"/>
+
+    <spring:message code="placeholder_role_name" var="placeholderRoleName"/>
+    <spring:message code="placeholder_role_authority" var="placeholderRoleAuthority"/>
+
+    <!--@elvariable id="role" type="com.soulmonk.ndfsm.domain.user.Role"-->
+    <spring:eval expression="role.id == null ? labelRoleNew:labelRoleUpdate" var="formTitle"/>
+
+    <sbAdmin:pageHeader text="${formTitle}"/>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <sbAdmin:panel>
+                        <sbAdmin:panelBody>
+                            <form:form modelAttribute="role" id="commentUpdateForm" method="post" rol="form">
+                                <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+                                <helpers:message message="${message}"/>
+                                <sbAdmin:inputGroup path="name" labelValue="${labelRoleName}*" placeholder="${placeholderRoleName}"/>
+                                <sbAdmin:inputGroup path="authority" labelValue="${labelRoleAuthority}*" placeholder="${placeholderRoleAuthority}"/>
+                                <sbAdmin:submitResetButtons/>
+                            </form:form>
+                        </sbAdmin:panelBody>
+                    </sbAdmin:panel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

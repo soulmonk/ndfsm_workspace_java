@@ -1,0 +1,61 @@
+<!--
+  Role: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_roles_list" var="labelRolesList"/>
+
+    <spring:message code="label_role_name" var="labelRoleName"/>
+    <spring:message code="label_role_authority" var="labelRoleAuthority"/>
+
+    <spring:message code="label_actions" var="labelActions"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
+
+    <spring:url value="/admin/role" var="showRoleUrl"/>
+    <spring:url value="/admin/role/delete" var="removeRoleUrl"/>
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <helpers:message message="${message}"/>
+
+    <sbAdmin:pageHeader text="${labelRolesList}" tag="h2"/>
+    <sbAdmin:blockRowColWithDefPanel>
+        <!--@elvariable id="roles" type="java.util.List<com.soulmonk.ndfsm.domain.user.Role>"-->
+        <c:if test="${not empty roles}">
+            <div>
+                <table id="list" class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>${labelRoleName}</th>
+                        <th>${labelRoleAuthority}</th>
+                        <th>${labelActions}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${roles}" var="role">
+                        <tr>
+                            <td><a href="${showRoleUrl}/${role.id}">${role.id}</a></td>
+                            <td>${role.name}</td>
+                            <td>${role.authority}</td>
+                            <td><a href="#" class="btn btn-default"
+                                   onclick="confirmDelete('${removeRoleUrl}/${role.id}'); return false;">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <div id="pager"></div>
+        </c:if>
+        <c:if test="${empty roles}">${textEmptyResult}</c:if>
+    </sbAdmin:blockRowColWithDefPanel>
+
+</div>

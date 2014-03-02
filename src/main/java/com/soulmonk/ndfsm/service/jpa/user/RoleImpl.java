@@ -44,4 +44,9 @@ public class RoleImpl implements RoleService {
     return roleRepository.saveAndFlush(role);
   }
 
+  @Override
+  public void delete(Long id) {
+    roleRepository.delete(id);
+  }
+
 }

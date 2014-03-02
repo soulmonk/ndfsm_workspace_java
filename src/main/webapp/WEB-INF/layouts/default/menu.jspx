@@ -61,6 +61,21 @@
                                 <li><a href="${adminUserAddUrl}">${menuAdminUserAdd}</a></li>
                             </ul>
                         </li>
+
+                        <spring:message code="menu_admin_role" var="menuAdminRole"/>
+                        <spring:message code="menu_admin_roles_list" var="menuAdminRoleList"/>
+                        <spring:message code="menu_admin_role_add" var="menuAdminRoleAdd"/>
+
+                        <spring:url var="adminRolesListUrl" value="/admin/role" />
+                        <spring:url var="adminRoleAddUrl" value="/admin/role?form" />
+
+                        <li>
+                            <a href="#">${menuAdminRole}<span class="fa arrow"><jsp:text/></span></a>
+                            <ul class="nav nav-third-level">
+                                <li><a href="${adminRolesListUrl}">${menuAdminRoleList}</a></li>
+                                <li><a href="${adminRoleAddUrl}">${menuAdminRoleAdd}</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </sec:authorize>
