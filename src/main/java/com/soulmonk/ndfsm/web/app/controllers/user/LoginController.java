@@ -1,5 +1,6 @@
 package com.soulmonk.ndfsm.web.app.controllers.user;
 
+import com.soulmonk.ndfsm.security.UserDetailsAdapter;
 import com.soulmonk.ndfsm.web.form.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sun.security.util.SecurityConstants;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Security;
 
@@ -27,7 +29,10 @@ public class LoginController {
   final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
   @RequestMapping(method = RequestMethod.GET)
-  public String login() {
+  public String login(HttpServletRequest httpServletRequest) {
+    if (UserDetailsAdapter.getLogged() != null) {
+      return "redirect:/";
+    }
     return "login/login_form";
   }
 
