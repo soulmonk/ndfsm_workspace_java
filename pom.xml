@@ -152,8 +152,8 @@
         <!-- Spring JS -->
         <dependency>
             <groupId>org.springframework.webflow</groupId>
-            <artifactId>spring-js-resources</artifactId>
-            <version>2.3.0.RELEASE</version>
+            <artifactId>spring-js</artifactId>
+            <version>2.3.3.RELEASE</version>
         </dependency>
         <!-- /END -->
 

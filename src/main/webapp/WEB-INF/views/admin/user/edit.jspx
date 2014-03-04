@@ -9,6 +9,7 @@
      xmlns:form="http://www.springframework.org/tags/form"
      xmlns:sbAdmin="/WEB-INF/sbAdmin"
      xmlns:helpers="/WEB-INF/helpers"
+     xmlns:js="/WEB-INF/javaScript"
      version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -30,19 +31,26 @@
     <spring:message code="placeholder_user_last_name" var="placeholderUserLastName"/>
 
     <spring:message code="label_role_to_user" var="labelRoleToUser"/>
+    <spring:message code="label_form_save" var="labelSave"/>
 
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
     <spring:message code="text_main_form_admin_user" var="textMainFormAdminUser"/>
 
     <!--@elvariable id="user" type="com.soulmonk.ndfsm.domain.user.User"-->
-    <spring:eval expression="user.id == null ? labelUserNew:labelUserUpdate" var="formTitle"/>
     <spring:eval expression="user.id == null" var="isNewRecord"/>
+    <spring:eval expression="isNewRecord ? labelUserNew:labelUserUpdate" var="formTitle"/>
+
+    <c:set var="classColLg12" value="col-lg-12"/>
+    <c:set var="classColLg8" value="col-lg-8"/>
+    <!--@elvariable id="roles" type="java.util.List<com.soulmonk.ndfsm.domain.user.Role>"-->
+    <spring:eval expression="isNewRecord ? classColLg12 : classColLg8" var="classColLg"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>
 
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="${classColLg}">
                     <sbAdmin:panel>
                         <sbAdmin:panelHead>
                             ${textMainFormAdminUser}
@@ -53,11 +61,15 @@
                                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                                     <helpers:message message="${message}"/>
                                 </div>
-                                <sbAdmin:inputGroup path="login" labelValue="${labelUserLogin}*" placeholder="${placeholderUserLogin}"/>
-                                <sbAdmin:inputGroup path="email" labelValue="${labelUserEmail}*" placeholder="${placeholderUserEmail}"/>
+                                <sbAdmin:inputGroup path="login" labelValue="${labelUserLogin}*"
+                                                    placeholder="${placeholderUserLogin}"/>
+                                <sbAdmin:inputGroup path="email" labelValue="${labelUserEmail}*"
+                                                    placeholder="${placeholderUserEmail}"/>
                                 <sbAdmin:passwordGroup path="password" labelValue="${labelUserPassword}"/>
-                                <sbAdmin:inputGroup path="firstName" labelValue="${labelUserFirstName}*" placeholder="${placeholderUserFirstName}"/>
-                                <sbAdmin:inputGroup path="lastName" labelValue="${labelUserLastName}*" placeholder="${placeholderUserLastName}"/>
+                                <sbAdmin:inputGroup path="firstName" labelValue="${labelUserFirstName}*"
+                                                    placeholder="${placeholderUserFirstName}"/>
+                                <sbAdmin:inputGroup path="lastName" labelValue="${labelUserLastName}*"
+                                                    placeholder="${placeholderUserLastName}"/>
                                 <sbAdmin:checkboxGroup path="enabled" labelValue="${labelUserEnabled}"/>
 
                                 <sbAdmin:submitResetButtons/>
@@ -65,12 +77,72 @@
                         </sbAdmin:panelBody>
                     </sbAdmin:panel>
                 </div>
-                <div class="col-lg-4">
-                    <sbAdmin:panel>
-                        <sbAdmin:panelHead>${labelRoleToUser}</sbAdmin:panelHead>
-                        <sbAdmin:panelBody>Body Role</sbAdmin:panelBody>
-                    </sbAdmin:panel>
-                </div>
+                <c:if test="${not isNewRecord}">
+                    <div class="col-lg-4">
+                        <sbAdmin:panel>
+                            <sbAdmin:panelHead>${labelRoleToUser}</sbAdmin:panelHead>
+                            <sbAdmin:panelBody>
+                                <c:if test="${empty roles}">
+                                    <sbAdmin:panelBody>${textEmptyResult}</sbAdmin:panelBody>
+                                </c:if>
+                                <c:if test="${not empty roles}">
+                                    <div id="userToRole">
+                                        <c:forEach items="${roles}" var="role">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <c:choose>
+                                                        <c:when test="${role.checked}">
+                                                            <input type="checkbox" value="${role.id}"
+                                                                   checked="checked"/>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <input type="checkbox" value="${role.id}"/>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    ${role.name}
+                                                </label>
+                                            </div>
+                                        </c:forEach>
+                                        <button type="submit" class="btn btn-default">${labelSave}</button>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="errorBlock" tabindex="-1" role="dialog"
+                                         aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary">Save changes
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                                    <js:add>
+                                        <spring:url value="/admin/user/updateUserToRole/${user.id}"
+                                                    var="updateUserToRoleUrl"/>
+                                        <script type="text/javascript">
+                                            UserHelper.updateUserToRole('${updateUserToRoleUrl}', "#userToRole");
+                                        </script>
+                                    </js:add>
+                                </c:if>
+                            </sbAdmin:panelBody>
+                        </sbAdmin:panel>
+                    </div>
+                </c:if>
             </div>
         </div>
     </div>

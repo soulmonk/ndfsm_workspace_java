@@ -6,7 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -129,9 +131,27 @@ public class User implements Serializable {
     this.dateModified = dateModified;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.user", cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "pk.user", cascade = CascadeType.ALL)
   public Set<UserRole> getUserRoles() {
     return userRoles;
+  }
+
+  @Transient
+  public List<Role> getSelectedUserRoles(List<Role> roles) {
+    List<Role> authorities = new ArrayList<Role>();
+
+    for (Role role : roles) {
+
+      for (UserRole userRole : getUserRoles()) {
+        if (role.getId().equals(userRole.getRole().getId())) {
+          role.setChecked(true);
+          break;
+        }
+      }
+
+      authorities.add(role);
+    }
+    return authorities;
   }
 
   public void setUserRoles(Set<UserRole> userRoles) {

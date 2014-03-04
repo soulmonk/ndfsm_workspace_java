@@ -1,9 +1,18 @@
 package com.soulmonk.ndfsm.web.app.controllers.admin.user;
 
+import com.google.common.collect.Lists;
+import com.soulmonk.ndfsm.domain.user.Role;
 import com.soulmonk.ndfsm.domain.user.User;
+import com.soulmonk.ndfsm.domain.user.UserRole;
+import com.soulmonk.ndfsm.domain.user.UserRoleId;
+import com.soulmonk.ndfsm.service.user.RoleService;
+import com.soulmonk.ndfsm.service.user.UserRoleService;
 import com.soulmonk.ndfsm.service.user.UserService;
 import com.soulmonk.ndfsm.web.form.Message;
 import com.soulmonk.ndfsm.web.util.UrlUtil;
+import org.apache.taglibs.standard.functions.Functions;
+import org.codehaus.jackson.JsonGenerator;
+import org.codehaus.jackson.JsonParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +20,14 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import sun.plugin2.util.PojoUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Company: Valpio
@@ -34,6 +42,12 @@ public class AdminUserController {
 
   @Autowired
   private UserService userService;
+
+  @Autowired
+  private UserRoleService userRoleService;
+
+  @Autowired
+  private RoleService roleService;
 
   @Autowired
   private MessageSource messageSource;
@@ -119,6 +133,7 @@ public class AdminUserController {
     User user = userService.findById(id);
     user.setPassword("");
     uiModel.addAttribute("user", user);
+    uiModel.addAttribute("roles", user.getSelectedUserRoles(roleService.findAll()));
     return "admin/user/update";
   }
 
@@ -126,5 +141,40 @@ public class AdminUserController {
   public String delete(@PathVariable("id") Long id, Model uiModel) {
     userService.delete(id);
     return "redirect:/admin/user";
+  }
+
+  @RequestMapping(value = "/updateUserToRole/{id}", method = RequestMethod.POST, produces = "application/json")
+  @ResponseBody
+  public Map<String, ? extends Object> updateUserToRole(@PathVariable("id") Long id, @RequestParam(value = "roles", required = false) String roles, HttpServletResponse response) {
+    //TODO SAVE ROLE FORE USER
+    //TODO ROLES TO OBJECT
+    List<String> roleIds = Lists.newArrayList(Functions.split(roles, ";"));
+
+    User user = userService.findById(id);
+    for (UserRole userRole: user.getUserRoles()) {
+      boolean exist = false;
+      for (String roleId: roleIds) {
+        if (userRole.getRole().getId().equals(Long.parseLong(roleId))) {
+          roleIds.remove(roleId);
+          exist = true;
+          break;
+        }
+      }
+      if (!exist) {
+        userRoleService.delete(userRole);
+      }
+    }
+
+    for (String roleId: roleIds) {
+      Role role = roleService.findById(Long.parseLong(roleId));
+      UserRole userRole = new UserRole();
+      userRole.setRole(role);
+      userRole.setUser(user);
+      userRoleService.save(userRole);
+    }
+
+    /*logger.debug("updateUserToRole " + roles.getClass());*/
+//    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+    return Collections.singletonMap("result", "Updated");
   }
 }

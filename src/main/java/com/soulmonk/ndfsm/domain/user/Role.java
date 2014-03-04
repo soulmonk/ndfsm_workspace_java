@@ -18,6 +18,7 @@ public class Role implements Serializable {
   private Long id;
   private String name;
   private String authority;
+  private Boolean checked = false;
 
   private Set<UserRole> userRoles = new HashSet<UserRole>(0);
 
@@ -86,5 +87,14 @@ public class Role implements Serializable {
   @Override
   public String toString() {
     return "id = " + id + "<br/>name: " + name;
+  }
+
+  @Transient
+  public Boolean getChecked() {
+    return checked;
+  }
+
+  public void setChecked(Boolean checked) {
+    this.checked = checked;
   }
 }
