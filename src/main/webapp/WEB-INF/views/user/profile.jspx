@@ -7,6 +7,7 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:sbAdmin="/WEB-INF/sbAdmin"
      xmlns:spring="http://www.springframework.org/tags"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
@@ -14,32 +15,50 @@
     <!--@elvariable id="user" type="com.soulmonk.ndfsm.domain.user.User"-->
     <spring:message code="profile_page_title" var="profilePageTitle" arguments="${user.fullName}"/>
 
+    <spring:message code="label_en_US" var="labelEnUs"/>
+    <spring:message code="label_ru_RU" var="labelRuRu"/>
+    <spring:message code="label_locale" var="labelLocale"/>
+
     <sbAdmin:pageHeader text="${profilePageTitle}"/>
 
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <td>Login</td>
-                                <td>${user.login}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>${user.email}</td>
-                            </tr>
-                            <tr>
-                                <td>First Name</td>
-                                <td>${user.firstName}</td>
-                            </tr>
-                            <tr>
-                                <td>Last Name</td>
-                                <td>${user.lastName}</td>
-                            </tr>
-                        </table>
-                    </div>
+                    <sbAdmin:panel>
+                        <sbAdmin:panelBody>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td>Login</td>
+                                        <td>${user.login}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>${user.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>First Name</td>
+                                        <td>${user.firstName}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Name</td>
+                                        <td>${user.lastName}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </sbAdmin:panelBody>
+                    </sbAdmin:panel>
+                </div>
+                <div class="col-lg-4">
+                    <sbAdmin:panel>
+                        <sbAdmin:panelHead>${labelLocale}</sbAdmin:panelHead>
+                        <sbAdmin:panelBody>
+                            <a href="?lang=en_US">${labelEnUs}</a>
+                            <c:out value=" | "/>
+                            <a href="?lang=ru_RU">${labelRuRu}</a>
+                        </sbAdmin:panelBody>
+                    </sbAdmin:panel>
                 </div>
             </div>
         </div>
