@@ -11,6 +11,7 @@
 
 
     <context:property-placeholder location="classpath:application.properties"/>
+    <context:property-placeholder location="classpath:security.properties"/>
 
     <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${db.driver}" />
