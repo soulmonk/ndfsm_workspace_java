@@ -40,7 +40,7 @@
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <li>
                     <a href="#"><i class="fa fa-sitemap fa-fw"><jsp:text/></i>${menuAdmin}<span class="fa arrow"><jsp:text/></span></a>
-                    <ul class="nav nav-second-level">
+                    <ul class="nav nav-second-level collapse">
                         <li>
                             <a href="${adminUrl}"><i class="fa fa-dashboard fa-fw">
                                 <jsp:text/>
@@ -121,7 +121,7 @@
 
             <li>
                 <a href="#"><i class="fa fa-sitemap fa-fw"><jsp:text/></i>${menuBaseTime}<span class="fa arrow"><jsp:text/></span></a>
-                <ul class="nav nav-second-level">
+                <ul class="nav nav-second-level collapse">
                     <li>
                         <a href="#">${menuServices}<span class="fa arrow"><jsp:text/></span></a>
                         <ul class="nav nav-third-level">

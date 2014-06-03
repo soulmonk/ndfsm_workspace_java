@@ -281,14 +281,6 @@
             <artifactId>flyway-core</artifactId>
             <version>${org.flyway-version}</version>
         </dependency>
-
-
-
-        <!--<dependency>
-            <groupId>com.googlecode.flyway</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>2.2.1</version>
-        </dependency>-->
         <!-- /END -->
 
         <dependency>
@@ -355,7 +347,7 @@
                     <locations>
                         <location>classpath:db/migration</location>
                     </locations>
-                    <initVersion>1.0</initVersion>
+                    <initVersion>0</initVersion>
                     <initDescription>Base version</initDescription>
                 </configuration>
             </plugin>
