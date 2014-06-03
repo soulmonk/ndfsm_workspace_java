@@ -350,6 +350,25 @@
                     <configFile>src/main/resources/flyway.properties</configFile>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- run "mvn hibernate3:hbm2ddl" to generate a schema -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>hibernate3-maven-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <hibernatetool>
+                        <classpath>
+                            <path location="${project.build.directory}/classes" />
+                        </classpath>
+
+                        <annotationconfiguration
+                                propertyfile="src/main/resources/application.properties" />
+                        <hbm2ddl update="true" create="true" drop="true" export="false"
+                                 outputfilename="schemaDiff.ddl" format="true"
+                                 console="true"/>
+                    </hibernatetool>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
