@@ -1,0 +1,34 @@
+<!--
+  User: soulmonk
+  Date: 11.07.13
+  Time: 7:51
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_record_new" var="labelRecordNew"/>
+    <spring:message code="label_record_update" var="labelRecordUpdate"/>
+
+    <!--@elvariable id="record" type="com.soulmonk.ndfsm.domain.time.Record"-->
+    <spring:eval expression="record.id == null ? labelRecordNew:labelRecordUpdate" var="formTitle"/>
+
+    <sbAdmin:pageHeader text="${formTitle}"/>
+    <sbAdmin:blockRowColWithDefPanel>
+        <div id="recordUpdate">
+            <form:form modelAttribute="record" id="recordUpdateForm" method="post" rol="form">
+                <div>
+                    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+                    <helpers:message message="${message}"/>
+                </div>
+                <sbAdmin:submitResetButtons/>
+            </form:form>
+        </div>
+    </sbAdmin:blockRowColWithDefPanel>
+</div>
