@@ -118,4 +118,9 @@ public class RecordController {
     recordService.delete(id);
     return "redirect:/time/record";
   }
+
+  @RequestMapping(value = "/list_edit", method = RequestMethod.GET)
+  public String listEdit(Model uiModel) {
+    return "time/record/listEdit";
+  }
 }

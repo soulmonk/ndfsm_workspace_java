@@ -4,6 +4,11 @@ function confirmDelete(delUrl) {
   }
 }
 
+$(document).on('click', '.delete-record', function () {
+  confirmDelete($(this).attr('data-url'));
+  return false;
+});
+
 var UserHelper = function () {
   this.updateUserToRole = function (url, select) {
     console.log(url, select);
@@ -38,7 +43,7 @@ var UserHelper = function () {
               errorBlock.find(".modal-body").html(text);
                 errorBlock.modal('toggle', this)
                 .one('hide', function () {
-                  $this.is(':visible') && $this.focus()
+                  var i = $this.is(':visible') && $this.focus();
                 });
             }
             console.log(data);
@@ -48,6 +53,6 @@ var UserHelper = function () {
         return false;
       });
     }
-  }
+  };
 };
 UserHelper = new UserHelper();
