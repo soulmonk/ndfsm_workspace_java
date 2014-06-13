@@ -5,8 +5,7 @@
 
     <group name="all">
         <css>/stylesheets/standard.css</css>
-        <js>/scripts/sb-admin.js</js>
-        <js>/scripts/time_record.js</js>
+        <js>/scripts/standard.js</js>
     </group>
 
 </groups>

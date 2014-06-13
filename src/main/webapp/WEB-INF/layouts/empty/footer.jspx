@@ -7,7 +7,7 @@
     <!-- Core Scripts - Include with every page -->
     <spring:url value="/resources/scripts/jquery-1.10.2.js" var="jquery" />
     <script type="text/javascript" src="${jquery}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/bootstrap.min.js" var="bootstrap" />
+    <spring:url value="/resources/scripts/min/bootstrap.min.js" var="bootstrap" />
     <script type="text/javascript" src="${bootstrap}"><jsp:text/></script>
     <spring:url value="/resources/scripts/plugins/metisMenu/jquery.metisMenu.js" var="jquery_metisMenu" />
     <script type="text/javascript" src="${jquery_metisMenu}"><jsp:text/></script>
