@@ -12,6 +12,7 @@ import javax.servlet.jsp.JspException;
  * Time: 21:49
  */
 public class CErrorsTag extends ErrorsTag {
+  private static final long serialVersionUID = 1L;
 
   private TagWriter tagWriter;
 

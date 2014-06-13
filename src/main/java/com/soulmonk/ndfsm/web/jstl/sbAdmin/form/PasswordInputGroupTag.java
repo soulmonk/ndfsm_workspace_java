@@ -13,6 +13,7 @@ import javax.servlet.jsp.tagext.JspTag;
  * Time: 19:40
  */
 public class PasswordInputGroupTag extends PasswordInputTag {
+  private static final long serialVersionUID = 1L;
   private WrapperGroupTag wrapperGroupTag;
 
   private String labelValue;

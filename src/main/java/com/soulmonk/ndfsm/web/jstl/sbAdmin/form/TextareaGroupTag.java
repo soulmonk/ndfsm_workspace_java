@@ -12,6 +12,7 @@ import javax.servlet.jsp.JspException;
  * Time: 20:11
  */
 public class TextareaGroupTag extends TextareaTag {
+  private static final long serialVersionUID = 1L;
 
   private String labelValue;
 

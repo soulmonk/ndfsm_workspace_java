@@ -13,6 +13,7 @@ import javax.servlet.jsp.PageContext;
  * Time: 22:03
  */
 public class WrapperGroupTag {
+  private static final long serialVersionUID = 1L;
 
   public void beginGroup(TagWriter tagWriter, String path, String labelValue, Boolean isError, PageContext pageContext) throws JspException {
     tagWriter.startTag("div");

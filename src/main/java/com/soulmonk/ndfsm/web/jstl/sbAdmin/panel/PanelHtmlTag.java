@@ -11,6 +11,7 @@ import javax.servlet.jsp.JspException;
  * Time: 22:32
  */
 public class PanelHtmlTag extends HtmlTagSupport {
+  private static final long serialVersionUID = 1L;
 
   public static final String DEFAULT_TYPE = "default";
 

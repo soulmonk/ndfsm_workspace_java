@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "time_records")
 public class Record implements Serializable {
+  private static final long serialVersionUID = 1L;
 
   @Column(name = "id", nullable = false)
   @GeneratedValue(strategy = GenerationType.AUTO)

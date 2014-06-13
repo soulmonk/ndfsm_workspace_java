@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "time_comments")
 public class ProjectComment implements Serializable {
+  private static final long serialVersionUID = 1L;
   private Long id;
   private String value;
   private Timestamp from;

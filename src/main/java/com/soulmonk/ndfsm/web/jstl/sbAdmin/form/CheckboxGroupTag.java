@@ -14,6 +14,7 @@ import javax.servlet.jsp.tagext.JspTag;
  * Time: 19:55
  */
 public class CheckboxGroupTag extends CheckboxTag {
+  private static final long serialVersionUID = 1L;
   private WrapperGroupTag wrapperGroupTag;
 
   private String labelValue;

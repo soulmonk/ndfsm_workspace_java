@@ -12,7 +12,7 @@ import java.util.List;
  * Time: 22:32
  */
 public class PrintTag extends AbstractJavaScriptTag {
-
+  private static final long serialVersionUID = 1L;
   @Override
   public int doStartTag() throws JspException {
     List<String> scripts = getModelAttribute();

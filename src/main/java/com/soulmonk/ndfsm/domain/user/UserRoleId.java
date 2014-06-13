@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 @Embeddable
 public class UserRoleId implements Serializable {
+  private static final long serialVersionUID = 1L;
 
   private User user;
   private Role role;

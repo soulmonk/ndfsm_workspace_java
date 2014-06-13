@@ -13,6 +13,7 @@ import javax.servlet.jsp.tagext.JspTag;
  * Time: 22:59
  */
 public class SelectGroupTag extends SelectTag {
+  private static final long serialVersionUID = 1L;
   private WrapperGroupTag wrapperGroupTag;
 
   private String labelValue;

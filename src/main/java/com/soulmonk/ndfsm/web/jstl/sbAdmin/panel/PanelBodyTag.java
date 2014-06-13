@@ -12,6 +12,7 @@ import javax.servlet.jsp.tagext.JspTag;
  * Time: 23:16
  */
 public class PanelBodyTag extends HtmlTagSupport {
+  private static final long serialVersionUID = 1L;
   @Override
   public int doStartTagInternal() throws JspException {
     tagWriter.startTag(DIV_TAG);

@@ -11,6 +11,7 @@ import javax.servlet.jsp.JspException;
  * Time: 22:52
  */
 public class PanelHeadingHtmlTag extends HtmlTagSupport {
+  private static final long serialVersionUID = 1L;
   @Override
   public int doStartTagInternal() throws JspException {
     tagWriter.startTag(DIV_TAG);

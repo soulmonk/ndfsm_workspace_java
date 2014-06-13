@@ -17,6 +17,7 @@ import java.io.Serializable;
   @AssociationOverride(name = "pk.role",
     joinColumns = @JoinColumn(name = "role_id"))})
 public class UserRole implements Serializable {
+  private static final long serialVersionUID = 1L;
 
   private UserRoleId pk = new UserRoleId();
 

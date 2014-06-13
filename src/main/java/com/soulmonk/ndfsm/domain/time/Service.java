@@ -18,6 +18,7 @@ import java.util.List;
 @Entity
 @Table(name = "time_services")
 public class Service implements Serializable {
+  private static final long serialVersionUID = 1L;
   private Long id;
   private String name;
   private String url;

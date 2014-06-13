@@ -20,6 +20,7 @@ import java.util.Set;
  * Time: 11:13
  */
 public class UserDetailsAdapter implements UserDetails {
+  private static final long serialVersionUID = 1L;
 
   private User user;
 

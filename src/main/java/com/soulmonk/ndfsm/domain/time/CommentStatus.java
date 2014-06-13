@@ -16,6 +16,7 @@ import java.util.List;
 @javax.persistence.Table(name = "time_comment_statuses")
 @Entity
 public class CommentStatus implements Serializable {
+  private static final long serialVersionUID = 1L;
   private Long id;
   private String name;
   private String description;

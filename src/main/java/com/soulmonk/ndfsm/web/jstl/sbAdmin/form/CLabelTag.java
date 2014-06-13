@@ -12,6 +12,7 @@ import javax.servlet.jsp.JspException;
  * Time: 21:23
  */
 public class CLabelTag extends LabelTag {
+  private static final long serialVersionUID = 1L;
 
   /**
    * The HTML '{@code label}' tag.
