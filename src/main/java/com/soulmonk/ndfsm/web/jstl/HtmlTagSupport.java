@@ -12,6 +12,7 @@ import javax.servlet.jsp.tagext.TagSupport;
  * Time: 22:58
  */
 public abstract class HtmlTagSupport extends TagSupport {
+  private static final long serialVersionUID = 1L;
 
   public final static String DIV_TAG = "div";
 
