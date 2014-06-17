@@ -19,6 +19,7 @@
         <wro4j.version>1.4.1</wro4j.version>
         <coffee-maven-plugin.version>1.4.9</coffee-maven-plugin.version>
         <jetty-maven-plugin.version>8.1.3.v20120416</jetty-maven-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -340,7 +341,7 @@
                             <source>
                                 <directory>${basedir}/src/main/resources/sass</directory>
                             </source>
-                            <destination>${project.basedir}/src/main/webapp/stylesheet</destination>
+                            <destination>${project.basedir}/src/main/webapp/stylesheets/sass</destination>
                         </resource>
                     </resources>
                 </configuration>
