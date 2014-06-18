@@ -1,1 +1,4 @@
-
+.has-comment:hover + tr {
+    display: table-row!important;
+    visibility: visible!important;
+}

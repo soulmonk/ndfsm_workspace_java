@@ -82,6 +82,8 @@ public class TaskCommentController {
       logger.error("bindingResult hasErrors message: " + bindingResult.toString());
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
+      uiModel.addAttribute("tasks", taskService.findAll());
+      uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
       return "time/comment/create";
     }
     logger.info("no bindingResult hasErrors");
@@ -101,6 +103,8 @@ public class TaskCommentController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("comment_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("comment", comment);
+      uiModel.addAttribute("tasks", taskService.findAll());
+      uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
       return "time/comment/update";
     }
 

@@ -97,6 +97,30 @@ public class Record implements Serializable {
     this.commentStatus = commentStatus;
   }
 
+  public String getTask() {
+    return task;
+  }
+
+  public void setTask(String task) {
+    this.task = task;
+  }
+
+  public Time getBreakTime() {
+    return breakTime;
+  }
+
+  public void setBreakTime(Time breakTime) {
+    this.breakTime = breakTime;
+  }
+
+  public Time getDirtyTime() {
+    return dirtyTime;
+  }
+
+  public void setDirtyTime(Time dirtyTime) {
+    this.dirtyTime = dirtyTime;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

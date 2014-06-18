@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sec="http://www.springframework.org/security/tags"
+     version="2.0">
+
+<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<jsp:output omit-xml-declaration="yes"/>
+
+<spring:message code="header_text" var="headerText"/>
+<spring:message code="label_logout" var="labelLogout"/>
+<spring:message code="label_login" var="labelLogin"/>
+<spring:message code="label_user_profile" var="labelUserProfile"/>
+<spring:message code="label_settings" var="labelSettings"/>
+
+<spring:url var="logoutUrl" value="/j_spring_security_logout" />
+<spring:url var="loginUrl" value="/login"/>
+<spring:url var="root" value="/"/>
+<spring:url var="userProfileUrl" value="/user/profile"/>
+<spring:url var="settingsUrl" value="/settings"/>
+
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"><jsp:text/></span>
+        <span class="icon-bar"><jsp:text/></span>
+        <span class="icon-bar"><jsp:text/></span>
+    </button>
+    <a class="navbar-brand" href="${root}">${headerText}</a>
+</div>
+<!-- /.navbar-header -->
+
+<ul class="nav navbar-top-links navbar-right">
+    <sec:authorize access="hasRole('ROLE_DEV')">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-tasks fa-fw"><jsp:text/></i>  <i class="fa fa-caret-down"><jsp:text/></i>
+        </a>
+        <ul class="dropdown-menu dropdown-tasks">
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 1</strong>
+                            <span class="pull-right text-muted">40% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span class="sr-only">40% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"><jsp:text/></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 2</strong>
+                            <span class="pull-right text-muted">20% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                <span class="sr-only">20% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"><jsp:text/></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 3</strong>
+                            <span class="pull-right text-muted">60% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (warning)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"><jsp:text/></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 4</strong>
+                            <span class="pull-right text-muted">80% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                <span class="sr-only">80% Complete (danger)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"><jsp:text/></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>See All Tasks</strong>
+                    <i class="fa fa-angle-right"><jsp:text/></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-tasks -->
+    </li>
+    </sec:authorize>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw">
+            <jsp:text/>
+        </i> <i class="fa fa-caret-down">
+        <jsp:text/>
+    </i>
+    </a>
+    <ul class="dropdown-menu dropdown-user">
+        <sec:authorize access="isAnonymous()">
+            <li><a href="${loginUrl}"><i class="fa fa-user fa-fw">
+                <jsp:text/>
+            </i> ${labelLogin}</a></li>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <li><a href="${userProfileUrl}"><i class="fa fa-user fa-fw">
+                <jsp:text/>
+            </i> ${labelUserProfile}</a></li>
+            <li><a href="${settingsUrl}"><i class="fa fa-gear fa-fw">
+                <jsp:text/>
+            </i> ${labelSettings}</a></li>
+            <li class="divider">
+                <jsp:text/>
+            </li>
+            <li><a href="${logoutUrl}"><i class="fa fa-sign-out fa-fw">
+                <jsp:text/>
+            </i> ${labelLogout}</a></li>
+        </sec:authorize>
+    </ul>
+    <!-- /.dropdown-user -->
+</li>
+<!-- /.dropdown -->
+</ul>
+<!-- /.navbar-top-links -->
+
+</nav>
+        <!-- /.navbar-static-top -->

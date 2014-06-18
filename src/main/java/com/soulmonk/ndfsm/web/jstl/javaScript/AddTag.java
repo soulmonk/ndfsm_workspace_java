@@ -13,7 +13,7 @@ public class AddTag extends AbstractJavaScriptTag {
   private static final long serialVersionUID = 1L;
   @Override
   public int doEndTag() throws JspException {
-    logger.debug("Add tag");
+//    logger.debug("Add tag");
     List<String> scripts = getModelAttribute();
     scripts.add(bodyContent.getString());
     setModelAttribute(scripts);

@@ -37,7 +37,7 @@
                 <!--@elvariable id="tasks" type="java.util.List<com.soulmonk.ndfsm.domain.time.Task>"-->
                 <sbAdmin:selectGroup path="task.id" labelValue="${labelCommentTask}" items="${tasks}" itemValue="id" itemLabel="name"/>
                 <!--@elvariable id="commentStatuses" type="java.util.List<com.soulmonk.ndfsm.domain.time.CommentStatus>"-->
-                <sbAdmin:selectGroup path="from" labelValue="${labelCommentStatus}*" items="${commentStatuses}" itemValue="id" itemLabel="name"/>
+                <sbAdmin:selectGroup path="commentStatus.id" labelValue="${labelCommentStatus}*" items="${commentStatuses}" itemValue="id" itemLabel="name"/>
                 <sbAdmin:inputGroup path="from" labelValue="${labelCommentFrom}*" placeholder="time start"/>
                 <sbAdmin:inputGroup path="to" labelValue="${labelCommentTo}*" placeholder="time end"/>
                 <sbAdmin:submitResetButtons/>

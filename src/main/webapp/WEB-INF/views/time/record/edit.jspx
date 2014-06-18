@@ -15,18 +15,39 @@
 
     <spring:message code="label_record_new" var="labelRecordNew"/>
     <spring:message code="label_record_update" var="labelRecordUpdate"/>
+    <spring:message code="label_record_task" var="labelRecordTask"/>
+    <spring:message code="label_record_date_from" var="labelRecordDateFrom"/>
+    <spring:message code="label_record_date_to" var="labelRecordDateTo"/>
+    <spring:message code="label_record_break_time" var="labelRecordBreakTime"/>
+    <spring:message code="label_record_dirty_time" var="labelRecordDirtyTime"/>
+    <spring:message code="label_record_comment" var="labelRecordComment"/>
+    <spring:message code="label_record_comment_status" var="labelRecordCommentStatus"/>
+
+    <spring:url value="/time/record?form" var="addRecordUrl" />
+    <spring:url value="/time/record" var="editRecordUrl" />
 
     <!--@elvariable id="record" type="com.soulmonk.ndfsm.domain.time.Record"-->
     <spring:eval expression="record.id == null ? labelRecordNew:labelRecordUpdate" var="formTitle"/>
+    <spring:eval expression="record.id == null ? addRecordUrl:editRecordUrl + '/' + record.id + '/?form'" var="actionUrl"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>
     <sbAdmin:blockRowColWithDefPanel>
         <div id="recordUpdate">
-            <form:form modelAttribute="record" id="recordUpdateForm" method="post" rol="form">
+            <form:form modelAttribute="record" id="recordUpdateForm" method="post" rol="form" action="${actionUrl}">
                 <div>
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                     <helpers:message message="${message}"/>
                 </div>
+                <sbAdmin:textareaGroup path="task" labelValue="${labelRecordTask}*"/>
+                <sbAdmin:inputGroup path="dateFrom" labelValue="${labelRecordDateFrom}*" placeholder="time begin"/>
+                <sbAdmin:inputGroup path="dateTo" labelValue="${labelRecordDateTo}*" placeholder="time end"/>
+
+                <sbAdmin:inputGroup path="breakTime" labelValue="${labelRecordBreakTime}*" placeholder="break time"/>
+                <sbAdmin:inputGroup path="dirtyTime" labelValue="${labelRecordDirtyTime}*" placeholder="dirty time"/>
+
+                <sbAdmin:textareaGroup path="comment" labelValue="${labelRecordComment}*"/>
+                <!--@elvariable id="commentStatuses" type="java.util.List<com.soulmonk.ndfsm.domain.time.CommentStatus>"-->
+                <sbAdmin:selectGroup path="commentStatus.id" labelValue="${labelRecordCommentStatus}*" items="${commentStatuses}" itemValue="id" itemLabel="name"/>
                 <sbAdmin:submitResetButtons/>
             </form:form>
         </div>

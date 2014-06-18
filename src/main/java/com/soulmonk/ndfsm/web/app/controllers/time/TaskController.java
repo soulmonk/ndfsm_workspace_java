@@ -73,6 +73,7 @@ public class TaskController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("task", task);
+      uiModel.addAttribute("projects", projectService.findAll());
       return "time/task/create";
     }
     uiModel.asMap().clear();
@@ -89,6 +90,7 @@ public class TaskController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("task", task);
+      uiModel.addAttribute("projects", projectService.findAll());
       return "time/task/update";
     }
     uiModel.asMap().clear();

@@ -1,7 +1,9 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
+import com.soulmonk.ndfsm.domain.time.CommentStatus;
 import com.soulmonk.ndfsm.domain.time.Project;
 import com.soulmonk.ndfsm.domain.time.Record;
+import com.soulmonk.ndfsm.service.time.CommentStatusService;
 import com.soulmonk.ndfsm.service.time.ProjectService;
 import com.soulmonk.ndfsm.service.time.RecordService;
 import com.soulmonk.ndfsm.web.form.Message;
@@ -42,6 +44,9 @@ public class RecordController {
   private ProjectService projectService;
 
   @Autowired
+  private CommentStatusService commentStatusService;
+
+  @Autowired
   private MessageSource messageSource;
 
   @RequestMapping(method = RequestMethod.GET)
@@ -60,7 +65,10 @@ public class RecordController {
   public String createForm(Model uiModel) {
     logger.info("Create form");
     Record record = new Record();
+    record.setCommentStatus(new CommentStatus());
+
     uiModel.addAttribute("record", record);
+    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
     return "time/record/create";
   }
 
@@ -71,6 +79,7 @@ public class RecordController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("record_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("record", record);
+      uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
       return "time/record/create";
     }
     uiModel.asMap().clear();
@@ -87,6 +96,7 @@ public class RecordController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("record_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("record", record);
+      uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
       return "time/record/update";
     }
     uiModel.asMap().clear();
@@ -110,6 +120,7 @@ public class RecordController {
   public String updateForm(@PathVariable("id") Long id, Model uiModel) {
     Record record = recordService.findById(id);
     uiModel.addAttribute("record", record);
+    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
     return "time/record/update";
   }
 
@@ -121,6 +132,13 @@ public class RecordController {
 
   @RequestMapping(value = "/list_edit", method = RequestMethod.GET)
   public String listEdit(Model uiModel) {
+    Record record = new Record();
+    record.setCommentStatus(new CommentStatus());
+
+    List<Record> records = recordService.findAll();
+    uiModel.addAttribute("records", records);
+    uiModel.addAttribute("record", record);
+    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
     return "time/record/listEdit";
   }
 }

@@ -9,6 +9,7 @@
      xmlns:sbAdmin="/WEB-INF/sbAdmin"
      xmlns:helpers="/WEB-INF/helpers"
      xmlns:js="/WEB-INF/javaScript"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
      version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
@@ -20,7 +21,7 @@
     <spring:url value="/time/record" var="showRecordsUrl"/>
     <spring:url value="/time/record/delete" var="removeRecordsUrl"/>
 
-    <spring:url value="/resources/scripts/time_record.js" var="time_record_url"/>
+    <spring:url value="/resources/scripts/out/record/record.js" var="time_record_url"/>
     <js:add>
         <script type="text/javascript" src="${time_record_url}"><jsp:text/></script>
     </js:add>
@@ -28,33 +29,6 @@
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
     <helpers:message message="${message}"/>
 
-    <sbAdmin:pageHeader text="${labelRecordsList}" tag="h2"/>
-    <sbAdmin:blockRowColWithDefPanel>
-        <!--@elvariable id="records" type="java.util.List<com.soulmonk.ndfsm.domain.time.Record>"-->
-        <c:if test="${not empty records}">
-            <div>
-                <table id="list" class="table table-hover table-bordered">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>${labelActions}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <c:forEach items="${records}" var="record">
-                        <tr>
-                            <td><a href="${showRecordsUrl}/${record.id}">${record.id}</a></td>
-                            <td><a href="#" class="btn btn-default delete-record" data-url="${removeRecordsUrl}/${record.id}">Delete</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-            <div id="pager"></div>
-        </c:if>
-        <c:if test="${empty records}">${textEmptyResult}</c:if>
-    </sbAdmin:blockRowColWithDefPanel>
-
+    <tiles:insertTemplate template="/WEB-INF/views/time/record/list.jspx"/>
+    <tiles:insertTemplate template="/WEB-INF/views/time/record/edit.jspx"/>
 </div>

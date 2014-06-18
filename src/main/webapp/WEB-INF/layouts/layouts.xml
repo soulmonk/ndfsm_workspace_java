@@ -20,4 +20,10 @@
         <put-attribute name="footer" value="/WEB-INF/layouts/empty/footer.jspx" />
     </definition>
 
+    <definition name="angular" template="/WEB-INF/layouts/angular/default.jspx">
+        <put-attribute name="header" value="/WEB-INF/layouts/angular/header.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/layouts/angular/menu.jspx" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/angular/footer.jspx" />
+    </definition>
+
 </tiles-definitions>

@@ -73,6 +73,7 @@ public class ProjectController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_save_fail", new Object[]{}, locale)));
       uiModel.addAttribute("project", project);
+      uiModel.addAttribute("services", serviceService.findAll());
       return "time/project/create";
     }
     uiModel.asMap().clear();
@@ -89,6 +90,7 @@ public class ProjectController {
     if (bindingResult.hasErrors()) {
       uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_update_fail", new Object[]{}, locale)));
       uiModel.addAttribute("project", project);
+      uiModel.addAttribute("services", serviceService.findAll());
       return "time/project/update";
     }
     uiModel.asMap().clear();

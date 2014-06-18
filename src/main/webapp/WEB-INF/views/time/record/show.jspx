@@ -15,6 +15,14 @@
     <spring:message code="label_record_info" var="labelRecordsInfo"/>
     <spring:message code="label_record_update" var="labelRecordUpdate"/>
 
+    <spring:message code="label_record_task" var="labelRecordTask"/>
+    <spring:message code="label_record_date_from" var="labelRecordDateFrom"/>
+    <spring:message code="label_record_date_to" var="labelRecordDateTo"/>
+    <spring:message code="label_record_break_time" var="labelRecordBreakTime"/>
+    <spring:message code="label_record_dirty_time" var="labelRecordDirtyTime"/>
+    <spring:message code="label_record_comment" var="labelRecordComment"/>
+    <spring:message code="label_record_comment_status" var="labelRecordCommentStatus"/>
+
     <spring:message code="label_not_set" var="labelNotSet"/>
 
     <spring:url value="/time/record" var="editRecordUrl"/>
@@ -28,8 +36,32 @@
             <!--@elvariable id="record" type="com.soulmonk.ndfsm.domain.time.Record"-->
             <table class="table table-hover">
                 <tr>
-                    <td><strong>Hello</strong></td>
-                    <td>World</td>
+                    <td><strong>${labelRecordTask}</strong></td>
+                    <td>${record.task}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelRecordDateFrom}</strong></td>
+                    <td>${record.dateFrom}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelRecordDateTo}</strong></td>
+                    <td>${record.dateTo}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelRecordBreakTime}</strong></td>
+                    <td>${record.breakTime}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelRecordDirtyTime}</strong></td>
+                    <td>${record.dirtyTime}</td>
+                </tr>
+                <tr>
+                    <td><strong>${labelRecordComment}</strong></td>
+                    <td>${record.comment}</td>
+                </tr>
+                <tr style="background-color:${record.commentStatus.colorHtml}">
+                    <td><strong>${labelRecordCommentStatus}</strong></td>
+                    <td>${record.commentStatus.name}</td>
                 </tr>
             </table>
 

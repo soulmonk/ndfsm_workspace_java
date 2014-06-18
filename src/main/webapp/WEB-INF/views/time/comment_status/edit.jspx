@@ -37,7 +37,7 @@
                 </div>
 
                 <sbAdmin:inputGroup path="name" labelValue="${labelCommentStatusName}*" placeholder="Name"/>
-                <sbAdmin:textareaGroup path="name" labelValue="${labelCommentStatusDescription}"/>
+                <sbAdmin:textareaGroup path="description" labelValue="${labelCommentStatusDescription}"/>
                 <sbAdmin:inputGroup path="color" labelValue="${labelCommentStatusName}*" placeholder="ffffff" maxlength="6"/>
                 <sbAdmin:submitResetButtons/>
             </form:form>
