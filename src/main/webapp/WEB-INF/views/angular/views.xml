@@ -4,4 +4,8 @@
     <definition extends="angular" name="angular/index">
         <put-attribute name="body" value="/WEB-INF/views/angular/index.jspx" />
     </definition>
+
+    <definition name="angular/cars/layout" template="/WEB-INF/views/angular/cars/layout.jspx"/>
+    <definition name="angular/products/layout" template="/WEB-INF/views/angular/products/layout.jspx"/>
+    <definition name="angular/trains/layout" template="/WEB-INF/views/angular/trains/layout.jspx"/>
 </tiles-definitions>

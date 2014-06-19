@@ -8,4 +8,16 @@
         <js>/scripts/standard.js</js>
     </group>
 
+    <group name="angular">
+        <js>/scripts/angular/angular.js</js>
+        <js>/scripts/angular/angular-route.js</js>
+        <js>/scripts/angularApp/app.js</js>
+        <js>/scripts/angularApp/directives.js</js>
+        <js>/scripts/angularApp/filters.js</js>
+        <js>/scripts/angularApp/services.js</js>
+        <js>/scripts/angularApp/controllers/CarController.js</js>
+        <js>/scripts/angularApp/controllers/ProductController.js</js>
+        <js>/scripts/angularApp/controllers/TrainController.js</js>
+    </group>
+
 </groups>

@@ -424,8 +424,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <targetGroups>all</targetGroups>
-                    <minimize>true</minimize>
+                    <targetGroups>all,angular</targetGroups>
+                    <minimize>false</minimize>
                     <destinationFolder>${basedir}/src/main/webapp/wro/</destinationFolder>
                     <cssDestinationFolder>${basedir}/src/main/webapp/stylesheets/wro/</cssDestinationFolder>
                     <jsDestinationFolder>${basedir}/src/main/webapp/scripts/wro/</jsDestinationFolder>

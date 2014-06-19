@@ -1,8 +1,8 @@
 package com.soulmonk.ndfsm.web.app.controllers.angular;
 
-    import org.springframework.stereotype.Controller;
-    import org.springframework.web.bind.annotation.RequestMapping;
-    import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Company: Valpio
@@ -14,7 +14,7 @@ package com.soulmonk.ndfsm.web.app.controllers.angular;
 @RequestMapping("/angular")
 public class AngularController {
 
-  @RequestMapping(value = "", method = RequestMethod.GET)
+  @RequestMapping(value = "/index", method = RequestMethod.GET)
   public String index() {
     return "angular/index";
   }
