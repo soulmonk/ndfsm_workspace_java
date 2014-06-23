@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/dev")
 public class DevController {
-
-  private final Logger logger = LoggerFactory.getLogger(DevController.class);
+  private static final Logger logger = LoggerFactory.getLogger(DevController.class);
 
   @Autowired
   private UserService userService;

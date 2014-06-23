@@ -33,8 +33,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
-  private final Logger logger = LoggerFactory.getLogger(UserController.class);
+  private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
   @RequestMapping(value = "/profile", method = RequestMethod.GET)
   public String profile(Model model) throws Exception {

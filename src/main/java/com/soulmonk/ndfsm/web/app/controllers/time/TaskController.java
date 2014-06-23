@@ -32,8 +32,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/task")
 public class TaskController {
-
-  final Logger logger = LoggerFactory.getLogger(TaskController.class);
+  private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
 
   @Autowired
   private TaskService taskService;

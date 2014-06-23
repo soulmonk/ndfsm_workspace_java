@@ -30,7 +30,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/admin/role")
 public class AdminRoleController {
-  private final Logger logger = LoggerFactory.getLogger(AdminRoleController.class);
+  private static final Logger logger = LoggerFactory.getLogger(AdminRoleController.class);
 
   @Autowired
   private RoleService roleService;

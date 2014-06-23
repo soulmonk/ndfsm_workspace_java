@@ -30,8 +30,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/note/post")
 public class PostController {
-
-  final Logger logger = LoggerFactory.getLogger(PostController.class);
+  private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
   @Autowired
   private PostService postService;

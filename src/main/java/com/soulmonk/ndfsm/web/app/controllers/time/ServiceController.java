@@ -29,8 +29,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/service")
 public class ServiceController {
-
-  final Logger logger = LoggerFactory.getLogger(ServiceController.class);
+  private static final Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
   @Autowired
   private ServiceService serviceService;

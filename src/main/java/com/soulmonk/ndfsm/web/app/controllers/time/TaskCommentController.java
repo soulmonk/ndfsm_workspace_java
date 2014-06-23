@@ -34,7 +34,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/comment")
 public class TaskCommentController {
-  final Logger logger = LoggerFactory.getLogger(TaskCommentController.class);
+  private static final Logger logger = LoggerFactory.getLogger(TaskCommentController.class);
 
   @Autowired
   private TaskCommentService taskCommentService;

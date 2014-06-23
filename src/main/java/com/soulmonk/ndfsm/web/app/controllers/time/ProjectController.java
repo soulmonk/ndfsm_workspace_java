@@ -32,8 +32,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/project")
 public class ProjectController {
-
-  private final Logger logger = LoggerFactory.getLogger(ProjectController.class);
+  private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
   @Autowired
   private ProjectService projectService;

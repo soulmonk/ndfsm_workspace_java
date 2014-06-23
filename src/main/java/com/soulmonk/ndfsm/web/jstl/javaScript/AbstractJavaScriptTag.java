@@ -19,8 +19,6 @@ import java.util.List;
 public abstract class AbstractJavaScriptTag extends BodyTagSupport {
   private static final long serialVersionUID = 1L;
 
-  protected final Logger logger = LoggerFactory.getLogger(getClass());
-
   public static final String MODEL_ATTRIBUTE = "javaScriptAttribute";
   public static final String MODEL_ATTRIBUTE_VARIABLE_NAME = Conventions.getQualifiedAttributeName(AbstractFormTag.class, MODEL_ATTRIBUTE);
 

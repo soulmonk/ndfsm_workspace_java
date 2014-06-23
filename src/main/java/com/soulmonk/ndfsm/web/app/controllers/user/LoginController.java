@@ -23,8 +23,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-
-  final Logger logger = LoggerFactory.getLogger(LoginController.class);
+  private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
   @RequestMapping(method = RequestMethod.GET)
   public String login(HttpServletRequest httpServletRequest) {

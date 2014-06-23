@@ -30,8 +30,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/comment_status")
 public class CommentStatusController {
-
-  final Logger logger = LoggerFactory.getLogger(CommentStatusController.class);
+  private static final Logger logger = LoggerFactory.getLogger(CommentStatusController.class);
 
   @Autowired
   private CommentStatusService commentStatusService;

@@ -14,6 +14,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/test")
 public class TestController {
-
-  private final Logger logger = LoggerFactory.getLogger(DevController.class);
+  private static final Logger logger = LoggerFactory.getLogger(DevController.class);
 }

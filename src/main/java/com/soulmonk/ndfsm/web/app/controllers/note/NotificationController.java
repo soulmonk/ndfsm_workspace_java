@@ -30,8 +30,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/note/notification")
 public class NotificationController {
-
-  final Logger logger = LoggerFactory.getLogger(NotificationController.class);
+  private static final Logger logger = LoggerFactory.getLogger(NotificationController.class);
 
   @Autowired
   private NotificationService notificationService;

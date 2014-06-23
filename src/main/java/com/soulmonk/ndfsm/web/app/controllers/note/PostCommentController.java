@@ -31,8 +31,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/note/comment")
 public class PostCommentController {
-
-  final Logger logger = LoggerFactory.getLogger(PostCommentController.class);
+  private static final Logger logger = LoggerFactory.getLogger(PostCommentController.class);
 
   @Autowired
   private PostCommentService postCommentService;

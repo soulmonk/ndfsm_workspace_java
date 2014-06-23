@@ -34,8 +34,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/record")
 public class RecordController {
-
-  final Logger logger = LoggerFactory.getLogger(RecordController.class);
+  private static final Logger logger = LoggerFactory.getLogger(RecordController.class);
 
   @Autowired
   private RecordService recordService;
