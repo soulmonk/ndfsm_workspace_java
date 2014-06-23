@@ -14,20 +14,20 @@ import java.util.Locale;
  * Time: 8:02
  */
 public class CurrentTimeTag extends TagSupport {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Override
-  public int doStartTag() throws JspException {
-    Date date = new Date();
-    Locale locale = Locale.ENGLISH;
-    DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-      DateFormat.LONG, locale);
-    String formattedDate = dateFormat.format(date);
-    try {
-      pageContext.getOut().print(formattedDate);
-    } catch (IOException ioException) {
-      throw new JspException("Error: " + ioException.getMessage());
+    @Override
+    public int doStartTag() throws JspException {
+        Date date = new Date();
+        Locale locale = Locale.ENGLISH;
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
+            DateFormat.LONG, locale);
+        String formattedDate = dateFormat.format(date);
+        try {
+            pageContext.getOut().print(formattedDate);
+        } catch (IOException ioException) {
+            throw new JspException("Error: " + ioException.getMessage());
+        }
+        return SKIP_BODY;
     }
-    return SKIP_BODY;
-  }
 }

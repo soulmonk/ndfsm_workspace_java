@@ -23,28 +23,28 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-  private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String login(HttpServletRequest httpServletRequest) {
-    if (UserDetailsAdapter.getLogged() != null) {
-      return "redirect:/";
+    @RequestMapping(method = RequestMethod.GET)
+    public String login(HttpServletRequest httpServletRequest) {
+        if (UserDetailsAdapter.getLogged() != null) {
+            return "redirect:/";
+        }
+        return "login/login_form";
     }
-    return "login/login_form";
-  }
 
-  @RequestMapping(params = "failure", method = RequestMethod.GET)
-  public String loginFailure(Model model, HttpSession session) {
-    logger.info("Login failure");
-    try {
-      Object attribute = session.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-      if (attribute != null) {
-        logger.debug("SPRING_SECURITY_LAST_EXCEPTION class is: " + attribute.getClass());
-        model.addAttribute("message",new Message(Message.DANGER_TYPE,((BadCredentialsException) attribute).getMessage()));
-      }
-    } catch (Exception ex) {
-      ex.printStackTrace();
+    @RequestMapping(params = "failure", method = RequestMethod.GET)
+    public String loginFailure(Model model, HttpSession session) {
+        logger.info("Login failure");
+        try {
+            Object attribute = session.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+            if (attribute != null) {
+                logger.debug("SPRING_SECURITY_LAST_EXCEPTION class is: " + attribute.getClass());
+                model.addAttribute("message", new Message(Message.DANGER_TYPE, ((BadCredentialsException) attribute).getMessage()));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "login/login_form";
     }
-    return "login/login_form";
-  }
 }

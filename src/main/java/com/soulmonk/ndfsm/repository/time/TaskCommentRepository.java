@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface TaskCommentRepository extends JpaRepository<ProjectComment, Long> {
 
-  public List<ProjectComment> findByUser(User user);
+    public List<ProjectComment> findByUser(User user);
 }

@@ -13,14 +13,15 @@ import java.util.List;
  * Time: 22:32
  */
 public class AddTag extends AbstractJavaScriptTag {
-  private static final long serialVersionUID = 1L;
-  private static final Logger logger = LoggerFactory.getLogger(AddTag.class);
-  @Override
-  public int doEndTag() throws JspException {
+    private static final long serialVersionUID = 1L;
+    private static final Logger logger = LoggerFactory.getLogger(AddTag.class);
+
+    @Override
+    public int doEndTag() throws JspException {
 //    logger.debug("Add tag");
-    List<String> scripts = getModelAttribute();
-    scripts.add(bodyContent.getString());
-    setModelAttribute(scripts);
-    return super.doEndTag();
-  }
+        List<String> scripts = getModelAttribute();
+        scripts.add(bodyContent.getString());
+        setModelAttribute(scripts);
+        return super.doEndTag();
+    }
 }

@@ -16,31 +16,36 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/productList.json")
-    public @ResponseBody
+    public
+    @ResponseBody
     List<Product> getProductList() {
         return productService.getAllProducts();
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-    public @ResponseBody
+    public
+    @ResponseBody
     void addProduct(@RequestBody Product product) {
         productService.addProduct(product);
     }
-    
+
     @RequestMapping(value = "/updateProduct", method = RequestMethod.PUT)
-    public @ResponseBody
+    public
+    @ResponseBody
     void updateProduct(@RequestBody Product product) {
-    	productService.updateProduct(product);
+        productService.updateProduct(product);
     }
 
     @RequestMapping(value = "/removeProduct/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody
+    public
+    @ResponseBody
     void removeProduct(@PathVariable("id") Long id) {
         productService.deleteProduct(id);
     }
 
     @RequestMapping(value = "/removeAllProducts", method = RequestMethod.DELETE)
-    public @ResponseBody
+    public
+    @ResponseBody
     void removeAllProducts() {
         productService.deleteAll();
     }

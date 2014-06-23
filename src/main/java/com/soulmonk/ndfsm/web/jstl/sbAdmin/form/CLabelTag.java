@@ -12,51 +12,51 @@ import javax.servlet.jsp.JspException;
  * Time: 21:23
  */
 public class CLabelTag extends LabelTag {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  /**
-   * The HTML '{@code label}' tag.
-   */
-  private static final String LABEL_TAG = "label";
+    /**
+     * The HTML '{@code label}' tag.
+     */
+    private static final String LABEL_TAG = "label";
 
-  /**
-   * The name of the '{@code for}' attribute.
-   */
-  private static final String FOR_ATTRIBUTE = "for";
+    /**
+     * The name of the '{@code for}' attribute.
+     */
+    private static final String FOR_ATTRIBUTE = "for";
 
-  private TagWriter tagWriter;
+    private TagWriter tagWriter;
 
-  private String labelValue;
+    private String labelValue;
 
-  @Override
-  protected int writeTagContent(TagWriter tagWriter) throws JspException {
-    if (this.tagWriter == null ) {
-      throw new IllegalStateException("Cannot write without TagWriter.");
+    @Override
+    protected int writeTagContent(TagWriter tagWriter) throws JspException {
+        if (this.tagWriter == null) {
+            throw new IllegalStateException("Cannot write without TagWriter.");
+        }
+        tagWriter.startTag(LABEL_TAG);
+        tagWriter.writeAttribute(FOR_ATTRIBUTE, resolveFor());
+        writeDefaultAttributes(tagWriter);
+        tagWriter.appendValue(resolveLabelValue());
+        tagWriter.endTag();
+        return SKIP_BODY;
     }
-    tagWriter.startTag(LABEL_TAG);
-    tagWriter.writeAttribute(FOR_ATTRIBUTE, resolveFor());
-    writeDefaultAttributes(tagWriter);
-    tagWriter.appendValue(resolveLabelValue());
-    tagWriter.endTag();
-    return SKIP_BODY;
-  }
 
-  public void setTagWriter(TagWriter tagWriter) {
-    this.tagWriter = tagWriter;
-  }
-
-  public void setLabelValue(String labelValue) {
-    this.labelValue = labelValue;
-  }
-
-
-  private String resolveLabelValue() throws JspException {
-    String labelValue = "";
-    if (this.labelValue == null) {
-      labelValue = getName();
-    } else {
-      labelValue = this.labelValue;
+    public void setTagWriter(TagWriter tagWriter) {
+        this.tagWriter = tagWriter;
     }
-    return labelValue;
-  }
+
+    public void setLabelValue(String labelValue) {
+        this.labelValue = labelValue;
+    }
+
+
+    private String resolveLabelValue() throws JspException {
+        String labelValue = "";
+        if (this.labelValue == null) {
+            labelValue = getName();
+        } else {
+            labelValue = this.labelValue;
+        }
+        return labelValue;
+    }
 }

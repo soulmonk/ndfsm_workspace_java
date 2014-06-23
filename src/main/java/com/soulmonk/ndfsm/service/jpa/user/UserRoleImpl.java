@@ -1,7 +1,5 @@
 package com.soulmonk.ndfsm.service.jpa.user;
 
-import com.soulmonk.ndfsm.domain.user.Role;
-import com.soulmonk.ndfsm.domain.user.User;
 import com.soulmonk.ndfsm.domain.user.UserRole;
 import com.soulmonk.ndfsm.domain.user.UserRoleId;
 import com.soulmonk.ndfsm.repository.user.UserRoleRepository;
@@ -26,18 +24,18 @@ import java.util.List;
 @Secured("ROLE_ADMIN")
 public class UserRoleImpl implements UserRoleService {
 
-  @Autowired
-  private UserRoleRepository userRoleRepository;
+    @Autowired
+    private UserRoleRepository userRoleRepository;
 
-  @Override
-  public List<UserRole> findAll() {
-    return userRoleRepository.findAll();
-  }
+    @Override
+    public List<UserRole> findAll() {
+        return userRoleRepository.findAll();
+    }
 
-  @Override
-  public UserRole findById(UserRoleId pk) {
-    return userRoleRepository.findOne(pk);
-  }
+    @Override
+    public UserRole findById(UserRoleId pk) {
+        return userRoleRepository.findOne(pk);
+    }
 /*
   @Override
   public List<UserRole> findByUser(User user) {
@@ -50,13 +48,13 @@ public class UserRoleImpl implements UserRoleService {
   }
 */
 
-  @Override
-  public UserRole save(UserRole userRole) {
-    return userRoleRepository.saveAndFlush(userRole);
-  }
+    @Override
+    public UserRole save(UserRole userRole) {
+        return userRoleRepository.saveAndFlush(userRole);
+    }
 
-  @Override
-  public void delete(UserRole userRole) {
-    userRoleRepository.delete(userRole);
-  }
+    @Override
+    public void delete(UserRole userRole) {
+        userRoleRepository.delete(userRole);
+    }
 }

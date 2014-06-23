@@ -32,100 +32,100 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/project")
 public class ProjectController {
-  private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
-  @Autowired
-  private ProjectService projectService;
+    @Autowired
+    private ProjectService projectService;
 
-  @Autowired
-  private ServiceService serviceService;
+    @Autowired
+    private ServiceService serviceService;
 
-  @Autowired
-  private MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String list(Model uiModel) {
-    logger.info("Listing projects");
+    @RequestMapping(method = RequestMethod.GET)
+    public String list(Model uiModel) {
+        logger.info("Listing projects");
 
-    List<Project> projects = projectService.findAll();
-    uiModel.addAttribute("projects", projects);
+        List<Project> projects = projectService.findAll();
+        uiModel.addAttribute("projects", projects);
 
-    logger.info("No. of projects: " + projects.size());
+        logger.info("No. of projects: " + projects.size());
 
-    return "time/project/list";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.GET)
-  public String createForm(Model uiModel) {
-    logger.info("Create form");
-    Project project = new Project();
-    project.setService(new Service());
-    uiModel.addAttribute("project", project);
-    uiModel.addAttribute("services", serviceService.findAll());
-    return "time/project/create";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create project");
-
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_save_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("project", project);
-      uiModel.addAttribute("services", serviceService.findAll());
-      return "time/project/create";
+        return "time/project/list";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("project_save_success", new Object[]{}, locale)));
 
-    projectService.save(project);
-    logger.info("Project id: " + project.getId());
-    return "redirect:/time/project/" + UrlUtil.encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
-  }
-
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update project");
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_update_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("project", project);
-      uiModel.addAttribute("services", serviceService.findAll());
-      return "time/project/update";
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        logger.info("Create form");
+        Project project = new Project();
+        project.setService(new Service());
+        uiModel.addAttribute("project", project);
+        uiModel.addAttribute("services", serviceService.findAll());
+        return "time/project/create";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("project_update_success", new Object[]{}, locale)));
 
-    projectService.save(project);
+    @RequestMapping(params = "form", method = RequestMethod.POST)
+    public String create(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Create project");
 
-    logger.info("Update Project id: " + project.getId());
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("project", project);
+            uiModel.addAttribute("services", serviceService.findAll());
+            return "time/project/create";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("project_save_success", new Object[]{}, locale)));
 
-    return "redirect:/time/project/" + UrlUtil.encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
-  }
+        projectService.save(project);
+        logger.info("Project id: " + project.getId());
+        return "redirect:/time/project/" + UrlUtil.encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
+    }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  public String show(@PathVariable("id") Long id, Model uiModel) {
-    Project project = projectService.findById(id);
-    uiModel.addAttribute("project", project);
-    return "time/project/show";
-  }
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Update project");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("project_update_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("project", project);
+            uiModel.addAttribute("services", serviceService.findAll());
+            return "time/project/update";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("project_update_success", new Object[]{}, locale)));
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-  public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    Project project = projectService.findById(id);
-    uiModel.addAttribute("project", project);
-    uiModel.addAttribute("services", serviceService.findAll());
-    return "time/project/update";
-  }
+        projectService.save(project);
 
-  @RequestMapping(value = "/byService/{id}", method = RequestMethod.GET)
-  public String byService(@PathVariable("id") Long id, Model uiModel) {
-    uiModel.addAttribute("projects", projectService.findByServiceId(id));
-    return "time/project/list";
-  }
+        logger.info("Update Project id: " + project.getId());
 
-  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-  public String delete(@PathVariable("id") Long id, Model uiModel) {
-    projectService.delete(id);
-    return "redirect:/time/project";
-  }
+        return "redirect:/time/project/" + UrlUtil.encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        Project project = projectService.findById(id);
+        uiModel.addAttribute("project", project);
+        return "time/project/show";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        Project project = projectService.findById(id);
+        uiModel.addAttribute("project", project);
+        uiModel.addAttribute("services", serviceService.findAll());
+        return "time/project/update";
+    }
+
+    @RequestMapping(value = "/byService/{id}", method = RequestMethod.GET)
+    public String byService(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("projects", projectService.findByServiceId(id));
+        return "time/project/list";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") Long id, Model uiModel) {
+        projectService.delete(id);
+        return "redirect:/time/project";
+    }
 }

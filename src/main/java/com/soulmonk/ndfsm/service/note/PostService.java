@@ -11,11 +11,11 @@ import java.util.List;
  * Time: 21:28
  */
 public interface PostService {
-  public List<Post> findAll();
+    public List<Post> findAll();
 
-  public Post findById(Long id);
+    public Post findById(Long id);
 
-  public Post save(Post post);
+    public Post save(Post post);
 
-  void delete(Long id);
+    void delete(Long id);
 }

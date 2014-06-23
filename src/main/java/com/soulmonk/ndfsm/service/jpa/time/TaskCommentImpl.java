@@ -1,6 +1,5 @@
 package com.soulmonk.ndfsm.service.jpa.time;
 
-import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.ProjectComment;
 import com.soulmonk.ndfsm.repository.time.TaskCommentRepository;
 import com.soulmonk.ndfsm.security.UserDetailsAdapter;
@@ -17,35 +16,35 @@ import java.util.List;
 @Transactional
 public class TaskCommentImpl implements TaskCommentService {
 
-  @Autowired
-  private TaskCommentRepository taskCommentRepository;
+    @Autowired
+    private TaskCommentRepository taskCommentRepository;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<ProjectComment> findAll() {
-    return taskCommentRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public ProjectComment findById(Long id) {
-    return taskCommentRepository.findOne(id);
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public ProjectComment save(ProjectComment comment) {
-    if (comment.getId() == null) {
-      comment.setUser(UserDetailsAdapter.getLogged().getUser());
-    } else {
-      comment.setUser(findById(comment.getId()).getUser());
+    @Override
+    @Transactional(readOnly = true)
+    public List<ProjectComment> findAll() {
+        return taskCommentRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
     }
-    return taskCommentRepository.saveAndFlush(comment);
-  }
 
-  @Override
-  public void delete(Long id) {
-     taskCommentRepository.delete(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public ProjectComment findById(Long id) {
+        return taskCommentRepository.findOne(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ProjectComment save(ProjectComment comment) {
+        if (comment.getId() == null) {
+            comment.setUser(UserDetailsAdapter.getLogged().getUser());
+        } else {
+            comment.setUser(findById(comment.getId()).getUser());
+        }
+        return taskCommentRepository.saveAndFlush(comment);
+    }
+
+    @Override
+    public void delete(Long id) {
+        taskCommentRepository.delete(id);
+    }
 
 }

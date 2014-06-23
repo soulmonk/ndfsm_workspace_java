@@ -11,11 +11,11 @@ import java.util.List;
  * Time: 21:29
  */
 public interface PostCommentService {
-  public List<PostComment> findAll();
+    public List<PostComment> findAll();
 
-  public PostComment findById(Long id);
+    public PostComment findById(Long id);
 
-  public PostComment save(PostComment postComment);
+    public PostComment save(PostComment postComment);
 
-  void delete(Long id);
+    void delete(Long id);
 }

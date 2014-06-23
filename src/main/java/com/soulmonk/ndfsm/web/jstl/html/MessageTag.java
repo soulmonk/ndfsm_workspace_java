@@ -13,27 +13,27 @@ import java.io.IOException;
  * Time: 16:03
  */
 public class MessageTag extends TagSupport {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  private Message message = null;
+    private Message message = null;
 
-  @Override
-  public int doStartTag() throws JspException {
-    if (this.message != null) {
-      try {
-        pageContext.getOut().print("<div id=\"message\" class=\"alert alert-"+ this.message.getType() + "\">"+ this.message.getMessage() + "</div>");
-      } catch(IOException ioException) {
-        throw new JspException("Error: " + ioException.getMessage());
-      }
+    @Override
+    public int doStartTag() throws JspException {
+        if (this.message != null) {
+            try {
+                pageContext.getOut().print("<div id=\"message\" class=\"alert alert-" + this.message.getType() + "\">" + this.message.getMessage() + "</div>");
+            } catch (IOException ioException) {
+                throw new JspException("Error: " + ioException.getMessage());
+            }
+        }
+        return SKIP_BODY;
     }
-    return SKIP_BODY;
-  }
 
-  public void setMessage(Object message) {
-    if (message == null || message.getClass() != Message.class) {
-      this.message = null;
-    } else {
-      this.message = (Message)message;
+    public void setMessage(Object message) {
+        if (message == null || message.getClass() != Message.class) {
+            this.message = null;
+        } else {
+            this.message = (Message) message;
+        }
     }
-  }
 }

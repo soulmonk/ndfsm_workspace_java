@@ -1,8 +1,6 @@
 package com.soulmonk.ndfsm.service.jpa.time;
 
-import com.google.common.collect.Lists;
 import com.soulmonk.ndfsm.domain.time.Task;
-import com.soulmonk.ndfsm.domain.user.User;
 import com.soulmonk.ndfsm.repository.time.TaskRepository;
 import com.soulmonk.ndfsm.security.UserDetailsAdapter;
 import com.soulmonk.ndfsm.service.time.TaskService;
@@ -18,35 +16,35 @@ import java.util.List;
 @Transactional
 public class TaskImpl implements TaskService {
 
-  @Autowired
-  private TaskRepository taskRepository;
+    @Autowired
+    private TaskRepository taskRepository;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<Task> findAll() {
-    return taskRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public Task findById(Long id) {
-    return taskRepository.findOne(id);
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public Task save(Task task) {
-    if (task.getId() == null) {
-      task.setUser(UserDetailsAdapter.getLogged().getUser());
-    } else {
-      task.setUser(findById(task.getId()).getUser());
+    @Override
+    @Transactional(readOnly = true)
+    public List<Task> findAll() {
+        return taskRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
     }
-    return taskRepository.saveAndFlush(task);
-  }
 
-  @Override
-  public void delete(Long id) {
-    taskRepository.delete(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Task findById(Long id) {
+        return taskRepository.findOne(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Task save(Task task) {
+        if (task.getId() == null) {
+            task.setUser(UserDetailsAdapter.getLogged().getUser());
+        } else {
+            task.setUser(findById(task.getId()).getUser());
+        }
+        return taskRepository.saveAndFlush(task);
+    }
+
+    @Override
+    public void delete(Long id) {
+        taskRepository.delete(id);
+    }
 
 }

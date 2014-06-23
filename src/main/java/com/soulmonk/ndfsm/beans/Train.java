@@ -6,7 +6,8 @@ public class Train {
     private Integer speed;
     private Boolean diesel;
 
-    public Train() { }
+    public Train() {
+    }
 
     public Train(Long id, String name, Integer speed, Boolean diesel) {
         this.id = id;

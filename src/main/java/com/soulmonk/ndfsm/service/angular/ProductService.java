@@ -5,13 +5,13 @@ import com.soulmonk.ndfsm.beans.Product;
 import java.util.List;
 
 public interface ProductService {
-	public List<Product> getAllProducts();
+    public List<Product> getAllProducts();
 
-	public void addProduct(Product product);
+    public void addProduct(Product product);
 
-	public void deleteProduct(Long id);
+    public void deleteProduct(Long id);
 
-	public void deleteAll();
+    public void deleteAll();
 
-	public void updateProduct(Product product);
+    public void updateProduct(Product product);
 }

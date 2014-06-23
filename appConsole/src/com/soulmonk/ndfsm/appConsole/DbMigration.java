@@ -8,7 +8,7 @@ package com.soulmonk.ndfsm.appConsole;
  */
 public class DbMigration {
 
-  public static void main(String args[]) {
+    public static void main(String args[]) {
 
-  }
+    }
 }

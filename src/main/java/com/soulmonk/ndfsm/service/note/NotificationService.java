@@ -11,11 +11,11 @@ import java.util.List;
  * Time: 21:28
  */
 public interface NotificationService {
-  public List<Notification> findAll();
+    public List<Notification> findAll();
 
-  public Notification findById(Long id);
+    public Notification findById(Long id);
 
-  public Notification save(Notification notification);
+    public Notification save(Notification notification);
 
-  void delete(Long id);
+    void delete(Long id);
 }

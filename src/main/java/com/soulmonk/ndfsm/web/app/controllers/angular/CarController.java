@@ -18,25 +18,29 @@ public class CarController {
     private CarService carService;
 
     @RequestMapping("/carlist.json")
-    public @ResponseBody
+    public
+    @ResponseBody
     List<String> getCarList() {
         return carService.getAllCars();
     }
 
     @RequestMapping(value = "/addCar/{car}", method = RequestMethod.POST)
-    public @ResponseBody
+    public
+    @ResponseBody
     void addCar(@PathVariable("car") String car) {
         carService.addCar(car);
     }
 
     @RequestMapping(value = "/removeCar/{car}", method = RequestMethod.DELETE)
-    public @ResponseBody
+    public
+    @ResponseBody
     void removeCar(@PathVariable("car") String car) {
         carService.deleteCar(car);
     }
 
     @RequestMapping(value = "/removeAllCars", method = RequestMethod.DELETE)
-    public @ResponseBody
+    public
+    @ResponseBody
     void removeAllCars() {
         carService.deleteAll();
     }

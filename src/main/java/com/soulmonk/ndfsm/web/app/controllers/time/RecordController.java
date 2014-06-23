@@ -1,7 +1,6 @@
 package com.soulmonk.ndfsm.web.app.controllers.time;
 
 import com.soulmonk.ndfsm.domain.time.CommentStatus;
-import com.soulmonk.ndfsm.domain.time.Project;
 import com.soulmonk.ndfsm.domain.time.Record;
 import com.soulmonk.ndfsm.service.time.CommentStatusService;
 import com.soulmonk.ndfsm.service.time.ProjectService;
@@ -34,110 +33,110 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/record")
 public class RecordController {
-  private static final Logger logger = LoggerFactory.getLogger(RecordController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RecordController.class);
 
-  @Autowired
-  private RecordService recordService;
+    @Autowired
+    private RecordService recordService;
 
-  @Autowired
-  private ProjectService projectService;
+    @Autowired
+    private ProjectService projectService;
 
-  @Autowired
-  private CommentStatusService commentStatusService;
+    @Autowired
+    private CommentStatusService commentStatusService;
 
-  @Autowired
-  private MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String list(Model uiModel) {
-    logger.info("Listing records");
+    @RequestMapping(method = RequestMethod.GET)
+    public String list(Model uiModel) {
+        logger.info("Listing records");
 
-    List<Record> records = recordService.findAll();
-    uiModel.addAttribute("records", records);
+        List<Record> records = recordService.findAll();
+        uiModel.addAttribute("records", records);
 
-    logger.info("No. of records: " + records.size());
+        logger.info("No. of records: " + records.size());
 
-    return "time/record/list";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.GET)
-  public String createForm(Model uiModel) {
-    logger.info("Create form");
-    Record record = new Record();
-    record.setCommentStatus(new CommentStatus());
-
-    uiModel.addAttribute("record", record);
-    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-    return "time/record/create";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Record record, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create record");
-
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("record_save_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("record", record);
-      uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-      return "time/record/create";
+        return "time/record/list";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("record_save_success", new Object[]{}, locale)));
 
-    recordService.save(record);
-    logger.info("Record id: " + record.getId());
-    return "redirect:/time/record/" + UrlUtil.encodeUrlPathSegment(record.getId().toString(), httpServletRequest);
-  }
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        logger.info("Create form");
+        Record record = new Record();
+        record.setCommentStatus(new CommentStatus());
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Record record, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update record");
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("record_update_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("record", record);
-      uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-      return "time/record/update";
+        uiModel.addAttribute("record", record);
+        uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
+        return "time/record/create";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("record_update_success", new Object[]{}, locale)));
 
-    recordService.save(record);
+    @RequestMapping(params = "form", method = RequestMethod.POST)
+    public String create(@Valid Record record, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Create record");
 
-    logger.info("Update Record id: " + record.getId());
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("record_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("record", record);
+            uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
+            return "time/record/create";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("record_save_success", new Object[]{}, locale)));
 
-    return "redirect:/time/record/" + UrlUtil.encodeUrlPathSegment(record.getId().toString(), httpServletRequest);
-  }
+        recordService.save(record);
+        logger.info("Record id: " + record.getId());
+        return "redirect:/time/record/" + UrlUtil.encodeUrlPathSegment(record.getId().toString(), httpServletRequest);
+    }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  public String show(@PathVariable("id") Long id, Model uiModel) {
-    Record record = recordService.findById(id);
-    uiModel.addAttribute("record", record);
-    return "time/record/show";
-  }
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Record record, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Update record");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("record_update_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("record", record);
+            uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
+            return "time/record/update";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("record_update_success", new Object[]{}, locale)));
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-  public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    Record record = recordService.findById(id);
-    uiModel.addAttribute("record", record);
-    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-    return "time/record/update";
-  }
+        recordService.save(record);
 
-  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-  public String delete(@PathVariable("id") Long id, Model uiModel) {
-    recordService.delete(id);
-    return "redirect:/time/record";
-  }
+        logger.info("Update Record id: " + record.getId());
 
-  @RequestMapping(value = "/list_edit", method = RequestMethod.GET)
-  public String listEdit(Model uiModel) {
-    Record record = new Record();
-    record.setCommentStatus(new CommentStatus());
+        return "redirect:/time/record/" + UrlUtil.encodeUrlPathSegment(record.getId().toString(), httpServletRequest);
+    }
 
-    List<Record> records = recordService.findAll();
-    uiModel.addAttribute("records", records);
-    uiModel.addAttribute("record", record);
-    uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
-    return "time/record/listEdit";
-  }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        Record record = recordService.findById(id);
+        uiModel.addAttribute("record", record);
+        return "time/record/show";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        Record record = recordService.findById(id);
+        uiModel.addAttribute("record", record);
+        uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
+        return "time/record/update";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") Long id, Model uiModel) {
+        recordService.delete(id);
+        return "redirect:/time/record";
+    }
+
+    @RequestMapping(value = "/list_edit", method = RequestMethod.GET)
+    public String listEdit(Model uiModel) {
+        Record record = new Record();
+        record.setCommentStatus(new CommentStatus());
+
+        List<Record> records = recordService.findAll();
+        uiModel.addAttribute("records", records);
+        uiModel.addAttribute("record", record);
+        uiModel.addAttribute("commentStatuses", commentStatusService.findAll());
+        return "time/record/listEdit";
+    }
 }

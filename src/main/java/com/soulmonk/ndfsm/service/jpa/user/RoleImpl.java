@@ -18,35 +18,35 @@ import java.util.List;
 @Secured("ROLE_ADMIN")
 public class RoleImpl implements RoleService {
 
-  @Autowired
-  private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<Role> findAll() {
-    return Lists.newArrayList(roleRepository.findAll());
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public List<Role> findAll() {
+        return Lists.newArrayList(roleRepository.findAll());
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public Role findById(Long id) {
-    return roleRepository.findOne(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Role findById(Long id) {
+        return roleRepository.findOne(id);
+    }
 
-  @Override
-  public Role findByAuthority(String authority) {
-    return roleRepository.findByAuthority(authority);
-  }
+    @Override
+    public Role findByAuthority(String authority) {
+        return roleRepository.findByAuthority(authority);
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public Role save(Role role) {
-    return roleRepository.saveAndFlush(role);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Role save(Role role) {
+        return roleRepository.saveAndFlush(role);
+    }
 
-  @Override
-  public void delete(Long id) {
-    roleRepository.delete(id);
-  }
+    @Override
+    public void delete(Long id) {
+        roleRepository.delete(id);
+    }
 
 }

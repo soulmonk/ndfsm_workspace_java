@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-  private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-  @RequestMapping(value = "", method = RequestMethod.GET)
-  public String index() {
-    logger.info("Hello Admin Controller");
-    return "admin/index";
-  }
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String index() {
+        logger.info("Hello Admin Controller");
+        return "admin/index";
+    }
 }

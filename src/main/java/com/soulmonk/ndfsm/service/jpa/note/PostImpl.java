@@ -22,30 +22,30 @@ import java.util.List;
 @Transactional
 public class PostImpl implements PostService {
 
-  @Autowired
-  private PostRepository postRepository;
+    @Autowired
+    private PostRepository postRepository;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<Post> findAll() {
-    return Lists.newArrayList(postRepository.findAll());
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public List<Post> findAll() {
+        return Lists.newArrayList(postRepository.findAll());
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public Post findById(Long id) {
-    return postRepository.findOne(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Post findById(Long id) {
+        return postRepository.findOne(id);
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public Post save(Post post) {
-    return postRepository.saveAndFlush(post);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Post save(Post post) {
+        return postRepository.saveAndFlush(post);
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public void delete(Long id) {
-    postRepository.delete(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public void delete(Long id) {
+        postRepository.delete(id);
+    }
 }

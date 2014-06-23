@@ -5,13 +5,13 @@ import com.soulmonk.ndfsm.domain.user.Role;
 import java.util.List;
 
 public interface RoleService {
-  public List<Role> findAll();
+    public List<Role> findAll();
 
-  public Role findById(Long id);
+    public Role findById(Long id);
 
-  public Role findByAuthority(String authority);
+    public Role findByAuthority(String authority);
 
-  public Role save(Role role);
+    public Role save(Role role);
 
-  public void delete(Long id);
+    public void delete(Long id);
 }

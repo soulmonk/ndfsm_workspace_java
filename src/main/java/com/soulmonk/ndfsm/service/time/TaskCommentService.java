@@ -5,11 +5,11 @@ import com.soulmonk.ndfsm.domain.time.ProjectComment;
 import java.util.List;
 
 public interface TaskCommentService {
-  public List<ProjectComment> findAll();
+    public List<ProjectComment> findAll();
 
-  public ProjectComment findById(Long id);
+    public ProjectComment findById(Long id);
 
-  public ProjectComment save(ProjectComment comment);
+    public ProjectComment save(ProjectComment comment);
 
-  public void delete(Long id);
+    public void delete(Long id);
 }

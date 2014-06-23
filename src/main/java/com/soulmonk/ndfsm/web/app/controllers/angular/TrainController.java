@@ -23,31 +23,36 @@ public class TrainController {
     private TrainService trainService;
 
     @RequestMapping("trainslist.json")
-    public @ResponseBody
+    public
+    @ResponseBody
     List<Train> getTrainList() {
         return trainService.getAllTrains();
     }
 
     @RequestMapping(value = "/addTrain", method = RequestMethod.POST)
-    public @ResponseBody
+    public
+    @ResponseBody
     void addTrain(@RequestBody Train train) {
         trainService.addTrain(train);
     }
 
     @RequestMapping(value = "/updateTrain", method = RequestMethod.PUT)
-    public @ResponseBody
+    public
+    @ResponseBody
     void updateTrain(@RequestBody Train train) {
         trainService.updateTrain(train);
     }
 
     @RequestMapping(value = "/removeTrain/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody
+    public
+    @ResponseBody
     void removeTrain(@PathVariable("id") Long id) {
         trainService.deleteTrainById(id);
     }
 
     @RequestMapping(value = "/removeAllTrains", method = RequestMethod.DELETE)
-    public @ResponseBody
+    public
+    @ResponseBody
     void removeAllTrains() {
         trainService.deleteAll();
     }

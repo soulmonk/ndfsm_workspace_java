@@ -30,82 +30,82 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/note/post")
 public class PostController {
-  private static final Logger logger = LoggerFactory.getLogger(PostController.class);
+    private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
-  @Autowired
-  private PostService postService;
+    @Autowired
+    private PostService postService;
 
-  @Autowired
-  private MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String list(Model uiModel) {
-    logger.info("Listing posts");
+    @RequestMapping(method = RequestMethod.GET)
+    public String list(Model uiModel) {
+        logger.info("Listing posts");
 
-    List<Post> posts = postService.findAll();
-    uiModel.addAttribute("posts", posts);
+        List<Post> posts = postService.findAll();
+        uiModel.addAttribute("posts", posts);
 
-    logger.info("No. of posts: " + posts.size());
+        logger.info("No. of posts: " + posts.size());
 
-    return "note/post/list";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.GET)
-  public String createForm(Model uiModel) {
-    Post post = new Post();
-    uiModel.addAttribute("post", post);
-    return "note/post/create";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Post post, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create post");
-
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("post_save_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("post", post);
-      return "note/post/create";
+        return "note/post/list";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("post_save_success", new Object[]{}, locale)));
-    postService.save(post);
-    logger.info("Post id: " + post.getId());
-    return "redirect:/note/post/" + UrlUtil.encodeUrlPathSegment(post.getId().toString(), httpServletRequest);
-  }
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Post post, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update post");
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("post_update_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("post", post);
-      return "note/post/update";
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        Post post = new Post();
+        uiModel.addAttribute("post", post);
+        return "note/post/create";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("post_update_success", new Object[]{}, locale)));
 
-    postService.save(post);
+    @RequestMapping(params = "form", method = RequestMethod.POST)
+    public String create(@Valid Post post, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Create post");
 
-    return "redirect:/note/post/" + UrlUtil.encodeUrlPathSegment(post.getId().toString(), httpServletRequest);
-  }
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("post_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("post", post);
+            return "note/post/create";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("post_save_success", new Object[]{}, locale)));
+        postService.save(post);
+        logger.info("Post id: " + post.getId());
+        return "redirect:/note/post/" + UrlUtil.encodeUrlPathSegment(post.getId().toString(), httpServletRequest);
+    }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  public String show(@PathVariable("id") Long id, Model uiModel) {
-    Post post = postService.findById(id);
-    uiModel.addAttribute("post", post);
-    return "note/post/show";
-  }
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Post post, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Update post");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("post_update_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("post", post);
+            return "note/post/update";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("post_update_success", new Object[]{}, locale)));
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-  public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    uiModel.addAttribute("post", postService.findById(id));
-    return "note/post/update";
-  }
+        postService.save(post);
 
-  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-  public String delete(@PathVariable("id") Long id, Model uiModel) {
-    postService.delete(id);
-    return "redirect:/note/post/list";
-  }
+        return "redirect:/note/post/" + UrlUtil.encodeUrlPathSegment(post.getId().toString(), httpServletRequest);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        Post post = postService.findById(id);
+        uiModel.addAttribute("post", post);
+        return "note/post/show";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("post", postService.findById(id));
+        return "note/post/update";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") Long id, Model uiModel) {
+        postService.delete(id);
+        return "redirect:/note/post/list";
+    }
 }
 

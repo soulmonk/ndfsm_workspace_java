@@ -30,93 +30,93 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/admin/role")
 public class AdminRoleController {
-  private static final Logger logger = LoggerFactory.getLogger(AdminRoleController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminRoleController.class);
 
-  @Autowired
-  private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
-  @Autowired
-  private MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String list(Model uiModel) {
-    logger.info("Listing Role");
+    @RequestMapping(method = RequestMethod.GET)
+    public String list(Model uiModel) {
+        logger.info("Listing Role");
 
-    List<Role> roles = roleService.findAll();
-    uiModel.addAttribute("roles", roles);
+        List<Role> roles = roleService.findAll();
+        uiModel.addAttribute("roles", roles);
 
-    logger.info("No. of roles: " + roles.size());
+        logger.info("No. of roles: " + roles.size());
 
-    return "admin/role/list";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.GET)
-  public String createForm(Model uiModel) {
-    logger.info("Create form");
-    Role role = new Role();
-    uiModel.addAttribute("role", role);
-    return "admin/role/create";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Role role, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create Role");
-
-    if (bindingResult.hasErrors()) {
-      logger.error("bindingResult hasErrors");
-      logger.error("bindingResult hasErrors message: " + bindingResult.toString());
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("admin_role_save_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("role", role);
-      return "admin/role/create";
-    }
-    logger.info("no bindingResult hasErrors");
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("admin_role_save_success", new Object[]{}, locale)));
-
-    roleService.save(role);
-    logger.info("Role id: " + role.getId());
-
-    return "redirect:/admin/role/" + UrlUtil.encodeUrlPathSegment(role.getId().toString(), httpServletRequest);
-  }
-
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Role role, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update Role");
-
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("admin_role_update_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("role", role);
-      return "admin/role/update";
+        return "admin/role/list";
     }
 
-    uiModel.asMap().clear();
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        logger.info("Create form");
+        Role role = new Role();
+        uiModel.addAttribute("role", role);
+        return "admin/role/create";
+    }
 
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("admin_role_update_success", new Object[]{}, locale)));
+    @RequestMapping(params = "form", method = RequestMethod.POST)
+    public String create(@Valid Role role, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Create Role");
 
-    roleService.save(role);
+        if (bindingResult.hasErrors()) {
+            logger.error("bindingResult hasErrors");
+            logger.error("bindingResult hasErrors message: " + bindingResult.toString());
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("admin_role_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("role", role);
+            return "admin/role/create";
+        }
+        logger.info("no bindingResult hasErrors");
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("admin_role_save_success", new Object[]{}, locale)));
 
-    logger.info("Update Role id: " + role.getId());
+        roleService.save(role);
+        logger.info("Role id: " + role.getId());
 
-    return "redirect:/admin/role/" + UrlUtil.encodeUrlPathSegment(role.getId().toString(), httpServletRequest);
-  }
+        return "redirect:/admin/role/" + UrlUtil.encodeUrlPathSegment(role.getId().toString(), httpServletRequest);
+    }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  public String show(@PathVariable("id") Long id, Model uiModel) {
-    Role role = roleService.findById(id);
-    uiModel.addAttribute("role", role);
-    return "admin/role/show";
-  }
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Role role, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Update Role");
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-  public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    Role role = roleService.findById(id);
-    uiModel.addAttribute("role", role);
-    return "admin/role/update";
-  }
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("admin_role_update_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("role", role);
+            return "admin/role/update";
+        }
 
-  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-  public String delete(@PathVariable("id") Long id, Model uiModel) {
-    roleService.delete(id);
-    return "redirect:/admin/role";
-  }
+        uiModel.asMap().clear();
+
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("admin_role_update_success", new Object[]{}, locale)));
+
+        roleService.save(role);
+
+        logger.info("Update Role id: " + role.getId());
+
+        return "redirect:/admin/role/" + UrlUtil.encodeUrlPathSegment(role.getId().toString(), httpServletRequest);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        Role role = roleService.findById(id);
+        uiModel.addAttribute("role", role);
+        return "admin/role/show";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        Role role = roleService.findById(id);
+        uiModel.addAttribute("role", role);
+        return "admin/role/update";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") Long id, Model uiModel) {
+        roleService.delete(id);
+        return "redirect:/admin/role";
+    }
 }

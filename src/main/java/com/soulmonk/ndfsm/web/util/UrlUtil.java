@@ -13,15 +13,15 @@ import java.io.UnsupportedEncodingException;
  * Time: 11:27
  */
 public class UrlUtil {
-  public static String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
-    String enc = httpServletRequest.getCharacterEncoding();
-    if (enc == null) {
-      enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
+    public static String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
+        if (enc == null) {
+            enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
+        }
+        try {
+            pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
+        } catch (UnsupportedEncodingException uee) {
+        }
+        return pathSegment;
     }
-    try {
-      pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-    } catch (UnsupportedEncodingException uee) {
-    }
-    return pathSegment;
-  }
 }

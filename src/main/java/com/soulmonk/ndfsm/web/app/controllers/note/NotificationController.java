@@ -30,81 +30,81 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/note/notification")
 public class NotificationController {
-  private static final Logger logger = LoggerFactory.getLogger(NotificationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(NotificationController.class);
 
-  @Autowired
-  private NotificationService notificationService;
+    @Autowired
+    private NotificationService notificationService;
 
-  @Autowired
-  private MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String list(Model uiModel) {
-    logger.info("Listing notifications");
+    @RequestMapping(method = RequestMethod.GET)
+    public String list(Model uiModel) {
+        logger.info("Listing notifications");
 
-    List<Notification> notifications = notificationService.findAll();
-    uiModel.addAttribute("notifications", notifications);
+        List<Notification> notifications = notificationService.findAll();
+        uiModel.addAttribute("notifications", notifications);
 
-    logger.info("No. of notifications: " + notifications.size());
+        logger.info("No. of notifications: " + notifications.size());
 
-    return "note/notification/list";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.GET)
-  public String createForm(Model uiModel) {
-    Notification notification = new Notification();
-    uiModel.addAttribute("notification", notification);
-    return "note/notification/create";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Notification notification, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create notification");
-
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("notification_save_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("notification", notification);
-      return "note/notification/create";
+        return "note/notification/list";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("notification_save_success", new Object[]{}, locale)));
-    notificationService.save(notification);
-    logger.info("Notification id: " + notification.getId());
-    return "redirect:/note/notification/" + UrlUtil.encodeUrlPathSegment(notification.getId().toString(), httpServletRequest);
-  }
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Notification notification, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update notification");
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("notification_update_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("notification", notification);
-      return "note/notification/update";
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        Notification notification = new Notification();
+        uiModel.addAttribute("notification", notification);
+        return "note/notification/create";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("notification_update_success", new Object[]{}, locale)));
 
-    notificationService.save(notification);
+    @RequestMapping(params = "form", method = RequestMethod.POST)
+    public String create(@Valid Notification notification, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Create notification");
 
-    return "redirect:/note/notification/" + UrlUtil.encodeUrlPathSegment(notification.getId().toString(), httpServletRequest);
-  }
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("notification_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("notification", notification);
+            return "note/notification/create";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("notification_save_success", new Object[]{}, locale)));
+        notificationService.save(notification);
+        logger.info("Notification id: " + notification.getId());
+        return "redirect:/note/notification/" + UrlUtil.encodeUrlPathSegment(notification.getId().toString(), httpServletRequest);
+    }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  public String show(@PathVariable("id") Long id, Model uiModel) {
-    Notification notification = notificationService.findById(id);
-    uiModel.addAttribute("notification", notification);
-    return "note/notification/show";
-  }
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Notification notification, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Update notification");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("notification_update_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("notification", notification);
+            return "note/notification/update";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("notification_update_success", new Object[]{}, locale)));
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-  public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    uiModel.addAttribute("notification", notificationService.findById(id));
-    return "note/notification/update";
-  }
+        notificationService.save(notification);
 
-  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-  public String delete(@PathVariable("id") Long id, Model uiModel) {
-    notificationService.delete(id);
-    return "redirect:/note/notification/list";
-  }
+        return "redirect:/note/notification/" + UrlUtil.encodeUrlPathSegment(notification.getId().toString(), httpServletRequest);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        Notification notification = notificationService.findById(id);
+        uiModel.addAttribute("notification", notification);
+        return "note/notification/show";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("notification", notificationService.findById(id));
+        return "note/notification/update";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") Long id, Model uiModel) {
+        notificationService.delete(id);
+        return "redirect:/note/notification/list";
+    }
 }

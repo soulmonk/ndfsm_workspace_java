@@ -5,11 +5,11 @@ import com.soulmonk.ndfsm.domain.time.CommentStatus;
 import java.util.List;
 
 public interface CommentStatusService {
-  public List<CommentStatus> findAll();
+    public List<CommentStatus> findAll();
 
-  public CommentStatus findById(Long id);
+    public CommentStatus findById(Long id);
 
-  public CommentStatus save(CommentStatus commentStatus);
+    public CommentStatus save(CommentStatus commentStatus);
 
-  void delete(Long id);
+    void delete(Long id);
 }

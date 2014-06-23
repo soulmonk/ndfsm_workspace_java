@@ -1,7 +1,6 @@
 package com.soulmonk.ndfsm.web.jstl.sbAdmin;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.TagSupport;
 
 /**
@@ -11,11 +10,11 @@ import javax.servlet.jsp.tagext.TagSupport;
  * Time: 21:10
  */
 public class FormGroupTag extends TagSupport {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Override
-  public int doStartTag() throws JspException {
+    @Override
+    public int doStartTag() throws JspException {
 
-    return SKIP_BODY;
-  }
+        return SKIP_BODY;
+    }
 }

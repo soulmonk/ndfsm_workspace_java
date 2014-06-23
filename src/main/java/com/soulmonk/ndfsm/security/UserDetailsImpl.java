@@ -19,17 +19,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class UserDetailsImpl implements UserDetailsService {
 
-  @Autowired
-  private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-  @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepository.findByLogin(username.toLowerCase());
-    if (user == null) {
-      throw new UsernameNotFoundException("No such user: " + username);
-    } else if (user.getUserRoles().isEmpty()) {
-      throw new UsernameNotFoundException("User " + username + " has no authorities");
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByLogin(username.toLowerCase());
+        if (user == null) {
+            throw new UsernameNotFoundException("No such user: " + username);
+        } else if (user.getUserRoles().isEmpty()) {
+            throw new UsernameNotFoundException("User " + username + " has no authorities");
+        }
+        return new UserDetailsAdapter(user);
     }
-    return new UserDetailsAdapter(user);
-  }
 }

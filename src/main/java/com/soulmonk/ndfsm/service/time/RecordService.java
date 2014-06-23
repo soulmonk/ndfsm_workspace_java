@@ -11,11 +11,11 @@ import java.util.List;
  * Time: 9:22
  */
 public interface RecordService {
-  public List<Record> findAll();
+    public List<Record> findAll();
 
-  public Record findById(Long id);
+    public Record findById(Long id);
 
-  public Record save(Record record);
+    public Record save(Record record);
 
-  public void delete(Long id);
+    public void delete(Long id);
 }

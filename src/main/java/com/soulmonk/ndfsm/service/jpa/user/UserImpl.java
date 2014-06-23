@@ -6,8 +6,6 @@ import com.soulmonk.ndfsm.domain.user.UserRole;
 import com.soulmonk.ndfsm.repository.user.UserRepository;
 import com.soulmonk.ndfsm.service.user.RoleService;
 import com.soulmonk.ndfsm.service.user.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,53 +22,53 @@ import java.util.List;
 @Secured("ROLE_ADMIN")
 public class UserImpl implements UserService {
 
-  @Autowired
-  private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-  @Autowired
-  private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
-  @Inject
-  private PasswordEncoder passwordEncoder;
+    @Inject
+    private PasswordEncoder passwordEncoder;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<User> findAll() {
-    return Lists.newArrayList(userRepository.findAll());
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public User findById(Long id) {
-    return userRepository.findOne(id);
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public User save(User user) {
-    if (user.getId() == null) {
-      if (user.getUserRoles().isEmpty()) {
-        UserRole userRole = new UserRole();
-        userRole.setRole(roleService.findByAuthority("ROLE_USER"));
-        userRole.setUser(user);
-        user.getUserRoles().add(userRole);
-      }
-      user.setPasswordChanged(true);
+    @Override
+    @Transactional(readOnly = true)
+    public List<User> findAll() {
+        return Lists.newArrayList(userRepository.findAll());
     }
-    if (user.isPasswordChanged()) {
-      user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+    @Override
+    @Transactional(readOnly = true)
+    public User findById(Long id) {
+        return userRepository.findOne(id);
     }
-    return userRepository.saveAndFlush(user);
-  }
 
-  @Override
-  public User findByLogin(String login) {
-    return userRepository.findByLogin(login);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public User save(User user) {
+        if (user.getId() == null) {
+            if (user.getUserRoles().isEmpty()) {
+                UserRole userRole = new UserRole();
+                userRole.setRole(roleService.findByAuthority("ROLE_USER"));
+                userRole.setUser(user);
+                user.getUserRoles().add(userRole);
+            }
+            user.setPasswordChanged(true);
+        }
+        if (user.isPasswordChanged()) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+        return userRepository.saveAndFlush(user);
+    }
 
-  @Override
-  public void delete(Long id) {
-    userRepository.delete(id);
-  }
+    @Override
+    public User findByLogin(String login) {
+        return userRepository.findByLogin(login);
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.delete(id);
+    }
 
 }

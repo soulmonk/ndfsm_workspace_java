@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/angular")
 public class AngularController {
 
-  @RequestMapping(value = "/index", method = RequestMethod.GET)
-  public String index() {
-    return "angular/index";
-  }
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
+        return "angular/index";
+    }
 }

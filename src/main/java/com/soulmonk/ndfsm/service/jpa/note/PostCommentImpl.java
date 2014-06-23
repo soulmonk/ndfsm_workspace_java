@@ -22,30 +22,30 @@ import java.util.List;
 @Transactional
 public class PostCommentImpl implements PostCommentService {
 
-  @Autowired
-  private PostCommentRepository postCommentRepository;
+    @Autowired
+    private PostCommentRepository postCommentRepository;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<PostComment> findAll() {
-    return Lists.newArrayList(postCommentRepository.findAll());
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public List<PostComment> findAll() {
+        return Lists.newArrayList(postCommentRepository.findAll());
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public PostComment findById(Long id) {
-    return postCommentRepository.findOne(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public PostComment findById(Long id) {
+        return postCommentRepository.findOne(id);
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public PostComment save(PostComment postComment) {
-    return postCommentRepository.saveAndFlush(postComment);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public PostComment save(PostComment postComment) {
+        return postCommentRepository.saveAndFlush(postComment);
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public void delete(Long id) {
-    postCommentRepository.delete(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public void delete(Long id) {
+        postCommentRepository.delete(id);
+    }
 }

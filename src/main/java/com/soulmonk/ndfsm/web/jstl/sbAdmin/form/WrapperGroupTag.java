@@ -13,32 +13,32 @@ import javax.servlet.jsp.PageContext;
  * Time: 22:03
  */
 public class WrapperGroupTag {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  public void beginGroup(TagWriter tagWriter, String path, String labelValue, Boolean isError, PageContext pageContext) throws JspException {
-    tagWriter.startTag("div");
+    public void beginGroup(TagWriter tagWriter, String path, String labelValue, Boolean isError, PageContext pageContext) throws JspException {
+        tagWriter.startTag("div");
 
-    tagWriter.writeOptionalAttributeValue(AbstractHtmlElementTag.CLASS_ATTRIBUTE, "form-group" + (isError ? " has-error" : ""));
-    tagWriter.forceBlock();
+        tagWriter.writeOptionalAttributeValue(AbstractHtmlElementTag.CLASS_ATTRIBUTE, "form-group" + (isError ? " has-error" : ""));
+        tagWriter.forceBlock();
 
-    CLabelTag labelTag = new CLabelTag();
-    labelTag.setPath(path);
-    labelTag.setPageContext(pageContext);
-    labelTag.setTagWriter(tagWriter);
-    labelTag.setLabelValue(labelValue);
-    labelTag.setCssClass("control-label");
-    labelTag.doStartTag();
-  }
+        CLabelTag labelTag = new CLabelTag();
+        labelTag.setPath(path);
+        labelTag.setPageContext(pageContext);
+        labelTag.setTagWriter(tagWriter);
+        labelTag.setLabelValue(labelValue);
+        labelTag.setCssClass("control-label");
+        labelTag.doStartTag();
+    }
 
-  public void endGroup(TagWriter tagWriter, String path, PageContext pageContext) throws JspException {
-    CErrorsTag errorsTag = new CErrorsTag();
-    errorsTag.setTagWriter(tagWriter);
-    errorsTag.setPageContext(pageContext);
-    errorsTag.setPath(path);
-    errorsTag.doStartTag();
-    errorsTag.doEndTag();
-    errorsTag.doFinally();
+    public void endGroup(TagWriter tagWriter, String path, PageContext pageContext) throws JspException {
+        CErrorsTag errorsTag = new CErrorsTag();
+        errorsTag.setTagWriter(tagWriter);
+        errorsTag.setPageContext(pageContext);
+        errorsTag.setPath(path);
+        errorsTag.doStartTag();
+        errorsTag.doEndTag();
+        errorsTag.doFinally();
 
-    tagWriter.endTag();
-  }
+        tagWriter.endTag();
+    }
 }

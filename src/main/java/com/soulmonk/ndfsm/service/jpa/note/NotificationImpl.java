@@ -22,30 +22,30 @@ import java.util.List;
 @Transactional
 public class NotificationImpl implements NotificationService {
 
-  @Autowired
-  private NotificationRepository notificationRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<Notification> findAll() {
-    return Lists.newArrayList(notificationRepository.findAll());
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public List<Notification> findAll() {
+        return Lists.newArrayList(notificationRepository.findAll());
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public Notification findById(Long id) {
-    return notificationRepository.findOne(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Notification findById(Long id) {
+        return notificationRepository.findOne(id);
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public Notification save(Notification notification) {
-    return notificationRepository.saveAndFlush(notification);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Notification save(Notification notification) {
+        return notificationRepository.saveAndFlush(notification);
+    }
 
-  @Override
-  @Transactional(readOnly = true)
-  public void delete(Long id) {
-    notificationRepository.delete(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public void delete(Long id) {
+        notificationRepository.delete(id);
+    }
 }

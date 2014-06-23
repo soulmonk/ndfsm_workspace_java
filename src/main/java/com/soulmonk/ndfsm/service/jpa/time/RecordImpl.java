@@ -16,35 +16,35 @@ import java.util.List;
 @Transactional
 public class RecordImpl implements RecordService {
 
-  @Autowired
-  private RecordRepository recordRepository;
+    @Autowired
+    private RecordRepository recordRepository;
 
-  @Override
-  @Transactional(readOnly = true)
-  public List<Record> findAll() {
-    return recordRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public Record findById(Long id) {
-    return recordRepository.findOne(id);
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public Record save(Record record) {
-    if (record.getId() == null) {
-      record.setUser(UserDetailsAdapter.getLogged().getUser());
-    } else {
-      record.setUser(findById(record.getId()).getUser());
+    @Override
+    @Transactional(readOnly = true)
+    public List<Record> findAll() {
+        return recordRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
     }
-    return recordRepository.saveAndFlush(record);
-  }
 
-  @Override
-  public void delete(Long id) {
-    recordRepository.delete(id);
-  }
+    @Override
+    @Transactional(readOnly = true)
+    public Record findById(Long id) {
+        return recordRepository.findOne(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Record save(Record record) {
+        if (record.getId() == null) {
+            record.setUser(UserDetailsAdapter.getLogged().getUser());
+        } else {
+            record.setUser(findById(record.getId()).getUser());
+        }
+        return recordRepository.saveAndFlush(record);
+    }
+
+    @Override
+    public void delete(Long id) {
+        recordRepository.delete(id);
+    }
 
 }

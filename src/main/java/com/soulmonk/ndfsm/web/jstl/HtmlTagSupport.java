@@ -12,33 +12,33 @@ import javax.servlet.jsp.tagext.TagSupport;
  * Time: 22:58
  */
 public abstract class HtmlTagSupport extends TagSupport {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  public final static String DIV_TAG = "div";
+    public final static String DIV_TAG = "div";
 
-  public static final String CLASS_ATTRIBUTE = "class";
+    public static final String CLASS_ATTRIBUTE = "class";
 
-  protected TagWriter tagWriter;
+    protected TagWriter tagWriter;
 
-  public HtmlTagSupport() {
-    super();
-  }
+    public HtmlTagSupport() {
+        super();
+    }
 
-  @Override
-  public final int doStartTag() throws JspException {
-    tagWriter = new TagWriter(pageContext);
-    return doStartTagInternal();
-  }
+    @Override
+    public final int doStartTag() throws JspException {
+        tagWriter = new TagWriter(pageContext);
+        return doStartTagInternal();
+    }
 
-  protected int doStartTagInternal() throws JspException {
-    tagWriter.startTag(DIV_TAG);
-    tagWriter.forceBlock();
-    return EVAL_BODY_INCLUDE;
-  }
+    protected int doStartTagInternal() throws JspException {
+        tagWriter.startTag(DIV_TAG);
+        tagWriter.forceBlock();
+        return EVAL_BODY_INCLUDE;
+    }
 
-  @Override
-  public int doEndTag() throws JspException {
-    tagWriter.endTag();
-    return super.doEndTag();
-  }
+    @Override
+    public int doEndTag() throws JspException {
+        tagWriter.endTag();
+        return super.doEndTag();
+    }
 }

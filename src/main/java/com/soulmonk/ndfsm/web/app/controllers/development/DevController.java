@@ -19,34 +19,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/dev")
 public class DevController {
-  private static final Logger logger = LoggerFactory.getLogger(DevController.class);
+    private static final Logger logger = LoggerFactory.getLogger(DevController.class);
 
-  @Autowired
-  private UserService userService;
+    @Autowired
+    private UserService userService;
 
-  @RequestMapping(value = "/new_user", method = RequestMethod.GET, produces = "application/json")
-  @ResponseBody
-  public String createNewUser() {
-    try {
-      logger.info("createNewUser begin");
+    @RequestMapping(value = "/new_user", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public String createNewUser() {
+        try {
+            logger.info("createNewUser begin");
 
-      User user = userService.findByLogin("user");
-      if (user != null) {
-        return "{result:'userExist'}";
-      }
-      user = new User();
-      user.setLogin("user");
-      user.setPassword("123098");
-      user.setEmail("user@example.com");
-      user.setFirstName("User");
-      user.setLastName("User");
-      user.setEnabled(true);
-      user.setPasswordChanged(true);
-      userService.save(user);
-      logger.info("createNewUser end");
-    } catch (Exception ex) {
-      ex.printStackTrace();
+            User user = userService.findByLogin("user");
+            if (user != null) {
+                return "{result:'userExist'}";
+            }
+            user = new User();
+            user.setLogin("user");
+            user.setPassword("123098");
+            user.setEmail("user@example.com");
+            user.setFirstName("User");
+            user.setLastName("User");
+            user.setEnabled(true);
+            user.setPasswordChanged(true);
+            userService.save(user);
+            logger.info("createNewUser end");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "{result:'ok'}";
     }
-    return "{result:'ok'}";
-  }
 }

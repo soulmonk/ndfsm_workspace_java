@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CommentStatusRepository extends JpaRepository<CommentStatus, Long> {
 
-  public List<CommentStatus> findByUser(User user);
+    public List<CommentStatus> findByUser(User user);
 }

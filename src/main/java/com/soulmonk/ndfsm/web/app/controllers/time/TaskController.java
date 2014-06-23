@@ -32,94 +32,94 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/time/task")
 public class TaskController {
-  private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
 
-  @Autowired
-  private TaskService taskService;
+    @Autowired
+    private TaskService taskService;
 
-  @Autowired
-  private ProjectService projectService;
+    @Autowired
+    private ProjectService projectService;
 
-  @Autowired
-  private MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String list(Model uiModel) {
-    logger.info("Listing tasks");
+    @RequestMapping(method = RequestMethod.GET)
+    public String list(Model uiModel) {
+        logger.info("Listing tasks");
 
-    List<Task> tasks = taskService.findAll();
-    uiModel.addAttribute("tasks", tasks);
+        List<Task> tasks = taskService.findAll();
+        uiModel.addAttribute("tasks", tasks);
 
-    logger.info("No. of tasks: " + tasks.size());
+        logger.info("No. of tasks: " + tasks.size());
 
-    return "time/task/list";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.GET)
-  public String createForm(Model uiModel) {
-    logger.info("Create form");
-    Task task = new Task();
-    task.setProject(new Project());
-    uiModel.addAttribute("task", task);
-    uiModel.addAttribute("projects", projectService.findAll());
-    return "time/task/create";
-  }
-
-  @RequestMapping(params = "form", method = RequestMethod.POST)
-  public String create(@Valid Task task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Create task");
-
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_save_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("task", task);
-      uiModel.addAttribute("projects", projectService.findAll());
-      return "time/task/create";
+        return "time/task/list";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("task_save_success", new Object[]{}, locale)));
 
-    taskService.save(task);
-    logger.info("Task id: " + task.getId());
-    return "redirect:/time/task/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
-  }
-
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
-  public String update(@Valid Task task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
-    logger.info("Update task");
-    if (bindingResult.hasErrors()) {
-      uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
-      uiModel.addAttribute("task", task);
-      uiModel.addAttribute("projects", projectService.findAll());
-      return "time/task/update";
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        logger.info("Create form");
+        Task task = new Task();
+        task.setProject(new Project());
+        uiModel.addAttribute("task", task);
+        uiModel.addAttribute("projects", projectService.findAll());
+        return "time/task/create";
     }
-    uiModel.asMap().clear();
-    redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("task_update_success", new Object[]{}, locale)));
 
-    taskService.save(task);
+    @RequestMapping(params = "form", method = RequestMethod.POST)
+    public String create(@Valid Task task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Create task");
 
-    logger.info("Update Task id: " + task.getId());
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("task", task);
+            uiModel.addAttribute("projects", projectService.findAll());
+            return "time/task/create";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("task_save_success", new Object[]{}, locale)));
 
-    return "redirect:/time/task/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
-  }
+        taskService.save(task);
+        logger.info("Task id: " + task.getId());
+        return "redirect:/time/task/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
+    }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  public String show(@PathVariable("id") Long id, Model uiModel) {
-    Task task = taskService.findById(id);
-    uiModel.addAttribute("task", task);
-    return "time/task/show";
-  }
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Task task, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, Locale locale) {
+        logger.info("Update task");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message(Message.DANGER_TYPE, messageSource.getMessage("task_update_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("task", task);
+            uiModel.addAttribute("projects", projectService.findAll());
+            return "time/task/update";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message(Message.SUCCESS_TYPE, messageSource.getMessage("task_update_success", new Object[]{}, locale)));
 
-  @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-  public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-    Task task = taskService.findById(id);
-    uiModel.addAttribute("task", task);
-    uiModel.addAttribute("projects", projectService.findAll());
-    return "time/task/update";
-  }
+        taskService.save(task);
 
-  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-  public String delete(@PathVariable("id") Long id, Model uiModel) {
-    taskService.delete(id);
-    return "redirect:/time/task";
-  }
+        logger.info("Update Task id: " + task.getId());
+
+        return "redirect:/time/task/" + UrlUtil.encodeUrlPathSegment(task.getId().toString(), httpServletRequest);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        Task task = taskService.findById(id);
+        uiModel.addAttribute("task", task);
+        return "time/task/show";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        Task task = taskService.findById(id);
+        uiModel.addAttribute("task", task);
+        uiModel.addAttribute("projects", projectService.findAll());
+        return "time/task/update";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") Long id, Model uiModel) {
+        taskService.delete(id);
+        return "redirect:/time/task";
+    }
 }
