@@ -15,4 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/test")
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(DevController.class);
+
+    @RequestMapping(value = "/coffee_namespace")
+    public String coffeeNamespace() {
+        return "dev/test/coffeeNamespace";
+    }
 }

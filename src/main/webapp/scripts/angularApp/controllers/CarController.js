@@ -3,7 +3,7 @@
  * @constructor
  */
 var CarController = function($scope, $http) {
-  'use strict';
+    'use strict';
     $scope.fetchCarsList = function() {
         $http.get('cars/carlist.json').success(function(carList){
             $scope.cars = carList;

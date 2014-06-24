@@ -16,7 +16,7 @@
         <org.slf4j-version>1.7.5</org.slf4j-version>
         <org.aspectj-version>1.7.4</org.aspectj-version>
         <org.flyway-version>3.0</org.flyway-version>
-        <wro4j.version>1.4.1</wro4j.version>
+        <wro4j.version>1.7.6</wro4j.version>
         <coffee-maven-plugin.version>1.4.9</coffee-maven-plugin.version>
         <jetty-maven-plugin.version>8.1.3.v20120416</jetty-maven-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -293,11 +293,18 @@
             <version>20090211</version>
         </dependency>
 
-
-        <!-- coffeescript-->
-
+        <!-- wro4j-->
+        <dependency>
+            <groupId>ro.isdc.wro4j</groupId>
+            <artifactId>wro4j-core</artifactId>
+            <version>${wro4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ro.isdc.wro4j</groupId>
+            <artifactId>wro4j-extensions</artifactId>
+            <version>${wro4j.version}</version>
+        </dependency>
         <!-- /END -->
-
     </dependencies>
 
     <build>
@@ -320,30 +327,6 @@
                     <includes>
                         <include>**/*Tests.java</include>
                     </includes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jasig.maven</groupId>
-                <artifactId>sass-maven-plugin</artifactId>
-                <version>1.1.0</version>
-                <executions>
-                    <execution>
-                        <id>package</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>update-stylesheets</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <resources>
-                        <resource>
-                            <source>
-                                <directory>${basedir}/src/main/resources/sass</directory>
-                            </source>
-                            <destination>${project.basedir}/src/main/webapp/stylesheets/sass</destination>
-                        </resource>
-                    </resources>
                 </configuration>
             </plugin>
             <plugin>
@@ -380,37 +363,6 @@
                 </configuration>
             </plugin>
 
-            <!-- coffeescript-->
-            <!-- https://github.com/talios/coffee-maven-plugin -->
-            <plugin>
-                <groupId>com.theoryinpractise</groupId>
-                <artifactId>coffee-maven-plugin</artifactId>
-                <version>${coffee-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>coffee</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <coffeeDir>${basedir}/src/main/resources/cofeescript</coffeeDir>
-                    <coffeeOutputDirectory>${basedir}/src/main/webapp/scripts/out</coffeeOutputDirectory>
-                    <minifiedFile>${basedir}/src/main/webapp/scripts/${project.artifactId}.min.js</minifiedFile>
-                    <preserveSubDirectory>true</preserveSubDirectory>
-                    <setOfFilesToMinify>
-                        <directory>${basedir}/src/main/webapp/scripts/out</directory>
-                        <includes>
-                            <include>*.js</include>
-                        </includes>
-                        <excludes>
-                            <exclude>alternate.js</exclude>
-                        </excludes>
-                    </setOfFilesToMinify>
-                </configuration>
-            </plugin>
-            <!-- /END -->
-
             <plugin>
                 <groupId>ro.isdc.wro4j</groupId>
                 <artifactId>wro4j-maven-plugin</artifactId>
@@ -424,14 +376,14 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <targetGroups>all,angular</targetGroups>
+                    <targetGroups>all,angular,coffee</targetGroups>
                     <minimize>false</minimize>
                     <destinationFolder>${basedir}/src/main/webapp/wro/</destinationFolder>
                     <cssDestinationFolder>${basedir}/src/main/webapp/stylesheets/wro/</cssDestinationFolder>
                     <jsDestinationFolder>${basedir}/src/main/webapp/scripts/wro/</jsDestinationFolder>
-                    <contextFolder>${basedir}/src/main/webapp/</contextFolder>
-                    <wroFile>${basedir}/src/main/webapp/WEB-INF/spring/wro.xml</wroFile>
-                    <!--<wroManagerFactory>com.mycompany.MyCustomWroManagerFactory</wroManagerFactory>-->
+                    <contextFolder>${basedir}/src/main/</contextFolder>
+                    <wroFile>src/main/webapp/WEB-INF/spring/wro.xml</wroFile>
+                    <wroManagerFactory>com.soulmonk.ndfsm.wro.CustomWroManagerFactory</wroManagerFactory>
                     <ignoreMissingResources>false</ignoreMissingResources>
                 </configuration>
             </plugin>

@@ -170,7 +170,32 @@
                 <!-- /.nav-second-level -->
             </li>
             <!-- /END SECTION ## Module ?Time ##-->
-
+            <spring:url var="angularMainPagUrl" value="/angular/index" />
+            <li>
+                <a href="#"><i class="fa fa-sitemap fa-fw"><jsp:text/></i>Angular<span class="fa arrow"><jsp:text/></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li>
+                        <a href="${angularMainPagUrl}"><i class="fa fa-dashboard fa-fw">
+                            <jsp:text/>
+                        </i>Angular Main Page</a>
+                    </li>
+                    <li>
+                        <a href="${angularMainPagUrl}#/cars"><i class="fa fa-dashboard fa-fw">
+                            <jsp:text/>
+                        </i>Cars</a>
+                    </li>
+                    <li>
+                        <a href="${angularMainPagUrl}#/trains"><i class="fa fa-dashboard fa-fw">
+                            <jsp:text/>
+                        </i>Trains</a>
+                    </li>
+                    <li>
+                        <a href="${angularMainPagUrl}#/products"><i class="fa fa-dashboard fa-fw">
+                            <jsp:text/>
+                        </i>Products</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!-- /#side-menu -->
     </div>

@@ -1,7 +1,4 @@
-'use strict';
-
 /* Filters */
-
 var AppFilters = angular.module('AngularSpringApp.filters', []);
 
 AppFilters.filter('interpolate', ['version', function (version) {

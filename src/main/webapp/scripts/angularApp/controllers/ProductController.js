@@ -1,10 +1,9 @@
-'use strict';
-
 /**
  * ProductController
  * @constructor
  */
 var ProductController = function($scope, $http) {
+    'use strict';
 
 	$scope.editMode = false;
 
@@ -18,7 +17,7 @@ var ProductController = function($scope, $http) {
         $http.get('categories/categoryList.json').success(function(categoryList){
             $scope.categories = categoryList;
         });
-    }
+    };
 	
     $scope.addNewCategory = function(category) {
         $http.post('categories/addCategory', category).success(function() {
@@ -28,7 +27,7 @@ var ProductController = function($scope, $http) {
         }).error(function() {
             $scope.setError('Could not add the category ' + category.name);
         });
-    }
+    };
 
 	/********************
 	 * Products Methods *
@@ -36,13 +35,13 @@ var ProductController = function($scope, $http) {
 
 	$scope.selectProduct = function(product){
 		$scope.product = product;
-	}
+	};
 
     $scope.fetchProductsList = function() {
         $http.get('products/productList.json').success(function(productList){
             $scope.products = productList;
         });
-    }
+    };
 
     $scope.addNewProduct = function(product) {
         $http.post('products/addProduct', product).success(function() {
@@ -51,12 +50,12 @@ var ProductController = function($scope, $http) {
             $scope.setError('Could not add the product ' + product.name);
         });
         $scope.resetProductForm();
-    }
+    };
 
     $scope.editProduct = function(product) {
         $scope.product = product;
         $scope.editMode = true;
-    }
+    };
 
     $scope.updateProduct = function(product) {
         $scope.resetError();
@@ -68,7 +67,7 @@ var ProductController = function($scope, $http) {
         }).error(function() {
             $scope.setError('Could not update the product ' + product.name);
         });
-    }
+    };
 
     $scope.removeProduct = function(product) {
     	$scope.resetError();
@@ -79,7 +78,7 @@ var ProductController = function($scope, $http) {
         }).error(function() {
             $scope.setError('Could not remove the product ' + product.name);
         });
-    }
+    };
 
     $scope.removeAllProducts = function() {
         $http.delete('products/removeAllProducts').success(function() {
@@ -95,27 +94,27 @@ var ProductController = function($scope, $http) {
     $scope.resetError = function() {
         $scope.error = false;
         $scope.errorMessage = '';
-    }
+    };
 
     $scope.resetInfo = function() {
         $scope.info = false;
         $scope.infoMessage = '';
-    }
+    };
 
     $scope.setError = function(message) {
         $scope.error = true;
         $scope.errorMessage = message;
-    }
+    };
 
     $scope.setInfo = function(message) {
         $scope.info = true;
         $scope.infoMessage = message;
-    }
+    };
 
     $scope.resetProductForm = function() {
     	$scope.resetError();
     	$scope.product = null;
-    }
+    };
 
     /*******************************
      * Load Lists (such as ng-init)*
@@ -123,4 +122,4 @@ var ProductController = function($scope, $http) {
 
     $scope.fetchProductsList();
     $scope.fetchCategoriesList();
-}
+};
