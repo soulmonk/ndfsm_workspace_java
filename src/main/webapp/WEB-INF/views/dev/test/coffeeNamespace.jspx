@@ -11,7 +11,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
-    <spring:url value="/resources/scripts/out/custom.js" var="custom_js_url"/>
+    <spring:url value="/resources/scripts/wro/coffee.js" var="custom_js_url"/>
     <js:add>
         <script type="text/javascript" src="${custom_js_url}"><jsp:text/></script>
     </js:add>

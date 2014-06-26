@@ -9,17 +9,17 @@
     <name>ndfsm</name>
 
     <properties>
-        <org.springframework-version>3.2.4.RELEASE</org.springframework-version>
-        <org.springsecurity-version>3.1.4.RELEASE</org.springsecurity-version>
-        <hibernate.version>4.3.0.CR1</hibernate.version>
+        <org.springframework-version>4.0.0.RELEASE</org.springframework-version>
+        <org.springsecurity-version>3.2.4.RELEASE</org.springsecurity-version>
+        <hibernate.version>4.3.3.Final</hibernate.version>
         <hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
-        <org.slf4j-version>1.7.5</org.slf4j-version>
-        <org.aspectj-version>1.7.4</org.aspectj-version>
+        <org.slf4j-version>1.7.7</org.slf4j-version>
+        <org.aspectj-version>1.8.0</org.aspectj-version>
         <org.flyway-version>3.0</org.flyway-version>
         <wro4j.version>1.7.6</wro4j.version>
-        <coffee-maven-plugin.version>1.4.9</coffee-maven-plugin.version>
         <jetty-maven-plugin.version>8.1.3.v20120416</jetty-maven-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javax.validation.version>1.0.0.GA</javax.validation.version>
     </properties>
 
     <dependencies>
@@ -69,10 +69,11 @@
         <!-- /END -->
 
         <!-- Validators -->
+
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
+            <version>${javax.validation.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -82,6 +83,7 @@
         <!-- /END -->
 
         <!-- Logging -->
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -157,8 +159,9 @@
         <dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-js</artifactId>
-            <version>2.3.3.RELEASE</version>
+            <version>2.4.0.RELEASE</version>
         </dependency>
+
         <!-- /END -->
 
         <!-- Spring Security -->
@@ -245,10 +248,11 @@
             <artifactId>spring-tx</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.0.1.RELEASE</version>
+            <version>1.6.0.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -259,7 +263,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.18</version>
+            <version>5.1.31</version>
             <scope>runtime</scope>
         </dependency>
         <!-- /end -->
@@ -267,7 +271,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
 
@@ -275,7 +279,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>14.0.1</version>
+            <version>17.0</version>
         </dependency>
         <!-- /END -->
 
@@ -285,6 +289,7 @@
             <artifactId>flyway-core</artifactId>
             <version>${org.flyway-version}</version>
         </dependency>
+
         <!-- /END -->
 
         <dependency>
@@ -305,6 +310,7 @@
             <version>${wro4j.version}</version>
         </dependency>
         <!-- /END -->
+
     </dependencies>
 
     <build>
@@ -313,9 +319,10 @@
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
@@ -323,6 +330,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.17</version>
                 <configuration>
                     <includes>
                         <include>**/*Tests.java</include>
@@ -388,18 +396,64 @@
                 </configuration>
             </plugin>
             <!-- JETTY -->
+            <!-- @begin: jetty -->
+            <!-- http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty-maven-plugin.version}</version>
                 <configuration>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-                    </webAppConfig>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
-                    <stopKey>stop-jetty</stopKey>
+
+                    <!-- Delete this block to have Jetty run default port (8080) -->
+                    <!-- app url: http://localhost:9090/ -->
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>9090</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+
+                    <!-- This parameter will auto-deploy modified classes. -->
+                    <!-- You can save changes in a file or class and refresh your browser
+                        to view the changes. -->
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+
+                    <stopKey>stopIt</stopKey>
                     <stopPort>9999</stopPort>
+
                 </configuration>
+
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <!-- app url: http://localhost:8080/${project.artifactId} -->
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                            <webApp>
+                                <contextPath>/${project.artifactId}</contextPath>
+                            </webApp>
+                            <connectors>
+                                <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                                    <port>8080</port>
+                                    <maxIdleTime>60000</maxIdleTime>
+                                </connector>
+                            </connectors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
             </plugin>
         </plugins>
     </build>
