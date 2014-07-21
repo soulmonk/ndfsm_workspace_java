@@ -329,6 +329,16 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.0</version>
+                <configuration>
+                    <url>http://46.36.221.35:8989/manager/text</url>
+                    <server>bustafRemote</server>
+                    <path>/ndfsm</path>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.17</version>
                 <configuration>
