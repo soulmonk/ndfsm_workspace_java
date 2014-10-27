@@ -5,13 +5,14 @@
 
     <group name="all">
         <css>/webapp/stylesheets/standard.css</css>
-        <js>/webapp/scripts/standard.js</js>
     </group>
 
     <group name="angular">
-        <js>/webapp/scripts/angular/angular.js</js>
-        <js>/webapp/scripts/angular/angular-route.js</js>
-        <js>/webapp/scripts/angularApp/**.js</js>
+        <js>/webapp/scripts/controllers/*.js</js>
+        <js>/webapp/scripts/filters/*.js</js>
+        <js>/webapp/scripts/services/.js</js>
+        <js>/webapp/scripts/directives/.js</js>
+        <js>/webapp/scripts/*.js</js>
     </group>
 
     <group name="coffee">

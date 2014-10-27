@@ -5,36 +5,40 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
-    <!-- Core Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/min/jquery-1.10.2.js" var="jquery"/>
-    <script type="text/javascript" src="${jquery}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/min/bootstrap.min.js" var="bootstrap"/>
-    <script type="text/javascript" src="${bootstrap}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/plugins/metisMenu/jquery.metisMenu.js" var="jquery_metisMenu"/>
-    <script type="text/javascript" src="${jquery_metisMenu}"><jsp:text/></script>
+    <!--[if lt IE 9]>-->
+    <spring:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" var="html5shiv_js"/>
+    <script type="text/javascript" src="${html5shiv_js}"><jsp:text/></script>
+    <spring:url value="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" var="respond_min_js"/>
+    <script type="text/javascript" src="${respond_min_js}"><jsp:text/></script>
+    <!--[endif]-->
 
-    <!-- Standart -->
-    <spring:url value="/resources/scripts/standard.js" var="standard_url" />
-    <script type="text/javascript" src="${standard_url}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/jquery-1.11.0.js" var="jquery_1_11_0_js"/>
+    <script type="text/javascript" src="${jquery_1_11_0_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/bootstrap.min.js" var="bootstrap_min_js"/>
+    <script type="text/javascript" src="${bootstrap_min_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/plugins/metisMenu/metisMenu.min.js" var="metisMenu_min_js"/>
+    <script type="text/javascript" src="${metisMenu_min_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/sb-admin-2.js" var="sb_admin_2_js"/>
+    <script type="text/javascript" src="${sb_admin_2_js}"><jsp:text/></script>
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <spring:url value="/resources/scripts/plugins/morris/raphael-2.1.0.min.js" var="raphael"/>
-    <script type="text/javascript" src="${raphael}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/plugins/morris/morris.js" var="morris"/>
-    <script type="text/javascript" src="${morris}"><jsp:text/></script>
-
-    <!-- SB Admin Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/sb-admin.js" var="sb_admin"/>
-    <script type="text/javascript" src="${sb_admin}"><jsp:text/></script>
-
-    <!-- Page-Level Plugin Scripts - Tables -->
-    <spring:url value="/resources/scripts/plugins/dataTables/jquery.dataTables.js" var="jquery_dataTables_js"/>
-    <script type="text/javascript" src="${jquery_dataTables_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/plugins/dataTables/dataTables.bootstrap.js" var="dataTables_bootstrap_js"/>
-    <script type="text/javascript" src="${dataTables_bootstrap_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/angular.js" var="angular_js"/>
+    <script type="text/javascript" src="${angular_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/angular-route.js" var="angular_route_js"/>
+    <script type="text/javascript" src="${angular_route_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/angular-resource.js" var="angular_resource_js"/>
+    <script type="text/javascript" src="${angular_resource_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/angular-cookies.js" var="angular_cookies_js"/>
+    <script type="text/javascript" src="${angular_cookies_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/angular-flash/directives/flash-alert-directive.js" var="flash_alert_directive_js"/>
+    <script type="text/javascript" src="${flash_alert_directive_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/angular-flash/services/flash-service.js" var="flash_service_js"/>
+    <script type="text/javascript" src="${flash_service_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/ng-table.js" var="ng_table_js"/>
+    <script type="text/javascript" src="${ng_table_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/angular/angular-ui-router.js" var="angular_ui_router_js"/>
+    <script type="text/javascript" src="${angular_ui_router_js}"><jsp:text/></script>
 
     <spring:url value="/resources/scripts/wro/angular.js" var="AngularAppJsUrl"/>
     <script type="text/javascript" src="${AngularAppJsUrl}"><jsp:text/></script>
-
     <js:print/>
 </div>
