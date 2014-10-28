@@ -436,13 +436,13 @@
                 <configuration>
 
                     <!-- Delete this block to have Jetty run default port (8080) -->
-                    <!-- app url: http://localhost:9090/ -->
+                    <!-- app url: http://localhost:9090/ --><!--
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>9090</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
-                    </connectors>
+                    </connectors>-->
 
                     <!-- This parameter will auto-deploy modified classes. -->
                     <!-- You can save changes in a file or class and refresh your browser
@@ -467,13 +467,13 @@
                             <daemon>true</daemon>
                             <webApp>
                                 <contextPath>/${project.artifactId}</contextPath>
-                            </webApp>
+                            </webApp><!--
                             <connectors>
                                 <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                                     <port>8080</port>
                                     <maxIdleTime>60000</maxIdleTime>
                                 </connector>
-                            </connectors>
+                            </connectors>-->
                         </configuration>
                     </execution>
                     <execution>

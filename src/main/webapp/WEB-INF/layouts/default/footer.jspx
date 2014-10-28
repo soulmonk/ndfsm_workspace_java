@@ -6,27 +6,27 @@
     <jsp:output omit-xml-declaration="yes"/>
 
     <!-- Core Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/min/jquery-1.10.2.js" var="jquery"/>
+    <spring:url value="/resources/scripts/lib/jquery-1.11.0.js" var="jquery"/>
     <script type="text/javascript" src="${jquery}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/min/bootstrap.min.js" var="bootstrap"/>
+    <spring:url value="/resources/scripts/lib/bootstrap.min.js" var="bootstrap"/>
     <script type="text/javascript" src="${bootstrap}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/plugins/metisMenu/jquery.metisMenu.js" var="jquery_metisMenu"/>
+    <spring:url value="/resources/scripts/lib/plugins/metisMenu/metisMenu.min.js" var="jquery_metisMenu"/>
     <script type="text/javascript" src="${jquery_metisMenu}"><jsp:text/></script>
 
     <!-- Page-Level Plugin Scripts - Dashboard -->
-    <spring:url value="/resources/scripts/plugins/morris/raphael-2.1.0.min.js" var="raphael"/>
+    <spring:url value="/resources/scripts/lib/plugins/morris/raphael.min.js" var="raphael"/>
     <script type="text/javascript" src="${raphael}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/plugins/morris/morris.js" var="morris"/>
+    <spring:url value="/resources/scripts/lib/plugins/morris/morris.min.js" var="morris"/>
     <script type="text/javascript" src="${morris}"><jsp:text/></script>
 
     <!-- SB Admin Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/sb-admin.js" var="sb_admin"/>
+    <spring:url value="/resources/scripts/lib/sb-admin-2.js" var="sb_admin"/>
     <script type="text/javascript" src="${sb_admin}"><jsp:text/></script>
 
     <!-- Page-Level Plugin Scripts - Tables -->
-    <spring:url value="/resources/scripts/plugins/dataTables/jquery.dataTables.js" var="jquery_dataTables_js"/>
+    <spring:url value="/resources/scripts/lib/plugins/dataTables/jquery.dataTables.js" var="jquery_dataTables_js"/>
     <script type="text/javascript" src="${jquery_dataTables_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/plugins/dataTables/dataTables.bootstrap.js" var="dataTables_bootstrap_js"/>
+    <spring:url value="/resources/scripts/lib/plugins/dataTables/dataTables.bootstrap.js" var="dataTables_bootstrap_js"/>
     <script type="text/javascript" src="${dataTables_bootstrap_js}"><jsp:text/></script>
 
 

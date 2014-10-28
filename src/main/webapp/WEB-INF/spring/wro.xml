@@ -10,8 +10,8 @@
     <group name="angular">
         <js>/webapp/scripts/controllers/*.js</js>
         <js>/webapp/scripts/filters/*.js</js>
-        <js>/webapp/scripts/services/.js</js>
-        <js>/webapp/scripts/directives/.js</js>
+        <js>/webapp/scripts/services/*.js</js>
+        <!--<js>/webapp/scripts/directives/*.js</js>-->
         <js>/webapp/scripts/*.js</js>
     </group>
 
