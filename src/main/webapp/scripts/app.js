@@ -36,7 +36,7 @@ App.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'flashProvi
     flashProvider.errorClassnames.push('alert-danger');
     $stateProvider.state('login', {
         url: '/login',
-        templateUrl: 'partials/additional/login',
+        templateUrl: '/resources/_views/additional/login.html',
         controller: LoginController,
 
         // You do not need to be logged in to go to this route.
@@ -44,7 +44,7 @@ App.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'flashProvi
     });
     $stateProvider.state('layout', {
         url: '/',
-        templateUrl: 'partials/base',
+        templateUrl: '/resources/_views/base.html',
         controller: function() {
             jQuery('#side-menu').metisMenu();
         },
@@ -54,7 +54,7 @@ App.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'flashProvi
     });
     $stateProvider.state('layout.dashboard', {
         url: 'dashboard',
-        templateUrl: 'partials/dashboard',
+        templateUrl: '/resources/_views/dashboard.html',
         controller: DashboardController,
         title: 'Dashboard',
         requireLogin: true

@@ -60,14 +60,12 @@
 
     <div class="row row-alert alert alert-flash fade" flash-alert="" active-class="in" duration="0">
         <div class="col-lg-12">
-            <button type="button" class="close" ng-click="hide()">&times;</button>
+            <button type="button" class="close" ng-click="hide()"><![CDATA[&times;]]></button>
             <strong class="alert-heading">{{ flash.type }}</strong>
             <span class="alert-message">{{ flash.message }}</span>
         </div>
     </div>
-    <div id="page-wrapper" class="ui-view">
-        <tiles:insertAttribute name="body"/>
-    </div>
+    <div id="page-wrapper" ui-view=""></div>
     <tiles:insertAttribute name="footer" ignore="true"/>
 </div>
 </body>
