@@ -140,6 +140,49 @@
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jstl-impl</artifactId>
+            <version>1.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>servlet-api</artifactId>
+                    <groupId>javax.servlet</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jsp-api</artifactId>
+                    <groupId>javax.servlet.jsp</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jstl-api</artifactId>
+                    <groupId>javax.servlet.jsp.jstl</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
             <scope>provided</scope>
@@ -154,7 +197,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>
+        </dependency>-->
         <!-- /END -->
 
         <!-- Spring JS -->
@@ -295,7 +338,7 @@
         <!-- /END -->
 
         <!-- jetty-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jetty-maven-plugin.version}</version>
@@ -310,7 +353,7 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-util</artifactId>
             <version>${jetty-maven-plugin.version}</version>
-        </dependency>
+        </dependency>-->
         <!-- /END -->
 
         <dependency>
@@ -436,8 +479,8 @@
                 <configuration>
 
                     <!-- Delete this block to have Jetty run default port (8080) -->
-                    <!-- app url: http://localhost:9090/ --><!--
-                    <connectors>
+                    <!-- app url: http://localhost:9090/ -->
+                    <!--<connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>9090</port>
                             <maxIdleTime>60000</maxIdleTime>
@@ -450,7 +493,7 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
 
                     <stopKey>stopIt</stopKey>
-                    <stopPort>9999</stopPort>
+                    <stopPort>99990</stopPort>
 
                 </configuration>
 
