@@ -8,11 +8,18 @@
     </group>
 
     <group name="angular">
-        <js>/webapp/scripts/controllers/*.js</js>
-        <js>/webapp/scripts/filters/*.js</js>
-        <js>/webapp/scripts/services/*.js</js>
-        <!--<js>/webapp/scripts/directives/*.js</js>-->
-        <js>/webapp/scripts/*.js</js>
+        <js>/resources/angularApp/**.js</js>
+    </group>
+
+    <group name="angular.min">
+        <js>/resources/scripts/lib/angular/angular.js</js>
+        <js>/resources/scripts/lib/angular/angular-route.js</js>
+        <js>/resources/scripts/lib/angular/angular-resource.js</js>
+        <js>/resources/scripts/lib/angular/angular-cookies.js</js>
+        <js>/resources/scripts/lib/angular/angular-flash/directives/flash-alert-directive.js</js>
+        <js>/resources/scripts/lib/angular/angular-flash/services/flash-service.js</js>
+        <js>/resources/scripts/lib/angular/ng-table.js</js>
+        <js>/resources/scripts/lib/angular/angular-ui-router.js</js>
     </group>
 
     <group name="coffee">

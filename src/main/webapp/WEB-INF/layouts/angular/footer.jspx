@@ -21,22 +21,8 @@
     <spring:url value="/resources/scripts/lib/sb-admin-2.js" var="sb_admin_2_js"/>
     <script type="text/javascript" src="${sb_admin_2_js}"><jsp:text/></script>
 
-    <spring:url value="/resources/scripts/lib/angular/angular.js" var="angular_js"/>
-    <script type="text/javascript" src="${angular_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/angular/angular-route.js" var="angular_route_js"/>
-    <script type="text/javascript" src="${angular_route_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/angular/angular-resource.js" var="angular_resource_js"/>
-    <script type="text/javascript" src="${angular_resource_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/angular/angular-cookies.js" var="angular_cookies_js"/>
-    <script type="text/javascript" src="${angular_cookies_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/angular/angular-flash/directives/flash-alert-directive.js" var="flash_alert_directive_js"/>
-    <script type="text/javascript" src="${flash_alert_directive_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/angular/angular-flash/services/flash-service.js" var="flash_service_js"/>
-    <script type="text/javascript" src="${flash_service_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/angular/ng-table.js" var="ng_table_js"/>
-    <script type="text/javascript" src="${ng_table_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/angular/angular-ui-router.js" var="angular_ui_router_js"/>
-    <script type="text/javascript" src="${angular_ui_router_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/wro/angular.min.js" var="angular_min_js"/>
+    <script type="text/javascript" src="${angular_min_js}"><jsp:text/></script>
 
     <spring:url value="/resources/scripts/wro/angular.js" var="AngularAppJsUrl"/>
     <script type="text/javascript" src="${AngularAppJsUrl}"><jsp:text/></script>

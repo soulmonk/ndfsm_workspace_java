@@ -458,7 +458,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <targetGroups>all,angular,coffee</targetGroups>
+                    <targetGroups>all,angular,angular.min,coffee</targetGroups>
                     <minimize>false</minimize>
                     <destinationFolder>${basedir}/src/main/webapp/wro/</destinationFolder>
                     <cssDestinationFolder>${basedir}/src/main/webapp/stylesheets/wro/</cssDestinationFolder>
@@ -478,6 +478,9 @@
                 <version>${jetty.version}</version>
                 <configuration>
 
+                    <httpConnector>
+                        <port>9090</port>
+                    </httpConnector>
                     <!-- Delete this block to have Jetty run default port (8080) -->
                     <!-- app url: http://localhost:9090/ -->
                     <!--<connectors>
@@ -493,7 +496,7 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
 
                     <stopKey>stopIt</stopKey>
-                    <stopPort>99990</stopPort>
+                    <stopPort>19999</stopPort>
 
                 </configuration>
 
