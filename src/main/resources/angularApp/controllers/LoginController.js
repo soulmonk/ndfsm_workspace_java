@@ -15,8 +15,8 @@ var LoginController = function ($scope, $location, $state, flash) {
     // attempt login to your api
     $scope.attemptLogin = function () {
 //        console.log(JSON.stringify($scope.loginForm.$error));
-        if (!$scope.loginForm.email.$valid) {
-            alert('Yours key is too short. Min length is 10 symbols.');
+        if (!$scope.loginForm.username.$valid) {
+            alert('username nnot valid.');
             return;
         }
         if (!$scope.loginForm.password.$valid) {
@@ -28,7 +28,7 @@ var LoginController = function ($scope, $location, $state, flash) {
             return;
         }
         $scope.AuthService.login({
-            email: $scope.credentials.email,
+            username: $scope.credentials.username,
             password: $scope.credentials.password,
             rememberMe: $scope.credentials.rememberMe
         }, function (err) {

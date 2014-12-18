@@ -6,13 +6,12 @@
                 <div class="panel-body">
                     <form role="form" name="loginForm" ng-submit="attemptLogin()" novalidate="novalidate">
                         <fieldset>
-                            <div class="form-group"><input placeholder="E-mail" name="email" type="email"
-                                                           ng-model="credentials.email" autofocus="autofocus"
+                            <div class="form-group"><input placeholder="username" name="username" type="text"
+                                                           ng-model="credentials.username" autofocus="autofocus"
                                                            required="" class="form-control"/>
 
-                                <div ng-show="loginForm.email.$dirty &amp;&amp; loginForm.email.$invalid">Invalid:<span
-                                        ng-show="loginForm.email.$error.required">Tell us your email.</span><span
-                                        ng-show="loginForm.email.$error.email">This is not a valid email.</span></div>
+                                <div ng-show="loginForm.username.$dirty &amp;&amp; loginForm.username.$invalid">Invalid:<span
+                                        ng-show="loginForm.username.$error.required">Tell us your email.</span></div>
                             </div>
                             <div class="form-group"><input placeholder="Password" name="password" type="password"
                                                            value="" ng-model="credentials.password" required=""

@@ -3,7 +3,7 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       xmlns:tiles="http://tiles.apache.org/tags-tiles"
-      xmlns:spring="http://www.springframework.org/tags">
+      xmlns:spring="http://www.springframework.org/tags" ng-app="NDFSM_App" ng-controller='MainController'>
 
 <jsp:output doctype-root-element="HTML"
             doctype-system="about:legacy-compat"/>
@@ -22,7 +22,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${font_awesome}"/>
 
     <!-- Page-Level Plugin CSS - Tables -->
-    <spring:url value="/resources/stylesheets/plugins/dataTables/dataTables.bootstrap.css" var="dataTables_bootstrap_css"/>
+    <spring:url value="/resources/stylesheets/plugins/dataTables/dataTables.bootstrap.css"
+                var="dataTables_bootstrap_css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="${dataTables_bootstrap_css}"/>
 
     <!-- Page-Level Plugin CSS - Dashboard -->
@@ -54,11 +55,15 @@
 
 <body>
 <div id="wrapper">
-    <tiles:insertAttribute name="header" ignore="true"/>
-    <tiles:insertAttribute name="menu" ignore="true"/>
-    <div id="page-wrapper">
-        <tiles:insertAttribute name="body"/>
+
+    <div class="row row-alert alert alert-flash fade" flash-alert="" active-class="in" duration="0">
+        <div class="col-lg-12">
+            <button type="button" class="close" ng-click="hide()"><![CDATA[&times;]]></button>
+            <strong class="alert-heading">{{ flash.type }}</strong>
+            <span class="alert-message">{{ flash.message }}</span>
+        </div>
     </div>
+    <div id="page-wrapper" ui-view=""></div>
     <tiles:insertAttribute name="footer" ignore="true"/>
 </div>
 </body>

@@ -5,14 +5,14 @@
     <jsp:output omit-xml-declaration="yes" />
 
     <!-- Core Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/min/jquery-1.10.2.js" var="jquery" />
+    <spring:url value="/resources/scripts/lib/jquery-1.11.0.js" var="jquery"/>
     <script type="text/javascript" src="${jquery}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/min/bootstrap.min.js" var="bootstrap" />
+    <spring:url value="/resources/scripts/lib/bootstrap.min.js" var="bootstrap" />
     <script type="text/javascript" src="${bootstrap}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/plugins/metisMenu/jquery.metisMenu.js" var="jquery_metisMenu" />
-    <script type="text/javascript" src="${jquery_metisMenu}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/plugins/metisMenu/metisMenu.js" var="metisMenu" />
+    <script type="text/javascript" src="${metisMenu}"><jsp:text/></script>
 
     <!-- SB Admin Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/sb-admin.js" var="sb_admin" />
+    <spring:url value="/resources/scripts/lib/sb-admin-2.js" var="sb_admin" />
     <script type="text/javascript" src="${sb_admin}"><jsp:text/></script>
 </div>

@@ -5,49 +5,35 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
-    <!-- Core Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/lib/jquery-1.11.0.js" var="jquery"/>
-    <script type="text/javascript" src="${jquery}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/bootstrap.min.js" var="bootstrap"/>
-    <script type="text/javascript" src="${bootstrap}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/plugins/metisMenu/metisMenu.min.js" var="jquery_metisMenu"/>
-    <script type="text/javascript" src="${jquery_metisMenu}"><jsp:text/></script>
+    <!--[if lt IE 9]>-->
+    <spring:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" var="html5shiv_js"/>
+    <script type="text/javascript" src="${html5shiv_js}"><jsp:text/></script>
+    <spring:url value="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" var="respond_min_js"/>
+    <script type="text/javascript" src="${respond_min_js}"><jsp:text/></script>
+    <!--[endif]-->
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <spring:url value="/resources/scripts/lib/plugins/morris/raphael.min.js" var="raphael"/>
-    <script type="text/javascript" src="${raphael}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/plugins/morris/morris.min.js" var="morris"/>
-    <script type="text/javascript" src="${morris}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/jquery-1.11.0.js" var="jquery_1_11_0_js"/>
+    <script type="text/javascript" src="${jquery_1_11_0_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/bootstrap.min.js" var="bootstrap_min_js"/>
+    <script type="text/javascript" src="${bootstrap_min_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/plugins/metisMenu/metisMenu.min.js" var="metisMenu_min_js"/>
+    <script type="text/javascript" src="${metisMenu_min_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/lib/sb-admin-2.js" var="sb_admin_2_js"/>
+    <script type="text/javascript" src="${sb_admin_2_js}"><jsp:text/></script>
 
-    <!-- SB Admin Scripts - Include with every page -->
-    <spring:url value="/resources/scripts/lib/sb-admin-2.js" var="sb_admin"/>
-    <script type="text/javascript" src="${sb_admin}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/wro/angular.min.js" var="angular_min_js"/>
+    <script type="text/javascript" src="${angular_min_js}"><jsp:text/></script>
 
-    <!-- Page-Level Plugin Scripts - Tables -->
-    <spring:url value="/resources/scripts/lib/plugins/dataTables/jquery.dataTables.js" var="jquery_dataTables_js"/>
-    <script type="text/javascript" src="${jquery_dataTables_js}"><jsp:text/></script>
-    <spring:url value="/resources/scripts/lib/plugins/dataTables/dataTables.bootstrap.js" var="dataTables_bootstrap_js"/>
-    <script type="text/javascript" src="${dataTables_bootstrap_js}"><jsp:text/></script>
+    <spring:url value="/resources/scripts/wro/angular.js" var="AngularAppJsUrl"/>
+    <script type="text/javascript" src="${AngularAppJsUrl}"><jsp:text/></script>
 
-
-    <!--<spring:url value="/resources/dojo/dojo.js" var="DojoJsUrl"/>
-    <script type="text/javascript" src="${DojoJsUrl}"></script>
-    <spring:url value="/resources/spring/Spring.js" var="springJsUrl"/>
-    <script type="text/javascript" src="${springJsUrl}"></script>
-    <spring:url value="/resources/spring/Spring-Dojo.js" var="springDojoJsUrl"/>
-    <script type="text/javascript" src="${springDojoJsUrl}"></script>-->
-
-    <js:print/>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <!--<script type="text/javascript">
-        $(document).ready(function () {
-            (function(){
-                var elements = $('table#list');
-                if (elements.length > 0) {
-                    $('#list').dataTable();
-                }
-            })();
+    <spring:url var="loginUrl" value="/j_spring_security_check"/>
+    <spring:url var="logoutUrl" value="/j_spring_security_logout" />
+    <spring:url var="root" value="/"/>
+    <script type="text/javascript">
+        window.addEventListener('application.init', function() {
+            AppConfig.setLoginUrl("${loginUrl}").setLogoutUrl("${logoutUrl}").setRoot("${root}");
         });
-    </script>-->
+    </script>
+    <js:print/>
 </div>

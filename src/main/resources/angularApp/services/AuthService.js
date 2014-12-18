@@ -1,4 +1,4 @@
-function AuthService($rootScope, SessionService, $cookieStore) {
+function AuthService($rootScope, $http, $cookieStore) {
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
 
@@ -6,10 +6,10 @@ function AuthService($rootScope, SessionService, $cookieStore) {
 
         login: function (user, callback) {
             var cb = callback || angular.noop;
-            SessionService.save({
-                email: user.email,
-                password: user.password,
-                rememberMe: user.rememberMe
+            $http.post(AppConfig.getLoginUrl(),{
+                j_username: user.username,
+                j_password: user.password,
+                remember_me_parameter: user.rememberMe
             }, function (user) {
                 $rootScope.currentUser = user;
                 return cb();
@@ -20,7 +20,7 @@ function AuthService($rootScope, SessionService, $cookieStore) {
 
         logout: function (callback) {
             var cb = callback || angular.noop;
-            SessionService.delete(function (res) {
+            $http.get(AppConfig.getLogoutUrl(), function (res) {
                     $rootScope.currentUser = null;
                     return cb();
                 },
@@ -30,9 +30,9 @@ function AuthService($rootScope, SessionService, $cookieStore) {
         },
 
         currentUser: function () {
-            SessionService.get(function (user) {
+            /*SessionService.get(function (user) {
                 $rootScope.currentUser = user;
-            });
+            });*/
         },
 
         getCurrentUser: function() {
@@ -41,4 +41,4 @@ function AuthService($rootScope, SessionService, $cookieStore) {
     };
 }
 angular.module('NDFSM_App.services.AuthService', [])
-    .service('AuthService', ['$rootScope', 'SessionService', '$cookieStore', AuthService]);
+    .service('AuthService', ['$rootScope', '$http', '$cookieStore', AuthService]);
