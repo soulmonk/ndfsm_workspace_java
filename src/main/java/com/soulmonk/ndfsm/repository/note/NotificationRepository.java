@@ -4,7 +4,7 @@ import com.soulmonk.ndfsm.domain.note.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: SoulMonk
  * Date: 27.02.14
  * Time: 21:24

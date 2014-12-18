@@ -5,7 +5,7 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: soulmonk
  * Date: 01.02.14
  * Time: 12:38

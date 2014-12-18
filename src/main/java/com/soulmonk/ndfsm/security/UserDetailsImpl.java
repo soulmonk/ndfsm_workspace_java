@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: soulmonk
  * Date: 01.02.14
  * Time: 11:09

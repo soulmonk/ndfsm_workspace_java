@@ -1,7 +1,7 @@
 package com.soulmonk.ndfsm.appConsole.helpers;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: soulmonk
  * Date: 11.03.14
  * Time: 11:29

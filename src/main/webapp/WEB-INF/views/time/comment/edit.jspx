@@ -22,7 +22,7 @@
     <spring:message code="label_task_comment_from" var="labelCommentFrom"/>
     <spring:message code="label_task_comment_to" var="labelCommentTo"/>
 
-    <!--@elvariable id="comment" type="com.valpio.soulmonk.domain.Comments"-->
+    <!--@elvariable id="comment" type="com.PolecatSoft.soulmonk.domain.Comments"-->
     <spring:eval expression="comment.id == null ? labelCommentNew:labelCommentUpdate" var="formTitle"/>
 
     <sbAdmin:pageHeader text="${formTitle}"/>

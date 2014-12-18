@@ -7,7 +7,7 @@ import javax.servlet.jsp.JspException;
 import java.util.List;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: SoulMonk
  * Date: 01.03.14
  * Time: 22:32

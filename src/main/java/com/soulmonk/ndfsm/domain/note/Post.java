@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: SoulMonk
  * Date: 27.02.14
  * Time: 19:21

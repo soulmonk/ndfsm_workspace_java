@@ -8,7 +8,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: soulmonk
  * Date: 19.08.13
  * Time: 15:43

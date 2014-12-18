@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: soulmonk
  * Date: 31.01.14
  * Time: 15:27

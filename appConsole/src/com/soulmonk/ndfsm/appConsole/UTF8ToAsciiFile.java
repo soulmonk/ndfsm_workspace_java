@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
  * It is equivalent to:
  * native2ascii -encoding utf-8
  * <p/>
- * Company: Valpio
+ * Company: PolecatSoft
  * User: soulmonk
  * Date: 06.03.14
  * Time: 17:09

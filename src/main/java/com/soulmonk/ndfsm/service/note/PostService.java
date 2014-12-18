@@ -5,7 +5,7 @@ import com.soulmonk.ndfsm.domain.note.Post;
 import java.util.List;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: SoulMonk
  * Date: 27.02.14
  * Time: 21:28

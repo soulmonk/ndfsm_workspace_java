@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: SoulMonk
  * Date: 27.02.14
  * Time: 21:30

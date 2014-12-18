@@ -5,7 +5,7 @@ import com.soulmonk.ndfsm.domain.user.UserRoleId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Company: Valpio
+ * Company: PolecatSoft
  * User: SoulMonk
  * Date: 04.03.14
  * Time: 21:40
