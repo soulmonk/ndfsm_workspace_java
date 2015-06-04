@@ -375,6 +375,15 @@
         </dependency>
         <!-- /END -->
 
+        <!-- JAX-RS  -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!-- /END -->
+
+
     </dependencies>
 
     <build>
@@ -458,7 +467,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <targetGroups>all,angular,angular.min,coffee</targetGroups>
+                    <targetGroups>all,angular,angular.min,coffee,angularAppCoffee</targetGroups>
                     <minimize>false</minimize>
                     <destinationFolder>${basedir}/src/main/webapp/wro/</destinationFolder>
                     <cssDestinationFolder>${basedir}/src/main/webapp/stylesheets/wro/</cssDestinationFolder>

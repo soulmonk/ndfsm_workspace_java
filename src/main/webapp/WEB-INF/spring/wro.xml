@@ -23,7 +23,12 @@
     </group>
 
     <group name="coffee">
-        <js>/resources/coffeescript/**.coffee</js>
+        <js>/resources/coffeescript/record/*.coffee</js>
+        <js>/resources/coffeescript/*.coffee</js>
+    </group>
+
+    <group name="angularAppCoffee">
+        <js>/resources/coffeescript/angularApp/**.coffee</js>
     </group>
 
 </groups>

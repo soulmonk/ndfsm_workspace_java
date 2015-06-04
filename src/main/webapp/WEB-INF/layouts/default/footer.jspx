@@ -24,15 +24,13 @@
     <spring:url value="/resources/scripts/wro/angular.min.js" var="angular_min_js"/>
     <script type="text/javascript" src="${angular_min_js}"><jsp:text/></script>
 
-    <spring:url value="/resources/scripts/wro/angular.js" var="AngularAppJsUrl"/>
+    <spring:url value="/resources/scripts/wro/angularAppCoffee.js" var="AngularAppJsUrl"/>
     <script type="text/javascript" src="${AngularAppJsUrl}"><jsp:text/></script>
 
-    <spring:url var="loginUrl" value="/j_spring_security_check"/>
-    <spring:url var="logoutUrl" value="/j_spring_security_logout" />
     <spring:url var="root" value="/"/>
     <script type="text/javascript">
         window.addEventListener('application.init', function() {
-            AppConfig.setLoginUrl("${loginUrl}").setLogoutUrl("${logoutUrl}").setRoot("${root}");
+            ConfigService.setRoot("${root}");
         });
     </script>
     <js:print/>
