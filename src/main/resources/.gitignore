@@ -1,2 +1,3 @@
 /flyway.properties
-/security.properties
+/flyway.propert*
+/security.propert*
