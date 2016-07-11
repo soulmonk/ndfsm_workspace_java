@@ -27,14 +27,14 @@ App.config ['$stateProvider', '$urlRouterProvider', '$httpProvider', 'flashProvi
 
   $stateProvider.state 'layout',
     url: '/'
-    templateUrl: window.ConfigService.getRoot() + '/resources/_views/base.html'
+    templateUrl: window.AppConfig.getRoot() + '/resources/_views/base.html'
     controller: () ->
       jQuery('#side-menu').metisMenu()
     title: 'Base layout'
 
   $stateProvider.state 'layout.dashboard',
     url: 'dashboard'
-    templateUrl: window.ConfigService.getRoot() + '/resources/_views/dashboard.html'
+    templateUrl: window.AppConfig.getRoot() + '/resources/_views/dashboard.html'
     controller: 'DashboardController'
     title: 'Dashboard'
 

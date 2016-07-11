@@ -1,11 +1,11 @@
 'use strict'
-@ConfigService = do () ->
+window.AppConfig = do () ->
   root: ''
   getRoot: () ->
-    console.log 'ConfigService:getRoot'
+    console.log 'AppConfig:getRoot'
     @root
   setRoot: (url) ->
-    console.log 'ConfigService:setRoot'
+    console.log 'AppConfig:setRoot'
     @root = url
     @
 
