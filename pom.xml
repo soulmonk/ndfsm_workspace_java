@@ -458,7 +458,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <targetGroups>all,angular,angular.min,coffee</targetGroups>
+                    <targetGroups>all,less,mainJs</targetGroups>
                     <minimize>false</minimize>
                     <destinationFolder>${basedir}/src/main/webapp/wro/</destinationFolder>
                     <cssDestinationFolder>${basedir}/src/main/webapp/stylesheets/wro/</cssDestinationFolder>

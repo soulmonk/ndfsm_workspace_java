@@ -7,6 +7,10 @@
         <css>/webapp/stylesheets/standard.css</css>
     </group>
 
+    <group name="less">
+        <css>/resources/less/**.less</css>
+    </group>
+
     <group name="angular">
         <js>/resources/angularApp/**.js</js>
     </group>
@@ -23,7 +27,11 @@
     </group>
 
     <group name="coffee">
-        <js>/resources/coffeescript/**.coffee</js>
+        <js>/resources/coffeescript/angularApp/**.coffee</js>
+    </group>
+
+    <group name="mainJs">
+        <js>/resources/coffeescript/mainJs/**.coffee</js>
     </group>
 
 </groups>

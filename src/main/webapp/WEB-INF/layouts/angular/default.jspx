@@ -54,13 +54,13 @@
 </head>
 
 <body>
-<div id="wrapper">
-    <tiles:insertAttribute name="header" ignore="true"/>
-    <tiles:insertAttribute name="menu" ignore="true"/>
-    <div id="page-wrapper">
-        <tiles:insertAttribute name="body"/>
+<div class="row row-alert alert alert-flash fade" flash-alert="" active-class="in" duration="0">
+    <div class="col-lg-12">
+        <button type="button" class="close" ng-click="hide()"><![CDATA[&times;]]></button>
+        <strong class="alert-heading">{{ flash.type }}</strong>
+        <span class="alert-message">{{ flash.message }}</span>
     </div>
-    <tiles:insertAttribute name="footer" ignore="true"/>
 </div>
+<div id="page-wrapper" ui-view=""></div>
 </body>
 </html>
