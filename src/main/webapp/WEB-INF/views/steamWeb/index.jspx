@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  User: soulmonk
+  Date: 05.02.14
+  Time: 10:28
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <helpers:message message="${message}"/>
+    <sbAdmin:pageHeader text="Steam Web" tag="h2"/>
+</div>

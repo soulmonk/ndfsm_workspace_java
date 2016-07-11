@@ -170,6 +170,21 @@
                 <!-- /.nav-second-level -->
             </li>
             <!-- /END SECTION ## Module ?Time ##-->
+
+            <!-- ## Module ?SteamWeb ##-->
+
+            <spring:message code="menu_steam_web" var="menuSteamWeb"/>
+
+            <spring:url var="steamWebUrl" value="/steamWeb/index" />
+            <li>
+                <a href="#"><i class="fa fa-sitemap fa-fw"><jsp:text/></i>${menuSteamWeb}<span class="fa arrow"><jsp:text/></span></a>
+                <ul class="nav nav-third-level">
+                    <li><a href="${steamWebUrl}">${menuSteamWeb}</a></li>
+                </ul>
+            </li>
+            <!-- /END SECTION ## Module ?SteamWeb ##-->
+
+
         </ul>
         <!-- /#side-menu -->
     </div>
