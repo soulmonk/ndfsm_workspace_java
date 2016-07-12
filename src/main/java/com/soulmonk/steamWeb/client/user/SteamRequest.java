@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface SteamRequest {
 
-	public String getSteamRoute();
+    public String getSteamRoute();
 
-	public String getSteamMethod();
+    public String getSteamMethod();
 
-	public String getSteamMethodVersion();
-	
-	public Class getResponseType();
+    public String getSteamMethodVersion();
 
-	public List<NameValuePair> getSteamParameters();
+    public Class getResponseType();
+
+    public List<NameValuePair> getSteamParameters();
 }

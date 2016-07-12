@@ -5,4 +5,16 @@
         <put-attribute name="body"
                        value="/WEB-INF/views/steamWeb/index.jspx" />
     </definition>
+    <definition extends="default" name="steamWeb/resolve-steam">
+        <put-attribute name="body"
+                       value="/WEB-INF/views/steamWeb/resolve-steam.jspx" />
+    </definition>
+    <definition extends="default" name="steamWeb/app-list">
+        <put-attribute name="body"
+                       value="/WEB-INF/views/steamWeb/app-list.jspx" />
+    </definition>
+    <definition extends="default" name="steamWeb/friend-list">
+        <put-attribute name="body"
+                       value="/WEB-INF/views/steamWeb/friend-list.jspx" />
+    </definition>
 </tiles-definitions>

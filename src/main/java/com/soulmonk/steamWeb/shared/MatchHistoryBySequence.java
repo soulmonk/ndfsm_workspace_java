@@ -5,43 +5,45 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class MatchHistoryBySequence {
-	private int status;
-	private String statusDetail;
-	private List<MatchDetail> matches;
-	
-	//constructor
-	MatchHistoryBySequence(){}
-	
-	
-	//setter
+    private int status;
+    private String statusDetail;
+    private List<MatchDetail> matches;
 
-	public void setStatus(int status){
-		this.status = status;
-	}
-	@JsonProperty("status_detail")
-	public void setStatusDetail(String statusDetail){
-		this.statusDetail = statusDetail;
-	}
-	public void setMatches(List<MatchDetail> matches){
-		this.matches = matches;
-		
-	}
+    //constructor
+    MatchHistoryBySequence() {
+    }
 
-	
-	
-	
-	//getter
-	
-	public int getStatus(){
-		return status;
-	}
-	@JsonProperty("status_detail")
-	public String getStatusDetail(){
-		return statusDetail;
-	}
 
-	public List<MatchDetail> getMatches(){
-		return matches;
-		
-	}
+    //setter
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    @JsonProperty("status_detail")
+    public void setStatusDetail(String statusDetail) {
+        this.statusDetail = statusDetail;
+    }
+
+    public void setMatches(List<MatchDetail> matches) {
+        this.matches = matches;
+
+    }
+
+
+    //getter
+
+    public int getStatus() {
+        return status;
+    }
+
+    @JsonProperty("status_detail")
+    public String getStatusDetail() {
+        return statusDetail;
+    }
+
+    public List<MatchDetail> getMatches() {
+        return matches;
+
+    }
 }

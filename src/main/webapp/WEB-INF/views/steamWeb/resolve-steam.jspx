@@ -14,7 +14,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
-    <spring:url var="freindListActionUrl" value="/steamWeb/friend-list"/>
     <spring:message code="text_empty_result" var="textEmptyResult"/>
 
     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
@@ -26,17 +25,26 @@
             <div class="row">
                 <div class="col-lg-12">
                     <sbAdmin:panel>
-                        <sbAdmin:panelHead>FriendList</sbAdmin:panelHead>
+                        <sbAdmin:panelHead>Resolve</sbAdmin:panelHead>
                         <sbAdmin:panelBody>
-                            <form:form id="get-friend-list-form" method="post" rol="form" action="${freindListActionUrl}">
+                            <form:form id="resolve-steam-id-form" method="post" rol="form">
                                 <div class="form-group">
-                                    <label for="steamId" class="control-label">SteamId</label>
-                                    <input id="steamId" name="steamId" class="form-control" placeholder="Steam Id 64" type="text" value=""/>
+                                    <label for="userVanityUrlName" class="control-label">User Vanity Url Name</label>
+                                    <input id="userVanityUrlName" name="userVanityUrlName" class="form-control" placeholder="Name" type="text" value="${userVanityUrlName}"/>
                                 </div>
                                 <sbAdmin:submitResetButtons/>
                             </form:form>
                         </sbAdmin:panelBody>
                     </sbAdmin:panel>
+
+                    <c:if test="${not empty response}">
+                        <sbAdmin:panel>
+                            <sbAdmin:panelBody>
+                                ${response.steamId}
+                            </sbAdmin:panelBody>
+                        </sbAdmin:panel>
+
+                    </c:if>
                 </div>
             </div>
         </div>

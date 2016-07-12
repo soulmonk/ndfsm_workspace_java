@@ -3,17 +3,19 @@ package com.soulmonk.steamWeb.client.user.response;
 import java.util.List;
 
 public class SteamPlayerSummaryDetails {
-	private List<SteamPlayer> players;
-	
-	public SteamPlayerSummaryDetails(){
-		
-	}
-	//Setter
-	public void setPlayers(List<SteamPlayer> players){
-		this.players = players;
-	}
-	//Getter
-	public List<SteamPlayer> getPlayers(){
-		return players;
-		}
-	}
+    private List<SteamPlayer> players;
+
+    public SteamPlayerSummaryDetails() {
+
+    }
+
+    //Setter
+    public void setPlayers(List<SteamPlayer> players) {
+        this.players = players;
+    }
+
+    //Getter
+    public List<SteamPlayer> getPlayers() {
+        return players;
+    }
+}
