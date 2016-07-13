@@ -37,6 +37,7 @@ public class SteamWebController {
         logger.info("Base index steam web");
         return "steamWeb/index";
     }
+
     @RequestMapping(value = "/resolve-steam-id", method = RequestMethod.GET)
     public String resolveSteamId(Model uiModel) {
         logger.info("Base index steam web");
@@ -54,11 +55,36 @@ public class SteamWebController {
         ResolveVanityURLRequest request = new ResolveVanityURLRequest();
         request.setVanityurl(userVanityUrlName);
 
-        ResolveVanityURLResponse response = (ResolveVanityURLResponse)steamApi.execute(request);
+        ResolveVanityURLResponse response = (ResolveVanityURLResponse) steamApi.execute(request);
         uiModel.addAttribute("response", response.getResponse());
         uiModel.addAttribute("userVanityUrlName", userVanityUrlName);
 
         return "steamWeb/resolve-steam";
+    }
+
+    @RequestMapping(value = "/steam-summaries", method = RequestMethod.GET)
+    public String steamSummaries(Model uiModel) {
+        logger.info("steamSummaries");
+
+        uiModel.addAttribute("steamId", "");
+        return "steamWeb/steam-summaries";
+    }
+
+    @RequestMapping(value = "/steam-summaries", method = RequestMethod.POST)
+    public String steamSummaries(Model uiModel, @RequestParam("steamId") String steamId) {
+        logger.info("steamSummaries");
+
+        SteamApi steamApi = new SteamApi();
+        SteamGetPlayerSummaryRequest request = new SteamGetPlayerSummaryRequest();
+        request.setSteamId(steamId);
+
+        SteamPlayerSummary response = (SteamPlayerSummary)steamApi.execute(request);
+
+
+        uiModel.addAttribute("steamPlayer", response.getResponse().getPlayers().get(0));
+        uiModel.addAttribute("steamId", steamId);
+
+        return "steamWeb/steam-summaries";
     }
 
     @RequestMapping(value = "/app-list", method = RequestMethod.GET)
@@ -93,7 +119,7 @@ public class SteamWebController {
         List<SteamFriend> friends = steamFriendsListResponse.getFriendsList().getSteamFriends();
         SteamGetPlayerSummaryRequest steamGetPlayerSummaryRequest = new SteamGetPlayerSummaryRequest();
         Map<String, SteamFriend> steamFriendMap = new HashMap<>();
-        for(SteamFriend friend : steamFriendsListResponse.getFriendsList().getSteamFriends()) {
+        for (SteamFriend friend : steamFriendsListResponse.getFriendsList().getSteamFriends()) {
             steamFriendMap.put(friend.getSteamId(), friend);
             steamGetPlayerSummaryRequest.addSteamId(friend.getSteamId());
         }
@@ -112,4 +138,5 @@ public class SteamWebController {
 
         return "steamWeb/friend-list";
     }
+
 }
