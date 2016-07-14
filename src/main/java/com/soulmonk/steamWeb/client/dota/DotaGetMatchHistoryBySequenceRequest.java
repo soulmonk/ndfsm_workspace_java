@@ -45,7 +45,7 @@ public class DotaGetMatchHistoryBySequenceRequest extends DotaRequest {
     }
 
     @Override
-    public Class<MatchDetailResponse> getResponseType() {
+    public Class getResponseType() {
         return RESPONSE_TYPE;
     }
 }

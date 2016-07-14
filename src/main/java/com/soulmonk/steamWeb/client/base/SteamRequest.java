@@ -1,4 +1,4 @@
-package com.soulmonk.steamWeb.client.user;
+package com.soulmonk.steamWeb.client.base;
 
 import org.apache.http.NameValuePair;
 

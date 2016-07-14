@@ -1,6 +1,6 @@
 package com.soulmonk.steamWeb.client.apps;
 
-import com.soulmonk.steamWeb.client.user.SteamRequest;
+import com.soulmonk.steamWeb.client.base.SteamRequest;
 
 /**
  * User: SoulMonk

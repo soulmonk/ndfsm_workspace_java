@@ -32,10 +32,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${steamApps}" var="friend">
+                    <c:forEach items="${steamApps}" var="app">
                         <tr>
-                            <td><a href="">${friend.appId}</a></td>
-                            <td>${friend.name}</td>
+                            <td><a href="">${app.appId}</a></td>
+                            <td>${app.name}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

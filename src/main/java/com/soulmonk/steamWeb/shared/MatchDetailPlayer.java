@@ -2,12 +2,14 @@ package com.soulmonk.steamWeb.shared;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.soulmonk.steamWeb.client.SteamHelpers;
 
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MatchDetailPlayer {
     private String steamId = "Bot"; // accountid
+    private String accountId = ""; // accountid
     private int playerSlot;
     private int heroId;
     private int item0;
@@ -38,16 +40,6 @@ public class MatchDetailPlayer {
     // Constructor
     public MatchDetailPlayer() {
     }
-
-    // Getters
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "match_id", nullable = false)
-//	public MatchDetailResult getMatchDetailResult() {
-//		System.out.println("MATCH DETAIL RESULT " + matchDetailResult);
-//		return this.matchDetailResult;
-//	}
-
-    @JsonProperty("account_id")
 
     public String getSteamId() {
         return steamId;
@@ -172,20 +164,13 @@ public class MatchDetailPlayer {
     }
 
     // Setters
-
-
     public void setSteamId(String steamId) {
-        this.steamId = steamId;
-    }
-
-    @JsonProperty("account_id")
-    public void setSteamId(Long accountId) {
-        if (accountId == Long.parseLong("4294967295")) {
-            this.steamId = "0";
-        } else {
-            long steam64 = accountId + (Long.parseLong("76561197960265728"));
-            this.steamId = steam64 + "";
+        String accountId = SteamHelpers.getAccountIdFromSteamId(steamId);
+        if (accountId.isEmpty()) {
+            steamId = "";
         }
+        this.accountId = accountId;
+        this.steamId = steamId;
     }
 
     @JsonProperty("player_slot")
@@ -306,5 +291,19 @@ public class MatchDetailPlayer {
     public void setAdditionalUnits(
             List<MatchDetailAdditionalUnits> additionalUnits) {
         this.additionalUnits = additionalUnits;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    @JsonProperty("account_id")
+    public void setAccountId(String accountId) {
+        String steamId = SteamHelpers.getSteamIdFromAccountId(accountId);
+        if (steamId.isEmpty()) {
+            accountId = "";
+        }
+        this.accountId = accountId;
+        this.steamId = steamId;
     }
 }

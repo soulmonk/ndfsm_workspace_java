@@ -1,7 +1,9 @@
 package com.soulmonk.steamWeb.client;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.soulmonk.steamWeb.client.user.SteamRequest;
+import com.soulmonk.steamWeb.client.base.SteamRequest;
+import com.soulmonk.steamWeb.client.base.WrapJsonRootElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -16,6 +18,7 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 import java.util.Properties;
 
 public class SteamApi {
@@ -65,9 +68,13 @@ public class SteamApi {
                     + request.getSteamMethodVersion());
             builder.setParameter("key", this.steamKey);
 
-            for (NameValuePair nvp : request.getSteamParameters()) {
-                builder.setParameter(nvp.getName(), nvp.getValue());
+            List<NameValuePair> stemParameters = request.getSteamParameters();
 
+            if (stemParameters != null) {
+                for (NameValuePair nvp : stemParameters) {
+                    builder.setParameter(nvp.getName(), nvp.getValue());
+
+                }
             }
 
             builder.setParameter("format", "json");
@@ -85,6 +92,9 @@ public class SteamApi {
                 response = EntityUtils.toString(entity);
 //			System.out.println("URL" + uri.toString() + "response: " + response);
                 ObjectMapper mapper = new ObjectMapper();
+                if (WrapJsonRootElement.class.isAssignableFrom(responseType)) {
+                    mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
+                }
                 responseObject = mapper.readValue(response, responseType);
             }
 

@@ -1,6 +1,6 @@
 package com.soulmonk.steamWeb.client.dota;
 
-import com.soulmonk.steamWeb.client.user.SteamRequest;
+import com.soulmonk.steamWeb.client.base.SteamRequest;
 
 public abstract class DotaRequest implements SteamRequest {
 
@@ -10,17 +10,4 @@ public abstract class DotaRequest implements SteamRequest {
     public String getSteamRoute() {
         return STEAM_ROUTE;
     }
-
-
-    public String getAccountIdFromSteamId(String steamId) {
-        String accountId = null;
-        try {
-            accountId = (Long.parseLong(steamId) - 76561197960265728L)
-                    + "";
-        } catch (NumberFormatException e) {
-            // TODO
-        }
-        return accountId;
-    }
-
 }

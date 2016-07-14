@@ -32,12 +32,12 @@ public class MatchHistoryResults {
     }
 
     @JsonProperty("num_results")
-    public void setnumResults(int numResults) {
+    public void setNumResults(int numResults) {
         this.numResults = numResults;
     }
 
     @JsonProperty("total_results")
-    public void settotalResults(int totalResults) {
+    public void setTotalResults(int totalResults) {
         this.totalResults = totalResults;
     }
 
@@ -64,7 +64,7 @@ public class MatchHistoryResults {
     }
 
     @JsonProperty("num_results")
-    public int getnumResults() {
+    public int getNumResults() {
         return numResults;
     }
 

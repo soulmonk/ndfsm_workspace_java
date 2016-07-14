@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  User: soulmonk
+  Date: 05.02.14
+  Time: 10:28
+-->
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:sbAdmin="/WEB-INF/sbAdmin"
+     xmlns:helpers="/WEB-INF/helpers"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:url var="freindListActionUrl" value="/steamWeb/friend-list"/>
+    <spring:message code="text_empty_result" var="textEmptyResult"/>
+
+    <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
+    <helpers:message message="${message}"/>
+    <sbAdmin:pageHeader text="Match Details" tag="h2"/>
+
+    <sbAdmin:blockRowColWithDefPanel>
+        <c:if test="${not empty matchDetail}">
+
+            <sbAdmin:panel>
+                <sbAdmin:panelBody>
+                    leaver status
+                    0 - NONE - finished match, no abandon.
+                    1 - DISCONNECTED - player DC, no abandon.
+                    2 - DISCONNECTED_TOO_LONG - player DC > 5min, abandoned.
+                    3 - ABANDONED - player DC, clicked leave, abandoned.
+                    4 - AFK - player AFK, abandoned.
+                    5 - NEVER_CONNECTED - player never connected, no abandon.
+                    6 - NEVER_CONNECTED_TOO_LONG - player took too long to connect, no abandon.
+                </sbAdmin:panelBody>
+            </sbAdmin:panel>
+            <c:forEach items="${matchDetail.players}" var="player">
+            <sbAdmin:panel>
+                <sbAdmin:panelHead>
+                    ${heroes[player.heroId].localizedName}(${player.accountId})
+                    <img class="pull-right" src="${heroes[player.heroId].cdnImg}" alt="${heroes[player.heroId].localizedName}"/>
+                </sbAdmin:panelHead>
+                <sbAdmin:panelBody>
+                    <div>
+                        <table class="table table-hover">
+                            <tr><td>32-bit account ID</td><td>${player.accountId}</td></tr>
+                            <tr><td>Player Slot below.</td><td>${player.playerSlot}</td></tr>
+                            <tr><td>The hero's unique ID. A list of hero IDs can be found via the GetHeroes method.</td><td>${heroes[player.heroId].localizedName}</td></tr>
+                            <tr><td>ID of the top-left inventory item.</td>
+                                <td>${items[player.item0].localizedName}<img class="pull-right" src="${items[player.item0].cdnImg}" alt="${items[player.item0].localizedName}"/></td></tr>
+                            <tr><td>ID of the top-center inventory item.</td>
+                                <td>${items[player.item1].localizedName}<img class="pull-right" src="${items[player.item1].cdnImg}" alt="${items[player.item1].localizedName}"/></td></tr>
+                            <tr><td>ID of the top-right inventory item.</td>
+                                <td>${items[player.item2].localizedName}<img class="pull-right" src="${items[player.item2].cdnImg}" alt="${items[player.item2].localizedName}"/></td></tr>
+                            <tr><td>ID of the bottom-left inventory item.</td>
+                                <td>${items[player.item3].localizedName}<img class="pull-right" src="${items[player.item3].cdnImg}" alt="${items[player.item3].localizedName}"/></td></tr>
+                            <tr><td>ID of the bottom-center inventory item.</td>
+                                <td>${items[player.item4].localizedName}<img class="pull-right" src="${items[player.item4].cdnImg}" alt="${items[player.item4].localizedName}"/></td></tr>
+                            <tr><td>ID of the bottom-right inventory item.</td>
+                                <td>${items[player.item5].localizedName}<img class="pull-right" src="${items[player.item5].cdnImg}" alt="${items[player.item5].localizedName}"/></td></tr>
+                            <tr><td>The amount of kills attributed to this player.</td><td>${player.kills}</td></tr>
+                            <tr><td>The amount of times this player died during the match.</td><td>${player.deaths}</td></tr>
+                            <tr><td>The amount of assists attributed to this player.</td><td>${player.assists}</td></tr>
+                            <tr><td>leaver_status</td><td>${player.leaverStatus}</td></tr>
+                            <tr><td>The amount of gold the player had remaining at the end of the match.</td><td>${player.gold}</td></tr>
+                            <tr><td>The amount of last-hits the player got during the match.</td><td>${player.lastHits}</td></tr>
+                            <tr><td>The amount of denies the player got during the match.</td><td>${player.denies}</td></tr>
+                            <tr><td>The player's overall gold/minute.</td><td>${player.goldPerMin}</td></tr>
+                            <tr><td>The player's overall experience/minute.</td><td>${player.xpPerMin}</td></tr>
+                            <tr><td>The amount of gold the player spent during the match.</td><td>${player.goldSpent}</td></tr>
+                            <tr><td>The amount of damage the player dealt to heroes.</td><td>${player.heroDamage}</td></tr>
+                            <tr><td>The amount of damage the player dealt to towers.</td><td>${player.towerDamage}</td></tr>
+                        </table>
+                    </div>
+                </sbAdmin:panelBody>
+            </sbAdmin:panel>
+            </c:forEach>
+        </c:if>
+
+    </sbAdmin:blockRowColWithDefPanel>
+</div>

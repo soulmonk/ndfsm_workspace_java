@@ -1,27 +1,30 @@
-package com.soulmonk.steamWeb.client.dota;
+package com.soulmonk.steamWeb.client.dota.economy;
 
 import com.soulmonk.steamWeb.client.UriUtils;
-import com.soulmonk.steamWeb.client.dota.response.MatchDetailResponse;
+import com.soulmonk.steamWeb.client.dota.economy.response.GetGameItemsResponse;
+import com.soulmonk.steamWeb.shared.HeroesList;
 import org.apache.http.NameValuePair;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DotaGetMatchDetailsRequest extends DotaRequest {
+/**
+ * User: SoulMonk
+ * Date: 7/14/16
+ * Time: 7:15 PM
+ */
+public class GetGameItemsRequest extends EconomyDotaRequest {
 
-    private static final String STEAM_METHOD = "/GetMatchDetails";
-    private static final String STEAM_METHOD_VERSION = "/V001";
-    private static final Class RESPONSE_TYPE = MatchDetailResponse.class;
+    private static final String STEAM_METHOD = "/GetGameItems";
+    private static final String STEAM_METHOD_VERSION = "/V1";
+    private static final Class RESPONSE_TYPE = GetGameItemsResponse.class;
+
     private Map<String, String> parameters;
 
-    public DotaGetMatchDetailsRequest() {
+    public GetGameItemsRequest() {
         parameters = new HashMap<String, String>();
-    }
-
-    public DotaGetMatchDetailsRequest(String match_id) {
-        this();
-        setMatchId(match_id);
+        setLanguage("en");
     }
 
     @Override
@@ -39,13 +42,12 @@ public class DotaGetMatchDetailsRequest extends DotaRequest {
         return UriUtils.stringMapToNameValuePairs(parameters);
     }
 
-    public void setMatchId(String matchId) {
-        parameters.put("match_id", matchId);
+    public void setLanguage(String language) {
+        parameters.put("language", language);
     }
 
     @Override
     public Class getResponseType() {
         return RESPONSE_TYPE;
     }
-
 }

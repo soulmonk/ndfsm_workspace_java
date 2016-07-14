@@ -5,4 +5,8 @@
         <put-attribute name="body"
                        value="/WEB-INF/views/steamWeb/dota2/index.jspx" />
     </definition>
+    <definition extends="default" name="steamWeb/dota2/match-details">
+        <put-attribute name="body"
+                       value="/WEB-INF/views/steamWeb/dota2/match-details.jspx" />
+    </definition>
 </tiles-definitions>

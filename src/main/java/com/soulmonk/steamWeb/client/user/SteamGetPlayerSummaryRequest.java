@@ -57,7 +57,7 @@ public class SteamGetPlayerSummaryRequest extends SteamInterfaceRequest {
     }
 
     @Override
-    public Class<SteamPlayerSummary> getResponseType() {
+    public Class getResponseType() {
         return RESPONSE_TYPE;
     }
 }
