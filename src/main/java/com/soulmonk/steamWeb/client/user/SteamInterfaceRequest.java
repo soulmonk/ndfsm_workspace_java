@@ -1,13 +1,13 @@
 package com.soulmonk.steamWeb.client.user;
 
-import com.soulmonk.steamWeb.client.base.SteamRequest;
+import com.soulmonk.steamWeb.client.base.AbstractSteamRequest;
 
-public abstract class SteamInterfaceRequest implements SteamRequest {
+public abstract class SteamInterfaceRequest extends AbstractSteamRequest {
 
     private static final String STEAM_ROUTE = "/ISteamUser";
 
-    @Override
-    public String getSteamRoute() {
-        return STEAM_ROUTE;
+    public SteamInterfaceRequest() {
+        super();
+        setSteamRoute(STEAM_ROUTE);
     }
 }

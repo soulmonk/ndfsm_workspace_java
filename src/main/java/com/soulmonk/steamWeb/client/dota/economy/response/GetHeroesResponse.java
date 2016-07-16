@@ -3,10 +3,8 @@ package com.soulmonk.steamWeb.client.dota.economy.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.soulmonk.steamWeb.client.base.WrapJsonRootElement;
-import com.soulmonk.steamWeb.client.dota.economy.EconomyDotaRequest;
+import com.soulmonk.steamWeb.client.base.WrapJsonRootElementResponse;
 import com.soulmonk.steamWeb.shared.HeroesList;
-import org.apache.http.NameValuePair;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +18,7 @@ import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonRootName("result")
-public class GetHeroesResponse implements WrapJsonRootElement {
+public class GetHeroesResponse implements WrapJsonRootElementResponse {
 
     private List<HeroesList> heroesLists;
     private int count;

@@ -14,35 +14,14 @@ import java.util.Map;
  * Time: 10:32 AM
  */
 public class GetSteamAppListRequest extends SteamAppRequest {
-
-    private static final String STEAM_METHOD = "/GetAppList";
-    private static final String STEAM_METHOD_VERSION = "/v2";
-    private static final Class RESPONSE_TYPE = SteamAppListResponse.class;
-
-
-    private Map<String, String> parameters;
+    protected static String STEAM_METHOD = "/GetAppList";
+    protected static String STEAM_METHOD_VERSION = "/v2";
+    protected static Class RESPONSE_TYPE = SteamAppListResponse.class;
 
     public GetSteamAppListRequest() {
-        parameters = new HashMap<String, String>();
-    }
-
-    @Override
-    public String getSteamMethod() {
-        return STEAM_METHOD;
-    }
-
-    @Override
-    public String getSteamMethodVersion() {
-        return STEAM_METHOD_VERSION;
-    }
-
-    @Override
-    public Class getResponseType() {
-        return RESPONSE_TYPE;
-    }
-
-    @Override
-    public List<NameValuePair> getSteamParameters() {
-        return UriUtils.stringMapToNameValuePairs(parameters);
+        super();
+        setSteamMethod(STEAM_METHOD);
+        setSteamMethodVersion(STEAM_METHOD_VERSION);
+        setResponseType(RESPONSE_TYPE);
     }
 }

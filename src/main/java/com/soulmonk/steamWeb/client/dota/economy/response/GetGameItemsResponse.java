@@ -2,7 +2,7 @@ package com.soulmonk.steamWeb.client.dota.economy.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.soulmonk.steamWeb.client.base.WrapJsonRootElement;
+import com.soulmonk.steamWeb.client.base.WrapJsonRootElementResponse;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Map;
  * Time: 7:17 PM
  */
 @JsonRootName(value = "result")
-public class GetGameItemsResponse implements WrapJsonRootElement {
+public class GetGameItemsResponse implements WrapJsonRootElementResponse {
     private List<GameItem> gameItems;
     private Map<Integer, GameItem> mapGameItems = null;
 

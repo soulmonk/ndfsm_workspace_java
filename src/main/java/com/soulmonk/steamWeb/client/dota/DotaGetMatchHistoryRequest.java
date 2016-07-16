@@ -12,35 +12,19 @@ public class DotaGetMatchHistoryRequest extends DotaRequest {
     private static final String STEAM_METHOD = "/GetMatchHistory";
     private static final String STEAM_METHOD_VERSION = "/V001";
     private static final Class RESPONSE_TYPE = MatchHistoryResponse.class;
-    private Map<String, String> parameters;
 
     public DotaGetMatchHistoryRequest() {
-        parameters = new HashMap<String, String>();
+        super();
+        setSteamMethod(STEAM_METHOD);
+        setSteamMethodVersion(STEAM_METHOD_VERSION);
+        setResponseType(RESPONSE_TYPE);
     }
 
-    @Override
-    public String getSteamMethod() {
-        return STEAM_METHOD;
-    }
-
-    @Override
-    public String getSteamMethodVersion() {
-        return STEAM_METHOD_VERSION;
-    }
-
-    @Override
-    public List<NameValuePair> getSteamParameters() {
-        return UriUtils.stringMapToNameValuePairs(parameters);
-    }
 
     public void setAccountId(String accountId) {
         parameters.put("account_id", accountId);
     }
 
-    @Override
-    public Class getResponseType() {
-        return RESPONSE_TYPE;
-    }
 
     /*
     hero_id (Optional) (uint32)

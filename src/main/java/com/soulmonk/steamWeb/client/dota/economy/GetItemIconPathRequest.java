@@ -20,25 +20,11 @@ public class GetItemIconPathRequest extends EconomyDotaRequest {
     private static final String STEAM_METHOD_VERSION = "/V1";
     private static final Class RESPONSE_TYPE = GetItemIconPathResponse.class;
 
-    private Map<String, String> parameters;
-
     public GetItemIconPathRequest() {
-        parameters = new HashMap<String, String>();
-    }
-
-    @Override
-    public String getSteamMethod() {
-        return STEAM_METHOD;
-    }
-
-    @Override
-    public String getSteamMethodVersion() {
-        return STEAM_METHOD_VERSION;
-    }
-
-    @Override
-    public List<NameValuePair> getSteamParameters() {
-        return UriUtils.stringMapToNameValuePairs(parameters);
+        super();
+        setSteamMethod(STEAM_METHOD);
+        setSteamMethodVersion(STEAM_METHOD_VERSION);
+        setResponseType(RESPONSE_TYPE);
     }
 
     public void setIconname(String language) {
@@ -47,10 +33,5 @@ public class GetItemIconPathRequest extends EconomyDotaRequest {
 
     public void setIcontype(String language) {
         parameters.put("icontype", language);
-    }
-
-    @Override
-    public Class getResponseType() {
-        return RESPONSE_TYPE;
     }
 }

@@ -14,26 +14,13 @@ public class SteamGetFriendsListRequest extends SteamInterfaceRequest {
     private static final String STEAM_METHOD_VERSION = "/v0001";
     private static final Class RESPONSE_TYPE = SteamFriendsListResponse.class;
 
-    private Map<String, String> parameters;
-
     public SteamGetFriendsListRequest() {
-        parameters = new HashMap<String, String>();
+        super();
+        setSteamMethod(STEAM_METHOD);
+        setSteamMethodVersion(STEAM_METHOD_VERSION);
+        setResponseType(RESPONSE_TYPE);
     }
 
-    @Override
-    public String getSteamMethod() {
-        return STEAM_METHOD;
-    }
-
-    @Override
-    public String getSteamMethodVersion() {
-        return STEAM_METHOD_VERSION;
-    }
-
-    @Override
-    public List<NameValuePair> getSteamParameters() {
-        return UriUtils.stringMapToNameValuePairs(parameters);
-    }
 
     public void setSteamId(String steamId) {
         parameters.put("steamid", steamId);
@@ -42,11 +29,5 @@ public class SteamGetFriendsListRequest extends SteamInterfaceRequest {
     public void setSteamParameters(Map<String, String> steamParameters) {
         this.parameters = steamParameters;
     }
-
-    @Override
-    public Class getResponseType() {
-        return RESPONSE_TYPE;
-    }
-
 
 }

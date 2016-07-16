@@ -3,7 +3,7 @@ package com.soulmonk.steamWeb.client;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.soulmonk.steamWeb.client.base.SteamRequest;
-import com.soulmonk.steamWeb.client.base.WrapJsonRootElement;
+import com.soulmonk.steamWeb.client.base.WrapJsonRootElementResponse;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -92,7 +92,7 @@ public class SteamApi {
                 response = EntityUtils.toString(entity);
 //			System.out.println("URL" + uri.toString() + "response: " + response);
                 ObjectMapper mapper = new ObjectMapper();
-                if (WrapJsonRootElement.class.isAssignableFrom(responseType)) {
+                if (WrapJsonRootElementResponse.class.isAssignableFrom(responseType)) {
                     mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
                 }
                 responseObject = mapper.readValue(response, responseType);
