@@ -416,7 +416,7 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.0</version>
+                <version>2.2</version>
                 <configuration>
                     <url>http://46.36.221.35:9191/manager/text</url>
                     <server>bustafRemote</server>
