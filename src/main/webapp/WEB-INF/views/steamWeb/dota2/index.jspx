@@ -41,7 +41,7 @@
                     <c:if test="${not empty matchHistory}">
                         <label for="currentPage" class="control-label">Current Page</label>
                         <input type="text" name="currentPage" value="${currentPage}"/>
-                        <c:if test="${matchHistory.numResults < matchHistory.totalResults}">
+                        <c:if test="${matchHistory.numResults lt matchHistory.totalResults}">
 
                         </c:if>
                     </c:if>
