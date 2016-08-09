@@ -420,7 +420,7 @@
                 <configuration>
                     <url>http://46.36.221.35:9191/manager/text</url>
                     <server>bustafRemote</server>
-                    <path>/</path>
+                    <path>/ndfsm</path>
                 </configuration>
             </plugin>
             <plugin>
