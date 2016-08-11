@@ -10,12 +10,12 @@
     <context:component-scan base-package="com.soulmonk.ndfsm.security"/>
 
     <http use-expressions="true">
-        <intercept-url pattern="/dev/**" access="hasRole('ROLE_DEV')" />
-        <intercept-url pattern="/test/**" access="hasRole('ROLE_DEV')" />
-        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/resources/**" access="permitAll" />
-        <intercept-url pattern="/login/**" access="permitAll" />
-        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <intercept-url pattern="/dev/**" access="hasRole('ROLE_DEV')"/>
+        <intercept-url pattern="/test/**" access="hasRole('ROLE_DEV')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/resources/**" access="permitAll"/>
+        <intercept-url pattern="/login/**" access="permitAll"/>
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/login" authentication-failure-url="/login?failure=true"
                     default-target-url="/"/>
         <logout logout-success-url="/" delete-cookies='JSESSIONID'/>
@@ -23,7 +23,7 @@
     </http>
 
     <beans:bean id="rememberMeServices"
-          class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
+                class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
         <beans:constructor-arg value="myAppKey"/>
         <beans:constructor-arg ref="userDetailsService"/>
         <beans:constructor-arg ref="tokenRepository"/>
