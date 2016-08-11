@@ -10,7 +10,7 @@
     <spring:message code="menu_header_text" var="menuHeaderText"/>
 
     <spring:message code="label_login" var="labelLogin"/>
-    <spring:url var="loginUrl" value="/j_spring_security_check"/>
+    <spring:url var="loginUrl" value="/login_check"/>
 
     <spring:message code="menu_admin" var="menuAdmin"/>
     <spring:url var="adminUrl" value="/admin"/>

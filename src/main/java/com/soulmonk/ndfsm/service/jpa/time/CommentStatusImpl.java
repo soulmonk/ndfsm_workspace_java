@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("commentStatusService")
@@ -22,7 +23,11 @@ public class CommentStatusImpl implements CommentStatusService {
     @Override
     @Transactional(readOnly = true)
     public List<CommentStatus> findAll() {
-        return commentStatusRepository.findByUser(UserDetailsAdapter.getLogged().getUser());
+        UserDetailsAdapter userDetailsAdapter = UserDetailsAdapter.getLogged();
+        if (userDetailsAdapter == null) {
+            return new ArrayList<>();
+        }
+        return commentStatusRepository.findByUser(userDetailsAdapter.getUser());
     }
 
     @Override

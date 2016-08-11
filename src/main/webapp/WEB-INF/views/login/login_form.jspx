@@ -12,7 +12,7 @@
     <jsp:output omit-xml-declaration="yes"/>
 
     <spring:message code="label_login" var="labelLogin"/>
-    <spring:url var="loginUrl" value="/j_spring_security_check"/>
+    <spring:url var="loginUrl" value="/login_check"/>
 
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -23,12 +23,13 @@
                     <div class="panel-body">
                         <helpers:message message="${message}"/>
                         <form name="loginForm" action="${loginUrl}" method="post" role="form">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="User Name" name="j_username" type="text" autofocus="true"/>
+                                    <input class="form-control" placeholder="User Name" name="username" type="text" autofocus="true"/>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="j_password" type="password" value=""/>
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value=""/>
                                 </div>
                                 <div class="checkbox">
                                     <label><input name="remember_me_parameter" type="checkbox" checked="checked"/>Remember Me</label>

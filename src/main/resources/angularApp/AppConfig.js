@@ -4,8 +4,8 @@
 
 var AppConfig = (function () {
     var AppConfig = (function () {
-        var loginUrl = '/j_spring_security_check',
-            logoutUrl = '/j_spring_security_logout',
+        var loginUrl = '/login_check',
+            logoutUrl = '/logout',
             root = '';
 
         return {

@@ -26,7 +26,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
+/*@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)*/
 @ComponentScan(basePackageClasses = UserDetailsImpl.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -40,27 +40,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests()
                     .antMatchers("/dev/**", "/test/**").hasRole("DEV")
-                    .antMatchers("/dev/**", "/about").hasRole("DEV")
+                    .antMatchers("/dev/**").hasRole("DEV")
                     .antMatchers("/admin/**").hasRole("DEV")
-                    .antMatchers("/resources/**").permitAll()
+                    .antMatchers("/resources/**", "/login/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()  // #8
                     .loginPage("/login") // #9
                     .permitAll() // #5
                     .defaultSuccessUrl("/")
-                /*.failureUrl("/login?failure=true")*/
+                    .loginProcessingUrl("/login_check")
+                    .failureUrl("/login?failure=true")
                 .and()
                 .logout()
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/")
                     .deleteCookies("JSESSIONID")
                 .and()
-                    .rememberMe()
+                .rememberMe()
                     .rememberMeServices(rememberMeServices())
                 .and()
-                .csrf()
-                    .disable()
         ;
     }
 
