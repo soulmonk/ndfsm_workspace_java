@@ -21,8 +21,10 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
+                        <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                         <helpers:message message="${message}"/>
                         <form name="loginForm" action="${loginUrl}" method="post" role="form">
+                            <!--@elvariable id="_csrf" type="org.springframework.security.web.csrf.CsrfToken"-->
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <fieldset>
                                 <div class="form-group">

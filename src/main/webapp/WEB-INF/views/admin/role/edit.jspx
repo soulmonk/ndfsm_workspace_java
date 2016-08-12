@@ -35,6 +35,8 @@
                     <sbAdmin:panel>
                         <sbAdmin:panelBody>
                             <form:form modelAttribute="role" id="commentUpdateForm" method="post" rol="form">
+                                <!--@elvariable id="_csrf" type="org.springframework.security.web.csrf.CsrfToken"-->
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                                 <helpers:message message="${message}"/>
                                 <sbAdmin:inputGroup path="name" labelValue="${labelRoleName}*" placeholder="${placeholderRoleName}"/>

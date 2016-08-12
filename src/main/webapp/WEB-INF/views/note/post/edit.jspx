@@ -28,7 +28,9 @@
     <sbAdmin:pageHeader text="${formTitle}"/>
     <sbAdmin:blockRowColWithDefPanel>
         <div id="commentUpdate">
+            <!--@elvariable id="_csrf" type="org.springframework.security.web.csrf.CsrfToken"-->
             <!--<form:form modelAttribute="comment" id="commentUpdateForm" method="post" rol="form">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div>
                     &lt;!&ndash;@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"&ndash;&gt;
                     <helpers:message message="${message}"/>

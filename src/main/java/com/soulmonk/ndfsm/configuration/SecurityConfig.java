@@ -71,6 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe()
                     .rememberMeServices(rememberMeServices())
                 .and()
+                    .csrf()
         ;
     }
 

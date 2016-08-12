@@ -22,6 +22,8 @@
             <sbAdmin:panelHead>FriendList</sbAdmin:panelHead>
             <sbAdmin:panelBody>
                 <form:form id="get-friend-list-form" method="post" rol="form">
+                    <!--@elvariable id="_csrf" type="org.springframework.security.web.csrf.CsrfToken"-->
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <div class="form-group">
                         <label for="steamId" class="control-label">SteamId</label>
                         <input id="steamId" name="steamId" class="form-control" placeholder="Steam Id 64" type="text" value="${steamId}"/>

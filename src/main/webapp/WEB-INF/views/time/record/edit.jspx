@@ -34,6 +34,8 @@
     <sbAdmin:blockRowColWithDefPanel>
         <div id="recordUpdate">
             <form:form modelAttribute="record" id="recordUpdateForm" method="post" rol="form" action="${actionUrl}">
+                <!--@elvariable id="_csrf" type="org.springframework.security.web.csrf.CsrfToken"-->
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div>
                     <!--@elvariable id="message" type="com.soulmonk.ndfsm.web.form.Message"-->
                     <helpers:message message="${message}"/>

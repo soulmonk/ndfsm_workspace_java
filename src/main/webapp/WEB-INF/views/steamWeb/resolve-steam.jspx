@@ -28,6 +28,8 @@
                         <sbAdmin:panelHead>Resolve</sbAdmin:panelHead>
                         <sbAdmin:panelBody>
                             <form:form id="resolve-steam-id-form" method="post" rol="form">
+                                <!--@elvariable id="_csrf" type="org.springframework.security.web.csrf.CsrfToken"-->
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <div class="form-group">
                                     <label for="userVanityUrlName" class="control-label">User Vanity Url Name</label>
                                     <input id="userVanityUrlName" name="userVanityUrlName" class="form-control" placeholder="Name" type="text" value="${userVanityUrlName}"/>
