@@ -2,8 +2,11 @@ package com.soulmonk.ndfsm.security;
 
 import com.soulmonk.ndfsm.domain.user.User;
 import com.soulmonk.ndfsm.domain.user.UserRole;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +14,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.security.core.Authentication;
 /**
  * Company: PolecatSoft
  * User: soulmonk
@@ -19,6 +23,8 @@ import java.util.Set;
  */
 public class UserDetailsAdapter implements UserDetails {
     private static final long serialVersionUID = 1L;
+
+    protected static final Logger logger = LoggerFactory.getLogger(UserDetailsAdapter.class);
 
     private User user;
 
@@ -93,7 +99,18 @@ public class UserDetailsAdapter implements UserDetails {
      * @return UserDetailsAdapter or null if not logging
      */
     public static UserDetailsAdapter getLogged() {
-        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        SecurityContext context = SecurityContextHolder.getContext();
+        if (context == null) {
+            logger.error("security context is null");
+            return null;
+        }
+        Authentication authenticate = context.getAuthentication();
+        if (authenticate == null) {
+            logger.error("Authentication is null");
+            return null;
+        }
+
+        Object o = authenticate.getPrincipal();
         if (o instanceof UserDetailsAdapter) {
             return (UserDetailsAdapter) o;
         } else {
