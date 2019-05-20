@@ -4,7 +4,6 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 25.02.14
  * Time: 21:10

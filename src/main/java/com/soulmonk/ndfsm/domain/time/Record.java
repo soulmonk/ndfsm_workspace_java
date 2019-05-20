@@ -8,7 +8,6 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
- * Company: PolecatSoft
  * User: soulmonk
  * Date: 03.06.14
  * Time: 14:33

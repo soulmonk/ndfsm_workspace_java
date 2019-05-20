@@ -5,7 +5,6 @@ import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 25.02.14
  * Time: 16:05

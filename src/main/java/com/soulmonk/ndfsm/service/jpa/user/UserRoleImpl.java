@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 04.03.14
  * Time: 21:46

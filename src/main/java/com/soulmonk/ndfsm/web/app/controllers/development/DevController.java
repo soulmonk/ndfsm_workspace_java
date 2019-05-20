@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 01.03.14
  * Time: 17:31

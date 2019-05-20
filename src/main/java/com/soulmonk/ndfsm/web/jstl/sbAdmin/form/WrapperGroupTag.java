@@ -7,7 +7,6 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 26.02.14
  * Time: 22:03

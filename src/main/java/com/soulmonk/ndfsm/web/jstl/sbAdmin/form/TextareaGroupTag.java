@@ -6,7 +6,6 @@ import org.springframework.web.servlet.tags.form.TextareaTag;
 import javax.servlet.jsp.JspException;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 26.02.14
  * Time: 20:11

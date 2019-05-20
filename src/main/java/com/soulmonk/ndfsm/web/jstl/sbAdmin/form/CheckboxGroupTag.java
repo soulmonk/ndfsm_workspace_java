@@ -7,7 +7,6 @@ import org.springframework.web.servlet.tags.form.TagWriter;
 import javax.servlet.jsp.JspException;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 01.03.14
  * Time: 19:55

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 01.03.14
  * Time: 17:32

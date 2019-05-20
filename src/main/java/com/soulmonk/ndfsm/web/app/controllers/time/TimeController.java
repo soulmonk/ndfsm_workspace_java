@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 24.02.14
  * Time: 16:29

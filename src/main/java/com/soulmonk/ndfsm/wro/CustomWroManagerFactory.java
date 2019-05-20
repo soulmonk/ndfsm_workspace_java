@@ -8,7 +8,6 @@ import ro.isdc.wro.model.resource.processor.factory.ProcessorsFactory;
 import ro.isdc.wro.model.resource.processor.factory.SimpleProcessorsFactory;
 
 /**
- * Company: PolecatSoft
  * User: soulmonk
  * Date: 24.06.14
  * Time: 14:47

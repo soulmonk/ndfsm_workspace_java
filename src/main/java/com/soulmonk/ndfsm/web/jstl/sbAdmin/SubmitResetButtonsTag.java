@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Locale;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 25.02.14
  * Time: 20:12

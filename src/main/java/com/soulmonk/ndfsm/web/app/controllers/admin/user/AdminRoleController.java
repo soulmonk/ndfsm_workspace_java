@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Company: PolecatSoft
  * Role: SoulMonk
  * Date: 01.03.14
  * Time: 17:37

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 01.03.14
  * Time: 22:36

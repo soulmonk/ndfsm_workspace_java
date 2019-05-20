@@ -5,7 +5,6 @@ import com.soulmonk.ndfsm.web.jstl.HtmlTagSupport;
 import javax.servlet.jsp.JspException;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 28.02.14
  * Time: 22:32

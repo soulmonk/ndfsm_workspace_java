@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Company: PolecatSoft
  * User: SoulMonk
  * Date: 27.02.14
  * Time: 19:21
